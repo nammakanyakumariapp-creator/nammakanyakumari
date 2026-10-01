@@ -242,7 +242,7 @@
       line-height: 1.4;
     }
 
-    /* திரையில் தெரியும் சந்தா பகுதி */
+    /* சந்தா முறை கார்டு */
     .hidden-subscription-clause {
       display: block !important; 
       background: #334155;
@@ -252,7 +252,7 @@
       border-left: 3px solid var(--yellow);
     }
 
-    /* நீங்கள் கேட்ட டிக் மற்றும் வெளியேறும் பட்டன் பகுதி */
+    /* டிக் மற்றும் வெளியேறும் பட்டன் பகுதி */
     .terms-action-box {
       background: #1E293B;
       border: 1px solid #334155;
@@ -311,11 +311,97 @@
       cursor: pointer;
       text-align: center;
     }
+
+    /* Bottom Navigation Bar */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background: #0B1120;
+      border-top: 1px solid #1E293B;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      max-width: 480px;
+      margin: 0 auto;
+      z-index: 100;
+    }
+
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 11px;
+      font-weight: 500;
+      cursor: pointer;
+      background: transparent;
+      border: none;
+    }
+
+    .nav-item.active {
+      color: var(--primary-blue);
+      font-weight: 700;
+    }
+
+    .nav-item i {
+      font-size: 17px;
+    }
   </style>
 </head>
 <body>
 
-  <div class="container" id="termsContainer">
+  <!-- முக்கிய முகப்புப் பக்கம் (Home Screen) -->
+  <div class="container" id="mainHomeView">
+    <!-- Top Main Promo Banner -->
+    <div class="top-promo-banner" onclick="openTermsModal()">
+      <div style="padding: 14px; background: linear-gradient(135deg, #1E3A8A, #0F172A); text-align: center;">
+        <h4 style="color: var(--yellow); font-size: 14px; margin-bottom: 4px;">
+          <i class="fa-solid fa-bell"></i> புதிய விதிமுறைகள் & வழிகாட்டுதல்கள்
+        </h4>
+        <p style="font-size: 12px; color: #CBD5E1;">படிக்க மற்றும் உறுதி செய்ய இங்கே தொடவும்</p>
+      </div>
+    </div>
+
+    <!-- Category Tabs -->
+    <div class="home-filter-tabs">
+      <button class="tab-btn active"><i class="fa-solid fa-taxi"></i> வாகனம்</button>
+      <button class="tab-btn"><i class="fa-solid fa-store"></i> கடைகள்</button>
+      <button class="tab-btn"><i class="fa-solid fa-wrench"></i> சேவைகள்</button>
+    </div>
+
+    <!-- Search Section -->
+    <div class="search-section">
+      <div class="search-input-wrap">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" class="search-input" placeholder="ஊர் அல்லது சேவையைத் தேடவும்...">
+      </div>
+    </div>
+
+    <!-- Vendor Card Demo -->
+    <div class="vendor-card">
+      <h3>செல்வம் ஆட்டோ <span class="badge-category">ஆட்டோ</span></h3>
+      <p class="village-txt"><i class="fa-solid fa-location-dot"></i> நாகர்கோவில் (வேப்பமூடு ஸ்டாண்ட்)</p>
+      <p>TN 74 AX 1234 (Auto 3 Seater)</p>
+      <div class="action-buttons">
+        <a href="tel:9443123456" class="btn-call"><i class="fa-solid fa-phone"></i> அழைக்க</a>
+        <a href="https://wa.me/919842123456" class="btn-wa"><i class="fa-brands fa-whatsapp"></i> வாட்ஸ்அப்</a>
+      </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 15px;">
+      <button onclick="openTermsModal()" style="background: transparent; color: var(--yellow); border: 1px dashed var(--yellow); padding: 8px 14px; border-radius: 8px; font-size: 12px; cursor: pointer;">
+        <i class="fa-solid fa-file-shield"></i> விதிமுறைகள் பக்கத்தைத் திற
+      </button>
+    </div>
+  </div>
+
+  <!-- விதிமுறைகள் பக்கம் (Terms Container - Toggle View) -->
+  <div class="container" id="termsContainer" style="display: none;">
     <!-- தலைப்பு -->
     <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px;">
       <h3 style="font-size: 15px; color: #FFF;">
@@ -330,7 +416,7 @@
       <p class="ta-main">ஓட்டுநர்கள் பெறும் சவாரித் தொகையில் இருந்து நம்ம கன்னியாகுமரி தளம் எவ்வித கமிஷனும் (0% Commission) வசூலிப்பதில்லை. சவாரி மற்றும் கட்டணப் பரிவர்த்தனைகளுக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது;</strong> ஓட்டுநரே முழுப் பொறுப்பு.</p>
       <p class="en-sub">The platform charges 0% commission on your ride fares. <strong>Namma Kanyakumari platform is not responsible</strong> for ride payments; the driver bears full responsibility.</p>
       
-      <!-- திரையில் வெளிப்படையாகத் தெரியும் சந்தா விவரம் -->
+      <!-- திரையில் தெரியும் சந்தா விவரம் -->
       <div class="hidden-subscription-clause">
         <p class="ta-main" style="color: #FBBF24; margin-top: 2px;">
           *(குறிப்பு: இத்தளம் சவாரி அல்லது விற்பனையில் எவ்வித கமிஷனும் எடுப்பதில்லை (0% Commission). தளம் தற்போது ஆரம்பகால இலவச முன்னோட்டமாக (Introductory Free Access) வழங்கப்படுகிறது. எதிர்காலத்தில் நிர்வாகக் கொள்கைப்படி தளம் தொடர்ந்து இயங்க சிறிய அளவிலான சேவைப் பராமரிப்புக் கட்டணம் / சந்தா முறை நடைமுறைப்படுத்தப்படலாம். <strong>மாதாந்திர சந்தா: ₹199</strong>, <strong>6 மாத சலுகை: ₹999</strong>, <strong>1 வருட சிறப்புத் திட்டம்: ₹1,799</strong>. அவ்வாறு மாற்றப்படும் போது அதனை ஏற்றுச் செயல்பட சம்மதிக்கிறேன்; கட்டண முடிவுகள் மற்றும் சேவை தொடர்பாக எழும் எவ்வித இழப்புகளுக்கும் <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது.</strong>)*
@@ -362,7 +448,7 @@
       <p class="en-sub"><strong>Namma Kanyakumari platform is not responsible</strong> for road accidents, damage, or personal loss; the driver and insurance are solely responsible.</p>
     </div>
 
-    <!-- நீங்கள் கேட்ட டிக் (Checkbox) மற்றும் வெளியேறும் பட்டன் பகுதி -->
+    <!-- டிக் மற்றும் வெளியேறும் பட்டன் பகுதி -->
     <div class="terms-action-box">
       <label class="agree-checkbox-label">
         <input type="checkbox" id="termsCheck" onchange="toggleAgreeButton()">
@@ -382,6 +468,13 @@
   </div>
 
   <script>
+    // விதிமுறைகள் பக்கத்தைத் திறக்கும் ஃபங்ஷன்
+    function openTermsModal() {
+      document.getElementById('mainHomeView').style.display = 'none';
+      document.getElementById('termsContainer').style.display = 'block';
+      window.scrollTo(0, 0);
+    }
+
     // டிக் செய்த பிறகு பட்டன் ஆன் ஆகும் செயல்பாடு
     function toggleAgreeButton() {
       const isChecked = document.getElementById('termsCheck').checked;
@@ -401,12 +494,23 @@
       goBackToApp();
     }
 
-    // ஆப் முகப்புக்குத் திரும்பும் செயல்பாடு
+    // பின்செல்லும் பட்டன் வேலை செய்வதற்கான முழுமையான தீர்வு
     function goBackToApp() {
-      if (window.history.length > 1) {
-        window.history.back();
+      const termsBox = document.getElementById('termsContainer');
+      const homeBox = document.getElementById('mainHomeView');
+      
+      // விதிமுறைகளை மறைத்து முகப்புப் பக்கத்தைக் காட்டும்
+      if (termsBox && homeBox) {
+        termsBox.style.display = 'none';
+        homeBox.style.display = 'block';
+        window.scrollTo(0, 0);
       } else {
-        window.location.href = "./";
+        // ஒருவேளை தனிப் பக்கமாக இருந்தால் முந்தைய திரைக்குச் செல்லும்
+        if (window.history.length > 1) {
+          window.history.back();
+        } else {
+          window.location.href = "./";
+        }
       }
     }
   </script>
