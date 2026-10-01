@@ -24,7 +24,7 @@
       --card-container-bg: #1E293B;
       --text-light: #F8FAFC;
       --text-muted: #94A3B8;
-      --en-text-bright: #CBD5E1; /* ஆங்கில எழுத்துக்கள் பளிச்செனத் தெரிய */
+      --en-text-bright: #CBD5E1;
     }
 
     * {
@@ -234,7 +234,6 @@
     .icon-extra2 { background: #FEE2E2; color: #991B1B; }
     .icon-extra3 { background: #F3E8FF; color: #6B21A8; }
 
-    /* Main & English Text Display */
     .cat-btn .main-text {
       font-size: 12px;
       font-weight: 700;
@@ -585,6 +584,11 @@
       line-height: 1.4;
     }
 
+    /* எதிர்கால சந்தா வாசகத்தை மறைத்து வைக்கும் கிளாஸ் */
+    .hidden-subscription-clause {
+      display: none !important;
+    }
+
     /* Bottom Bar */
     .bottom-bar {
       position: fixed;
@@ -740,7 +744,7 @@
       </div>
     </div>
 
-    <!-- Extra Row of 3 Icons (New 3 Icons making total 12) -->
+    <!-- Extra Row of 3 Icons (Total 12 Icons) -->
     <div class="extra-category-grid">
       <div class="cat-btn" onclick="openDedicatedCategory('ஸ்போர்ட்ஸ் & ஜிம்')">
         <div class="circle-icon icon-extra1">
@@ -788,7 +792,7 @@
 
   </div>
 
-  <!-- DEDICATED FULL SCREEN CATEGORY VIEW (SEARCH RESULTS) -->
+  <!-- DEDICATED FULL SCREEN CATEGORY VIEW -->
   <div class="fullpage-view" id="fullpageView">
     <div class="fullpage-header">
       <div class="fullpage-header-left">
@@ -1038,7 +1042,6 @@
             <textarea id="vDesc" rows="2" placeholder="எ.கா: 24 மணி நேர சவாரி, வெளியூர் பயணம்"></textarea>
           </div>
 
-          <!-- Dynamic Terms & Smart Submit -->
           <div class="terms-check-container">
             <div class="terms-row">
               <input type="checkbox" id="chkTermsVehicle" onchange="toggleSubmitState('Vehicle')">
@@ -1114,7 +1117,6 @@
             <textarea id="sDetails" rows="2" placeholder="எ.கா: ஏபிசி மால்ட், பிரண்டை தொக்கு கிடைக்கும்"></textarea>
           </div>
 
-          <!-- Dynamic Terms & Smart Submit -->
           <div class="terms-check-container">
             <div class="terms-row">
               <input type="checkbox" id="chkTermsShop" onchange="toggleSubmitState('Shop')">
@@ -1185,7 +1187,6 @@
             <input type="text" id="jEdu" placeholder="எ.கா: 10th / அனுபவம் உள்ளவர்கள் முன்னுரிமை">
           </div>
 
-          <!-- Dynamic Terms & Smart Submit -->
           <div class="terms-check-container">
             <div class="terms-row">
               <input type="checkbox" id="chkTermsJob" onchange="toggleSubmitState('Job')">
@@ -1301,7 +1302,7 @@
   </nav>
 
   <script>
-    let isTermsSwitchOn = false; 
+    let isTermsSwitchOn = true; 
     let selectedHomeCategory = "வாகனம்";
 
     const serviceList = [
@@ -1633,7 +1634,7 @@
       }
     }
 
-    /* FULL COMPREHENSIVE TERMS AND CONDITIONS RESTORED (NO TRUNCATION) */
+    /* இறுதி செய்யப்பட்ட 4 படிவங்களுக்கான முழுமையான 5 விதிமுறைகள் */
     function openDedicatedTerms(category) {
       const termsPage = document.getElementById("pageTermsView");
       const title = document.getElementById("termsHeaderTitle");
@@ -1643,20 +1644,35 @@
         title.innerText = "வாடிக்கையாளர் விதிமுறைகள் / Customer Terms";
         body.innerHTML = `
           <div class="terms-rule-card">
-            <h4>1. வாடிக்கையாளர்களுக்கு 100% முற்றிலும் இலவசம் / 100% Free Service</h4>
-            <p class="ta-main">நம்ம கன்னியாகுமரி தளத்தைப் பயன்படுத்தித் தங்களுக்குத் தேவையான சேவைகளைத் தேடுவதற்கும், தேவையைப் பதிவிடுவதற்கும் வாடிக்கையாளர்களிடம் இருந்து எவ்விதப் பயன்பாட்டுக் கட்டணமோ, பதிவுக் கட்டணமோ அல்லது கமிஷனோ பெறப்படாது.</p>
-            <p class="en-sub">This platform is 100% free for customers to search and connect with local service providers without any platform commission.</p>
+            <h4>1. 100% முற்றிலும் இலவச சேவை / 100% Free Service</h4>
+            <p class="ta-main">வாடிக்கையாளர்கள் சேவைகளைத் தேடுவதற்கும், தேவையைப் பதிவிடுவதற்கும் இத்தளம் 100% இலவசமானது; எவ்வித பதிவுக் கட்டணமோ, கமிஷனோ அல்லது பயன்பாட்டுக் கட்டணமோ கிடையாது. அங்கீகரிக்கப்படாத நபரிடம் பணம் கொடுத்து ஏமாறுவதற்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது;</strong> வாடிக்கையாளரே முழுப் பொறுப்பு.</p>
+            <p class="en-sub">This platform is 100% free for customers with zero fees and zero commission. <strong>Namma Kanyakumari platform is not responsible</strong> if you pay any unauthorized charges.</p>
           </div>
+
           <div class="terms-rule-card">
-            <h4>2. நேரடித் தொடர்பு முறை / Direct Provider Contact Only</h4>
-            <p class="ta-main">வாடிக்கையாளர்கள் தங்களுக்குத் தேவையான சேவைகளை நேரடியாகச் சேவை வழங்குநரிடம் போன் அல்லது வாட்ஸ்அப் மூலம் பேசி, கட்டணம் மற்றும் பணிகளை முடிவு செய்து கொள்ள வேண்டும்.</p>
-            <p class="en-sub">Customers must contact the providers directly to negotiate fares, prices, and terms. The platform does not handle bookings.</p>
+            <h4>2. நேரடித் தொடர்பு & கட்டண முடிவு / Direct Contact & Negotiation</h4>
+            <p class="ta-main">சேவை வழங்குநரிடம் நேரடியாகப் பேசி கட்டணம் மற்றும் வேலை விபரங்களை முடிவு செய்து கொள்ள வேண்டும்; கட்டண முரண்பாடுகளுக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது;</strong> வாடிக்கையாளரும் தொழிலாளியுமே முழுப் பொறுப்பு.</p>
+            <p class="en-sub">Customers must discuss price and service terms directly. <strong>Namma Kanyakumari platform is not responsible</strong> for price disagreements between users and providers.</p>
           </div>
+
           <div class="terms-rule-card">
-            <h4>3. தளத்தின் சட்டப் பொறுப்பு வரம்பு / Platform Disclaimer</h4>
-            <p class="ta-main">சேவை வழங்குநரின் தரம், தாமதம், கட்டண முரண்பாடுகள் அல்லது தனிப்பட்ட விவகாரங்களுக்கு இத்தளம் எவ்விதத்திலும் பொறுப்பேற்காது. வாடிக்கையாளர்கள் சுய விழிப்புணர்வுடன் செயல்பட வேண்டும்.</p>
-            <p class="en-sub">The platform is solely a digital directory and bears no responsibility for service quality, price disputes, or individual conduct.</p>
+            <h4>3. பணியின் தரம் & மதிப்பீடு / Service Quality & Workmanship</h4>
+            <p class="ta-main">தொழிலாளியின் வேலையில் தரம் குறைவு, தாமதம் அல்லது அரைகுறையாக முடிப்பதற்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது;</strong> வேலையை ஆய்வு செய்து திருப்தியடைந்த பின் ஏற்க வாடிக்கையாளரே முழுப் பொறுப்பு.</p>
+            <p class="en-sub"><strong>Namma Kanyakumari platform is not responsible</strong> for service quality, delays, or unfinished tasks; approving the work is the customer's sole responsibility.</p>
           </div>
+
+          <div class="terms-rule-card">
+            <h4>4. உடைமைப் பாதுகாப்பு & தனிநபர் விழிப்புணர்வு / Property Safety & Vigilance</h4>
+            <p class="ta-main">வீட்டிற்கு சேவை செய்ய வருபவர்களின் செயல்பாடுகள், பொருட்கள் காணாமல் போவது அல்லது சேதங்களுக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது;</strong> உரிய முன்னெச்சரிக்கையுடன் கண்காணிக்க வாடிக்கையாளரே முழுப் பொறுப்பு.</p>
+            <p class="en-sub"><strong>Namma Kanyakumari platform is not responsible</strong> for household safety, property damage, or lost valuables; vigilant supervision is the customer's duty.</p>
+          </div>
+
+          <div class="terms-rule-card">
+            <h4>5. முரண்பாடுகள் & புகார்கள் / Civil Disputes</h4>
+            <p class="ta-main">வாடிக்கையாளருக்கும் சேவை வழங்குநருக்கும் இடையே எழும் தனிப்பட்ட தகராறுகள் அல்லது நஷ்டங்களுக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது;</strong> பேசித் தீர்க்கவோ அல்லது சட்டப்படி அணுகவோ சம்பந்தப்பட்ட நபர்களே முழுப் பொறுப்பு.</p>
+            <p class="en-sub"><strong>Namma Kanyakumari platform is not responsible</strong> for personal disputes or damages arising between customers and vendors.</p>
+          </div>
+
           <button type="button" class="form-submit-btn active-btn" onclick="closeTermsPage()">
             ← படித்துவிட்டேன் / படிவத்திற்குத் திரும்புக
           </button>
@@ -1665,25 +1681,43 @@
         title.innerText = "வாகன சேவை விதிமுறைகள் / Vehicle Terms";
         body.innerHTML = `
           <div class="terms-rule-card">
-            <h4>1. சுய அறிவிப்பு & உண்மைத் தன்மை / Self-Declaration</h4>
-            <p class="ta-main">வழங்கப்பட்டுள்ள பெயர், தொடர்பு எண், வாகன பதிவு எண் (RC) மற்றும் வாகன விபரங்கள் அனைத்தும் உண்மையானவை என உறுதியளிக்கிறேன்.</p>
-            <p class="en-sub">I hereby declare that the personal details, contact numbers, and vehicle registration info provided are genuine and accurate.</p>
+            <h4>1. 0% கமிஷன் தளம் / 0% Commission Platform</h4>
+            <p class="ta-main">ஓட்டுநர்கள் பெறும் சவாரித் தொகையில் இருந்து நம்ம கன்னியாகுமரி தளம் எவ்வித கமிஷனும் (0% Commission) வசூலிப்பதில்லை. சவாரி மற்றும் கட்டணப் பரிவர்த்தனைகளுக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது;</strong> ஓட்டுநரே முழுப் பொறுப்பு.</p>
+            <p class="en-sub">The platform charges 0% commission on your ride fares. <strong>Namma Kanyakumari platform is not responsible</strong> for ride payments; the driver bears full responsibility.</p>
+            <div class="hidden-subscription-clause">
+              <p class="ta-main" style="color: #FBBF24; margin-top: 6px;">
+                *(குறிப்பு: இத்தளம் சவாரி அல்லது விற்பனையில் எவ்வித கமிஷனும் எடுப்பதில்லை (0% Commission). தளம் தற்போது ஆரம்பகால இலவச முன்னோட்டமாக (Introductory Free Access) வழங்கப்படுகிறது. எதிர்காலத்தில் நிர்வாகக் கொள்கைப்படி தளம் தொடர்ந்து இயங்க சிறிய அளவிலான சேவைப் பராமரிப்புக் கட்டணம் / சந்தா முறை நடைமுறைப்படுத்தப்படலாம். <strong>மாதாந்திர சந்தா: ₹199</strong>, <strong>6 மாத சலுகை: ₹999</strong>, <strong>1 வருட சிறப்புத் திட்டம்: ₹1,799</strong>. அவ்வாறு மாற்றப்படும் போது அதனை ஏற்றுச் செயல்பட சம்மதிக்கிறேன்; கட்டண முடிவுகள் மற்றும் சேவை தொடர்பாக எழும் எவ்வித இழப்புகளுக்கும் <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது.</strong>)*
+              </p>
+              <p class="en-sub">
+                *(Note: The platform charges 0% commission and is currently offered under an introductory free access period. In accordance with future management policy, a nominal platform maintenance fee or subscription plan may be introduced: <strong>Monthly Plan: ₹199</strong>, <strong>6 Months Offer: ₹999</strong>, <strong>1 Year Plan: ₹1,799</strong>. Providers agree to comply upon formal notice; <strong>Namma Kanyakumari platform is not responsible</strong> for any related service disputes.)*
+              </p>
+            </div>
           </div>
+
           <div class="terms-rule-card">
-            <h4>2. சட்டரீதியான பொறுப்பு விலக்கு / Legal Disclaimer</h4>
-            <p class="ta-main">இந்த தளம் பயணிகள் மற்றும் ஓட்டுநர்களை இணைக்கும் ஒரு தகவல் மேடை மட்டுமே. கட்டண விவகாரங்கள், விபத்துக்கள் அல்லது சட்டரீதியான எந்தவொரு பிரச்சினைகளுக்கும் இத்தளத்தின் நிர்வாகம் பொறுப்பல்ல. ஓட்டுநரே முழுப் பொறுப்பு.</p>
-            <p class="en-sub">This platform is solely a listing directory. The management is not responsible for fares, accidents, disputes, or legal claims. The driver holds sole responsibility.</p>
+            <h4>2. சுய அறிவிப்பு & விபரங்களின் உண்மைத்தன்மை / Self-Declaration</h4>
+            <p class="ta-main">வழங்கப்பட்டுள்ள பெயர், தொடர்பு எண், வாகன பதிவு எண் (RC) விபரங்கள் உண்மையானவை. தவறான தகவல் கொடுத்தால் ஏற்படும் எவ்வித சட்டரீதியான விளைவுகளுக்கும் <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது;</strong> ஓட்டுநரே முழுப் பொறுப்பு.</p>
+            <p class="en-sub">I declare all vehicle and personal credentials are genuine. <strong>Namma Kanyakumari platform is not responsible</strong> for incorrect details; the driver is solely responsible.</p>
           </div>
+
           <div class="terms-rule-card">
-            <h4>3. நடத்தை நெறிமுறை & நீக்கம் / Code of Conduct & Removal</h4>
-            <p class="ta-main">பயணிகளிடம் கண்ணியமாக நடந்துகொள்வேன். பயணிகளிடம் இருந்து கடுமையான புகார்கள் வந்தாலோ அல்லது தவறான தகவல் அளிக்கப்பட்டாலோ எனது பதிவு முன்னறிவிப்பின்றி உடனடியாக நீக்கப்படும் என்பதை ஒப்புக்கொள்கிறேன்.</p>
-            <p class="en-sub">I agree to maintain professional conduct with passengers. Misbehavior or verified complaints will lead to immediate removal from the platform.</p>
+            <h4>3. பயணக் கட்டணம் & சவாரி பேரம் / Fares & Bargaining</h4>
+            <p class="ta-main">பயணிகளிடம் பேசப்படும் கட்டண முறை, சவாரி பேரம் மற்றும் பணப் பரிவர்த்தனைகளில் ஏற்படும் தகராறுகளுக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது;</strong> ஓட்டுநரும் பயணியுமே பேசித் தீர்க்க முழுப் பொறுப்பு.</p>
+            <p class="en-sub"><strong>Namma Kanyakumari platform is not responsible</strong> for fare disputes, bargaining, or passenger settlements; driver and rider are fully responsible.</p>
           </div>
+
           <div class="terms-rule-card">
-            <h4>4. நேரடி சவாரி & கட்டணம் / Direct Ride & Fare</h4>
-            <p class="ta-main">சவாரி முன்பதிவோ அல்லது கட்டண கமிஷனோ இத்தளத்தால் வசூலிக்கப்படுவதில்லை; அனைத்தும் ஓட்டுநருக்கும் வாடிக்கையாளருக்கும் இடையே நேரடியானது.</p>
-            <p class="en-sub">The platform does not charge commissions or manage ride payments. All rides and settlements are purely direct.</p>
+            <h4>4. விபத்து & இழப்பீட்டுப் பொறுப்பு விலக்கு / Accident Disclaimer</h4>
+            <p class="ta-main">பயணத்தின் போது நிகழும் சாலை விபத்துக்கள், வாகன சேதங்கள் அல்லது பயண தாமதங்களுக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது;</strong> ஓட்டுநர் மற்றும் அவரது வாகனக் காப்பீடே (Insurance) முழுப் பொறுப்பு.</p>
+            <p class="en-sub"><strong>Namma Kanyakumari platform is not responsible</strong> for road accidents, damage, or trip delays; the driver and vehicle insurance are solely liable.</p>
           </div>
+
+          <div class="terms-rule-card">
+            <h4>5. நடத்தை நெறிமுறை & கணக்கு நீக்கம் / Code of Conduct & Removal</h4>
+            <p class="ta-main">பயணிகளிடம் கண்ணியமாக நடக்க வேண்டும். தகாத நடத்தை, சட்டம் ஒழுங்கு மீறல்கள் அல்லது தொடர் புகார்கள் காரணமாகக் கணக்கு நீக்கப்படுவதால் ஏற்படும் வணிக இழப்புகளுக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது;</strong> ஓட்டுநரே சட்டப்படி முழுப் பொறுப்பு.</p>
+            <p class="en-sub">Misconduct or unlawful acts will lead to immediate listing termination. <strong>Namma Kanyakumari platform is not responsible</strong> for business losses; the driver is fully responsible.</p>
+          </div>
+
           <button type="button" class="form-submit-btn active-btn" onclick="closeTermsPage()">
             ← படித்துவிட்டேன் / படிவத்திற்குத் திரும்புக
           </button>
@@ -1692,20 +1726,43 @@
         title.innerText = "வர்த்தக விதிமுறைகள் / Business Terms";
         body.innerHTML = `
           <div class="terms-rule-card">
-            <h4>1. நேரடி வர்த்தகம் மட்டுமே / Direct Trade Only</h4>
-            <p class="ta-main">வாடிக்கையாளர்களிடம் இருந்து பொருட்களுக்கான ஆர்டர்களையோ அல்லது பணத்தையோ தளம் கையாளுவதில்லை. அனைத்து வியாபாரப் பரிவர்த்தனைகளும் வாடிக்கையாளருக்கும் கடை உரிமையாளருக்கும் இடையிலான நேரடிப் பொறுப்பாகும்.</p>
-            <p class="en-sub">The platform does not process orders, transactions, or customer payments. All trade interactions are direct between shop and customer.</p>
+            <h4>1. 0% கமிஷன் & நேரடி வர்த்தகம் / 0% Commission & Direct Trade</h4>
+            <p class="ta-main">பொருட்கள் விற்பனையில் நம்ம கன்னியாகுமரி தளம் வியாபாரிகளிடம் எவ்வித விற்பனைக் கமிஷனும் (0% Commission) பெறுவதில்லை. வியாபாரப் பரிவர்த்தனைகளில் ஏற்படும் இழப்புகளுக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது;</strong> வணிகரே முழுப் பொறுப்பு.</p>
+            <p class="en-sub">The platform charges 0% sales commission. <strong>Namma Kanyakumari platform is not responsible</strong> for financial transactions; the merchant bears sole responsibility.</p>
+            <div class="hidden-subscription-clause">
+              <p class="ta-main" style="color: #FBBF24; margin-top: 6px;">
+                *(குறிப்பு: இத்தளம் சவாரி அல்லது விற்பனையில் எவ்வித கமிஷனும் எடுப்பதில்லை (0% Commission). தளம் தற்போது ஆரம்பகால இலவச முன்னோட்டமாக (Introductory Free Access) வழங்கப்படுகிறது. எதிர்காலத்தில் நிர்வாகக் கொள்கைப்படி தளம் தொடர்ந்து இயங்க சிறிய அளவிலான சேவைப் பராமரிப்புக் கட்டணம் / சந்தா முறை நடைமுறைப்படுத்தப்படலாம். <strong>மாதாந்திர சந்தா: ₹199</strong>, <strong>6 மாத சலுகை: ₹999</strong>, <strong>1 வருட சிறப்புத் திட்டம்: ₹1,799</strong>. அவ்வாறு மாற்றப்படும் போது அதனை ஏற்றுச் செயல்பட சம்மதிக்கிறேன்; கட்டண முடிவுகள் மற்றும் சேவை தொடர்பாக எழும் எவ்வித இழப்புகளுக்கும் <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது.</strong>)*
+              </p>
+              <p class="en-sub">
+                *(Note: The platform charges 0% commission and is currently offered under an introductory free access period. In accordance with future management policy, a nominal platform maintenance fee or subscription plan may be introduced: <strong>Monthly Plan: ₹199</strong>, <strong>6 Months Offer: ₹999</strong>, <strong>1 Year Plan: ₹1,799</strong>. Providers agree to comply upon formal notice; <strong>Namma Kanyakumari platform is not responsible</strong> for any related service disputes.)*
+              </p>
+            </div>
           </div>
+
           <div class="terms-rule-card">
-            <h4>2. தரக் கட்டுப்பாடு & உத்தரவாதம் / Product Quality & Safety</h4>
-            <p class="ta-main">விற்பனை செய்யப்படும் ஹோம்மேட் உணவுப் பொருட்கள், தின்பண்டங்கள் மற்றும் இதர பொருட்களின் தரம், சுகாதாரம் மற்றும் உரிய உரிமங்களுக்கு (எ.கா: FSSAI) தயாரிப்பாளரே முழுப் பொறுப்பாவார்.</p>
-            <p class="en-sub">The vendor is entirely responsible for product hygiene, quality standards, packaging, and regulatory compliances (such as FSSAI).</p>
+            <h4>2. உணவுத் தரம் & பாதுகாப்பு / Product Quality & Hygiene</h4>
+            <p class="ta-main">விற்பனை செய்யப்படும் ஹோம்மேட் உணவுகள், மால்ட் மற்றும் பொருட்களின் தரம், சுகாதாரம் அல்லது கெட்டுப்போதலுக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது;</strong> தயாரிப்பாளரே சட்டப்படி முழுப் பொறுப்பு.</p>
+            <p class="en-sub"><strong>Namma Kanyakumari platform is not responsible</strong> for food quality, spoilage, or hygiene issues; the producer/seller is legally responsible.</p>
           </div>
+
           <div class="terms-rule-card">
-            <h4>3. தவறான விபரங்கள் மீதான நடவடிக்கை / Removal of False Listings</h4>
-            <p class="ta-main">தவறான தயாரிப்பு விபரங்கள், போலி வாக்குறுதிகள் அல்லது வாடிக்கையாளர் ஏமாற்று புகார்கள் உறுதிசெய்யப்பட்டால், நிறுவனத்தின் பதிவு உடனடியாக முடக்கப்படும்.</p>
-            <p class="en-sub">Listings containing false claims, counterfeit items, or verified fraud complaints will be suspended immediately without notice.</p>
+            <h4>3. அரசு உரிமங்கள் & சான்றிதழ் / Licensing & FSSAI Compliance</h4>
+            <p class="ta-main">உணவு பாதுகாப்பு உரிமம் (FSSAI) மற்றும் வணிக அனுமதிகள் பெறாததால் எழும் அரசு நடவடிக்கைகளுக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது;</strong> வணிக உரிமையாளரே முழுப் பொறுப்பு.</p>
+            <p class="en-sub"><strong>Namma Kanyakumari platform is not responsible</strong> for lack of commercial or FSSAI statutory licenses; the merchant bears full responsibility.</p>
           </div>
+
+          <div class="terms-rule-card">
+            <h4>4. ஹோம் டெலிவரி & பொருள் சேதம் / Delivery & Damage</h4>
+            <p class="ta-main">பொருட்கள் டெலிவரி செய்யும் போதான தாமதம், பொருள் இழப்பு அல்லது உடைசல் சேதங்களுக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது;</strong> கடை நிர்வாகமும் டெலிவரி செய்பவருமே முழுப் பொறுப்பு.</p>
+            <p class="en-sub"><strong>Namma Kanyakumari platform is not responsible</strong> for courier delays, breakages, or delivery failures; the store management is solely responsible.</p>
+          </div>
+
+          <div class="terms-rule-card">
+            <h4>5. போலி விளம்பரம் & கணக்கு முடக்கம் / Fraudulent Listings & Suspension</h4>
+            <p class="ta-main">போலி தயாரிப்புகள் அல்லது வாடிக்கையாளர் ஏமாற்றுப் புகார்களால் கணக்கு முடக்கப்படும் போது ஏற்படும் இழப்புகளுக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது;</strong> தவறான விபரமளித்த நிறுவனமே முழுப் பொறுப்பு.</p>
+            <p class="en-sub"><strong>Namma Kanyakumari platform is not responsible</strong> for business losses caused by terminating misleading listings; the merchant is fully responsible.</p>
+          </div>
+
           <button type="button" class="form-submit-btn active-btn" onclick="closeTermsPage()">
             ← படித்துவிட்டேன் / படிவத்திற்குத் திரும்புக
           </button>
@@ -1714,20 +1771,43 @@
         title.innerText = "வேலைவாய்ப்பு விதிமுறைகள் / Job Terms";
         body.innerHTML = `
           <div class="terms-rule-card">
-            <h4>1. நேரடி ஆள்சேர்ப்பு முறை / Direct Hiring Only</h4>
-            <p class="ta-main">வேலை தேடுபவர்களுக்கும் பணி வழங்குநர்களுக்கும் இடையே தளம் ஒரு தகவல் பாலமாக மட்டுமே செயல்படுகிறது. நேர்காணல் மற்றும் வேலை நியமனங்கள் இரு தரப்பின் நேரடி முடிவாகும்.</p>
-            <p class="en-sub">The platform acts solely as a communication bridge between recruiters and job seekers without intermediary involvement.</p>
+            <h4>1. 0% கமிஷன் நேரடி ஆள்சேர்ப்பு / 0% Commission Direct Hiring</h4>
+            <p class="ta-main">வேலை வாய்ப்புகளுக்கோ அல்லது ஆள்சேர்ப்புக்கோ தளம் எவ்வித கமிஷனும் வசூலிப்பதில்லை. முதலாளி மற்றும் தொழிலாளியின் ஒப்பந்த முடிவுகளுக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது;</strong> இரு தரப்பினருமே முழுப் பொறுப்பு.</p>
+            <p class="en-sub">The platform charges 0% hiring commission. <strong>Namma Kanyakumari platform is not responsible</strong> for employment contracts; both parties are fully responsible.</p>
+            <div class="hidden-subscription-clause">
+              <p class="ta-main" style="color: #FBBF24; margin-top: 6px;">
+                *(குறிப்பு: இத்தளம் சவாரி அல்லது விற்பனையில் எவ்வித கமிஷனும் எடுப்பதில்லை (0% Commission). தளம் தற்போது ஆரம்பகால இலவச முன்னோட்டமாக (Introductory Free Access) வழங்கப்படுகிறது. எதிர்காலத்தில் நிர்வாகக் கொள்கைப்படி தளம் தொடர்ந்து இயங்க சிறிய அளவிலான சேவைப் பராமரிப்புக் கட்டணம் / சந்தா முறை நடைமுறைப்படுத்தப்படலாம். <strong>மாதாந்திர சந்தா: ₹199</strong>, <strong>6 மாத சலுகை: ₹999</strong>, <strong>1 வருட சிறப்புத் திட்டம்: ₹1,799</strong>. அவ்வாறு மாற்றப்படும் போது அதனை ஏற்றுச் செயல்பட சம்மதிக்கிறேன்; கட்டண முடிவுகள் மற்றும் சேவை தொடர்பாக எழும் எவ்வித இழப்புகளுக்கும் <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது.</strong>)*
+              </p>
+              <p class="en-sub">
+                *(Note: The platform charges 0% commission and is currently offered under an introductory free access period. In accordance with future management policy, a nominal platform maintenance fee or subscription plan may be introduced: <strong>Monthly Plan: ₹199</strong>, <strong>6 Months Offer: ₹999</strong>, <strong>1 Year Plan: ₹1,799</strong>. Providers agree to comply upon formal notice; <strong>Namma Kanyakumari platform is not responsible</strong> for any related service disputes.)*
+              </p>
+            </div>
           </div>
+
           <div class="terms-rule-card">
-            <h4>2. முன்பணம் பெறுவது முற்றிலும் தடை / No Registration Fees Allowed</h4>
-            <p class="ta-main">வேலை வாய்ப்பு தருவதாகக் கூறி விண்ணப்பதாரர்களிடம் எந்தவித முன்பணமோ, பதிவுக் கட்டணமோ கோருவது சட்டவிரோதமானது. கட்டணம் கோரும் நிறுவனப் பதிவுகள் உடனடியாக நீக்கப்படும்.</p>
-            <p class="en-sub">Demanding upfront fees or deposit money for job offers is strictly prohibited and leads to immediate banning of the employer account.</p>
+            <h4>2. முன்பணம் வாங்குவது முற்றிலும் தடை / No Upfront Fees</h4>
+            <p class="ta-main">வேலை தருவதாகக் கூறி விண்ணப்பதாரரிடம் எந்தவித முன்பணமும் கோரக் கூடாது; மோசடி பண இழப்புகளுக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது;</strong> கட்டணம் கோரும் நிறுவனமே சட்டப்படி முழுப் பொறுப்பு.</p>
+            <p class="en-sub">Demanding job registration or processing fees is illegal. <strong>Namma Kanyakumari platform is not responsible</strong> for financial fraud; the recruiter is solely liable.</p>
           </div>
+
           <div class="terms-rule-card">
-            <h4>3. பொறுப்பு விலக்கு / Employment Disclaimer</h4>
-            <p class="ta-main">சம்பளம் வழங்குதல், பணிச் சூழல் மற்றும் ஊழியர் நடத்தை சார்ந்த எந்தவொரு பிரச்சினைகளுக்கும் இத்தளம் பொறுப்பேற்காது.</p>
-            <p class="en-sub">The platform is not responsible for salary disputes, workplace conditions, or candidate background verification.</p>
+            <h4>3. சம்பளம் & ஊதிய முரண்பாடுகள் / Salary & Wage Disputes</h4>
+            <p class="ta-main">சம்பள பாக்கி, தினக்கூலி குறைப்பு அல்லது ஊதிய முரண்பாடுகள் சார்ந்த பிரச்சனைகளுக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது;</strong> நிறுவனமும் தொழிலாளியுமே முழுப் பொறுப்பு.</p>
+            <p class="en-sub"><strong>Namma Kanyakumari platform is not responsible</strong> for unpaid salaries, wage cuts, or pay disputes; the contracting parties are completely responsible.</p>
           </div>
+
+          <div class="terms-rule-card">
+            <h4>4. பணிச்சூழல் & பாதுகாப்பு / Workplace Safety</h4>
+            <p class="ta-main">வேலை செய்யும் இடத்தில் ஏற்படும் விபத்துக்கள், பாதுகாப்பு குறைபாடுகள் அல்லது காயங்களுக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது;</strong> சம்பந்தப்பட்ட நிறுவனமே முழுப் பொறுப்பு.</p>
+            <p class="en-sub"><strong>Namma Kanyakumari platform is not responsible</strong> for workplace accidents, hazards, or employee injuries; the employer is wholly responsible.</p>
+          </div>
+
+          <div class="terms-rule-card">
+            <h4>5. ஆவண சரிபார்ப்பு & நடத்தை / Verification & Conduct</h4>
+            <p class="ta-main">வேலை தேடுபவரின் சான்றிதழ்கள், உண்மைத்தன்மை அல்லது ஊழியரின் நடத்தைக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது;</strong> சரிபார்த்து பணியமர்த்த வேண்டியது நிறுவனத்தின் முழுப் பொறுப்பு.</p>
+            <p class="en-sub"><strong>Namma Kanyakumari platform is not responsible</strong> for verifying applicant credentials or workplace conduct; background checks are the employer's responsibility.</p>
+          </div>
+
           <button type="button" class="form-submit-btn active-btn" onclick="closeTermsPage()">
             ← படித்துவிட்டேன் / படிவத்திற்குத் திரும்புக
           </button>
