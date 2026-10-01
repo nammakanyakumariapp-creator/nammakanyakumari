@@ -20,7 +20,6 @@
       --teal: #14B8A6;
       --light-blue: #3B82F6;
       
-      /* New Premium Dark Contrasting Background to eliminate stark whites */
       --page-bg: #0F172A;
       --card-container-bg: #1E293B;
       --text-light: #F8FAFC;
@@ -131,7 +130,7 @@
     }
     .qs-search-bar input {
       width: 100%;
-      padding: 12px 110px 12px 38px;
+      padding: 12px 75px 12px 38px;
       border-radius: 10px;
       border: 1.5px solid #334155;
       font-size: 13.5px;
@@ -143,32 +142,19 @@
       border-color: var(--primary-blue);
     }
 
-    /* Multi-language Voice Selector Inside Search Bar */
-    .voice-group {
-      position: absolute;
-      right: 40px;
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-    .lang-voice-select {
-      background: #334155;
-      color: #fff;
-      border: none;
-      font-size: 11px;
-      font-weight: 700;
-      border-radius: 4px;
-      padding: 3px 2px;
-      outline: none;
-      cursor: pointer;
-    }
+    /* Clean Mic Button */
     .qs-mic-btn {
+      position: absolute;
+      right: 42px;
       background: none;
       border: none;
       color: var(--yellow);
       font-size: 17px;
       cursor: pointer;
-      padding: 4px;
+      padding: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .qs-mic-btn.active-mic {
       color: var(--red);
@@ -180,8 +166,8 @@
       background: var(--primary-blue);
       color: #fff;
       border: none;
-      width: 30px;
-      height: 30px;
+      width: 32px;
+      height: 32px;
       border-radius: 8px;
       display: flex;
       align-items: center;
@@ -230,7 +216,7 @@
       border-radius: 6px;
     }
 
-    /* 4. 3x3 Category Grid (Independent Color Theme & Contrast) */
+    /* 4. 3x3 Category Grid */
     .category-grid-container {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -238,7 +224,7 @@
       margin-bottom: 18px;
     }
     .cat-btn {
-      background: #1E293B; /* Constant border and base structure */
+      background: #1E293B;
       border: 1px solid #334155;
       border-radius: 16px;
       padding: 14px 6px;
@@ -255,7 +241,6 @@
       transform: scale(0.96);
     }
     
-    /* Specific Symbol & Circle Coloring without altering main frame border */
     .cat-btn .circle-icon {
       width: 48px;
       height: 48px;
@@ -317,7 +302,7 @@
       color: var(--text-muted);
     }
 
-    /* FULL PAGE VIEW (For Search & Categories) */
+    /* FULL PAGE VIEW */
     .fullpage-view {
       position: fixed;
       top: 0;
@@ -494,7 +479,7 @@
       margin-top: 10px;
     }
 
-    /* Fixed Bottom Bar: [ முகப்பு ] [ 🔍 தேடல் ] [ அவசரம் ] [ பகிர்வு ] */
+    /* Fixed Bottom Bar */
     .bottom-bar {
       position: fixed;
       bottom: 0;
@@ -534,12 +519,12 @@
 
   <div class="container">
 
-    <!-- 1. Direct TN 74 Banner (No Upper Blue Header) -->
+    <!-- 1. Direct TN 74 Banner -->
     <div class="top-promo-banner" onclick="openDedicatedCategory('போக்குவரத்து / Transport')">
       <img src="https://lh3.googleusercontent.com/d/1jg5ATB7FemADytaOwXzOXNrhRv1VnILO" alt="TN 74 நம்ம கன்னியாகுமரி">
     </div>
 
-    <!-- 2. ⚡ Big Quick Search Box -->
+    <!-- 2. ⚡ Big Quick Search Box (Language selector removed) -->
     <div class="quick-search-card">
       <div class="qs-top-row">
         <div class="qs-badge">
@@ -557,22 +542,14 @@
         <span id="lblCurrentArea">அழகப்பபுரம் / Alagappapuram</span>
       </div>
 
-      <!-- Lens Search Bar with 3-Language Mic -->
+      <!-- Clean Search Bar -->
       <div class="qs-search-bar">
         <i class="fa-solid fa-magnifying-glass search-icon"></i>
         <input type="text" id="txtSearchInput" placeholder="ஆட்டோ, Taxi, Hotel...">
         
-        <div class="voice-group">
-          <!-- Multi-language Voice Selector -->
-          <select class="lang-voice-select" id="selVoiceLang" title="குரல் மொழி / Voice Language">
-            <option value="ta-IN">தமிழ்</option>
-            <option value="en-IN">ENG</option>
-            <option value="hi-IN">हिंदी</option>
-          </select>
-          <button class="qs-mic-btn" id="btnMicSearch" onclick="triggerVoiceInput()" title="Voice Search">
-            <i class="fa-solid fa-microphone"></i>
-          </button>
-        </div>
+        <button class="qs-mic-btn" id="btnMicSearch" onclick="triggerVoiceInput()" title="Voice Search">
+          <i class="fa-solid fa-microphone"></i>
+        </button>
 
         <button class="qs-action-go" onclick="runQuickSearch()">
           <i class="fa-solid fa-arrow-right"></i>
@@ -580,7 +557,7 @@
       </div>
 
       <div class="qs-help-note">
-        ℹ️ <strong>பயன்பாடு / Note:</strong> GPS ஆன் செய்து, தேவையான சேவையைத் தட்டச்சு செய்தோ அல்லது மைக் (தமிழ் / ENG / हिंदी) மூலமாகவோ உடனடியாகத் தேடலாம்.
+        ℹ️ <strong>பயன்பாடு / Note:</strong> GPS ஆன் செய்து, தேவையான சேவையைத் தட்டச்சு செய்தோ அல்லது மைக் மூலமாகவோ உடனடியாகத் தேடலாம்.
       </div>
     </div>
 
@@ -595,9 +572,8 @@
       </div>
     </div>
 
-    <!-- 4. 3x3 Category Grid (Dual Contrast Colors) -->
+    <!-- 4. 3x3 Category Grid -->
     <div class="category-grid-container">
-      <!-- Auto -->
       <div class="cat-btn" onclick="openDedicatedCategory('ஆட்டோ / Auto')">
         <div class="circle-icon icon-auto">
           <i class="fa-solid fa-taxi"></i>
@@ -606,7 +582,6 @@
         <span class="sub-text">Auto Service</span>
       </div>
 
-      <!-- Taxi -->
       <div class="cat-btn" onclick="openDedicatedCategory('டாக்ஸி / Taxi')">
         <div class="circle-icon icon-taxi">
           <i class="fa-solid fa-car-side"></i>
@@ -615,7 +590,6 @@
         <span class="sub-text">Taxi / Tours</span>
       </div>
 
-      <!-- Load -->
       <div class="cat-btn" onclick="openDedicatedCategory('லோடு வாகனம் / Load Vehicle')">
         <div class="circle-icon icon-load">
           <i class="fa-solid fa-truck-pickup"></i>
@@ -624,7 +598,6 @@
         <span class="sub-text">Tata Ace / Pickup</span>
       </div>
 
-      <!-- Home -->
       <div class="cat-btn" onclick="openDedicatedCategory('வீட்டு சேவைகள் / Home Services')">
         <div class="circle-icon icon-home">
           <i class="fa-solid fa-screwdriver-wrench"></i>
@@ -633,7 +606,6 @@
         <span class="sub-text">Home Services</span>
       </div>
 
-      <!-- Shop -->
       <div class="cat-btn" onclick="openDedicatedCategory('கடைகள் / Shops')">
         <div class="circle-icon icon-shop">
           <i class="fa-solid fa-store"></i>
@@ -642,7 +614,6 @@
         <span class="sub-text">Shops & Mart</span>
       </div>
 
-      <!-- Jobs -->
       <div class="cat-btn" onclick="openDedicatedCategory('வேலை வாய்ப்பு / Jobs')">
         <div class="circle-icon icon-jobs">
           <i class="fa-solid fa-bullhorn"></i>
@@ -651,7 +622,6 @@
         <span class="sub-text">Jobs & Works</span>
       </div>
 
-      <!-- Pros -->
       <div class="cat-btn" onclick="openDedicatedCategory('நிபுணர்கள் / Professionals')">
         <div class="circle-icon icon-pros">
           <i class="fa-solid fa-user-gear"></i>
@@ -660,7 +630,6 @@
         <span class="sub-text">Professionals</span>
       </div>
 
-      <!-- Notices -->
       <div class="cat-btn" onclick="openDedicatedCategory('அறிவிப்புகள் / Notices')">
         <div class="circle-icon icon-notices">
           <i class="fa-solid fa-clipboard-list"></i>
@@ -669,7 +638,6 @@
         <span class="sub-text">Public Notices</span>
       </div>
 
-      <!-- Emergency -->
       <div class="cat-btn" onclick="openDedicatedCategory('அவசர உதவி / Emergency')">
         <div class="circle-icon icon-emergency">
           <i class="fa-solid fa-truck-medical"></i>
@@ -679,7 +647,7 @@
       </div>
     </div>
 
-    <!-- 5. Dual Registration Blocks (Distinguished Titles) -->
+    <!-- 5. Dual Registration Blocks -->
     <div class="dual-register-row">
       <div class="reg-block customer" onclick="openModal('customerModal')">
         <i class="fa-solid fa-user-plus"></i>
@@ -709,14 +677,12 @@
         </button>
         <h3 id="dedicatedTitle">சேவை பட்டியல் / Results</h3>
       </div>
-      <span id="dedicatedTown" style="font-size: 13px; color: var(--yellow);">மயிலாடி</span>
+      <span id="dedicatedTown" style="font-size: 13px; color: var(--yellow);">அழகப்பபுரம்</span>
     </div>
-    <div class="fullpage-content" id="dedicatedList">
-      <!-- Full Service Cards Render Here -->
-    </div>
+    <div class="fullpage-content" id="dedicatedList"></div>
   </div>
 
-  <!-- MODAL 1: Sponsor Ad with Agree All & Separate Bilingual Terms -->
+  <!-- MODAL 1: Sponsor Ad -->
   <div class="modal-overlay" id="sponsorModal">
     <div class="modal-card">
       <div class="modal-header">
@@ -750,7 +716,6 @@
           <textarea id="spDetails" rows="2" placeholder="ஆஃபர் அல்லது சேவைகள்"></textarea>
         </div>
 
-        <!-- Agree All Checkbox with Terms Link -->
         <div style="margin: 14px 0 10px 0; display: flex; align-items: flex-start; gap: 8px;">
           <input type="checkbox" id="chkTerms" required style="width: 18px; height: 18px; margin-top: 2px; cursor: pointer;">
           <label for="chkTerms" style="font-size: 12px; color: #CBD5E1; line-height: 1.4; cursor: pointer;">
@@ -768,7 +733,7 @@
     </div>
   </div>
 
-  <!-- MODAL 2: Dedicated Bilingual Terms & Conditions -->
+  <!-- MODAL 2: Terms & Conditions -->
   <div class="modal-overlay" id="termsModal" style="z-index: 1300;">
     <div class="modal-card">
       <div class="modal-header">
@@ -776,31 +741,26 @@
         <button class="close-btn" onclick="closeModal('termsModal')">&times;</button>
       </div>
       <div style="font-size: 12.5px; color: #CBD5E1; line-height: 1.6; max-height: 60vh; overflow-y: auto;">
-        
         <div style="margin-bottom: 12px; background: #0F172A; padding: 10px; border-radius: 8px; border: 1px solid #334155;">
           <strong style="color: #F8FAFC;">1. Accuracy / உண்மைத் தன்மை:</strong>
           <p>• Advertised products, prices, and services must be 100% genuine.</p>
           <p>• விளம்பரத்தில் குறிப்பிடப்படும் விபரங்கள் முற்றிலும் உண்மைத்தன்மை கொண்டதாக இருக்க வேண்டும்.</p>
         </div>
-
         <div style="margin-bottom: 12px; background: #0F172A; padding: 10px; border-radius: 8px; border: 1px solid #334155;">
           <strong style="color: #EF4444;">2. Prohibited Ads / தடைசெய்யப்பட்டவை:</strong>
           <p>• Alcohol, tobacco, gambling, and illegal services are strictly prohibited.</p>
           <p>• மது, புகையிலை, ஆன்லைன் சூதாட்டம் போன்ற சட்டவிரோத விளம்பரங்கள் அனுமதிக்கப்படாது.</p>
         </div>
-
         <div style="margin-bottom: 12px; background: #0F172A; padding: 10px; border-radius: 8px; border: 1px solid #334155;">
           <strong style="color: #F8FAFC;">3. Disclaimer / பொறுப்புத் துறப்பு:</strong>
           <p>• The platform is not responsible for direct financial disputes between parties.</p>
           <p>• வாடிக்கையாளர் மற்றும் விளம்பரதாரர் இடையேயான பணப் பரிவர்த்தனைகளுக்கு தளம் பொறுப்பல்ல.</p>
         </div>
-
         <div style="margin-bottom: 12px; background: #0F172A; padding: 10px; border-radius: 8px; border: 1px solid #334155;">
           <strong style="color: #F8FAFC;">4. Admin Rights / நிர்வாக உரிமை:</strong>
           <p>• Ads will be activated only after Admin review and verification.</p>
           <p>• அட்மின் சரிபார்ப்புக்குப் பின்னரே விளம்பரம் தளத்தில் நேரலையாகும்.</p>
         </div>
-
       </div>
       <button type="button" class="form-submit-btn" onclick="closeModal('termsModal')" style="background: #020617; margin-top: 12px; border: 1px solid #334155;">
         சரி, புரிந்தது / Close
@@ -902,17 +862,16 @@
   </nav>
 
   <script>
-    // Master Dataset with strict RC isolation
+    // 11-digit Testing Numbers strictly preserved
     const serviceList = [
-      { id: 1, name: "அழகப்பபுரம் ஸ்டாண்டு ஆட்டோ (மாரியப்பன்)", category: "ஆட்டோ / Auto", area: "அழகப்பபுரம்", desc: "24 மணி நேர லோக்கல் & அவசர சவாரி • Alagappapuram Stand", phone: "9876543210" },
-      { id: 2, name: "மயிலாடி முருகன் ஆட்டோ", category: "ஆட்டோ / Auto", area: "மயிலாடி", desc: "மயிலாடி சந்திப்பு, கோவில் & மருத்துவமனை சவாரி", phone: "9876543211" },
-      { id: 3, name: "அஞ்சுகிராமம் காமராஜ் ஆட்டோ", category: "ஆட்டோ / Auto", area: "அஞ்சுகிராமம்", desc: "அஞ்சுகிராமம் ரவுண்டானா • அனைத்து லோக்கல் சவாரிகள்", phone: "9876543212" },
-      { id: 4, name: "செல்வம் ஆட்டோ சர்வீஸ்", category: "ஆட்டோ / Auto", area: "நாகர்கோவில்", desc: "நாகர்கோவில் வடசேரி & அண்ணா பஸ் ஸ்டாண்ட் சவாரி", phone: "9876543213" },
-      { id: 5, name: "குமரி டிராவல்ஸ் டாக்ஸி", category: "டாக்ஸி / Taxi", area: "அழகப்பபுரம்", desc: "திருவனந்தபுரம் ஏர்போர்ட், மதுரை டூர்ஸ்", phone: "9876543214" },
-      { id: 6, name: "மயிலாடி சரவணா எலக்ட்ரிக்கல்ஸ்", category: "வீட்டு சேவைகள் / Home Services", area: "மயிலாடி", desc: "பிளம்பிங், வயரிங் & மோட்டார் ரிப்பேர்", phone: "9876543215" }
+      { id: 1, name: "அழகப்பபுரம் ஸ்டாண்டு ஆட்டோ (மாரியப்பன்)", category: "ஆட்டோ / Auto", area: "அழகப்பபுரம்", desc: "24 மணி நேர லோக்கல் & அவசர சவாரி • Alagappapuram Stand", phone: "94431234560", wa: "98421234560" },
+      { id: 2, name: "மயிலாடி முருகன் ஆட்டோ", category: "ஆட்டோ / Auto", area: "மயிலாடி", desc: "மயிலாடி சந்திப்பு, கோவில் & மருத்துவமனை சவாரி", phone: "94431234561", wa: "98421234560" },
+      { id: 3, name: "அஞ்சுகிராமம் காமராஜ் ஆட்டோ", category: "ஆட்டோ / Auto", area: "அஞ்சுகிராமம்", desc: "அஞ்சுகிராமம் ரவுண்டானா • அனைத்து லோக்கல் சவாரிகள்", phone: "94431234562", wa: "98421234560" },
+      { id: 4, name: "செல்வம் ஆட்டோ சர்வீஸ்", category: "ஆட்டோ / Auto", area: "நாகர்கோவில்", desc: "நாகர்கோவில் வடசேரி & அண்ணா பஸ் ஸ்டாண்ட் சவாரி", phone: "94431234501", wa: "98421234560" },
+      { id: 5, name: "குமரி டிராவல்ஸ் டாக்ஸி", category: "டாக்ஸி / Taxi", area: "அழகப்பபுரம்", desc: "திருவனந்தபுரம் ஏர்போர்ட், மதுரை டூர்ஸ்", phone: "94431234506", wa: "98421234560" },
+      { id: 6, name: "மயிலாடி சரவணா எலக்ட்ரிக்கல்ஸ்", category: "வீட்டு சேவைகள் / Home Services", area: "மயிலாடி", desc: "பிளம்பிங், வயரிங் & மோட்டார் ரிப்பேர்", phone: "94431234504", wa: "98421234560" }
     ];
 
-    // Local Cluster Isolation
     const townClusters = {
       "அழகப்பபுரம்": ["அழகப்பபுரம்", "மயிலாடி", "அஞ்சுகிராமம்"],
       "மயிலாடி": ["மயிலாடி", "அழகப்பபுரம்", "மருங்கூர்"],
@@ -922,7 +881,6 @@
 
     let userLocation = "அழகப்பபுரம்";
 
-    // Non-Map Internal GPS Detection
     function runGPSDetection() {
       const lbl = document.getElementById("lblCurrentArea");
       lbl.innerHTML = "<i class='fa-solid fa-spinner fa-spin'></i> கண்டறிகிறது...";
@@ -939,12 +897,12 @@
             } else if (lat >= 8.15 && lat <= 8.21 && lng >= 77.40 && lng <= 77.46) {
               userLocation = "நாகர்கோவில்";
             } else {
-              userLocation = "மயிலாடி";
+              userLocation = "அழகப்பபுரம்";
             }
             lbl.innerText = userLocation;
           },
           () => {
-            userLocation = "மயிலாடி";
+            userLocation = "அழகப்பபுரம்";
             lbl.innerText = userLocation;
           },
           { timeout: 5000 }
@@ -955,11 +913,9 @@
       }
     }
 
-    // 3-Language Web Speech Recognition (ta-IN, en-IN, hi-IN)
     function triggerVoiceInput() {
       const mic = document.getElementById("btnMicSearch");
       const txt = document.getElementById("txtSearchInput");
-      const selectedLang = document.getElementById("selVoiceLang").value;
 
       if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
         alert("குரல் தேடல் வசதி பிரவுசரில் இல்லை. தட்டச்சு செய்து தேடவும்.");
@@ -968,7 +924,7 @@
 
       const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
       const rec = new SpeechRecognition();
-      rec.lang = selectedLang;
+      rec.lang = 'ta-IN';
 
       rec.onstart = () => mic.classList.add("active-mic");
       rec.onresult = (e) => {
@@ -986,12 +942,10 @@
       openDedicatedCategory(query || "அனைத்து சேவைகள் / All");
     }
 
-    // Opens Dedicated Search Screen via Bottom Nav Bar [ 🔍 தேடல் ]
     function openDedicatedSearchPage() {
       openDedicatedCategory("அனைத்து சேவைகள் / All Services");
     }
 
-    // DEDICATED FULL SCREEN CATEGORY VIEW
     function openDedicatedCategory(categoryName) {
       const allowedTowns = townClusters[userLocation] || [userLocation];
       const view = document.getElementById("fullpageView");
@@ -1032,7 +986,7 @@
               <div class="item-desc">${item.desc}</div>
               <div class="item-actions">
                 <a href="tel:${item.phone}" class="btn-call"><i class="fa-solid fa-phone"></i> அழைப்பு / Call</a>
-                <a href="https://wa.me/91${item.phone}" class="btn-wa"><i class="fa-brands fa-whatsapp"></i> வாட்ஸ்அப்</a>
+                <a href="https://wa.me/91${item.wa}" class="btn-wa"><i class="fa-brands fa-whatsapp"></i> வாட்ஸ்அப்</a>
               </div>
             </div>
           `;
@@ -1046,11 +1000,9 @@
       document.getElementById("fullpageView").classList.remove("active");
     }
 
-    // Modal Handlers
     function openModal(id) { document.getElementById(id).classList.add("active"); }
     function closeModal(id) { document.getElementById(id).classList.remove("active"); }
 
-    // WhatsApp Sponsor Direct Booking
     function sendSponsorWhatsApp(e) {
       e.preventDefault();
       const shop = document.getElementById("spShop").value;
@@ -1078,7 +1030,7 @@
     }
 
     function shareAppDirect() {
-      const shareUrl = "https://nammakanyakumariapp-creator.github.io/";
+      const shareUrl = "https://nammakanyakumariapp-creator.github.io/nammakanyakumari/";
       window.open("https://wa.me/?text=" + encodeURIComponent("நம்ம கன்னியாகுமரி / Namma Kanyakumari Local Platform: " + shareUrl), '_blank');
     }
   </script>
