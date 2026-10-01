@@ -181,7 +181,7 @@
       background: #1E293B;
       border: 1px solid #334155;
       border-radius: 16px;
-      padding: 14px 6px;
+      padding: 14px 4px;
       text-align: center;
       display: flex;
       flex-direction: column;
@@ -212,20 +212,22 @@
     .icon-home { background: #EDE9FE; color: #6D28D9; }
     .icon-shop { background: #FEF9C3; color: #A16207; }
     .icon-jobs { background: #FCE7F3; color: #BE185D; }
-    .icon-pros { background: #CCFBF1; color: #0F766E; }
-    .icon-notices { background: #E0E7FF; color: #4338CA; }
-    .icon-water { background: #E0F2FE; color: #0284C7; }
+    .icon-pros1 { background: #CCFBF1; color: #0F766E; }
+    .icon-pros2 { background: #FEF3C7; color: #D97706; }
+    .icon-pros3 { background: #FCE7F3; color: #DB2777; }
 
     .cat-btn .main-text {
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 700;
       color: #F8FAFC;
+      line-height: 1.2;
     }
-    /* Updated Sub-text with balanced English font readability */
+    /* Enhanced Sub-text for better English readability */
     .cat-btn .sub-text {
-      font-size: 11px;
+      font-size: 11.5px;
       font-weight: 500;
       color: #94A3B8;
+      line-height: 1.1;
     }
 
     /* Dual Registration Blocks */
@@ -646,7 +648,7 @@
       </div>
     </div>
 
-    <!-- 3x3 Category Grid (Updated with Water Lorry instead of duplicate Emergency) -->
+    <!-- 3x3 Category Grid (Updated with 3 Technical Sub-categories) -->
     <div class="category-grid-container">
       <div class="cat-btn" onclick="openDedicatedCategory('ஆட்டோ / Auto')">
         <div class="circle-icon icon-auto">
@@ -696,28 +698,31 @@
         <span class="sub-text">Jobs & Works</span>
       </div>
 
-      <div class="cat-btn" onclick="openDedicatedCategory('நிபுணர்கள் / Professionals')">
-        <div class="circle-icon icon-pros">
-          <i class="fa-solid fa-user-gear"></i>
+      <!-- Professional Sub-Category 1 -->
+      <div class="cat-btn" onclick="openDedicatedCategory('மின் & குழாய் வல்லுநர்')">
+        <div class="circle-icon icon-pros1">
+          <i class="fa-solid fa-bolt"></i>
         </div>
-        <span class="main-text">நிபுணர்கள்</span>
-        <span class="sub-text">Professionals</span>
+        <span class="main-text">மின் & குழாய்</span>
+        <span class="sub-text">Electrician & Plumber</span>
       </div>
 
-      <div class="cat-btn" onclick="openDedicatedCategory('அறிவிப்புகள் / Notices')">
-        <div class="circle-icon icon-notices">
-          <i class="fa-solid fa-clipboard-list"></i>
+      <!-- Professional Sub-Category 2 -->
+      <div class="cat-btn" onclick="openDedicatedCategory('கட்டுமானம் & தச்சு')">
+        <div class="circle-icon icon-pros2">
+          <i class="fa-solid fa-hammer"></i>
         </div>
-        <span class="main-text">அறிவிப்புகள்</span>
-        <span class="sub-text">Public Notices</span>
+        <span class="main-text">கட்டுமானம் & தச்சு</span>
+        <span class="sub-text">Mason & Carpentry</span>
       </div>
 
-      <div class="cat-btn" onclick="openDedicatedCategory('தண்ணீர் லாரி / Water Supply')">
-        <div class="circle-icon icon-water">
-          <i class="fa-solid fa-droplet"></i>
+      <!-- Professional Sub-Category 3 -->
+      <div class="cat-btn" onclick="openDedicatedCategory('உபகரண மெக்கானிக்')">
+        <div class="circle-icon icon-pros3">
+          <i class="fa-solid fa-screwdriver"></i>
         </div>
-        <span class="main-text">தண்ணீர் லாரி</span>
-        <span class="sub-text">Water Supply</span>
+        <span class="main-text">உபகரண மெக்கானிக்</span>
+        <span class="sub-text">AC & Appliance Repair</span>
       </div>
     </div>
 
