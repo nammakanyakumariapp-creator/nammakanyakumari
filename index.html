@@ -174,13 +174,22 @@
       border-radius: 6px;
     }
 
-    /* 3x3 Category Grid */
+    /* 3x3 Category Grid (First 9 Icons) */
     .category-grid-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    
+    /* Extra Row of 3 Icons (New 3 Icons making total 12) */
+    .extra-category-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 12px;
       margin-bottom: 18px;
     }
+
     .cat-btn {
       background: #1E293B;
       border: 1px solid #334155;
@@ -220,14 +229,19 @@
     .icon-pros2 { background: #FEF3C7; color: #D97706; }
     .icon-pros3 { background: #FCE7F3; color: #DB2777; }
 
+    /* New 3 Icons Colors & Symbols */
+    .icon-extra1 { background: #E0E7FF; color: #3730A3; } /* Sports & Gym */
+    .icon-extra2 { background: #FEE2E2; color: #991B1B; } /* Used Cars & Bikes */
+    .icon-extra3 { background: #F3E8FF; color: #6B21A8; } /* Home Parlour & Events */
+
     .cat-btn .main-text {
-      font-size: 12px;
+      font-size: 11.5px;
       font-weight: 700;
       color: #F8FAFC;
       line-height: 1.2;
     }
     .cat-btn .sub-text {
-      font-size: 11.5px;
+      font-size: 10.5px;
       font-weight: 500;
       color: #94A3B8;
       line-height: 1.1;
@@ -583,24 +597,6 @@
     .bar-link i {
       font-size: 17px;
     }
-
-    .hidden-subscription-clause {
-      display: none;
-    }
-    .hidden-subscription-clause.live-visible {
-      display: block;
-      background: rgba(251, 191, 36, 0.1);
-      border-left: 3px solid var(--yellow);
-      padding: 8px;
-      margin-top: 6px;
-      border-radius: 4px;
-    }
-
-    @keyframes pulse {
-      0% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.5; transform: scale(1.15); }
-      100% { opacity: 1; transform: scale(1); }
-    }
   </style>
 </head>
 <body>
@@ -651,7 +647,7 @@
       </div>
     </div>
 
-    <!-- 3x3 Category Grid -->
+    <!-- 3x3 Category Grid (First 9 Icons) -->
     <div class="category-grid-container">
       <div class="cat-btn" onclick="openDedicatedCategory('ஆட்டோ / Auto')">
         <div class="circle-icon icon-auto">
@@ -685,12 +681,12 @@
         <span class="sub-text">Home Services</span>
       </div>
 
-      <div class="cat-btn" onclick="openDedicatedCategory('கடைகள் / Shops')">
+      <div class="cat-btn" onclick="openDedicatedCategory('ஹோம்மேட் & ஆரோக்கியப் பொருட்கள்')">
         <div class="circle-icon icon-shop">
-          <i class="fa-solid fa-store"></i>
+          <i class="fa-solid fa-jar"></i>
         </div>
-        <span class="main-text">கடை & வர்த்தகம்</span>
-        <span class="sub-text">Shops & Mart</span>
+        <span class="main-text">ஹோம்மேட் பொருட்கள்</span>
+        <span class="sub-text">Homemade & Organic</span>
       </div>
 
       <div class="cat-btn" onclick="openDedicatedCategory('வேலை வாய்ப்பு / Jobs')">
@@ -723,6 +719,33 @@
         </div>
         <span class="main-text">உபகரண மெக்கானிக்</span>
         <span class="sub-text">AC & Appliance Repair</span>
+      </div>
+    </div>
+
+    <!-- Extra Row of 3 Icons (New 3 Icons making total 12) -->
+    <div class="extra-category-grid">
+      <div class="cat-btn" onclick="openDedicatedCategory('ஸ்போர்ட்ஸ் & ஜிம்')">
+        <div class="circle-icon icon-extra1">
+          <i class="fa-solid fa-dumbbell"></i>
+        </div>
+        <span class="main-text">ஸ்போர்ட்ஸ் & ஜிம்</span>
+        <span class="sub-text">Sports, Gym & Turf</span>
+      </div>
+
+      <div class="cat-btn" onclick="openDedicatedCategory('செகண்ட் ஹேண்ட் கார் & பைக்')">
+        <div class="circle-icon icon-extra2">
+          <i class="fa-solid fa-car-rear"></i>
+        </div>
+        <span class="main-text">செகண்ட் ஹேண்ட் கார்</span>
+        <span class="sub-text">Used Cars & Bikes</span>
+      </div>
+
+      <div class="cat-btn" onclick="openDedicatedCategory('ஹோம் பார்லர் & விழா உபகரணங்கள்')">
+        <div class="circle-icon icon-extra3">
+          <i class="fa-solid fa-wand-magic-sparkles"></i>
+        </div>
+        <span class="main-text">ஹோம் பார்லர் & விழா</span>
+        <span class="sub-text">Parlour & Events</span>
       </div>
     </div>
 
@@ -791,7 +814,7 @@
         <div class="form-group">
           <label>என்ன சேவை வேண்டும்? / Required Service *</label>
           <div style="position: relative; display: flex; align-items: center;">
-            <input type="text" id="advancedKeyword" placeholder="எ.கா: ஆட்டோ, சூப்பர் மார்க்கெட்..." style="padding-right: 42px;">
+            <input type="text" id="advancedKeyword" placeholder="எ.கா: ஆட்டோ, ஹோம்மேட்..." style="padding-right: 42px;">
             <button type="button" class="qs-mic-btn" id="btnAdvMic" onclick="triggerAdvancedVoiceInput()" style="position: absolute; right: 6px;" title="Voice Search">
               <i class="fa-solid fa-microphone"></i>
             </button>
@@ -927,7 +950,7 @@
     </div>
   </div>
 
-  <!-- DEDICATED FULL SCREEN PAGE: சேவை வழங்குநர் பதிவு (3 SECTIONS WITH TOWN & OPTIONAL PHOTO) -->
+  <!-- DEDICATED FULL SCREEN PAGE: சேவை வழங்குநர் பதிவு -->
   <div class="fullpage-view" id="pageVendor">
     <div class="fullpage-header">
       <div class="fullpage-header-left">
@@ -966,7 +989,7 @@
               <option value="ஆட்டோ / Auto">🛺 ஆட்டோ / Auto</option>
               <option value="டாக்ஸி / Taxi">🚕 டாக்ஸி / Taxi</option>
               <option value="லோடு வாகனம் / Load">🚚 லோடு வாகனம் (Tata Ace/Pickup)</option>
-              <option value="பைக் வாடகை / Bike Rental">🛵 இருசக்கர வாகன வாடகை</option>
+              <option value="செகண்ட் ஹேண்ட் கார் & பைக்">🚗 செகண்ட் ஹேண்ட் கார் & பைக் விற்பனை</option>
             </select>
           </div>
           <div class="form-group">
@@ -995,7 +1018,7 @@
           </div>
           <div class="form-group">
             <label>சேவை விபரம் / கூடுதல் குறிப்பு</label>
-            <textarea id="vDesc" rows="2" placeholder="எ.கா: 24 மணி நேர சவாரி, அவசர மருத்துவமனை டிரிப்"></textarea>
+            <textarea id="vDesc" rows="2" placeholder="எ.கா: 24 மணி நேர சவாரி, கார் விற்பனை விபரம்"></textarea>
           </div>
 
           <!-- Dynamic Terms & Smart Submit -->
@@ -1022,17 +1045,16 @@
       <div class="form-box" id="secShopForm" style="display: none;">
         <form onsubmit="handleVendorSubmit(event, 'வியாபாரம்')">
           <div class="form-group">
-            <label>கடை அல்லது நிறுவனத்தின் பெயர் *</label>
-            <input type="text" id="sName" required placeholder="எ.கா: குமரி இயற்கை அங்காடி">
+            <label>நிறுவனம் / கடை பெயர் *</label>
+            <input type="text" id="sName" required placeholder="எ.கா: குமரி ஹோம்மேட்ஸ்">
           </div>
           <div class="form-group">
             <label>வணிக வகை *</label>
             <select id="sCategory" required>
-              <option value="மளிகை & டிபார்ட்மென்ட்">மளிகை & பலசரக்கு கடை</option>
-              <option value="இயற்கை அங்காடி & தேன்">இயற்கை அங்காடி & மூலிகைப் பொருட்கள்</option>
+              <option value="ஹோம்மேட் & ஆரோக்கியப் பொருட்கள்">ஹோம்மேட் & ஆரோக்கியப் பொருட்கள் (ABC Malt, தொக்கு)</option>
               <option value="வீட்டு சேவைகள் (பிளம்பர்/எலக்ட்ரீசியன்)">வீட்டு சேவைகள் (பிளம்பர் / வயரிங்)</option>
-              <option value="உணவகம் & பேக்கரி">உணவகம் & பேக்கரி</option>
-              <option value="துணிக்கடை & அழகு நிலையம்">துணிக்கடை & அழகு நிலையம்</option>
+              <option value="ஸ்போர்ட்ஸ் & ஜிம்">ஸ்போர்ட்ஸ், ஜிம் & டர்ப் மைதானம்</option>
+              <option value="ஹோம் பார்லர் & விழா உபகரணங்கள்">ஹோம் பார்லர் & விழா உபகரணங்கள் (Popcorn Machine)</option>
               <option value="பிற வணிகங்கள்">பிற வணிக நிறுவனங்கள்</option>
             </select>
           </div>
@@ -1066,13 +1088,13 @@
           </div>
 
           <div class="form-group">
-            <label>கடை / பொருள் புகைப்படம் <span class="opt-tag">(விருப்பப்பட்டால் மட்டும் / Optional - Max 2MB)</span></label>
+            <label>பொருள் புகைப்படம் <span class="opt-tag">(விருப்பப்பட்டால் மட்டும் / Optional - Max 2MB)</span></label>
             <input type="file" id="sPhoto" accept="image/*" style="padding: 7px; font-size: 12px;">
           </div>
 
           <div class="form-group">
             <label>சிறப்பு விபரங்கள் / சலுகைகள்</label>
-            <textarea id="sDetails" rows="2" placeholder="எ.கா: சுத்தமான கொம்புத்தேன் கிடைக்கும், Google Pay வசதி உண்டு"></textarea>
+            <textarea id="sDetails" rows="2" placeholder="எ.கா: ஏபிசி மால்ட், பிரண்டை தொக்கு கிடைக்கும்"></textarea>
           </div>
 
           <!-- Dynamic Terms & Smart Submit -->
@@ -1271,7 +1293,10 @@
       { id: 3, name: "அஞ்சுகிராமம் காமராஜ் ஆட்டோ", category: "ஆட்டோ / Auto", area: "அஞ்சுகிராமம்", desc: "அஞ்சுகிராமம் ரவுண்டானா • அனைத்து லோக்கல் சவாரிகள்", phone: "94431234562", wa: "98421234560", status: "pending" },
       { id: 4, name: "செல்வம் ஆட்டோ சர்வீஸ்", category: "ஆட்டோ / Auto", area: "நாகர்கோவில்", desc: "நாகர்கோவில் வடசேரி & அண்ணா பஸ் ஸ்டாண்ட் சவாரி", phone: "94431234501", wa: "98421234560", status: "active" },
       { id: 5, name: "குமரி டிராவல்ஸ் டாக்ஸி", category: "டாக்ஸி / Taxi", area: "அழகப்பபுரம்", desc: "திருவனந்தபுரம் ஏர்போர்ட், மதுரை டூர்ஸ்", phone: "94431234506", wa: "98421234560", status: "active" },
-      { id: 6, name: "மயிலாடி சரவணா எலக்ட்ரிக்கல்ஸ்", category: "வீட்டு சேவைகள் / Home Services", area: "மயிலாடி", desc: "பிளம்பிங், வயரிங் & மோட்டார் ரிப்பேர்", phone: "94431234504", wa: "98421234560", status: "active" }
+      { id: 6, name: "மயிலாடி சரவணா எலக்ட்ரிக்கல்ஸ்", category: "வீட்டு சேவைகள் / Home Services", area: "மயிலாடி", desc: "பிளம்பிங், வயரிங் & மோட்டார் ரிப்பேர்", phone: "94431234504", wa: "98421234560", status: "active" },
+      { id: 7, name: "குமரி நேச்சுரல்ஸ் ஹோம்மேட்", category: "ஹோம்மேட் & ஆரோக்கியப் பொருட்கள்", area: "திங்கள்நகர்", desc: "ஏபிசி மால்ட், சத்து மாவு, பிரண்டை தொக்கு & மீன் ஊறுகாய்", phone: "94431234580", wa: "98421234560", status: "active" },
+      { id: 8, name: "நாகர்கோவில் டர்ப் ஸ்போர்ட்ஸ்", category: "ஸ்போர்ட்ஸ் & ஜிம்", area: "நாகர்கோவில்", desc: "கிரிக்கெட் டர்ப் மைதானம், ஜிம் & கராத்தே பயிற்சி", phone: "94431234581", wa: "98421234560", status: "active" },
+      { id: 9, name: "குமரி செகண்ட் ஹேண்ட் கார்ஸ்", category: "செகண்ட் ஹேண்ட் கார் & பைக்", area: "மார்சல்நகர்", desc: "பழைய கார்கள் மற்றும் இருசக்கர வாகனங்கள் வாங்குதல் / விற்பனை", phone: "94431234582", wa: "98421234560", status: "active" }
     ];
 
     function switchHomeTab(cat) {
@@ -1295,8 +1320,8 @@
       const keywordInput = document.getElementById("homeKeywordInput");
       const micBtn = document.getElementById("homeMicBtn");
 
-      if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
-        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (SpeechRecognition) {
         const recognition = new SpeechRecognition();
         recognition.lang = 'ta-IN';
         
@@ -1323,7 +1348,7 @@
 
         recognition.start();
       } else {
-        alert("உங்கள் பிரவுசர் குரல் தேடலை ஆதரிக்கவில்லை / Voice search not supported.");
+        alert("உங்கள் பிரவுசர் குரல் தேடலை ஆதரிக்கவில்லை.");
       }
     }
 
@@ -1454,8 +1479,8 @@
 
     function triggerAdvancedVoiceInput() {
       const keywordInput = document.getElementById("advancedKeyword");
-      if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
-        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (SpeechRecognition) {
         const recognition = new SpeechRecognition();
         recognition.lang = 'ta-IN';
         recognition.onstart = function() {
@@ -1463,10 +1488,10 @@
         };
         recognition.onresult = function(event) {
           keywordInput.value = event.results[0][0].transcript;
-          keywordInput.placeholder = "எ.கா: ஆட்டோ, சூப்பர் மார்க்கெட்...";
+          keywordInput.placeholder = "எ.கா: ஆட்டோ, ஹோம்மேட்...";
         };
         recognition.onerror = function() {
-          keywordInput.placeholder = "எ.கா: ஆட்டோ, சூப்பர் மார்க்கெட்...";
+          keywordInput.placeholder = "எ.கா: ஆட்டோ, ஹோம்மேட்...";
         };
         recognition.start();
       } else {
@@ -1595,7 +1620,6 @@
       const termsPage = document.getElementById("pageTermsView");
       const title = document.getElementById("termsHeaderTitle");
       const body = document.getElementById("termsContentBody");
-      const subVisibilityClass = isTermsSwitchOn ? "hidden-subscription-clause live-visible" : "hidden-subscription-clause";
 
       if (category === 'customer') {
         title.innerText = "வாடிக்கையாளர் விதிமுறைகள் / Customer Terms";
@@ -1603,22 +1627,10 @@
           <div class="terms-rule-card">
             <h4>1. வாடிக்கையாளர்களுக்கு 100% இலவசம் / 100% Free for Customers</h4>
             <p>நம்ம கன்னியாகுமரி தளத்தைப் பயன்படுத்தித் தங்களுக்குத் தேவையான சேவைகளைத் தேடுவதற்கும், தேவையைப் பதிவிடுவதற்கும் வாடிக்கையாளர்களிடம் இருந்து எவ்விதப் பயன்பாட்டுக் கட்டணமோ, பதிவுக் கட்டணமோ அல்லது கமிஷனோ பெறப்படாது.</p>
-            <p class="en-sub">Completely free of cost for all customers. Zero usage fees, zero registration fees, and zero commissions charged from consumers.</p>
           </div>
           <div class="terms-rule-card">
             <h4>2. நேரடித் தொடர்பு முறை / Direct Provider Contact Only</h4>
-            <p>வாடிக்கையாளர்கள் தங்களுக்குத் தேவையான ஆட்டோ ஓட்டுநர்கள், கடை உரிமையாளர்கள் அல்லது தொழிலாளர்களை நேரடியாகத் தொடர்பு கொண்டு மட்டுமே கட்டணம் மற்றும் தேவையைப் பேசி முடிவு செய்ய வேண்டும்.</p>
-            <p class="en-sub">Customers connect directly with service providers. All terms, fares, and service requests must be mutually agreed between both parties.</p>
-          </div>
-          <div class="terms-rule-card">
-            <h4>3. பணப் பரிவர்த்தனைப் பொறுப்பு / No Direct Booking Mediation</h4>
-            <p>நம்ம கன்னியாகுமரி தளம் வாடிக்கையாளர்களிடம் இருந்து எந்தவொரு முன்பதிவு முன்பணத்தையோ (Advance) அல்லது கட்டணத் தொகையையோ நேரடியாகப் பெறுவது கிடையாது. பணக் கொடுக்கல்-வாங்கல் இருதரப்பின் நேரடிப் பொறுப்பாகும்.</p>
-            <p class="en-sub">The platform never mediates in ride bookings, store advance payments, or customer transactions.</p>
-          </div>
-          <div class="terms-rule-card">
-            <h4>4. பொறுப்புத் துறப்பு / Safety & Disclaimer</h4>
-            <p>சேவை வழங்குநர்களின் சேவைத் தரம், காலதாமதம் அல்லது தனிப்பட்ட விவகாரங்களுக்கு தளம் பொறுப்பேற்காது; இது பொதுமக்களுக்கான கட்டணமில்லா உள்ளூர் வழிகாட்டித் தளம் மட்டுமே.</p>
-            <p class="en-sub">The platform acts purely as an open local directory and holds no legal liability for provider delays or service disputes.</p>
+            <p>வாடிக்கையாளர்கள் தங்களுக்குத் தேவையான சேவைகளை நேரடியாகத் தொடர்பு கொண்டு பேசி முடிவு செய்ய வேண்டும்.</p>
           </div>
           <button type="button" class="form-submit-btn active-btn" onclick="closeTermsPage()">
             ← படித்துவிட்டேன் / படிவத்திற்குத் திரும்புக
@@ -1629,27 +1641,7 @@
         body.innerHTML = `
           <div class="terms-rule-card">
             <h4>1. நேரடித் தொடர்பு மட்டுமே / Direct Contact Only</h4>
-            <p>நம்ம கன்னியாகுமரி தளம் வாடிக்கையாளர்களிடம் இருந்து பயண முன்பதிவையோ அல்லது பயண முன்பணத்தையோ நேரடியாகப் பெறுவது கிடையாது. பயணிகள் ஓட்டுநரை நேரடியாகத் தொடர்புகொண்டு மட்டுமே சவாரி மற்றும் கட்டணத்தை முடிவு செய்ய வேண்டும்.</p>
-            <div class="${subVisibilityClass}">
-              <p style="color: var(--yellow); font-weight:700;">💳 தளப் பராமரிப்பு சந்தா விபரம்:</p>
-              <p style="font-size: 11.5px;">தளப் பராமரிப்பு மற்றும் நேரடி வாடிக்கையாளர் அழைப்பு சேவைக்காக மாதம் ₹199 சந்தா முறை பொருந்தும்.</p>
-            </div>
-            <p class="en-sub">Direct contact only. The platform does not handle direct ride bookings or advance fares.</p>
-          </div>
-          <div class="terms-rule-card">
-            <h4>2. 0% கமிஷன் கொள்கை / Zero Commission Policy</h4>
-            <p>ஓட்டுநர்களின் சவாரி வருமானத்திலோ அல்லது வாடகையிலோ தளம் எந்தவொரு சதவீதக் கமிஷனோ அல்லது தரகுப் பணமோ எடுப்பது கிடையாது. சவாரி மூலம் கிடைக்கும் வருமானம் 100% முழுமையாக ஓட்டுநருக்கே சேரும்.</p>
-            <p class="en-sub">Strictly 0% commission from trip earnings; 100% fare belongs to the driver.</p>
-          </div>
-          <div class="terms-rule-card">
-            <h4>3. சரியான ஆவணங்கள் & தகுதி / Valid Documents</h4>
-            <p>ஓட்டுநர் உரிமம் (DL), வாகன ஆர்.சி. புக் (RC) மற்றும் இன்சூரன்ஸ் கட்டாயம் நடப்பில் வைத்திருக்க வேண்டும்.</p>
-            <p class="en-sub">Valid Driving License, RC Book, and active Insurance are strictly mandatory.</p>
-          </div>
-          <div class="terms-rule-card">
-            <h4>4. பாதுகாப்பு & பொறுப்புத் துறப்பு / Safety & Disclaimer</h4>
-            <p>மது அருந்திவிட்டு வாகனம் ஓட்டுவது அல்லது பயணிகளிடம் ஒழுங்கீனமாக நடப்பது கண்டறியப்பட்டால் சேவைப் பட்டியல் உடனடியாக ரத்து செய்யப்படும்.</p>
-            <p class="en-sub">Zero tolerance for misconduct. The platform bears no liability for on-road incidents.</p>
+            <p>நம்ம கன்னியாகுமரி தளம் பயண முன்பதிவையோ அல்லது முன்பணத்தையோ பெறுவதில்லை.</p>
           </div>
           <button type="button" class="form-submit-btn active-btn" onclick="closeTermsPage()">
             ← படித்துவிட்டேன் / படிவத்திற்குத் திரும்புக
@@ -1660,27 +1652,7 @@
         body.innerHTML = `
           <div class="terms-rule-card">
             <h4>1. நேரடி வர்த்தகம் மட்டுமே / Direct Trade Only</h4>
-            <p>வாடிக்கையாளர்களிடம் இருந்து பொருட்களுக்கான ஆர்டர்களையோ, பணத்தையோ அல்லது முன்பதிவையோ தளம் நேரடியாகக் கையாளுவது கிடையாது. வாடிக்கையாளர் கடைக்கு நேரடியாக அழைத்தோ அல்லது வாட்ஸ்அப் மூலமாகவோ பேசி மட்டுமே வியாபாரத்தை முடிக்க வேண்டும்.</p>
-            <div class="${subVisibilityClass}">
-              <p style="color: var(--yellow); font-weight:700;">💳 தளப் பராமரிப்பு சந்தா விபரம்:</p>
-              <p style="font-size: 11.5px;">தளப் பராமரிப்பு மற்றும் வாடிக்கையாளர் பார்வைக்காக மாதம் ₹199 வணிகப் பட்டியல் சந்தா முறை பொருந்தும்.</p>
-            </div>
-            <p class="en-sub">The platform does not process store orders, deliveries, or payments.</p>
-          </div>
-          <div class="terms-rule-card">
-            <h4>2. 0% விற்பனை கமிஷன் / Zero Sales Commission</h4>
-            <p>கடைகளின் விற்பனையிலோ அல்லது வியாபாரப் பரிவர்த்தனையிலோ தளம் எந்தவித விற்பனை கமிஷனோ அல்லது தரகோ எடுப்பதில்லை. வியாபார லாபம் 100% வணிகருக்கே சேரும்.</p>
-            <p class="en-sub">0% commission on product sales. All merchant earnings remain fully with the shop owner.</p>
-          </div>
-          <div class="terms-rule-card">
-            <h4>3. தரம் & நியாயமான விலை / Quality & Fair Pricing</h4>
-            <p>விற்பனை செய்யப்படும் பொருட்கள் தரமாகவும், கலப்படமின்றியும், FSSAI விதிமுறைகளின்படியும் இருத்தல் வேண்டும்.</p>
-            <p class="en-sub">Products must be genuine, hygienic, accurately weighed, and sold at fair pricing.</p>
-          </div>
-          <div class="terms-rule-card">
-            <h4>4. தடைசெய்யப்பட்டவை & தகராறுகள் / Prohibitions & Disputes</h4>
-            <p>காலாவதியான பொருட்கள், போலி பிராண்டுகள் விற்கக் கூடாது. பணக் கொடுக்கல்-வாங்கலில் தளம் தலையிடாது.</p>
-            <p class="en-sub">Illicit or expired products are banned. The platform takes no liability for disputes.</p>
+            <p>வாடிக்கையாளர்களிடம் இருந்து பொருட்களுக்கான ஆர்டர்களையோ பணத்தையோ தளம் கையாளுவதில்லை.</p>
           </div>
           <button type="button" class="form-submit-btn active-btn" onclick="closeTermsPage()">
             ← படித்துவிட்டேன் / படிவத்திற்குத் திரும்புக
@@ -1691,27 +1663,7 @@
         body.innerHTML = `
           <div class="terms-rule-card">
             <h4>1. நேரடி ஆள்சேர்ப்பு முறை / Direct Hiring Only</h4>
-            <p>வேலை தேடுபவர்களுக்கும் முதலாளிகளுக்கும் இடையே தளம் வெறும் தகவல் பாலமாக மட்டுமே செயல்படுகிறது. நேர்காணல் அல்லது வேலை ஒப்பந்தங்களில் தளம் தலையிடுவதில்லை.</p>
-            <div class="${subVisibilityClass}">
-              <p style="color: var(--yellow); font-weight:700;">💳 தளப் பராமரிப்பு சந்தா விபரம்:</p>
-              <p style="font-size: 11.5px;">தள மேம்பாட்டுக்கான மாதாந்திர சந்தா முறை விதிகளுக்கு உட்பட்டது.</p>
-            </div>
-            <p class="en-sub">The platform is an open information board only and never mediates in employment agreements.</p>
-          </div>
-          <div class="terms-rule-card">
-            <h4>2. 0% தரகு இன்மை / Zero Brokerage</h4>
-            <p>வேலை தருபவரிடமோ அல்லது வேலை தேடுபவரிடமோ தளம் எந்தவொரு வேலைவாய்ப்புக் கமிஷனோ அல்லது சம்பளப் பிடித்தமோ செய்வது கிடையாது.</p>
-            <p class="en-sub">Zero placement commission or recruitment cut is deducted from either party.</p>
-          </div>
-          <div class="terms-rule-card">
-            <h4>3. முன்பணம் வாங்குவது முற்றிலும் தடை / Strictly No Upfront Fees</h4>
-            <p>வேலை தருவதற்காக வேலை தேடும் நபர்களிடம் எந்தவித முன்பணமோ, பதிவுக் கட்டணமோ வசூலிக்கக் கூடாது.</p>
-            <p class="en-sub">Collecting deposits, advance charges, or registration fees is strictly prohibited.</p>
-          </div>
-          <div class="terms-rule-card">
-            <h4>4. உண்மைத் தன்மை & பொறுப்புத் துறப்பு / Genuine Openings & Disclaimer</h4>
-            <p>உண்மையான வேலைவாய்ப்புகளை மட்டுமே பதிவிட வேண்டும். பணியாளரின் நன்னடத்தைக்கோ தளம் பொறுப்பேற்காது.</p>
-            <p class="en-sub">Only authentic vacancies must be posted. The platform carries no legal liability.</p>
+            <p>வேலை தேடுபவர்களுக்கும் முதலாளிகளுக்கும் இடையே தளம் வெறும் தகவல் பாலமாக மட்டுமே செயல்படுகிறது.</p>
           </div>
           <button type="button" class="form-submit-btn active-btn" onclick="closeTermsPage()">
             ← படித்துவிட்டேன் / படிவத்திற்குத் திரும்புக
@@ -1735,14 +1687,14 @@
       const details = document.getElementById("spDetails").value;
 
       const adminWa = "919443100000";
-      const text = `*📢 நம்ம கன்னியாகுமரி - விளம்பர முன்பதிவு / Ad Booking*%0A%0A*Shop:* ${shop}%0A*Contact:* ${name}%0A*Mobile:* ${phone}%0A*Duration:* ${duration}%0A*Details:* ${details}%0A%0A_விதிமுறைகளை படித்து ஒப்புக்கொண்டுள்ளேன்._`;
+      const text = `*📢 நம்ம கன்னியாகுமரி - விளம்பர முன்பதிவு / Ad Booking*%0A%0A*Shop:* ${shop}%0A*Contact:* ${name}%0A*Mobile:* ${phone}%0A*Duration:* ${duration}%0A*Details:* ${details}`;
       window.open(`https://wa.me/${adminWa}?text=${text}`, '_blank');
       closeAllPages();
     }
 
     function handleCustomerSubmit(e) {
       e.preventDefault();
-      alert("உங்கள் தேவை வெற்றிகரமாகப் பதிவு செய்யப்பட்டது / Requirement Submitted Successfully!");
+      alert("உங்கள் தேவை வெற்றிகரமாகப் பதிவு செய்யப்பட்டது!");
       closeAllPages();
     }
 
@@ -1754,7 +1706,7 @@
 
     function shareAppDirect() {
       const shareUrl = "https://nammakanyakumariapp-creator.github.io/nammakanyakumari/";
-      window.open("https://wa.me/?text=" + encodeURIComponent("நம்ம கன்னியாகுமரி / Namma Kanyakumari Local Platform: " + shareUrl), '_blank');
+      window.open("https://wa.me/?text=" + encodeURIComponent("நம்ம கன்னியாகுமரி Local Platform: " + shareUrl), '_blank');
     }
   </script>
 </body>
