@@ -142,7 +142,6 @@
       border-color: var(--primary-blue);
     }
 
-    /* Clean Mic Button */
     .qs-mic-btn {
       position: absolute;
       right: 42px;
@@ -302,7 +301,7 @@
       color: var(--text-muted);
     }
 
-    /* FULL PAGE VIEW */
+    /* DEDICATED FULL PAGE VIEWS (For Categories & Registration Forms) */
     .fullpage-view {
       position: fixed;
       top: 0;
@@ -346,10 +345,54 @@
     .fullpage-content {
       flex: 1;
       overflow-y: auto;
-      padding: 14px;
+      padding: 16px;
       max-width: 480px;
       width: 100%;
       margin: 0 auto;
+    }
+
+    /* Form Styles in Dedicated Page */
+    .form-box {
+      background: #1E293B;
+      border-radius: 16px;
+      padding: 18px;
+      border: 1px solid #334155;
+    }
+    .form-group {
+      margin-bottom: 12px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 12.5px;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: #CBD5E1;
+    }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #475569;
+      background: #0F172A;
+      color: #fff;
+      font-size: 13.5px;
+      outline: none;
+    }
+    .form-submit-btn {
+      width: 100%;
+      background: var(--green);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 12px;
+      font-size: 14.5px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 14px;
     }
 
     /* Service Listing Cards */
@@ -397,88 +440,6 @@
     .btn-call { background: #0284C7; color: #fff; }
     .btn-wa { background: #16A34A; color: #fff; }
 
-    /* Modals */
-    .modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.8);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 1200;
-      padding: 16px;
-    }
-    .modal-overlay.active {
-      display: flex;
-    }
-    .modal-card {
-      background: #1E293B;
-      border-radius: 16px;
-      width: 100%;
-      max-width: 440px;
-      max-height: 90vh;
-      overflow-y: auto;
-      padding: 18px;
-      border: 1px solid #334155;
-      color: #F8FAFC;
-    }
-    .modal-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 12px;
-      border-bottom: 1px solid #334155;
-      padding-bottom: 8px;
-    }
-    .modal-header h3 {
-      font-size: 15px;
-      color: #F8FAFC;
-      font-weight: 700;
-    }
-    .close-btn {
-      background: none;
-      border: none;
-      font-size: 20px;
-      cursor: pointer;
-      color: #94A3B8;
-    }
-    .form-group {
-      margin-bottom: 10px;
-    }
-    .form-group label {
-      display: block;
-      font-size: 12px;
-      font-weight: 600;
-      margin-bottom: 3px;
-      color: #CBD5E1;
-    }
-    .form-group input, .form-group select, .form-group textarea {
-      width: 100%;
-      padding: 9px;
-      border-radius: 8px;
-      border: 1px solid #475569;
-      background: #0F172A;
-      color: #fff;
-      font-size: 13px;
-      outline: none;
-    }
-    .form-submit-btn {
-      width: 100%;
-      background: var(--green);
-      color: #fff;
-      border: none;
-      border-radius: 8px;
-      padding: 11px;
-      font-size: 14px;
-      font-weight: 700;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      margin-top: 10px;
-    }
-
     /* Fixed Bottom Bar */
     .bottom-bar {
       position: fixed;
@@ -524,7 +485,7 @@
       <img src="https://lh3.googleusercontent.com/d/1jg5ATB7FemADytaOwXzOXNrhRv1VnILO" alt="TN 74 நம்ம கன்னியாகுமரி">
     </div>
 
-    <!-- 2. ⚡ Big Quick Search Box (Language selector removed) -->
+    <!-- 2. ⚡ Big Quick Search Box -->
     <div class="quick-search-card">
       <div class="qs-top-row">
         <div class="qs-badge">
@@ -562,7 +523,7 @@
     </div>
 
     <!-- 3. Sponsor Ad Strip -->
-    <div class="sponsor-ad-card" onclick="openModal('sponsorModal')">
+    <div class="sponsor-ad-card" onclick="openDedicatedPage('pageSponsor')">
       <div>
         <h4>குமரி இயற்கை அங்காடி / Kumari Nature Mart</h4>
         <p>சுத்தமான தேன் & தின்பண்டங்கள் • திங்கள்நகர்</p>
@@ -647,9 +608,9 @@
       </div>
     </div>
 
-    <!-- 5. Dual Registration Blocks -->
+    <!-- 5. Dual Registration Blocks (Opens Dedicated Full Page) -->
     <div class="dual-register-row">
-      <div class="reg-block customer" onclick="openModal('customerModal')">
+      <div class="reg-block customer" onclick="openDedicatedPage('pageCustomer')">
         <i class="fa-solid fa-user-plus"></i>
         <div class="reg-block-info">
           <h5>வாடிக்கையாளர் தேவைப் பதிவு</h5>
@@ -657,7 +618,7 @@
         </div>
       </div>
 
-      <div class="reg-block vendor" onclick="openModal('vendorModal')">
+      <div class="reg-block vendor" onclick="openDedicatedPage('pageVendor')">
         <i class="fa-solid fa-shop"></i>
         <div class="reg-block-info">
           <h5>சேவை வழங்குநர் இலவசப் பதிவு</h5>
@@ -668,11 +629,11 @@
 
   </div>
 
-  <!-- DEDICATED FULL SCREEN CATEGORY / SEARCH VIEW -->
+  <!-- DEDICATED FULL SCREEN CATEGORY VIEW -->
   <div class="fullpage-view" id="fullpageView">
     <div class="fullpage-header">
       <div class="fullpage-header-left">
-        <button class="back-btn" onclick="closeDedicatedView()">
+        <button class="back-btn" onclick="closeAllPages()">
           <i class="fa-solid fa-arrow-left"></i>
         </button>
         <h3 id="dedicatedTitle">சேவை பட்டியல் / Results</h3>
@@ -682,162 +643,146 @@
     <div class="fullpage-content" id="dedicatedList"></div>
   </div>
 
-  <!-- MODAL 1: Sponsor Ad -->
-  <div class="modal-overlay" id="sponsorModal">
-    <div class="modal-card">
-      <div class="modal-header">
-        <h3>📢 விளம்பர முன்பதிவு / Sponsor Ad</h3>
-        <button class="close-btn" onclick="closeModal('sponsorModal')">&times;</button>
-      </div>
-      <form onsubmit="sendSponsorWhatsApp(event)">
-        <div class="form-group">
-          <label>நிறுவனம் / Shop Name *</label>
-          <input type="text" id="spShop" required placeholder="எ.கா: அன்னை ஏஜென்சிஸ்">
-        </div>
-        <div class="form-group">
-          <label>தொடர்பாளர் பெயர் / Contact Name *</label>
-          <input type="text" id="spName" required placeholder="உங்கள் பெயர்">
-        </div>
-        <div class="form-group">
-          <label>WhatsApp மொபைல் எண் *</label>
-          <input type="tel" id="spPhone" required placeholder="9876543210">
-        </div>
-        <div class="form-group">
-          <label>கால அளவு / Duration *</label>
-          <select id="spDuration" required>
-            <option value="1 மாதம் / 1 Month">1 மாதம் / 1 Month</option>
-            <option value="2 மாதங்கள் / 2 Months">2 மாதங்கள் / 2 Months</option>
-            <option value="3 மாதங்கள் / 3 Months">3 மாதங்கள் / 3 Months</option>
-            <option value="6 மாதங்கள் / 6 Months">6 மாதங்கள் / 6 Months</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>விளம்பர வாசகம் / Details</label>
-          <textarea id="spDetails" rows="2" placeholder="ஆஃபர் அல்லது சேவைகள்"></textarea>
-        </div>
-
-        <div style="margin: 14px 0 10px 0; display: flex; align-items: flex-start; gap: 8px;">
-          <input type="checkbox" id="chkTerms" required style="width: 18px; height: 18px; margin-top: 2px; cursor: pointer;">
-          <label for="chkTerms" style="font-size: 12px; color: #CBD5E1; line-height: 1.4; cursor: pointer;">
-            <strong>Agree All / அனைத்தையும் ஏற்கிறேன்</strong><br>
-            <a href="javascript:void(0)" onclick="openModal('termsModal')" style="color: var(--yellow); text-decoration: underline; font-size: 11px;">
-              Read Terms & Conditions / விதிமுறைகளைப் படிக்க
-            </a>
-          </label>
-        </div>
-
-        <button type="submit" class="form-submit-btn">
-          <i class="fa-brands fa-whatsapp"></i> முன்பதிவு செய்க / Submit Ad
+  <!-- DEDICATED FULL SCREEN PAGE 1: வாடிக்கையாளர் தேவைப் பதிவு -->
+  <div class="fullpage-view" id="pageCustomer">
+    <div class="fullpage-header">
+      <div class="fullpage-header-left">
+        <button class="back-btn" onclick="closeAllPages()">
+          <i class="fa-solid fa-arrow-left"></i>
         </button>
-      </form>
+        <h3>வாடிக்கையாளர் தேவைப் பதிவு</h3>
+      </div>
+      <span style="font-size: 12px; color: var(--yellow);">Customer Form</span>
+    </div>
+    <div class="fullpage-content">
+      <div class="form-box">
+        <form onsubmit="handleCustomerSubmit(event)">
+          <div class="form-group">
+            <label>உங்கள் பெயர் / Name *</label>
+            <input type="text" id="cName" required placeholder="உங்கள் பெயர்">
+          </div>
+          <div class="form-group">
+            <label>மொபைல் எண் / Mobile *</label>
+            <input type="tel" id="cPhone" required placeholder="தொடர்பு எண்">
+          </div>
+          <div class="form-group">
+            <label>ஊர் / Town *</label>
+            <input type="text" id="cArea" required placeholder="எ.கா: அழகப்பபுரம்">
+          </div>
+          <div class="form-group">
+            <label>தேவை / Required Service *</label>
+            <input type="text" id="cReq" required placeholder="எ.கா: ஆட்டோ சவாரி, பிளம்பிங்">
+          </div>
+          <button type="submit" class="form-submit-btn">
+            <i class="fa-solid fa-paper-plane"></i> சமர்ப்பிக்க / Submit Need
+          </button>
+        </form>
+      </div>
     </div>
   </div>
 
-  <!-- MODAL 2: Terms & Conditions -->
-  <div class="modal-overlay" id="termsModal" style="z-index: 1300;">
-    <div class="modal-card">
-      <div class="modal-header">
-        <h3>📜 Terms & Conditions / விதிமுறைகள்</h3>
-        <button class="close-btn" onclick="closeModal('termsModal')">&times;</button>
+  <!-- DEDICATED FULL SCREEN PAGE 2: சேவை வழங்குநர் இலவசப் பதிவு -->
+  <div class="fullpage-view" id="pageVendor">
+    <div class="fullpage-header">
+      <div class="fullpage-header-left">
+        <button class="back-btn" onclick="closeAllPages()">
+          <i class="fa-solid fa-arrow-left"></i>
+        </button>
+        <h3>சேவை வழங்குநர் இலவசப் பதிவு</h3>
       </div>
-      <div style="font-size: 12.5px; color: #CBD5E1; line-height: 1.6; max-height: 60vh; overflow-y: auto;">
-        <div style="margin-bottom: 12px; background: #0F172A; padding: 10px; border-radius: 8px; border: 1px solid #334155;">
-          <strong style="color: #F8FAFC;">1. Accuracy / உண்மைத் தன்மை:</strong>
-          <p>• Advertised products, prices, and services must be 100% genuine.</p>
-          <p>• விளம்பரத்தில் குறிப்பிடப்படும் விபரங்கள் முற்றிலும் உண்மைத்தன்மை கொண்டதாக இருக்க வேண்டும்.</p>
-        </div>
-        <div style="margin-bottom: 12px; background: #0F172A; padding: 10px; border-radius: 8px; border: 1px solid #334155;">
-          <strong style="color: #EF4444;">2. Prohibited Ads / தடைசெய்யப்பட்டவை:</strong>
-          <p>• Alcohol, tobacco, gambling, and illegal services are strictly prohibited.</p>
-          <p>• மது, புகையிலை, ஆன்லைன் சூதாட்டம் போன்ற சட்டவிரோத விளம்பரங்கள் அனுமதிக்கப்படாது.</p>
-        </div>
-        <div style="margin-bottom: 12px; background: #0F172A; padding: 10px; border-radius: 8px; border: 1px solid #334155;">
-          <strong style="color: #F8FAFC;">3. Disclaimer / பொறுப்புத் துறப்பு:</strong>
-          <p>• The platform is not responsible for direct financial disputes between parties.</p>
-          <p>• வாடிக்கையாளர் மற்றும் விளம்பரதாரர் இடையேயான பணப் பரிவர்த்தனைகளுக்கு தளம் பொறுப்பல்ல.</p>
-        </div>
-        <div style="margin-bottom: 12px; background: #0F172A; padding: 10px; border-radius: 8px; border: 1px solid #334155;">
-          <strong style="color: #F8FAFC;">4. Admin Rights / நிர்வாக உரிமை:</strong>
-          <p>• Ads will be activated only after Admin review and verification.</p>
-          <p>• அட்மின் சரிபார்ப்புக்குப் பின்னரே விளம்பரம் தளத்தில் நேரலையாகும்.</p>
-        </div>
+      <span style="font-size: 12px; color: var(--yellow);">Vendor Form</span>
+    </div>
+    <div class="fullpage-content">
+      <div class="form-box">
+        <form onsubmit="handleVendorSubmit(event)">
+          <div class="form-group">
+            <label>பெயர் / Business Name *</label>
+            <input type="text" id="vTitle" required placeholder="தொழில் அல்லது ஓட்டுநர் பெயர்">
+          </div>
+          <div class="form-group">
+            <label>தொழில் வகை / Category *</label>
+            <select id="vType" required>
+              <option value="ஆட்டோ / Auto">ஆட்டோ / Auto</option>
+              <option value="டாக்ஸி / Taxi">டாக்ஸி / Taxi</option>
+              <option value="லோடு வாகனம் / Load Vehicle">லோடு வாகனம் / Load Vehicle</option>
+              <option value="வீட்டு சேவைகள் / Home Services">வீட்டு சேவைகள் / Home Services</option>
+              <option value="கடை / Shop">கடை & வர்த்தகம் / Shop</option>
+              <option value="வேலை / Jobs">வேலை வாய்ப்புகள் / Jobs</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>ஊர் / Town *</label>
+            <input type="text" id="vTown" required placeholder="எ.கா: மயிலாடி">
+          </div>
+          <div class="form-group">
+            <label>மொபைல் எண் / Mobile *</label>
+            <input type="tel" id="vContact" required placeholder="தொடர்பு எண்">
+          </div>
+          <div class="form-group">
+            <label>வாகன பதிவு எண் (வாகனங்களுக்கு மட்டும் - அட்மின் பார்வைக்கு)</label>
+            <input type="text" id="vRcNum" placeholder="TN 74 ... (Public-க்கு தெரியாது)">
+          </div>
+          <button type="submit" class="form-submit-btn">
+            <i class="fa-solid fa-check"></i> இணைக்க / Register Free
+          </button>
+        </form>
       </div>
-      <button type="button" class="form-submit-btn" onclick="closeModal('termsModal')" style="background: #020617; margin-top: 12px; border: 1px solid #334155;">
-        சரி, புரிந்தது / Close
-      </button>
     </div>
   </div>
 
-  <!-- MODAL 3: Customer Requirement -->
-  <div class="modal-overlay" id="customerModal">
-    <div class="modal-card">
-      <div class="modal-header">
-        <h3>👤 வாடிக்கையாளர் தேவைப் பதிவு / Customer Requirement</h3>
-        <button class="close-btn" onclick="closeModal('customerModal')">&times;</button>
-      </div>
-      <form onsubmit="handleCustomerSubmit(event)">
-        <div class="form-group">
-          <label>உங்கள் பெயர் / Name *</label>
-          <input type="text" id="cName" required>
-        </div>
-        <div class="form-group">
-          <label>மொபைல் எண் / Mobile *</label>
-          <input type="tel" id="cPhone" required>
-        </div>
-        <div class="form-group">
-          <label>ஊர் / Town *</label>
-          <input type="text" id="cArea" required placeholder="எ.கா: அழகப்பபுரம்">
-        </div>
-        <div class="form-group">
-          <label>தேவை / Required Service *</label>
-          <input type="text" id="cReq" required placeholder="எ.கா: ஆட்டோ சவாரி, பிளம்பிங்">
-        </div>
-        <button type="submit" class="form-submit-btn">
-          <i class="fa-solid fa-paper-plane"></i> சமர்ப்பிக்க / Submit Need
+  <!-- DEDICATED FULL SCREEN PAGE 3: விளம்பர முன்பதிவு -->
+  <div class="fullpage-view" id="pageSponsor">
+    <div class="fullpage-header">
+      <div class="fullpage-header-left">
+        <button class="back-btn" onclick="closeAllPages()">
+          <i class="fa-solid fa-arrow-left"></i>
         </button>
-      </form>
+        <h3>விளம்பர முன்பதிவு / Sponsor Ad</h3>
+      </div>
+      <span style="font-size: 12px; color: var(--yellow);">Sponsor</span>
     </div>
-  </div>
+    <div class="fullpage-content">
+      <div class="form-box">
+        <form onsubmit="sendSponsorWhatsApp(event)">
+          <div class="form-group">
+            <label>நிறுவனம் / Shop Name *</label>
+            <input type="text" id="spShop" required placeholder="எ.கா: அன்னை ஏஜென்சிஸ்">
+          </div>
+          <div class="form-group">
+            <label>தொடர்பாளர் பெயர் / Contact Name *</label>
+            <input type="text" id="spName" required placeholder="உங்கள் பெயர்">
+          </div>
+          <div class="form-group">
+            <label>WhatsApp மொபைல் எண் *</label>
+            <input type="tel" id="spPhone" required placeholder="9876543210">
+          </div>
+          <div class="form-group">
+            <label>கால அளவு / Duration *</label>
+            <select id="spDuration" required>
+              <option value="1 மாதம் / 1 Month">1 மாதம் / 1 Month</option>
+              <option value="2 மாதங்கள் / 2 Months">2 மாதங்கள் / 2 Months</option>
+              <option value="3 மாதங்கள் / 3 Months">3 மாதங்கள் / 3 Months</option>
+              <option value="6 மாதங்கள் / 6 Months">6 மாதங்கள் / 6 Months</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>விளம்பர வாசகம் / Details</label>
+            <textarea id="spDetails" rows="2" placeholder="ஆஃபர் அல்லது சேவைகள்"></textarea>
+          </div>
 
-  <!-- MODAL 4: Vendor Free Registration -->
-  <div class="modal-overlay" id="vendorModal">
-    <div class="modal-card">
-      <div class="modal-header">
-        <h3>🏪 சேவை வழங்குநர் இலவசப் பதிவு / Vendor Registration</h3>
-        <button class="close-btn" onclick="closeModal('vendorModal')">&times;</button>
+          <div style="margin: 14px 0 10px 0; display: flex; align-items: flex-start; gap: 8px;">
+            <input type="checkbox" id="chkTerms" required style="width: 18px; height: 18px; margin-top: 2px; cursor: pointer;">
+            <label for="chkTerms" style="font-size: 12px; color: #CBD5E1; line-height: 1.4; cursor: pointer;">
+              <strong>Agree All / அனைத்தையும் ஏற்கிறேன்</strong><br>
+              <span style="color: var(--yellow); font-size: 11px;">விதிமுறைகளுக்கு உட்பட்டது</span>
+            </label>
+          </div>
+
+          <button type="submit" class="form-submit-btn">
+            <i class="fa-brands fa-whatsapp"></i> முன்பதிவு செய்க / Submit Ad
+          </button>
+        </form>
       </div>
-      <form onsubmit="handleVendorSubmit(event)">
-        <div class="form-group">
-          <label>பெயர் / Business Name *</label>
-          <input type="text" id="vTitle" required>
-        </div>
-        <div class="form-group">
-          <label>தொழில் வகை / Category *</label>
-          <select id="vType" required>
-            <option value="ஆட்டோ / Auto">ஆட்டோ / Auto</option>
-            <option value="டாக்ஸி / Taxi">டாக்ஸி / Taxi</option>
-            <option value="லோடு வாகனம் / Load Vehicle">லோடு வாகனம் / Load Vehicle</option>
-            <option value="வீட்டு சேவைகள் / Home Services">வீட்டு சேவைகள் / Home Services</option>
-            <option value="கடை / Shop">கடை & வர்த்தகம் / Shop</option>
-            <option value="வேலை / Jobs">வேலை வாய்ப்புகள் / Jobs</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>ஊர் / Town *</label>
-          <input type="text" id="vTown" required placeholder="எ.கா: மயிலாடி">
-        </div>
-        <div class="form-group">
-          <label>மொபைல் எண் / Mobile *</label>
-          <input type="tel" id="vContact" required>
-        </div>
-        <div class="form-group">
-          <label>வாகன பதிவு எண் (வாகனங்களுக்கு மட்டும் - அட்மின் பார்வைக்கு)</label>
-          <input type="text" id="vRcNum" placeholder="TN 74 ... (Public-க்கு தெரியாது)">
-        </div>
-        <button type="submit" class="form-submit-btn">
-          <i class="fa-solid fa-check"></i> இணைக்க / Register Free
-        </button>
-      </form>
     </div>
   </div>
 
@@ -946,7 +891,9 @@
       openDedicatedCategory("அனைத்து சேவைகள் / All Services");
     }
 
+    // Opens Dedicated Screen for Categories
     function openDedicatedCategory(categoryName) {
+      closeAllPages();
       const allowedTowns = townClusters[userLocation] || [userLocation];
       const view = document.getElementById("fullpageView");
       const list = document.getElementById("dedicatedList");
@@ -996,12 +943,19 @@
       view.classList.add("active");
     }
 
-    function closeDedicatedView() {
-      document.getElementById("fullpageView").classList.remove("active");
+    // Opens Dedicated Full Page for Forms
+    function openDedicatedPage(pageId) {
+      closeAllPages();
+      const target = document.getElementById(pageId);
+      if (target) {
+        target.classList.add("active");
+      }
     }
 
-    function openModal(id) { document.getElementById(id).classList.add("active"); }
-    function closeModal(id) { document.getElementById(id).classList.remove("active"); }
+    // Closes any active full screen view
+    function closeAllPages() {
+      document.querySelectorAll(".fullpage-view").forEach(p => p.classList.remove("active"));
+    }
 
     function sendSponsorWhatsApp(e) {
       e.preventDefault();
@@ -1014,19 +968,19 @@
       const adminWa = "919443100000";
       const text = `*📢 நம்ம கன்னியாகுமரி - ஸ்பான்சர் முன்பதிவு / Ad Booking*%0A%0A*Shop:* ${shop}%0A*Contact:* ${name}%0A*Mobile:* ${phone}%0A*Duration:* ${duration}%0A*Details:* ${details}%0A%0A_விதிமுறைகளை படித்து ஒப்புக்கொண்டுள்ளேன் (Agreed All Terms)._`;
       window.open(`https://wa.me/${adminWa}?text=${text}`, '_blank');
-      closeModal('sponsorModal');
+      closeAllPages();
     }
 
     function handleCustomerSubmit(e) {
       e.preventDefault();
       alert("உங்கள் தேவை வெற்றிகரமாகப் பதிவு செய்யப்பட்டது / Requirement Submitted Successfully!");
-      closeModal('customerModal');
+      closeAllPages();
     }
 
     function handleVendorSubmit(e) {
       e.preventDefault();
       alert("உங்கள் தொழில் விவரங்கள் பெறப்பட்டது / Vendor Registered! அட்மின் சரிபார்ப்புக்குப் பின் சேர்க்கப்படும்.");
-      closeModal('vendorModal');
+      closeAllPages();
     }
 
     function shareAppDirect() {
