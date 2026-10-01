@@ -211,7 +211,7 @@
       gap: 6px;
     }
 
-    /* விதிமுறைகள் பக்கம் & கார்டுகள் */
+    /* விதிமுறைகள் கார்டுகள் */
     .terms-rule-card {
       background: #1E293B;
       border: 1px solid #334155;
@@ -242,7 +242,7 @@
       line-height: 1.4;
     }
 
-    /* சந்தா முறை வெளிப்படையாகத் தோன்றும் பகுதி */
+    /* திரையில் தெரியும் சந்தா பகுதி */
     .hidden-subscription-clause {
       display: block !important; 
       background: #334155;
@@ -252,51 +252,71 @@
       border-left: 3px solid var(--yellow);
     }
 
-    /* Bottom Navigation Bar */
-    .bottom-nav {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 60px;
-      background: #0B1120;
-      border-top: 1px solid #1E293B;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      max-width: 480px;
-      margin: 0 auto;
-      z-index: 100;
+    /* நீங்கள் கேட்ட டிக் மற்றும் வெளியேறும் பட்டன் பகுதி */
+    .terms-action-box {
+      background: #1E293B;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 16px;
+      margin-top: 16px;
+      margin-bottom: 24px;
     }
 
-    .nav-item {
+    .agree-checkbox-label {
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 3px;
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 11px;
-      font-weight: 500;
+      align-items: flex-start;
+      gap: 10px;
       cursor: pointer;
-      background: transparent;
+      font-size: 13px;
+      line-height: 1.5;
+      color: #F8FAFC;
+    }
+
+    .agree-checkbox-label input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      margin-top: 2px;
+      accent-color: var(--primary-blue);
+      cursor: pointer;
+    }
+
+    .btn-agree-exit {
+      width: 100%;
+      background: var(--primary-blue);
+      color: #FFFFFF;
       border: none;
-    }
-
-    .nav-item.active {
-      color: var(--primary-blue);
+      padding: 12px;
+      border-radius: 9px;
+      font-size: 14px;
       font-weight: 700;
+      margin-top: 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 4px 12px rgba(13, 110, 253, 0.3);
     }
 
-    .nav-item i {
-      font-size: 17px;
+    .btn-back-exit {
+      width: 100%;
+      background: transparent;
+      color: var(--text-muted);
+      border: 1px solid #475569;
+      padding: 10px;
+      border-radius: 9px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-top: 8px;
+      cursor: pointer;
+      text-align: center;
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <!-- வாகன சேவை விதிமுறைகள் பகுதி -->
+  <div class="container" id="termsContainer">
+    <!-- தலைப்பு -->
     <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px;">
       <h3 style="font-size: 15px; color: #FFF;">
         <i class="fa-solid fa-file-contract" style="color: var(--yellow); margin-right: 6px;"></i>
@@ -304,7 +324,7 @@
       </h3>
     </div>
 
-    <!-- விதிமுறை 1 (சந்தா விவரங்களுடன் கூடிய கார்டு) -->
+    <!-- விதிமுறை 1 (சந்தா விவரங்களுடன்) -->
     <div class="terms-rule-card">
       <h4>1. 0% கமிஷன் தளம் / 0% Commission Platform</h4>
       <p class="ta-main">ஓட்டுநர்கள் பெறும் சவாரித் தொகையில் இருந்து நம்ம கன்னியாகுமரி தளம் எவ்வித கமிஷனும் (0% Commission) வசூலிப்பதில்லை. சவாரி மற்றும் கட்டணப் பரிவர்த்தனைகளுக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது;</strong> ஓட்டுநரே முழுப் பொறுப்பு.</p>
@@ -341,7 +361,54 @@
       <p class="ta-main">பயணத்தின் போது நிகழும் சாலை விபத்துக்கள், வாகன சேதங்கள் அல்லது பயணிகளுக்கு ஏற்படும் எவ்வித உடல்/பொருள் இழப்புகளுக்கும் <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது;</strong> ஓட்டுநர் மற்றும் அவரது வாகன காப்பீடே (Insurance) முழுப் பொறுப்பு.</p>
       <p class="en-sub"><strong>Namma Kanyakumari platform is not responsible</strong> for road accidents, damage, or personal loss; the driver and insurance are solely responsible.</p>
     </div>
+
+    <!-- நீங்கள் கேட்ட டிக் (Checkbox) மற்றும் வெளியேறும் பட்டன் பகுதி -->
+    <div class="terms-action-box">
+      <label class="agree-checkbox-label">
+        <input type="checkbox" id="termsCheck" onchange="toggleAgreeButton()">
+        <span>மேற்கண்ட அனைத்து விதிமுறைகளையும் நிபந்தனைகளையும் முழுமையாகப் படித்து ஏற்றுக்கொள்கிறேன். / I agree to all Terms & Conditions.</span>
+      </label>
+
+      <!-- ஏற்றுக்கொண்டு வெளியேறும் பட்டன் -->
+      <button class="btn-agree-exit" id="agreeExitBtn" onclick="agreeAndExit()" style="opacity: 0.6; pointer-events: none;">
+        <i class="fa-solid fa-circle-check"></i> ஏற்றுக்கொள்கிறேன் / Agree & Continue
+      </button>
+
+      <!-- சாதாரணமாக வெளியேறும் பின்செல்லும் பட்டன் -->
+      <button class="btn-back-exit" onclick="goBackToApp()">
+        <i class="fa-solid fa-arrow-left"></i> பின்செல்ல / Back
+      </button>
+    </div>
   </div>
 
+  <script>
+    // டிக் செய்த பிறகு பட்டன் ஆன் ஆகும் செயல்பாடு
+    function toggleAgreeButton() {
+      const isChecked = document.getElementById('termsCheck').checked;
+      const agreeBtn = document.getElementById('agreeExitBtn');
+      if (isChecked) {
+        agreeBtn.style.opacity = '1';
+        agreeBtn.style.pointerEvents = 'auto';
+      } else {
+        agreeBtn.style.opacity = '0.6';
+        agreeBtn.style.pointerEvents = 'none';
+      }
+    }
+
+    // ஏற்றுக்கொண்டு வெளியேறும் போது நடக்கும் செயல்
+    function agreeAndExit() {
+      alert("விதிமுறைகளை வெற்றிகரமாக ஏற்றுக்கொண்டீர்கள்!");
+      goBackToApp();
+    }
+
+    // ஆப் முகப்புக்குத் திரும்பும் செயல்பாடு
+    function goBackToApp() {
+      if (window.history.length > 1) {
+        window.history.back();
+      } else {
+        window.location.href = "./";
+      }
+    }
+  </script>
 </body>
 </html>
