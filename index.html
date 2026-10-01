@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>நம்ம கன்னியாகுமரி - 100% கமிஷன் இல்லாத மக்கள் தளம்</title>
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    :root {
+      --primary-dark: #0a192f;
+      --navy-blue: #0d47a1;
+      --vibrant-green: #1b5e20;
+      --deep-orange: #d84315;
+      --rich-purple: #4a148c;
+      --warm-amber: #e65100;
+      --card-border: #cfd8dc;
+      --bg-slate: #f4f6f9;
+      --text-dark: #1a202c;
+      --text-muted: #4a5568;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg-slate);
+      color: var(--text-dark);
+      padding-bottom: 75px;
+    }
+
+    /* உச்சி லோகோ பேனர் */
+    .header-banner {
+      background: linear-gradient(135deg, #0288d1 0%, #01579b 100%);
+      color: white;
+      text-align: center;
+      padding: 16px 12px 14px;
+      position: relative;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      border-bottom-left-radius: 18px;
+      border-bottom-right-radius: 18px;
+    }
+
+    .header-title-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .header-title-box img {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 2px solid #ffca28;
+      object-fit: cover;
+    }
+
+    .header-title {
+      font-size: 1.45rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .header-tagline {
+      font-size: 0.85rem;
+      color: #ffeb3b;
+      margin-top: 4px;
+      font-weight: 600;
+    }
+
+    /* சுழலும் ஸ்பான்சர் விளம்பர ஸ்லைடர் */
+    .slider-container {
+      margin: 12px 12px 6px;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #ffffff;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+      position: relative;
+    }
+
+    .slider-track {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .slide-item {
+      min-width: 100%;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(90deg, #fff8e1 0%, #ffffff 100%);
+      border-left: 5px solid var(--deep-orange);
+      cursor: pointer;
+    }
+
+    .slide-text h4 {
+      font-size: 0.95rem;
+      color: var(--deep-orange);
+      margin-bottom: 2px;
+    }
+
+    .slide-text p {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .slide-badge {
+      background: var(--vibrant-green);
+      color: white;
+      font-size: 0.7rem;
+      font-weight: bold;
+      padding: 4px 8px;
+      border-radius: 6px;
+      white-space: nowrap;
+    }
+
+    /* தேடல் பெட்டி & ஊர் வடிகட்டி */
+    .search-wrapper {
+      padding: 10px 12px 6px;
+    }
+
+    .search-box {
+      display: flex;
+      align-items: center;
+      background: white;
+      border-radius: 12px;
+      padding: 6px 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      border: 1px solid var(--card-border);
+    }
+
+    .search-box input {
+      flex: 1;
+      border: none;
+      outline: none;
+      padding: 8px;
+      font-size: 0.92rem;
+      color: var(--text-dark);
+    }
+
+    .search-box button {
+      background: transparent;
+      border: none;
+      color: var(--navy-blue);
+      font-size: 1.1rem;
+      cursor: pointer;
+      padding: 4px 6px;
+    }
+
+    /* ஊர் பட்டை */
+    .location-strip {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px 10px;
+      overflow-x: auto;
+      white-space: nowrap;
+      scrollbar-width: none;
+    }
+
+    .location-strip::-webkit-scrollbar {
+      display: none;
+    }
+
+    .loc-chip {
+      background: #e2e8f0;
+      color: var(--text-dark);
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      border: 1px solid #cbd5e1;
+      cursor: pointer;
+    }
+
+    .loc-chip.active {
+      background: var(--navy-blue);
+      color: white;
+      border-color: var(--navy-blue);
+    }
+
+    /* முதன்மை சேவை ஐகான்கள் கிரிட் */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      padding: 4px 12px 14px;
+    }
+
+    .service-card {
+      background: white;
+      border-radius: 14px;
+      padding: 14px 6px;
+      text-align: center;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+      border: 1.5px solid transparent;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .service-card:active {
+      transform: scale(0.96);
+    }
+
+    .icon-circle {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.35rem;
+      color: white;
+      margin-bottom: 6px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+    }
+
+    .service-title {
+      font-size: 0.82rem;
+      font-weight: 700;
+      line-height: 1.25;
+      color: var(--text-dark);
+    }
+
+    .service-sub {
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* வண்ணத் தீம்கள் */
+    .theme-auto { background: #ff9800; }
+    .theme-taxi { background: #0288d1; }
+    .theme-load { background: #2e7d32; }
+    .theme-drive { background: #6a1b9a; }
+    .theme-home { background: #00838f; }
+    .theme-jobs { background: #c2185b; }
+    .theme-food { background: #d84315; }
+    .theme-event { background: #f57f17; }
+    .theme-real { background: #455a64; }
+    .theme-edu { background: #1565c0; }
+    .theme-sports { background: #2e7d32; }
+    .theme-resale { background: #795548; }
+
+    /* இலவசப் பதிவு & வாட்ஸ்அப் பகிர்வு துரித பட்டன்கள் */
+    .action-banner-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      padding: 0 12px 14px;
+    }
+
+    .action-btn {
+      background: white;
+      border-radius: 12px;
+      padding: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+      cursor: pointer;
+      border: 1px solid var(--card-border);
+    }
+
+    .action-btn i {
+      font-size: 1.4rem;
+    }
+
+    .action-btn h5 {
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .action-btn p {
+      font-size: 0.68rem;
+      color: var(--text-muted);
+    }
+
+    /* முழு பாப்-அப் திரை (Full Modal) */
+    .full-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: #f8fafc;
+      z-index: 9999;
+      display: none;
+      flex-direction: column;
+      overflow-y: auto;
+    }
+
+    .modal-header {
+      background: var(--navy-blue);
+      color: white;
+      padding: 16px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    .modal-header h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+    }
+
+    .close-btn {
+      background: rgba(255,255,255,0.2);
+      border: none;
+      color: white;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .modal-content {
+      padding: 14px 12px 80px;
+      flex: 1;
+    }
+
+    /* வெண்டர் கார்டுகள் */
+    .vendor-card {
+      background: white;
+      border-radius: 12px;
+      padding: 14px;
+      margin-bottom: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+      border: 1px solid #e2e8f0;
+      position: relative;
+    }
+
+    .vendor-card h4 {
+      font-size: 1rem;
+      color: var(--navy-blue);
+      margin-bottom: 4px;
+    }
+
+    .vendor-card .meta {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .vendor-card .details {
+      font-size: 0.82rem;
+      color: var(--text-dark);
+      background: #f1f5f9;
+      padding: 6px 10px;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+
+    .vendor-card .badges {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+
+    .badge-verified {
+      background: #e8f5e9;
+      color: #2e7d32;
+      font-size: 0.72rem;
+      font-weight: bold;
+      padding: 3px 6px;
+      border-radius: 4px;
+      border: 1px solid #a5d6a7;
+    }
+
+    .badge-delivery {
+      background: #fff3e0;
+      color: #e65100;
+      font-size: 0.72rem;
+      font-weight: bold;
+      padding: 3px 6px;
+      border-radius: 4px;
+      border: 1px solid #ffcc80;
+    }
+
+    .card-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .btn-call {
+      background: #e3f2fd;
+      color: #0d47a1;
+      text-align: center;
+      padding: 8px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      border: 1px solid #90caf9;
+    }
+
+    .btn-whatsapp {
+      background: #e8f5e9;
+      color: #1b5e20;
+      text-align: center;
+      padding: 8px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      border: 1px solid #a5d6a7;
+    }
+
+    /* கீழ் நிரந்தர பட்டை */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--primary-dark);
+      display: flex;
+      justify-content: space-around;
+      padding: 8px 0 10px;
+      z-index: 1000;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.15);
+    }
+
+    .nav-item {
+      color: #94a3b8;
+      text-align: center;
+      font-size: 0.72rem;
+      cursor: pointer;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+    }
+
+    .nav-item i {
+      font-size: 1.15rem;
+    }
+
+    .nav-item.active {
+      color: #ffca28;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- உச்சி பேனர் -->
+  <header class="header-banner">
+    <div class="header-title-box">
+      <img src="https://drive.google.com/file/d/1pjkwm27M4-JV-lD0vvbDtq_2UPlT5Xxs/view?usp=drivesdk" alt="லோகோ" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3203/3203071.png'">
+      <div class="header-title">நம்ம கன்னியாகுமரி</div>
+    </div>
+    <div class="header-tagline">100% கமிஷன் இல்லாத நேரடி மக்கள் தளம்!</div>
+  </header>
+
+  <!-- சுழலும் சிறப்பு விளம்பரங்கள் -->
+  <div class="slider-container" onclick="openRegistrationModal()">
+    <div class="slider-track" id="sliderTrack">
+      <div class="slide-item">
+        <div class="slide-text">
+          <h4>குமரி இயற்கை அங்காடி & மால்ட்</h4>
+          <p>சுத்தமான தேன், ஏபிசிடி மால்ட் • திங்கள்நகர்</p>
+        </div>
+        <span class="slide-badge">✅ ஸ்பான்சர்</span>
+      </div>
+      <div class="slide-item">
+        <div class="slide-text">
+          <h4>அழகப்பபுரம் ஸ்டாண்டு ஆட்டோ</h4>
+          <p>24 மணி நேர சவாரி சேவை • அழகப்பபுரம்</p>
+        </div>
+        <span class="slide-badge">✅ ஸ்பான்சர்</span>
+      </div>
+      <div class="slide-item">
+        <div class="slide-text">
+          <h4>குமரி கிரிக்கெட் அகாடமி & டர்ஃப்</h4>
+          <p>பாக்ஸ் கிரிக்கெட் முன்பதிவு • நாகர்கோவில்</p>
+        </div>
+        <span class="slide-badge">✅ ஸ்பான்சர்</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- தேடல் பெட்டி -->
+  <div class="search-wrapper">
+    <div class="search-box">
+      <i class="fa-solid fa-magnifying-glass" style="color:#0d47a1; margin-right:6px;"></i>
+      <input type="text" id="searchInput" placeholder="சேவை, கடை அல்லது ஊரைத் தேடுங்கள்..." onkeyup="handleSearch(event)">
+      <button onclick="triggerSearch()"><i class="fa-solid fa-arrow-right"></i></button>
+    </div>
+  </div>
+
+  <!-- ஊர் வடிகட்டி பட்டை -->
+  <div class="location-strip">
+    <div class="loc-chip active" onclick="filterByLocation('அனைத்தும்', this)">அனைத்தும்</div>
+    <div class="loc-chip" onclick="filterByLocation('அழகப்பபுரம்', this)">அழகப்பபுரம்</div>
+    <div class="loc-chip" onclick="filterByLocation('அஞ்சுகிராமம்', this)">அஞ்சுகிராமம்</div>
+    <div class="loc-chip" onclick="filterByLocation('ஜேம்ஸ்டவுன்', this)">ஜேம்ஸ்டவுன்</div>
+    <div class="loc-chip" onclick="filterByLocation('மயிலாடி', this)">மயிலாடி</div>
+    <div class="loc-chip" onclick="filterByLocation('கன்னியாகுமரி', this)">கன்னியாகுமரி</div>
+    <div class="loc-chip" onclick="filterByLocation('நாகர்கோவில்', this)">நாகர்கோவில்</div>
+    <div class="loc-chip" onclick="filterByLocation('தக்கலை', this)">தக்கலை</div>
+    <div class="loc-chip" onclick="filterByLocation('மார்த்தாண்டம்', this)">மார்த்தாண்டம்</div>
+    <div class="loc-chip" onclick="filterByLocation('வள்ளியூர்', this)">வள்ளியூர்</div>
+  </div>
+
+  <!-- முதன்மை சேவை ஐகான்கள் -->
+  <main class="services-grid">
+    <div class="service-card" onclick="openCategoryModal('ஆட்டோ')">
+      <div class="icon-circle theme-auto"><i class="fa-solid fa-taxi"></i></div>
+      <div class="service-title">ஆட்டோ</div>
+      <div class="service-sub">லோக்கல் சவாரி</div>
+    </div>
+    <div class="service-card" onclick="openCategoryModal('டாக்ஸி')">
+      <div class="icon-circle theme-taxi"><i class="fa-solid fa-car-side"></i></div>
+      <div class="service-title">டாக்ஸி / கார்</div>
+      <div class="service-sub">டிரிப் & டூர்ஸ்</div>
+    </div>
+    <div class="service-card" onclick="openCategoryModal('லோடு வாகனம்')">
+      <div class="icon-circle theme-load"><i class="fa-solid fa-truck-pickup"></i></div>
+      <div class="service-title">லோடு வாகனம்</div>
+      <div class="service-sub">டாடா ஏஸ், ஜேசிபி</div>
+    </div>
+    <div class="service-card" onclick="openCategoryModal('வாகன வாடகை')">
+      <div class="icon-circle theme-drive"><i class="fa-solid fa-key"></i></div>
+      <div class="service-title">சுய ஓட்டுநர்</div>
+      <div class="service-sub">கார் & பைக் வாடகை</div>
+    </div>
+    <div class="service-card" onclick="openCategoryModal('வீட்டுச் சேவைகள்')">
+      <div class="icon-circle theme-home"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+      <div class="service-title">வீட்டுச் சேவைகள்</div>
+      <div class="service-sub">பிளம்பிங், கொசுவலை</div>
+    </div>
+    <div class="service-card" onclick="openCategoryModal('வேலைவாய்ப்பு')">
+      <div class="icon-circle theme-jobs"><i class="fa-solid fa-bullhorn"></i></div>
+      <div class="service-title">ஆட்கள் தேவை</div>
+      <div class="service-sub">வேலைவாய்ப்புகள்</div>
+    </div>
+    <div class="service-card" onclick="openCategoryModal('உணவகம் & விவசாயப் பொருட்கள்')">
+      <div class="icon-circle theme-food"><i class="fa-solid fa-bowl-food"></i></div>
+      <div class="service-title">குமரி உணவு</div>
+      <div class="service-sub">சிப்ஸ், இயற்கை மார்ட்</div>
+    </div>
+    <div class="service-card" onclick="openCategoryModal('விசேஷ ஏற்பாடுகள்')">
+      <div class="icon-circle theme-event"><i class="fa-solid fa-champagne-glasses"></i></div>
+      <div class="service-title">விசேஷ வாடகை</div>
+      <div class="service-sub">டென்ட், பாப்-கார்ன்</div>
+    </div>
+    <div class="service-card" onclick="openCategoryModal('மனை & வாடகை வீடு')">
+      <div class="icon-circle theme-real"><i class="fa-solid fa-house-chimney"></i></div>
+      <div class="service-title">வாடகை வீடு</div>
+      <div class="service-sub">மனை & பார்க்கிங்</div>
+    </div>
+    <div class="service-card" onclick="openCategoryModal('கல்வி & பயிற்சி')">
+      <div class="icon-circle theme-edu"><i class="fa-solid fa-graduation-cap"></i></div>
+      <div class="service-title">கல்வி & பயிற்சி</div>
+      <div class="service-sub">டியூஷன், கம்ப்யூட்டர்</div>
+    </div>
+    <div class="service-card" onclick="openCategoryModal('விளையாட்டு & நலம்')">
+      <div class="icon-circle theme-sports"><i class="fa-solid fa-dumbbell"></i></div>
+      <div class="service-title">விளையாட்டு</div>
+      <div class="service-sub">டர்ஃப், ஜிம், அழகு</div>
+    </div>
+    <div class="service-card" onclick="openCategoryModal('பழைய வாகனங்கள்')">
+      <div class="icon-circle theme-resale"><i class="fa-solid fa-motorcycle"></i></div>
+      <div class="service-title">பயன்படுத்தியவை</div>
+      <div class="service-sub">பழைய பைக் & கார்</div>
+    </div>
+  </main>
+
+  <!-- விளம்பரம் & பகிர்தல் துரித பட்டன்கள் -->
+  <div class="action-banner-row">
+    <div class="action-btn" onclick="openRegistrationModal()">
+      <i class="fa-solid fa-store" style="color:var(--deep-orange);"></i>
+      <div>
+        <h5>இலவசப் பதிவு</h5>
+        <p>உங்கள் தொழில் சேர்க்க</p>
+      </div>
+    </div>
+    <div class="action-btn" onclick="shareApp()">
+      <i class="fa-solid fa-share-nodes" style="color:var(--vibrant-green);"></i>
+      <div>
+        <h5>ஆப் பகிர்வு</h5>
+        <p>வாட்ஸ்அப்பில் பகிர</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- முழு பாப்-அப் திரை (Service Listing Modal) -->
+  <div class="full-modal" id="serviceModal">
+    <div class="modal-header">
+      <h3 id="modalTitle">சேவை விபரம்</h3>
+      <button class="close-btn" onclick="closeModal('serviceModal')">✕</button>
+    </div>
+    <div class="modal-content" id="modalVendorsList">
+      <!-- டைனமிக் கார்டுகள் இங்கே தோன்றும் -->
+    </div>
+  </div>
+
+  <!-- இலவசப் பதிவு முழு பாப்-அப் திரை (Registration Modal) -->
+  <div class="full-modal" id="registrationModal">
+    <div class="modal-header">
+      <h3>இலவச தொழில் / சேவைப் பதிவு</h3>
+      <button class="close-btn" onclick="closeModal('registrationModal')">✕</button>
+    </div>
+    <div class="modal-content">
+      <form id="regForm" onsubmit="handleRegistration(event)">
+        <div style="margin-bottom:12px;">
+          <label style="font-size:0.85rem; font-weight:bold;">கடை / சேவை பெயர் *</label>
+          <input type="text" id="regShopName" required style="width:100%; padding:10px; border-radius:8px; border:1px solid #cbd5e1; margin-top:4px;">
+        </div>
+        <div style="margin-bottom:12px;">
+          <label style="font-size:0.85rem; font-weight:bold;">உரிமையாளர் பெயர்</label>
+          <input type="text" id="regOwnerName" style="width:100%; padding:10px; border-radius:8px; border:1px solid #cbd5e1; margin-top:4px;">
+        </div>
+        <div style="margin-bottom:12px;">
+          <label style="font-size:0.85rem; font-weight:bold;">முதன்மை பிரிவு *</label>
+          <select id="regCategory" onchange="toggleDeliveryOption(this.value)" required style="width:100%; padding:10px; border-radius:8px; border:1px solid #cbd5e1; margin-top:4px;">
+            <option value="">-- தேர்ந்தெடுக்கவும் --</option>
+            <option value="ஆட்டோ">ஆட்டோ</option>
+            <option value="டாக்ஸி">டாக்ஸி / கார்</option>
+            <option value="லோடு வாகனம்">லோடு & கனரக வாகனம்</option>
+            <option value="வீட்டுச் சேவைகள்">வீட்டுச் சேவைகள்</option>
+            <option value="வேலைவாய்ப்பு">வேலைவாய்ப்பு (ஆட்கள் தேவை)</option>
+            <option value="உணவகம் & விவசாயப் பொருட்கள்">குமரி உணவு & விவசாயம்</option>
+            <option value="கல்வி & பயிற்சி">கல்வி & பயிற்சி</option>
+            <option value="பிற சேவைகள்">பிற சேவைகள் (Others)</option>
+          </select>
+        </div>
+        <div id="deliveryField" style="margin-bottom:12px; display:none;">
+          <label style="font-size:0.85rem; font-weight:bold;">ஹோம் டெலிவரி வசதி உள்ளதா?</label>
+          <select id="regDelivery" style="width:100%; padding:10px; border-radius:8px; border:1px solid #cbd5e1; margin-top:4px;">
+            <option value="இல்லை">இல்லை</option>
+            <option value="உண்டு">உண்டு</option>
+          </select>
+        </div>
+        <div style="margin-bottom:12px;">
+          <label style="font-size:0.85rem; font-weight:bold;">ஊர் / பகுதி *</label>
+          <input type="text" id="regVillage" placeholder="எ.கா: அழகப்பபுரம்" required style="width:100%; padding:10px; border-radius:8px; border:1px solid #cbd5e1; margin-top:4px;">
+        </div>
+        <div style="margin-bottom:12px;">
+          <label style="font-size:0.85rem; font-weight:bold;">தொடர்பு எண் (10 இலக்கம்) *</label>
+          <input type="tel" id="regPhone" required style="width:100%; padding:10px; border-radius:8px; border:1px solid #cbd5e1; margin-top:4px;">
+        </div>
+        <button type="submit" style="width:100%; background:var(--navy-blue); color:white; padding:12px; border:none; border-radius:8px; font-weight:bold; font-size:1rem; cursor:pointer;">பதிவு செய்</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- கீழ் நிரந்தர பட்டை -->
+  <nav class="bottom-nav">
+    <a href="#" class="nav-item active"><i class="fa-solid fa-house"></i>முகப்பு</a>
+    <a href="javascript:void(0)" onclick="openCategoryModal('அவசர உதவி')" class="nav-item"><i class="fa-solid fa-kit-medical"></i>அவசரம்</a>
+    <a href="javascript:void(0)" onclick="openRegistrationModal()" class="nav-item"><i class="fa-solid fa-circle-plus"></i>இலவச பதிவு</a>
+    <a href="javascript:void(0)" onclick="shareApp()" class="nav-item"><i class="fa-solid fa-share-nodes"></i>பகிர்வு</a>
+  </nav>
+
+  <script>
+    // மாதிரி தரவுத்தளம் (11 இலக்க போலி எண்களுடன் சோதனை பாதுகாப்பு)
+    const masterVendors = [
+      { id:"V-2001", name:"செல்வம் ஆட்டோ", cat:"ஆட்டோ", village:"நாகர்கோவில்", details:"TN 74 AX 1234 • லோக்கல் சவாரி", phone:"94431234501", verified:true, delivery:"இல்லை" },
+      { id:"V-2026", name:"அழகப்பபுரம் ஸ்டாண்டு ஆட்டோ (மாரியப்பன்)", cat:"ஆட்டோ", village:"அழகப்பபுரம்", details:"24 மணி நேர ஆட்டோ சவாரி", phone:"94431234521", verified:true, delivery:"இல்லை" },
+      { id:"V-2002", name:"குமரி இயற்கை அங்காடி", cat:"உணவகம் & விவசாயப் பொருட்கள்", village:"திங்கள்நகர்", details:"ஏபிசிடி மால்ட் & சுத்தமான மூலிகைத் தேன்", phone:"94431234502", verified:true, delivery:"உண்டு" },
+      { id:"V-2024", name:"குமரி நேந்திரம் சிப்ஸ் & வாழை இலை மொத்த சப்ளை", cat:"உணவகம் & விவசாயப் பொருட்கள்", village:"ஜேம்ஸ்டவுன்", details:"ஸ்பெஷல் நேந்திரம் சிப்ஸ், விசேஷ வாழை இலை", phone:"94431234519", verified:true, delivery:"உண்டு" },
+      { id:"V-2003", name:"சிவா பிளம்பிங் & எலக்ட்ரிக்கல்", cat:"வீட்டுச் சேவைகள்", village:"மார்த்தாண்டம்", details:"10 ஆண்டுகள் அனுபவம் • வீட்டு சர்வீஸ்", phone:"94431234503", verified:true, delivery:"இல்லை" },
+      { id:"V-2023", name:"குமரி நெட்டிங் & கொசுவலை சர்வீஸ்", cat:"வீட்டுச் சேவைகள்", village:"அஞ்சுகிராமம்", details:"ஜன்னல், பால்கனி கொசுவலை & சிசிடிவி சர்வீஸ்", phone:"94431234518", verified:true, delivery:"இல்லை" },
+      { id:"V-2004", name:"குமரி லோடு வேன் (டாடா ஏஸ்)", cat:"லோடு வாகனம்", village:"அஞ்சுகிராமம்", details:"டாடா ஏஸ் மினி டிரக் (1.5 டன்)", phone:"94431234504", verified:true, delivery:"இல்லை" },
+      { id:"V-2015", name:"குமரி ஜேசிபி & எர்த்மூவர்ஸ்", cat:"லோடு வாகனம்", village:"நாகர்கோவில்", details:"JCB 3DX & மினி டிராக்டர் உழவு பணி", phone:"94431234505", verified:true, delivery:"இல்லை" },
+      { id:"V-2011", name:"குமரி செல்ஃப் டிரைவ் கார் & பைக்", cat:"வாகன வாடகை", village:"கன்னியாகுமரி", details:"Swift, Innova & வாடகை பைக்குகள்", phone:"94431234510", verified:true, delivery:"இல்லை" },
+      { id:"V-2005", name:"குமரி டெக்ஸ்டைல்ஸ் & மார்ட்", cat:"வேலைவாய்ப்பு", village:"நாகர்கோவில்", details:"கடை விற்பனை உதவியாளர் தேவை (Sales Staff)", phone:"94431234506", verified:true, delivery:"இல்லை" },
+      { id:"V-2021", name:"குமரி செட்டிநாடு உணவகம்", cat:"வேலைவாய்ப்பு", village:"நாகர்கோவில்", details:"பரோட்டா மாஸ்டர், சமையல் கலைஞர் & சப்ளையர் தேவை", phone:"94431234516", verified:true, delivery:"இல்லை" },
+      { id:"V-2022", name:"குமரி ஏஜென்சீஸ் & டிரேடர்ஸ்", cat:"வேலைவாய்ப்பு", village:"மார்த்தாண்டம்", details:"அலுவலக உதவியாளர் & கணக்காளர் தேவை", phone:"94431234517", verified:true, delivery:"இல்லை" },
+      { id:"V-2016", name:"வெற்றி டியூஷன் & கோச்சிங் சென்டர்", cat:"கல்வி & பயிற்சி", village:"நாகர்கோவில்", details:"10th/12th டியூஷன் & TNPSC போட்டித் தேர்வு பயிற்சி", phone:"94431234511", verified:true, delivery:"இல்லை" },
+      { id:"V-2017", name:"குமரி கம்ப்யூட்டர் எஜுகேஷன்", cat:"கல்வி & பயிற்சி", village:"மார்த்தாண்டம்", details:"DCA, Tally, MS Office பயிற்சி", phone:"94431234512", verified:true, delivery:"இல்லை" },
+      { id:"V-2018", name:"அன்னை தையல் கலை & ஆரி ஒர்க்", cat:"கல்வி & பயிற்சி", village:"தக்கலை", details:"தையல் கலை & ஆரி எம்பிராய்டரி பயிற்சி", phone:"94431234513", verified:true, delivery:"இல்லை" },
+      { id:"V-2019", name:"குமரி கிரிக்கெட் அகாடமி & டர்ஃப்", cat:"விளையாட்டு & நலம்", village:"நாகர்கோவில்", details:"கிரிக்கெட் பயிற்சி & டர்ஃப் முன்பதிவு", phone:"94431234514", verified:true, delivery:"இல்லை" },
+      { id:"V-2006", name:"குமரி ஃபிட்னஸ் ஜிம்", cat:"விளையாட்டு & நலம்", village:"நாகர்கோவில்", details:"உடற்பயிற்சி & கார்டியோ வசதி", phone:"94431234507", verified:true, delivery:"இல்லை" },
+      { id:"V-2007", name:"ரோஜா பிரைடல் கேர் & பியூட்டி பார்லர்", cat:"விளையாட்டு & நலம்", village:"திங்கள்நகர்", details:"மணப்பெண் அலங்காரம் & ஃபேஷியல்", phone:"94431234508", verified:true, delivery:"இல்லை" },
+      { id:"V-2010", name:"குமரி செகண்ட் ஹேண்ட் பைக் பஜார்", cat:"பழைய வாகனங்கள்", village:"நாகர்கோவில்", details:"அனைத்து வகை பயன்படுத்திய பைக் விற்பனை", phone:"94431234509", verified:true, delivery:"இல்லை" }
+    ];
+
+    // அழகப்பபுரம் & சுற்றுவட்டார வரைபட நெட்வொர்க் (GPS இல்லா அடுக்கு முறை)
+    const clusterMap = {
+      "அழகப்பபுரம்": ["பகவதிபுரம்", "வடக்கு பகவதிபுரம்", "பின்னார்குளம்", "பொட்டல்குளம்", "ஜேம்ஸ்டவுன்", "அஞ்சுகிராமம்", "கயிலாசபுரம்"],
+      "அஞ்சுகிராமம்": ["ஜேம்ஸ்டவுன்", "அழகப்பபுரம்", "பின்னார்குளம்", "பகவதிபுரம்", "நிலப்பாறை"],
+      "மயிலாடி": ["மருங்கூர்", "சகாயபுரம்", "வழுக்கம்பாறை", "ராஜாவூர்"]
+    };
+
+    let selectedLocation = 'அனைத்தும்';
+
+    // சுழலும் விளம்பர ஸ்லைடர் இயக்கம்
+    let currentSlide = 0;
+    setInterval(() => {
+      const track = document.getElementById('sliderTrack');
+      if (track) {
+        currentSlide = (currentSlide + 1) % 3;
+        track.style.transform = `translateX(-${currentSlide * 100}%)`;
+      }
+    }, 3500);
+
+    // ஊர் வடிகட்டுதல்
+    function filterByLocation(loc, el) {
+      selectedLocation = loc;
+      document.querySelectorAll('.loc-chip').forEach(c => c.classList.remove('active'));
+      el.classList.add('active');
+    }
+
+    // பாப்-அப் திறத்தல் (Full Modal)
+    function openCategoryModal(category) {
+      const modal = document.getElementById('serviceModal');
+      const title = document.getElementById('modalTitle');
+      const list = document.getElementById('modalVendorsList');
+
+      title.innerText = category;
+      list.innerHTML = "";
+
+      let filtered = masterVendors.filter(v => v.cat.includes(category));
+
+      // ஊர் அடிப்படையிலான வடிகட்டுதல்
+      if (selectedLocation !== 'அனைத்தும்') {
+        const cluster = clusterMap[selectedLocation] || [];
+        filtered = filtered.filter(v => v.village === selectedLocation || cluster.includes(v.village));
+      }
+
+      if (filtered.length === 0) {
+        list.innerHTML = `<div style="text-align:center; padding:40px 10px; color:#64748b;">
+          <i class="fa-solid fa-triangle-exclamation" style="font-size:2rem; margin-bottom:10px;"></i>
+          <p>இந்த பிரிவில் தற்சமயம் பதிவுகள் இல்லை.</p>
+        </div>`;
+      } else {
+        filtered.forEach(v => {
+          list.innerHTML += `
+            <div class="vendor-card">
+              <h4>${v.name}</h4>
+              <div class="meta"><i class="fa-solid fa-location-dot"></i> ${v.village} • ${v.cat}</div>
+              <div class="details">${v.details}</div>
+              <div class="badges">
+                ${v.verified ? '<span class="badge-verified">✅ சரிபார்க்கப்பட்டது</span>' : ''}
+                ${v.delivery === 'உண்டு' ? '<span class="badge-delivery">🚚 ஹோம் டெலிவரி உண்டு</span>' : ''}
+              </div>
+              <div class="card-actions">
+                <a href="tel:${v.phone}" class="btn-call"><i class="fa-solid fa-phone"></i> அழைப்பு</a>
+                <a href="https://wa.me/91${v.phone}" class="btn-whatsapp"><i class="fa-brands fa-whatsapp"></i> வாட்ஸ்அப்</a>
+              </div>
+            </div>
+          `;
+        });
+      }
+
+      modal.style.display = "flex";
+    }
+
+    // தேடல் பொறி இயக்கம்
+    function handleSearch(e) {
+      if (e.key === 'Enter') triggerSearch();
+    }
+
+    function triggerSearch() {
+      const query = document.getElementById('searchInput').value.trim().toLowerCase();
+      if (!query) return;
+
+      const modal = document.getElementById('serviceModal');
+      const title = document.getElementById('modalTitle');
+      const list = document.getElementById('modalVendorsList');
+
+      title.innerText = `🔍 தேடல் முடிவுகள்: "${query}"`;
+      list.innerHTML = "";
+
+      let results = masterVendors.filter(v => 
+        v.name.toLowerCase().includes(query) || 
+        v.cat.toLowerCase().includes(query) || 
+        v.village.toLowerCase().includes(query) ||
+        v.details.toLowerCase().includes(query)
+      );
+
+      if (results.length === 0) {
+        list.innerHTML = `<div style="text-align:center; padding:40px 10px; color:#64748b;">
+          <p>தகவல்கள் எதுவும் கிடைக்கவில்லை.</p>
+        </div>`;
+      } else {
+        results.forEach(v => {
+          list.innerHTML += `
+            <div class="vendor-card">
+              <h4>${v.name}</h4>
+              <div class="meta"><i class="fa-solid fa-location-dot"></i> ${v.village} • ${v.cat}</div>
+              <div class="details">${v.details}</div>
+              <div class="card-actions">
+                <a href="tel:${v.phone}" class="btn-call"><i class="fa-solid fa-phone"></i> அழைப்பு</a>
+                <a href="https://wa.me/91${v.phone}" class="btn-whatsapp"><i class="fa-brands fa-whatsapp"></i> வாட்ஸ்அப்</a>
+              </div>
+            </div>
+          `;
+        });
+      }
+
+      modal.style.display = "flex";
+    }
+
+    function openRegistrationModal() {
+      document.getElementById('registrationModal').style.display = "flex";
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).style.display = "none";
+    }
+
+    function toggleDeliveryOption(val) {
+      const field = document.getElementById('deliveryField');
+      if (val.includes('உணவகம்') || val.includes('விவசாயப் பொருட்கள்')) {
+        field.style.display = "block";
+      } else {
+        field.style.display = "none";
+      }
+    }
+
+    function handleRegistration(e) {
+      e.preventDefault();
+      alert("பதிவு விவரங்கள் பெறப்பட்டன! நிர்வாக ஒப்புதலுக்குப் பின் செயலில் தோன்றும்.");
+      closeModal('registrationModal');
+    }
+
+    function shareApp() {
+      const shareData = {
+        title: 'நம்ம கன்னியாகுமரி',
+        text: 'நம்ம கன்னியாகுமரி - உங்கள் ஊர் உங்கள் சேவை! 100% கமிஷன் இல்லாத மக்கள் தளம்.',
+        url: window.location.href
+      };
+      if (navigator.share) {
+        navigator.share(shareData);
+      } else {
+        window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(shareData.text + ' ' + shareData.url)}`, '_blank');
+      }
+    }
+  </script>
+</body>
+</html>
