@@ -214,16 +214,18 @@
     .icon-jobs { background: #FCE7F3; color: #BE185D; }
     .icon-pros { background: #CCFBF1; color: #0F766E; }
     .icon-notices { background: #E0E7FF; color: #4338CA; }
-    .icon-emergency { background: #FEE2E2; color: #B91C1C; }
+    .icon-water { background: #E0F2FE; color: #0284C7; }
 
     .cat-btn .main-text {
       font-size: 13px;
       font-weight: 700;
       color: #F8FAFC;
     }
+    /* Updated Sub-text with balanced English font readability */
     .cat-btn .sub-text {
-      font-size: 10px;
-      color: var(--text-muted);
+      font-size: 11px;
+      font-weight: 500;
+      color: #94A3B8;
     }
 
     /* Dual Registration Blocks */
@@ -644,7 +646,7 @@
       </div>
     </div>
 
-    <!-- 3x3 Category Grid -->
+    <!-- 3x3 Category Grid (Updated with Water Lorry instead of duplicate Emergency) -->
     <div class="category-grid-container">
       <div class="cat-btn" onclick="openDedicatedCategory('ஆட்டோ / Auto')">
         <div class="circle-icon icon-auto">
@@ -659,7 +661,7 @@
           <i class="fa-solid fa-car-side"></i>
         </div>
         <span class="main-text">டாக்ஸி / கார்</span>
-        <span class="sub-text">Taxi / Tours</span>
+        <span class="sub-text">Taxi & Tours</span>
       </div>
 
       <div class="cat-btn" onclick="openDedicatedCategory('லோடு வாகனம் / Load Vehicle')">
@@ -710,12 +712,12 @@
         <span class="sub-text">Public Notices</span>
       </div>
 
-      <div class="cat-btn" onclick="openDedicatedCategory('அவசர உதவி / Emergency')">
-        <div class="circle-icon icon-emergency">
-          <i class="fa-solid fa-truck-medical"></i>
+      <div class="cat-btn" onclick="openDedicatedCategory('தண்ணீர் லாரி / Water Supply')">
+        <div class="circle-icon icon-water">
+          <i class="fa-solid fa-droplet"></i>
         </div>
-        <span class="main-text">அவசர உதவி</span>
-        <span class="sub-text">Emergency / 108</span>
+        <span class="main-text">தண்ணீர் லாரி</span>
+        <span class="sub-text">Water Supply</span>
       </div>
     </div>
 
@@ -1266,7 +1268,7 @@
         const recognition = new SpeechRecognition();
         recognition.lang = 'ta-IN';
         recognition.onstart = function() {
-          keywordInput.placeholder = "மイク கேட்கிறது... பேசுங்கள்...";
+          keywordInput.placeholder = "மைக் கேட்கிறது... பேசுங்கள்...";
         };
         recognition.onresult = function(event) {
           keywordInput.value = event.results[0][0].transcript;
@@ -1414,7 +1416,7 @@
         const recognition = new SpeechRecognition();
         recognition.lang = 'ta-IN';
         recognition.onstart = function() {
-          keywordInput.placeholder = "மイク கேட்கிறது... பேசுங்கள்...";
+          keywordInput.placeholder = "மைக் கேட்கிறது... பேசுங்கள்...";
         };
         recognition.onresult = function(event) {
           keywordInput.value = event.results[0][0].transcript;
