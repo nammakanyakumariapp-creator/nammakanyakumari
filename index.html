@@ -63,111 +63,6 @@
       display: block;
     }
 
-    /* 2. ⚡ Clean Quick Search Box */
-    .quick-search-card {
-      background: var(--card-container-bg);
-      border-radius: 16px;
-      padding: 14px;
-      margin-bottom: 14px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-      border: 1px solid #334155;
-    }
-    .qs-top-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 10px;
-    }
-    .qs-badge {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 14px;
-      font-weight: 700;
-      color: #fff;
-    }
-    .qs-badge i {
-      color: var(--yellow);
-    }
-
-    .qs-search-bar {
-      position: relative;
-      display: flex;
-      align-items: center;
-      margin-bottom: 10px;
-    }
-    .qs-search-bar .search-icon {
-      position: absolute;
-      left: 12px;
-      color: #94A3B8;
-      font-size: 16px;
-    }
-    .qs-search-bar input {
-      width: 100%;
-      padding: 12px 50px 12px 38px;
-      border-radius: 10px;
-      border: 1.5px solid #334155;
-      font-size: 13.5px;
-      outline: none;
-      background: #0F172A;
-      color: #fff;
-    }
-    .qs-search-bar input:focus {
-      border-color: var(--primary-blue);
-    }
-
-    .qs-mic-btn {
-      position: absolute;
-      right: 12px;
-      background: none;
-      border: none;
-      color: var(--yellow);
-      font-size: 18px;
-      cursor: pointer;
-      padding: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .qs-mic-btn.active-mic {
-      color: var(--red);
-      animation: pulse 1.2s infinite;
-    }
-
-    .qs-bottom-row {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 8px;
-      align-items: center;
-    }
-    .qs-town-input {
-      width: 100%;
-      padding: 10px 12px;
-      border-radius: 8px;
-      border: 1.5px solid #334155;
-      font-size: 13px;
-      background: #0F172A;
-      color: #fff;
-      outline: none;
-    }
-    .qs-town-input:focus {
-      border-color: var(--primary-blue);
-    }
-    .qs-action-go-btn {
-      background: var(--primary-blue);
-      color: #fff;
-      border: none;
-      padding: 10px 16px;
-      border-radius: 8px;
-      font-size: 13px;
-      font-weight: 700;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      white-space: nowrap;
-    }
-
     /* 3. Sponsor Ad Strip */
     .sponsor-ad-card {
       background: linear-gradient(135deg, #1E293B, #2A384C);
@@ -616,48 +511,15 @@
       margin-top: 6px;
       border-radius: 4px;
     }
-
-    @keyframes pulse {
-      0% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.5; transform: scale(1.15); }
-      100% { opacity: 1; transform: scale(1); }
-    }
   </style>
 </head>
 <body>
 
   <div class="container">
 
-    <!-- 1. Top Banner (Fixed with direct image format) -->
+    <!-- 1. Top Banner -->
     <div class="top-promo-banner" onclick="openDedicatedCategory('போக்குவரத்து / Transport')">
       <img src="https://lh3.googleusercontent.com/d/1gO8usoDEpdXpWyxTgwf0M9G_x7LimFSR" alt="TN 74 நம்ம கன்னியாகுமரி">
-    </div>
-
-    <!-- 2. ⚡ Direct Quick Search Box -->
-    <div class="quick-search-card">
-      <div class="qs-top-row">
-        <div class="qs-badge">
-          <i class="fa-solid fa-bolt"></i>
-          <span>குவிக் சர்ச் / Quick Search</span>
-        </div>
-      </div>
-
-      <!-- Main Search Keyword Input with Mic -->
-      <div class="qs-search-bar">
-        <i class="fa-solid fa-magnifying-glass search-icon"></i>
-        <input type="text" id="homeKeywordInput" placeholder="ஆட்டோ அழகப்பபுரம், சூப்பர் மார்க்கெட்...">
-        <button type="button" class="qs-mic-btn" id="btnHomeMic" onclick="triggerHomeVoiceInput()" title="Voice Search">
-          <i class="fa-solid fa-microphone"></i>
-        </button>
-      </div>
-
-      <!-- Side-by-Side Town Input and Search Button -->
-      <div class="qs-bottom-row">
-        <input type="text" id="homeTownInput" class="qs-town-input" placeholder="ஊர் / Town (எ.கா: அழகப்பபுரம்)">
-        <button type="button" class="qs-action-go-btn" onclick="executeHomeSearch()">
-          <i class="fa-solid fa-magnifying-glass"></i> தேடுக
-        </button>
-      </div>
     </div>
 
     <!-- 3. Sponsor Ad Strip -->
@@ -812,9 +674,6 @@
           <label>என்ன சேவை வேண்டும்? / Required Service *</label>
           <div style="position: relative; display: flex; align-items: center;">
             <input type="text" id="advancedKeyword" placeholder="எ.கா: ஆட்டோ, சூப்பர் மார்க்கெட்..." style="padding-right: 42px;">
-            <button type="button" class="qs-mic-btn" id="btnAdvMic" onclick="triggerAdvancedVoiceInput()" style="position: absolute; right: 6px;" title="Voice Search">
-              <i class="fa-solid fa-microphone"></i>
-            </button>
           </div>
         </div>
 
@@ -1268,106 +1127,6 @@
       { id: 5, name: "குமரி டிராவல்ஸ் டாக்ஸி", category: "டாக்ஸி / Taxi", area: "அழகப்பபுரம்", desc: "திருவனந்தபுரம் ஏர்போர்ட், மதுரை டூர்ஸ்", phone: "94431234506", wa: "98421234560", status: "active" },
       { id: 6, name: "மயிலாடி சரவணா எலக்ட்ரிக்கல்ஸ்", category: "வீட்டு சேவைகள் / Home Services", area: "மயிலாடி", desc: "பிளம்பிங், வயரிங் & மோட்டார் ரிப்பேர்", phone: "94431234504", wa: "98421234560", status: "active" }
     ];
-
-    function triggerHomeVoiceInput() {
-      const mic = document.getElementById("btnHomeMic");
-      const txt = document.getElementById("homeKeywordInput");
-
-      if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
-        alert("குரல் தேடல் வசதி பிரவுசரில் இல்லை. தட்டச்சு செய்து தேடவும்.");
-        return;
-      }
-
-      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-      const rec = new SpeechRecognition();
-      rec.lang = 'ta-IN';
-
-      rec.onstart = () => mic.classList.add("active-mic");
-      rec.onresult = (e) => {
-        txt.value = e.results[0][0].transcript;
-        mic.classList.remove("active-mic");
-        executeHomeSearch();
-      };
-      rec.onerror = () => mic.classList.remove("active-mic");
-      rec.onend = () => mic.classList.remove("active-mic");
-      rec.start();
-    }
-
-    function executeHomeSearch() {
-      const keyword = document.getElementById("homeKeywordInput").value.trim();
-      const town = document.getElementById("homeTownInput").value.trim();
-      
-      closeAllPages();
-      const view = document.getElementById("fullpageView");
-      const list = document.getElementById("dedicatedList");
-      const title = document.getElementById("dedicatedTitle");
-      const townLabel = document.getElementById("dedicatedTown");
-
-      title.innerText = keyword ? keyword : "தேடல் முடிவுகள் / Search";
-      townLabel.innerText = town ? "📍 " + town : "📍 கன்னியாகுமரி";
-      list.innerHTML = "";
-
-      const filtered = serviceList.filter(item => {
-        const matchesTown = !town || item.area.toLowerCase().includes(town.toLowerCase()) || item.desc.toLowerCase().includes(town.toLowerCase());
-        const matchesKeyword = !keyword || 
-          item.name.toLowerCase().includes(keyword.toLowerCase()) ||
-          item.category.toLowerCase().includes(keyword.toLowerCase()) ||
-          item.desc.toLowerCase().includes(keyword.toLowerCase());
-        return matchesTown && matchesKeyword && item.status !== 'expired';
-      });
-
-      if (filtered.length === 0) {
-        list.innerHTML = `
-          <div style="background:#1E293B; border:1px solid #334155; padding:24px; border-radius:12px; text-align:center; color:#94A3B8; margin-top:20px;">
-            <i class="fa-solid fa-triangle-exclamation" style="font-size:32px; color:var(--yellow); margin-bottom:10px;"></i>
-            <p>இந்தத் தேடலுக்கான சேவை தற்போது கிடைக்கவில்லை.</p>
-          </div>
-        `;
-      } else {
-        filtered.forEach(item => {
-          let badgeHtml = item.status === 'active' ? 
-            `<span class="status-badge active-green"><i class="fa-solid fa-check"></i> சரிபார்க்கப்பட்டது</span>` : 
-            `<span class="status-badge pending-yellow"><i class="fa-solid fa-clock"></i> சரிபார்ப்பில்</span>`;
-
-          list.innerHTML += `
-            <div class="item-card">
-              <h4>${item.name} ${badgeHtml}</h4>
-              <div class="item-meta"><i class="fa-solid fa-location-dot"></i> ${item.area} • ${item.category}</div>
-              <div class="item-desc">${item.desc}</div>
-              <div class="item-actions">
-                <a href="tel:${item.phone}" class="btn-call"><i class="fa-solid fa-phone"></i> அழைப்பு / Call</a>
-                <a href="https://wa.me/91${item.wa}" class="btn-wa"><i class="fa-brands fa-whatsapp"></i> வாட்ஸ்அப்</a>
-              </div>
-            </div>
-          `;
-        });
-      }
-
-      view.classList.add("active");
-    }
-
-    function triggerAdvancedVoiceInput() {
-      const mic = document.getElementById("btnAdvMic");
-      const txt = document.getElementById("advancedKeyword");
-
-      if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
-        alert("குரல் தேடல் வசதி பிரவுசரில் இல்லை. தட்டச்சு செய்து தேடவும்.");
-        return;
-      }
-
-      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-      const rec = new SpeechRecognition();
-      rec.lang = 'ta-IN';
-
-      rec.onstart = () => mic.classList.add("active-mic");
-      rec.onresult = (e) => {
-        txt.value = e.results[0][0].transcript;
-        mic.classList.remove("active-mic");
-      };
-      rec.onerror = () => mic.classList.remove("active-mic");
-      rec.onend = () => mic.classList.remove("active-mic");
-      rec.start();
-    }
 
     function openAdvancedSearchPage() {
       closeAllPages();
