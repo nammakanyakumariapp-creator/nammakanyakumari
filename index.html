@@ -41,24 +41,26 @@
     }
 
     .container {
-      padding: 16px 12px 12px 12px;
+      padding: 12px;
       max-width: 480px;
       margin: 0 auto;
     }
 
-    /* Top Blank Space Placeholder for Future Banner */
-    .top-banner-space {
+    /* Top Main Promo Banner */
+    .top-promo-banner {
       width: 100%;
-      height: 110px;
       border-radius: 16px;
-      margin-bottom: 16px;
-      border: 1.5px dashed #475569;
-      background: rgba(30, 41, 59, 0.5);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-muted);
-      font-size: 13px;
+      overflow: hidden;
+      margin-bottom: 14px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      border: 1px solid #334155;
+      background: #000;
+      cursor: pointer;
+    }
+    .top-promo-banner img {
+      width: 100%;
+      height: auto;
+      display: block;
     }
 
     /* Sponsor Ad Strip */
@@ -521,9 +523,9 @@
 
   <div class="container">
 
-    <!-- Top Blank Space for Future Banner Placement -->
-    <div class="top-banner-space">
-      <span>பேனர் வைக்க வேண்டிய இடம் / Banner Space</span>
+    <!-- Top Main Promo Banner -->
+    <div class="top-promo-banner" onclick="openDedicatedCategory('போக்குவரத்து / Transport')">
+      <img src="https://lh3.googleusercontent.com/d/1KZHkxfzkjlFFCvgoPCdzWo9fSQy-b_ns" alt="நம்ம கன்னியாகுமரி பேனர்">
     </div>
 
     <!-- Sponsor Ad Strip -->
