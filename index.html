@@ -138,6 +138,10 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: color 0.2s ease;
+    }
+    .home-mic-btn.listening {
+      color: var(--green) !important;
     }
 
     /* Sponsor Ad Strip */
@@ -222,7 +226,6 @@
       color: #F8FAFC;
       line-height: 1.2;
     }
-    /* Enhanced Sub-text for better English readability */
     .cat-btn .sub-text {
       font-size: 11.5px;
       font-weight: 500;
@@ -631,7 +634,7 @@
       <div class="home-search-input-box">
         <i class="fa-solid fa-magnifying-glass"></i>
         <input type="text" id="homeKeywordInput" placeholder="எ.கா: ஆட்டோ, டாக்ஸி, ஹோட்டல்..." onkeypress="handleHomeSearchKey(event)" style="padding-right: 28px;">
-        <button type="button" class="home-mic-btn" onclick="triggerHomeVoiceInput()" title="Voice Search" style="position: absolute; right: 6px; top: 50%; transform: translateY(-50%);">
+        <button type="button" class="home-mic-btn" id="homeMicBtn" onclick="triggerHomeVoiceInput()" title="Voice Search" style="position: absolute; right: 6px; top: 50%; transform: translateY(-50%);">
           <i class="fa-solid fa-microphone"></i>
         </button>
       </div>
@@ -648,7 +651,7 @@
       </div>
     </div>
 
-    <!-- 3x3 Category Grid (Updated with 3 Technical Sub-categories) -->
+    <!-- 3x3 Category Grid -->
     <div class="category-grid-container">
       <div class="cat-btn" onclick="openDedicatedCategory('ஆட்டோ / Auto')">
         <div class="circle-icon icon-auto">
@@ -698,7 +701,6 @@
         <span class="sub-text">Jobs & Works</span>
       </div>
 
-      <!-- Professional Sub-Category 1 -->
       <div class="cat-btn" onclick="openDedicatedCategory('மின் & குழாய் வல்லுநர்')">
         <div class="circle-icon icon-pros1">
           <i class="fa-solid fa-bolt"></i>
@@ -707,7 +709,6 @@
         <span class="sub-text">Electrician & Plumber</span>
       </div>
 
-      <!-- Professional Sub-Category 2 -->
       <div class="cat-btn" onclick="openDedicatedCategory('கட்டுமானம் & தச்சு')">
         <div class="circle-icon icon-pros2">
           <i class="fa-solid fa-hammer"></i>
@@ -716,7 +717,6 @@
         <span class="sub-text">Mason & Carpentry</span>
       </div>
 
-      <!-- Professional Sub-Category 3 -->
       <div class="cat-btn" onclick="openDedicatedCategory('உபகரண மெக்கானிக்')">
         <div class="circle-icon icon-pros3">
           <i class="fa-solid fa-screwdriver"></i>
@@ -1268,21 +1268,34 @@
 
     function triggerHomeVoiceInput() {
       const keywordInput = document.getElementById("homeKeywordInput");
+      const micBtn = document.getElementById("homeMicBtn");
+
       if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
         const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
         const recognition = new SpeechRecognition();
         recognition.lang = 'ta-IN';
+        
         recognition.onstart = function() {
+          micBtn.classList.add("listening");
           keywordInput.placeholder = "மைக் கேட்கிறது... பேசுங்கள்...";
         };
+
         recognition.onresult = function(event) {
           keywordInput.value = event.results[0][0].transcript;
           keywordInput.placeholder = "எ.கா: ஆட்டோ, டாக்ஸி, ஹோட்டல்...";
+          micBtn.classList.remove("listening");
           executeHomeSearch();
         };
+
         recognition.onerror = function() {
+          micBtn.classList.remove("listening");
           keywordInput.placeholder = "எ.கா: ஆட்டோ, டாக்ஸி, ஹோட்டல்...";
         };
+
+        recognition.onend = function() {
+          micBtn.classList.remove("listening");
+        };
+
         recognition.start();
       } else {
         alert("உங்கள் பிரவுசர் குரல் தேடலை ஆதரிக்கவில்லை / Voice search not supported.");
