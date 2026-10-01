@@ -301,7 +301,7 @@
       color: var(--text-muted);
     }
 
-    /* DEDICATED FULL PAGE VIEWS (For Categories & Registration Forms) */
+    /* DEDICATED FULL SCREEN VIEWS */
     .fullpage-view {
       position: fixed;
       top: 0;
@@ -351,11 +351,41 @@
       margin: 0 auto;
     }
 
-    /* Form Styles in Dedicated Page */
+    /* Category Switcher Tabs */
+    .vendor-nav-tabs {
+      display: flex;
+      background: #0F172A;
+      border-radius: 10px;
+      padding: 4px;
+      margin-bottom: 16px;
+      border: 1px solid #334155;
+      gap: 4px;
+    }
+    .vendor-tab-btn {
+      flex: 1;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      padding: 8px 4px;
+      border-radius: 8px;
+      font-size: 11.5px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+    }
+    .vendor-tab-btn.active {
+      background: var(--primary-blue);
+      color: #fff;
+    }
+
+    /* Form Fields Styling */
     .form-box {
       background: #1E293B;
       border-radius: 16px;
-      padding: 18px;
+      padding: 16px;
       border: 1px solid #334155;
     }
     .form-group {
@@ -368,6 +398,11 @@
       margin-bottom: 4px;
       color: #CBD5E1;
     }
+    .form-group label span.opt-tag {
+      font-size: 11px;
+      color: var(--yellow);
+      font-weight: normal;
+    }
     .form-group input, .form-group select, .form-group textarea {
       width: 100%;
       padding: 10px;
@@ -378,24 +413,73 @@
       font-size: 13.5px;
       outline: none;
     }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      border-color: var(--primary-blue);
+    }
+
+    /* Terms Box & Verification */
+    .terms-check-container {
+      background: #0F172A;
+      border-radius: 10px;
+      padding: 12px;
+      margin-top: 14px;
+      border: 1px solid #334155;
+    }
+    .terms-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .terms-row input[type="checkbox"] {
+      width: 19px;
+      height: 19px;
+      margin-top: 2px;
+      cursor: pointer;
+    }
+    .terms-text-label {
+      font-size: 12.5px;
+      color: #E2E8F0;
+      line-height: 1.4;
+      cursor: pointer;
+    }
+    .view-terms-link {
+      display: inline-block;
+      margin-top: 6px;
+      color: var(--yellow);
+      font-size: 12px;
+      text-decoration: underline;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    /* Dynamic Submit Button with Color Transition */
     .form-submit-btn {
       width: 100%;
-      background: var(--green);
-      color: #fff;
       border: none;
       border-radius: 8px;
-      padding: 12px;
-      font-size: 14.5px;
+      padding: 13px;
+      font-size: 14px;
       font-weight: 700;
-      cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
       margin-top: 14px;
+      transition: all 0.3s ease;
+    }
+    .form-submit-btn.disabled-btn {
+      background: #334155;
+      color: #94A3B8;
+      cursor: not-allowed;
+    }
+    .form-submit-btn.active-btn {
+      background: var(--green);
+      color: #fff;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(22, 163, 74, 0.4);
     }
 
-    /* Service Listing Cards */
+    /* Cards */
     .item-card {
       background: #1E293B;
       border-radius: 14px;
@@ -439,6 +523,30 @@
     }
     .btn-call { background: #0284C7; color: #fff; }
     .btn-wa { background: #16A34A; color: #fff; }
+
+    /* Terms Rules Card Inside Dedicated Terms Page */
+    .terms-rule-card {
+      background: #1E293B;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 14px;
+      margin-bottom: 12px;
+    }
+    .terms-rule-card h4 {
+      font-size: 13.5px;
+      color: var(--yellow);
+      margin-bottom: 6px;
+    }
+    .terms-rule-card p {
+      font-size: 12.5px;
+      color: #E2E8F0;
+      line-height: 1.5;
+      margin-bottom: 4px;
+    }
+    .terms-rule-card p.en-sub {
+      font-size: 11.5px;
+      color: var(--text-muted);
+    }
 
     /* Fixed Bottom Bar */
     .bottom-bar {
@@ -608,7 +716,7 @@
       </div>
     </div>
 
-    <!-- 5. Dual Registration Blocks (Opens Dedicated Full Page) -->
+    <!-- 5. Dual Registration Blocks -->
     <div class="dual-register-row">
       <div class="reg-block customer" onclick="openDedicatedPage('pageCustomer')">
         <i class="fa-solid fa-user-plus"></i>
@@ -643,7 +751,7 @@
     <div class="fullpage-content" id="dedicatedList"></div>
   </div>
 
-  <!-- DEDICATED FULL SCREEN PAGE 1: வாடிக்கையாளர் தேவைப் பதிவு -->
+  <!-- DEDICATED FULL SCREEN PAGE: வாடிக்கையாளர் தேவைப் பதிவு -->
   <div class="fullpage-view" id="pageCustomer">
     <div class="fullpage-header">
       <div class="fullpage-header-left">
@@ -652,7 +760,7 @@
         </button>
         <h3>வாடிக்கையாளர் தேவைப் பதிவு</h3>
       </div>
-      <span style="font-size: 12px; color: var(--yellow);">Customer Form</span>
+      <span style="font-size: 12px; color: var(--yellow);">Customer</span>
     </div>
     <div class="fullpage-content">
       <div class="form-box">
@@ -663,17 +771,17 @@
           </div>
           <div class="form-group">
             <label>மொபைல் எண் / Mobile *</label>
-            <input type="tel" id="cPhone" required placeholder="தொடர்பு எண்">
+            <input type="tel" id="cPhone" required placeholder="94431234560">
           </div>
           <div class="form-group">
             <label>ஊர் / Town *</label>
             <input type="text" id="cArea" required placeholder="எ.கா: அழகப்பபுரம்">
           </div>
           <div class="form-group">
-            <label>தேவை / Required Service *</label>
+            <label>தேவைப்படும் சேவை / Required Service *</label>
             <input type="text" id="cReq" required placeholder="எ.கா: ஆட்டோ சவாரி, பிளம்பிங்">
           </div>
-          <button type="submit" class="form-submit-btn">
+          <button type="submit" class="form-submit-btn active-btn">
             <i class="fa-solid fa-paper-plane"></i> சமர்ப்பிக்க / Submit Need
           </button>
         </form>
@@ -681,7 +789,7 @@
     </div>
   </div>
 
-  <!-- DEDICATED FULL SCREEN PAGE 2: சேவை வழங்குநர் இலவசப் பதிவு -->
+  <!-- DEDICATED FULL SCREEN PAGE: சேவை வழங்குநர் இலவசப் பதிவு (3 SECTIONS) -->
   <div class="fullpage-view" id="pageVendor">
     <div class="fullpage-header">
       <div class="fullpage-header-left">
@@ -693,44 +801,219 @@
       <span style="font-size: 12px; color: var(--yellow);">Vendor Form</span>
     </div>
     <div class="fullpage-content">
-      <div class="form-box">
-        <form onsubmit="handleVendorSubmit(event)">
+      
+      <!-- 3 Category Navigation Tabs -->
+      <div class="vendor-nav-tabs">
+        <button class="vendor-tab-btn active" id="tabBtnVehicle" onclick="switchVendorSection('vehicle')">
+          <i class="fa-solid fa-car"></i> வாகனம்
+        </button>
+        <button class="vendor-tab-btn" id="tabBtnShop" onclick="switchVendorSection('shop')">
+          <i class="fa-solid fa-shop"></i> வியாபாரம்
+        </button>
+        <button class="vendor-tab-btn" id="tabBtnJob" onclick="switchVendorSection('job')">
+          <i class="fa-solid fa-briefcase"></i> வேலைவாய்ப்பு
+        </button>
+      </div>
+
+      <!-- FORM SECTION 1: வாகனப் பிரிவு -->
+      <div class="form-box" id="secVehicleForm">
+        <form onsubmit="handleVendorSubmit(event, 'வாகனம்')">
           <div class="form-group">
-            <label>பெயர் / Business Name *</label>
-            <input type="text" id="vTitle" required placeholder="தொழில் அல்லது ஓட்டுநர் பெயர்">
+            <label>ஓட்டுநர் / உரிமையாளர் பெயர் *</label>
+            <input type="text" id="vName" required placeholder="எ.கா: மாரியப்பன்">
           </div>
           <div class="form-group">
-            <label>தொழில் வகை / Category *</label>
-            <select id="vType" required>
-              <option value="ஆட்டோ / Auto">ஆட்டோ / Auto</option>
-              <option value="டாக்ஸி / Taxi">டாக்ஸி / Taxi</option>
-              <option value="லோடு வாகனம் / Load Vehicle">லோடு வாகனம் / Load Vehicle</option>
-              <option value="வீட்டு சேவைகள் / Home Services">வீட்டு சேவைகள் / Home Services</option>
-              <option value="கடை / Shop">கடை & வர்த்தகம் / Shop</option>
-              <option value="வேலை / Jobs">வேலை வாய்ப்புகள் / Jobs</option>
+            <label>வாகன வகை *</label>
+            <select id="vCategory" required>
+              <option value="ஆட்டோ / Auto">🛺 ஆட்டோ / Auto</option>
+              <option value="டாக்ஸி / Taxi">🚕 டாக்ஸி / Taxi</option>
+              <option value="லோடு வாகனம் / Load">🚚 லோடு வாகனம் (Tata Ace/Pickup)</option>
+              <option value="பைக் வாடகை / Bike Rental">🛵 இருசக்கர வாகன வாடகை</option>
             </select>
           </div>
           <div class="form-group">
-            <label>ஊர் / Town *</label>
-            <input type="text" id="vTown" required placeholder="எ.கா: மயிலாடி">
+            <label>இயங்கும் ஸ்டாண்டு / ஊர் *</label>
+            <input type="text" id="vStand" required placeholder="எ.கா: அழகப்பபுரம் மெயின் ஸ்டாண்டு">
           </div>
           <div class="form-group">
-            <label>மொபைல் எண் / Mobile *</label>
-            <input type="tel" id="vContact" required placeholder="தொடர்பு எண்">
+            <label>நேரடி அழைப்பு எண் (Calling Number) *</label>
+            <input type="tel" id="vCallPhone" required placeholder="94431234560">
           </div>
           <div class="form-group">
-            <label>வாகன பதிவு எண் (வாகனங்களுக்கு மட்டும் - அட்மின் பார்வைக்கு)</label>
-            <input type="text" id="vRcNum" placeholder="TN 74 ... (Public-க்கு தெரியாது)">
+            <label>வாட்ஸ்அப் எண் (WhatsApp Number)</label>
+            <input type="tel" id="vWaPhone" placeholder="98421234560">
           </div>
-          <button type="submit" class="form-submit-btn">
-            <i class="fa-solid fa-check"></i> இணைக்க / Register Free
+          <div class="form-group">
+            <label>வாகன பதிவு எண் (TN 74 ...) *</label>
+            <input type="text" id="vRcNum" required placeholder="TN 74 AX 1234 (அட்மின் சரிபார்ப்புக்கு மட்டும்)">
+          </div>
+          <div class="form-group">
+            <label>சேவை விபரம் / கூடுதல் குறிப்பு</label>
+            <textarea id="vDesc" rows="2" placeholder="எ.கா: 24 மணி நேர சவாரி, அவசர மருத்துவமனை டிரிப்"></textarea>
+          </div>
+
+          <!-- Dynamic Terms & Smart Submit -->
+          <div class="terms-check-container">
+            <div class="terms-row">
+              <input type="checkbox" id="chkTermsVehicle" onchange="toggleSubmitState('Vehicle')">
+              <label for="chkTermsVehicle" class="terms-text-label">
+                <strong>Agree All / வாகன சேவை விதிமுறைகளை ஏற்கிறேன்</strong><br>
+                100% சரியான விபரங்களை மட்டுமே வழங்கியுள்ளேன் என உறுதிசெய்கிறேன்.
+              </label>
+            </div>
+            <a href="javascript:void(0)" onclick="openDedicatedTerms('vehicle')" class="view-terms-link">
+              📜 வாகன விதிமுறைகளைப் படிக்க / View Vehicle Terms ↗
+            </a>
+          </div>
+
+          <button type="submit" id="btnSubmitVehicle" class="form-submit-btn disabled-btn" disabled>
+            🔒 விதிமுறைகளை ஏற்று டிக் செய்யவும்
           </button>
         </form>
       </div>
+
+      <!-- FORM SECTION 2: மளிகை & வியாபாரப் பிரிவு -->
+      <div class="form-box" id="secShopForm" style="display: none;">
+        <form onsubmit="handleVendorSubmit(event, 'வியாபாரம்')">
+          <div class="form-group">
+            <label>கடை அல்லது நிறுவனத்தின் பெயர் *</label>
+            <input type="text" id="sName" required placeholder="எ.கா: குமரி இயற்கை அங்காடி">
+          </div>
+          <div class="form-group">
+            <label>வணிக வகை *</label>
+            <select id="sCategory" required>
+              <option value="மளிகை & டிபார்ட்மென்ட்">மளிகை & பலசரக்கு கடை</option>
+              <option value="இயற்கை அங்காடி & தேன்">இயற்கை அங்காடி & மூலிகைப் பொருட்கள்</option>
+              <option value="வீட்டு சேவைகள் (பிளம்பர்/எலக்ட்ரீசியன்)">வீட்டு சேவைகள் (பிளம்பர் / வயரிங்)</option>
+              <option value="உணவகம் & பேக்கரி">உணவகம் & பேக்கரி</option>
+              <option value="துணிக்கடை & அழகு நிலையம்">துணிக்கடை & அழகு நிலையம்</option>
+              <option value="பிற வணிகங்கள்">பிற வணிக நிறுவனங்கள்</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>கடை அமைந்துள்ள இடம் / ஊர் *</label>
+            <input type="text" id="sTown" required placeholder="எ.கா: திங்கள்நகர் மெயின் ரோடு">
+          </div>
+          <div class="form-group">
+            <label>கடை தொடர்பு எண் (Calling No) *</label>
+            <input type="tel" id="sCallPhone" required placeholder="94431234560">
+          </div>
+          <div class="form-group">
+            <label>வாட்ஸ்அப் ஆர்டர் எண்</label>
+            <input type="tel" id="sWaPhone" placeholder="98421234560">
+          </div>
+          <div class="form-group">
+            <label>செயல்படும் நேரம்</label>
+            <input type="text" id="sTiming" placeholder="காலை 8:00 AM - இரவு 9:30 PM">
+          </div>
+          <div class="form-group">
+            <label>சிறப்பு விபரங்கள் / சலுகைகள்</label>
+            <textarea id="sDetails" rows="2" placeholder="எ.கா: ஹோம் டெலிவரி வசதி உண்டு, தூய கொம்புத்தேன் கிடைக்கும்"></textarea>
+          </div>
+
+          <!-- Dynamic Terms & Smart Submit -->
+          <div class="terms-check-container">
+            <div class="terms-row">
+              <input type="checkbox" id="chkTermsShop" onchange="toggleSubmitState('Shop')">
+              <label for="chkTermsShop" class="terms-text-label">
+                <strong>Agree All / வியாபார விதிமுறைகளை ஏற்கிறேன்</strong><br>
+                நியாயமான தரம் மற்றும் விலைக் கொள்கைக்கு கட்டுப்படுகிறேன்.
+              </label>
+            </div>
+            <a href="javascript:void(0)" onclick="openDedicatedTerms('shop')" class="view-terms-link">
+              📜 வர்த்தக விதிமுறைகளைப் படிக்க / View Shop Terms ↗
+            </a>
+          </div>
+
+          <button type="submit" id="btnSubmitShop" class="form-submit-btn disabled-btn" disabled>
+            🔒 விதிமுறைகளை ஏற்று டிக் செய்யவும்
+          </button>
+        </form>
+      </div>
+
+      <!-- FORM SECTION 3: வேலைவாய்ப்புப் பிரிவு -->
+      <div class="form-box" id="secJobForm" style="display: none;">
+        <form onsubmit="handleVendorSubmit(event, 'வேலைவாய்ப்பு')">
+          <div class="form-group">
+            <label>பதிவு நோக்கம் *</label>
+            <select id="jType" required>
+              <option value="வேலைக்கு ஆட்கள் தேவை">வேலைக்கு ஆட்கள் தேவை (Employer / Hiring)</option>
+              <option value="வேலை தேடுகிறேன்">வேலை தேடுகிறேன் (Job Seeker)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>வேலை / பணித் தலைப்பு *</label>
+            <input type="text" id="jTitle" required placeholder="எ.கா: கடை விற்பனை உதவியாளர் தேவை">
+          </div>
+          <div class="form-group">
+            <label>நிறுவனம் / முதலாளி பெயர் *</label>
+            <input type="text" id="jEmployer" required placeholder="எ.கா: குமரி டெக்ஸ்டைல்ஸ்">
+          </div>
+          <div class="form-group">
+            <label>வேலை அமையும் இடம் / ஊர் *</label>
+            <input type="text" id="jTown" required placeholder="எ.கா: நாகர்கோவில் வடசேரி">
+          </div>
+          <div class="form-group">
+            <label>தொடர்பு எண் *</label>
+            <input type="tel" id="jPhone" required placeholder="94431234562">
+          </div>
+          <div class="form-group">
+            <label>வேலை முறை *</label>
+            <select id="jShift" required>
+              <option value="முழு நேரம் / Full Time">முழு நேரம் (Full Time)</option>
+              <option value="பகுதி நேரம் / Part Time">பகுதி நேரம் (Part Time)</option>
+              <option value="தினக்கூலி / Daily Wage">தினக்கூலி / ஒப்பந்த முறை</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>சம்பளம் / தினக்கூலி <span class="opt-tag">(விரும்பினால் மட்டும் / Optional)</span></label>
+            <input type="text" id="jSalary" placeholder="எ.கா: ₹10,000 / மாதம் அல்லது நேரில் பேசலாம்">
+          </div>
+          <div class="form-group">
+            <label>கல்வித் தகுதி & அனுபவம் <span class="opt-tag">(விரும்பினால் மட்டும் / Optional)</span></label>
+            <input type="text" id="jEdu" placeholder="எ.கா: 10th / அனுபவம் உள்ளவர்கள் முன்னுரிமை">
+          </div>
+
+          <!-- Dynamic Terms & Smart Submit -->
+          <div class="terms-check-container">
+            <div class="terms-row">
+              <input type="checkbox" id="chkTermsJob" onchange="toggleSubmitState('Job')">
+              <label for="chkTermsJob" class="terms-text-label">
+                <strong>Agree All / வேலைவாய்ப்பு விதிமுறைகளை ஏற்கிறேன்</strong><br>
+                முன்பணம் கோரப்பட மாட்டாது; சரியான விபரங்களை மட்டுமே பதிவிடுகிறேன்.
+              </label>
+            </div>
+            <a href="javascript:void(0)" onclick="openDedicatedTerms('job')" class="view-terms-link">
+              📜 வேலைவாய்ப்பு விதிமுறைகளைப் படிக்க / View Job Terms ↗
+            </a>
+          </div>
+
+          <button type="submit" id="btnSubmitJob" class="form-submit-btn disabled-btn" disabled>
+            🔒 விதிமுறைகளை ஏற்று டிக் செய்யவும்
+          </button>
+        </form>
+      </div>
+
     </div>
   </div>
 
-  <!-- DEDICATED FULL SCREEN PAGE 3: விளம்பர முன்பதிவு -->
+  <!-- DEDICATED FULL SCREEN PAGE: விதிமுறைகள் & நிபந்தனைகள் (DUAL LANGUAGE) -->
+  <div class="fullpage-view" id="pageTermsView" style="z-index: 1100;">
+    <div class="fullpage-header">
+      <div class="fullpage-header-left">
+        <button class="back-btn" onclick="closeTermsPage()">
+          <i class="fa-solid fa-arrow-left"></i>
+        </button>
+        <h3 id="termsHeaderTitle">விதிமுறைகள் & நிபந்தனைகள்</h3>
+      </div>
+      <span style="font-size: 12px; color: var(--yellow);">Terms</span>
+    </div>
+    <div class="fullpage-content" id="termsContentBody">
+      <!-- Dynamic terms content injected via JS based on selected category -->
+    </div>
+  </div>
+
+  <!-- DEDICATED FULL SCREEN PAGE: விளம்பர முன்பதிவு -->
   <div class="fullpage-view" id="pageSponsor">
     <div class="fullpage-header">
       <div class="fullpage-header-left">
@@ -754,7 +1037,7 @@
           </div>
           <div class="form-group">
             <label>WhatsApp மொபைல் எண் *</label>
-            <input type="tel" id="spPhone" required placeholder="9876543210">
+            <input type="tel" id="spPhone" required placeholder="94431234560">
           </div>
           <div class="form-group">
             <label>கால அளவு / Duration *</label>
@@ -770,15 +1053,17 @@
             <textarea id="spDetails" rows="2" placeholder="ஆஃபர் அல்லது சேவைகள்"></textarea>
           </div>
 
-          <div style="margin: 14px 0 10px 0; display: flex; align-items: flex-start; gap: 8px;">
-            <input type="checkbox" id="chkTerms" required style="width: 18px; height: 18px; margin-top: 2px; cursor: pointer;">
-            <label for="chkTerms" style="font-size: 12px; color: #CBD5E1; line-height: 1.4; cursor: pointer;">
-              <strong>Agree All / அனைத்தையும் ஏற்கிறேன்</strong><br>
-              <span style="color: var(--yellow); font-size: 11px;">விதிமுறைகளுக்கு உட்பட்டது</span>
-            </label>
+          <div class="terms-check-container">
+            <div class="terms-row">
+              <input type="checkbox" id="chkTermsSponsor" required>
+              <label for="chkTermsSponsor" class="terms-text-label">
+                <strong>Agree All / அனைத்தையும் ஏற்கிறேன்</strong><br>
+                சட்டவிரோத அல்லது தவறான விளம்பரங்கள் நிராகரிக்கப்படும் என்பதை அறிவேன்.
+              </label>
+            </div>
           </div>
 
-          <button type="submit" class="form-submit-btn">
+          <button type="submit" class="form-submit-btn active-btn">
             <i class="fa-brands fa-whatsapp"></i> முன்பதிவு செய்க / Submit Ad
           </button>
         </form>
@@ -891,7 +1176,6 @@
       openDedicatedCategory("அனைத்து சேவைகள் / All Services");
     }
 
-    // Opens Dedicated Screen for Categories
     function openDedicatedCategory(categoryName) {
       closeAllPages();
       const allowedTowns = townClusters[userLocation] || [userLocation];
@@ -943,7 +1227,6 @@
       view.classList.add("active");
     }
 
-    // Opens Dedicated Full Page for Forms
     function openDedicatedPage(pageId) {
       closeAllPages();
       const target = document.getElementById(pageId);
@@ -952,9 +1235,143 @@
       }
     }
 
-    // Closes any active full screen view
     function closeAllPages() {
       document.querySelectorAll(".fullpage-view").forEach(p => p.classList.remove("active"));
+    }
+
+    // Tab Switching for 3 Vendor Categories
+    function switchVendorSection(type) {
+      document.getElementById("secVehicleForm").style.display = "none";
+      document.getElementById("secShopForm").style.display = "none";
+      document.getElementById("secJobForm").style.display = "none";
+
+      document.getElementById("tabBtnVehicle").classList.remove("active");
+      document.getElementById("tabBtnShop").classList.remove("active");
+      document.getElementById("tabBtnJob").classList.remove("active");
+
+      if (type === 'vehicle') {
+        document.getElementById("secVehicleForm").style.display = "block";
+        document.getElementById("tabBtnVehicle").classList.add("active");
+      } else if (type === 'shop') {
+        document.getElementById("secShopForm").style.display = "block";
+        document.getElementById("tabBtnShop").classList.add("active");
+      } else if (type === 'job') {
+        document.getElementById("secJobForm").style.display = "block";
+        document.getElementById("tabBtnJob").classList.add("active");
+      }
+    }
+
+    // Dynamic Submit Button Activation based on Agree Checkbox
+    function toggleSubmitState(type) {
+      const chk = document.getElementById(`chkTerms${type}`);
+      const btn = document.getElementById(`btnSubmit${type}`);
+      if (chk.checked) {
+        btn.disabled = false;
+        btn.classList.remove("disabled-btn");
+        btn.classList.add("active-btn");
+        btn.innerHTML = `<i class="fa-solid fa-check"></i> பதிவு செய்க / Submit Free`;
+      } else {
+        btn.disabled = true;
+        btn.classList.remove("active-btn");
+        btn.classList.add("disabled-btn");
+        btn.innerHTML = `🔒 விதிமுறைகளை ஏற்று டிக் செய்யவும்`;
+      }
+    }
+
+    // Open Dedicated Terms Screen with Exact Dual-Language Rules
+    function openDedicatedTerms(category) {
+      const termsPage = document.getElementById("pageTermsView");
+      const title = document.getElementById("termsHeaderTitle");
+      const body = document.getElementById("termsContentBody");
+
+      if (category === 'vehicle') {
+        title.innerText = "வாகன சேவை விதிமுறைகள் / Vehicle Terms";
+        body.innerHTML = `
+          <div class="terms-rule-card">
+            <h4>1. சரியான ஆவணங்கள் / Valid Documents</h4>
+            <p>ஓட்டுநர் உரிமம் (DL), RC புத்தகம் மற்றும் இன்சூரன்ஸ் கட்டாயம் நடைமுறையில் இருக்க வேண்டும்.</p>
+            <p class="en-sub">Driving License (DL), RC Book, and active insurance are strictly mandatory.</p>
+          </div>
+          <div class="terms-rule-card">
+            <h4>2. நியாயமான கட்டணம் / Fair Fare</h4>
+            <p>பயணிகளிடம் அரசு நிர்ணயித்த அல்லது நியாயமான வாடகைக் கட்டணம் மட்டுமே வசூலிக்கப்பட வேண்டும்.</p>
+            <p class="en-sub">Drivers must strictly follow fair and standard fares without overcharging.</p>
+          </div>
+          <div class="terms-rule-card">
+            <h4>3. பாதுகாப்பு & ஒழுக்கம் / Safety & Conduct</h4>
+            <p>மது அருந்திவிட்டு வாகனம் ஓட்டுதல் அல்லது பயணிகளிடம் தரக்குறைவாக நடப்பது கண்டறியப்பட்டால் பதிவு உடனடியாக ரத்து செய்யப்படும்.</p>
+            <p class="en-sub">Zero tolerance for drunk driving or passenger misconduct.</p>
+          </div>
+          <div class="terms-rule-card">
+            <h4>4. பொறுப்புத் துறப்பு / Disclaimer</h4>
+            <p>பயணத்தின் போது ஏற்படும் விபத்து அல்லது தனிப்பட்ட தகராறுகளுக்கு தளம் பொறுப்பேற்காது; இது தொடர்புக்கான வழி மட்டுமே.</p>
+            <p class="en-sub">The platform is solely a directory and bears no liability for on-road incidents.</p>
+          </div>
+          <button type="button" class="form-submit-btn active-btn" onclick="closeTermsPage()">
+            ← படித்துவிட்டேன் / படிவத்திற்குத் திரும்புக
+          </button>
+        `;
+      } else if (category === 'shop') {
+        title.innerText = "வர்த்தக விதிமுறைகள் / Business Terms";
+        body.innerHTML = `
+          <div class="terms-rule-card">
+            <h4>1. தரம் & எடை / Quality & Measurement</h4>
+            <p>விற்பனை செய்யப்படும் பொருட்கள் கலப்படமின்றி, சரியான எடை மற்றும் FSSAI வழிகாட்டுதல் முறைப்படி இருக்க வேண்டும்.</p>
+            <p class="en-sub">Products must be genuine, hygienic, accurately weighed, and meet legal standards.</p>
+          </div>
+          <div class="terms-rule-card">
+            <h4>2. விலை நாணயம் / Transparent Pricing</h4>
+            <p>பொருட்களுக்கு MRP விலைக்கு மேல் கூடுதல் கட்டணம் வசூலிப்பது தடை செய்யப்பட்டுள்ளது.</p>
+            <p class="en-sub">Overcharging above MRP is strictly prohibited.</p>
+          </div>
+          <div class="terms-rule-card">
+            <h4>3. தடைசெய்யப்பட்ட பொருட்கள் / Prohibited Items</h4>
+            <p>காலாவதியான பொருட்கள், போலி பிராண்டுகள், புகையிலை அல்லது தடைசெய்யப்பட்ட பொருட்கள் விற்கக் கூடாது.</p>
+            <p class="en-sub">Expired goods, counterfeit products, and illegal items are not permitted.</p>
+          </div>
+          <div class="terms-rule-card">
+            <h4>4. பணப் பரிவர்த்தனை / Transaction Disputes</h4>
+            <p>வாடிக்கையாளர் மற்றும் கடைக்கு இடையிலான கடன் அல்லது பணப் பரிமாற்ற விவகாரங்களில் தளம் தலையிடாது.</p>
+            <p class="en-sub">The platform is not responsible for financial disputes between buyers and sellers.</p>
+          </div>
+          <button type="button" class="form-submit-btn active-btn" onclick="closeTermsPage()">
+            ← படித்துவிட்டேன் / படிவத்திற்குத் திரும்புக
+          </button>
+        `;
+      } else if (category === 'job') {
+        title.innerText = "வேலைவாய்ப்பு விதிமுறைகள் / Job Terms";
+        body.innerHTML = `
+          <div class="terms-rule-card">
+            <h4>1. உண்மைத் தன்மை / Genuine Job Openings</h4>
+            <p>உண்மையான வேலைவாய்ப்புகளை மட்டுமே பதிவிட வேண்டும்; தவறான அல்லது ஏமாற்று விளம்பரங்கள் கூடாது.</p>
+            <p class="en-sub">Only authentic, verified employment postings are permitted.</p>
+          </div>
+          <div class="terms-rule-card">
+            <h4>2. முன்பணம் தடை / No Upfront Fees</h4>
+            <p>வேலை தருவதற்காக வேலை தேடுபவர்களிடம் எந்தவித முன்பணமோ, பத்திரக் கட்டணமோ அல்லது கமிஷனோ வாங்கக் கூடாது.</p>
+            <p class="en-sub">Strictly no collecting registration fees, deposits, or commissions from applicants.</p>
+          </div>
+          <div class="terms-rule-card">
+            <h4>3. நியாயமான ஊதியம் / Fair Wages</h4>
+            <p>ஒப்புக்கொண்ட வேலை நேரம் மற்றும் ஊதியம் முறையாகப் பின்பற்றப்பட வேண்டும்; உழைப்புச் சுரண்டல் கூடாது.</p>
+            <p class="en-sub">Agreed salary and working conditions must be respected without exploitation.</p>
+          </div>
+          <div class="terms-rule-card">
+            <h4>4. தளம் வெறும் பாலம் / Open Facilitator</h4>
+            <p>தளம் வேலை கொடுப்பவரையும் தேடுபவரையும் இணைக்கும் பாலமே; பணி ஒப்பந்தங்களுக்கோ இருவரின் நன்னடத்தைக்கோ பொறுப்பல்ல.</p>
+            <p class="en-sub">The platform acts as a bridge and carries no liability for job contracts or disputes.</p>
+          </div>
+          <button type="button" class="form-submit-btn active-btn" onclick="closeTermsPage()">
+            ← படித்துவிட்டேன் / படிவத்திற்குத் திரும்புக
+          </button>
+        `;
+      }
+
+      termsPage.classList.add("active");
+    }
+
+    function closeTermsPage() {
+      document.getElementById("pageTermsView").classList.remove("active");
     }
 
     function sendSponsorWhatsApp(e) {
@@ -977,9 +1394,9 @@
       closeAllPages();
     }
 
-    function handleVendorSubmit(e) {
+    function handleVendorSubmit(e, catName) {
       e.preventDefault();
-      alert("உங்கள் தொழில் விவரங்கள் பெறப்பட்டது / Vendor Registered! அட்மின் சரிபார்ப்புக்குப் பின் சேர்க்கப்படும்.");
+      alert(`உங்கள் ${catName} பிரிவு விபரங்கள் பெறப்பட்டது! அட்மின் சரிபார்ப்புக்குப் பின் சேர்க்கப்படும்.`);
       closeAllPages();
     }
 
