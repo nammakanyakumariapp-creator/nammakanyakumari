@@ -41,9 +41,24 @@
     }
 
     .container {
-      padding: 12px;
+      padding: 16px 12px 12px 12px;
       max-width: 480px;
       margin: 0 auto;
+    }
+
+    /* Top Blank Space Placeholder for Future Banner */
+    .top-banner-space {
+      width: 100%;
+      height: 110px;
+      border-radius: 16px;
+      margin-bottom: 16px;
+      border: 1.5px dashed #475569;
+      background: rgba(30, 41, 59, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 13px;
     }
 
     /* Sponsor Ad Strip */
@@ -506,7 +521,12 @@
 
   <div class="container">
 
-    <!-- 3. Sponsor Ad Strip -->
+    <!-- Top Blank Space for Future Banner Placement -->
+    <div class="top-banner-space">
+      <span>பேனர் வைக்க வேண்டிய இடம் / Banner Space</span>
+    </div>
+
+    <!-- Sponsor Ad Strip -->
     <div class="sponsor-ad-card" onclick="openDedicatedPage('pageSponsor')">
       <div>
         <h4>குமரி இயற்கை அங்காடி / Kumari Nature Mart</h4>
@@ -517,7 +537,7 @@
       </div>
     </div>
 
-    <!-- 4. 3x3 Category Grid -->
+    <!-- 3x3 Category Grid -->
     <div class="category-grid-container">
       <div class="cat-btn" onclick="openDedicatedCategory('ஆட்டோ / Auto')">
         <div class="circle-icon icon-auto">
@@ -592,7 +612,7 @@
       </div>
     </div>
 
-    <!-- 5. Dual Registration Blocks -->
+    <!-- Dual Registration Blocks -->
     <div class="dual-register-row">
       <div class="reg-block customer" onclick="openDedicatedPage('pageCustomer')">
         <i class="fa-solid fa-user-plus"></i>
