@@ -927,7 +927,7 @@
     </div>
   </div>
 
-  <!-- DEDICATED FULL SCREEN PAGE: சேவை வழங்குநர் பதிவு (3 SECTIONS) -->
+  <!-- DEDICATED FULL SCREEN PAGE: சேவை வழங்குநர் பதிவு (3 SECTIONS WITH TOWN & OPTIONAL PHOTO) -->
   <div class="fullpage-view" id="pageVendor">
     <div class="fullpage-header">
       <div class="fullpage-header-left">
@@ -974,6 +974,10 @@
             <input type="text" id="vStand" required placeholder="எ.கா: அழகப்பபுரம் மெயின் ஸ்டாண்டு">
           </div>
           <div class="form-group">
+            <label>ஊர் / பகுதி பெயர் (Town / Area) *</label>
+            <input type="text" id="vTownArea" required placeholder="எ.கா: அழகப்பபுரம் / மயிலாடி">
+          </div>
+          <div class="form-group">
             <label>நேரடி அழைப்பு எண் (Calling Number) *</label>
             <input type="tel" id="vCallPhone" required placeholder="94431234560">
           </div>
@@ -984,6 +988,10 @@
           <div class="form-group">
             <label>வாகன பதிவு எண் (TN 74 ...) *</label>
             <input type="text" id="vRcNum" required placeholder="TN 74 AX 1234 (அட்மின் சரிபார்ப்புக்கு மட்டும்)">
+          </div>
+          <div class="form-group">
+            <label>வாகன புகைப்படம் / Photo <span class="opt-tag">(விருப்பப்பட்டால் மட்டும் / Optional - Max 2MB)</span></label>
+            <input type="file" id="vPhoto" accept="image/*" style="padding: 7px; font-size: 12px;">
           </div>
           <div class="form-group">
             <label>சேவை விபரம் / கூடுதல் குறிப்பு</label>
@@ -1033,6 +1041,10 @@
             <input type="text" id="sTown" required placeholder="எ.கா: திங்கள்நகர் மெயின் ரோடு">
           </div>
           <div class="form-group">
+            <label>ஊர் / பகுதி பெயர் (Town / Area) *</label>
+            <input type="text" id="sTownArea" required placeholder="எ.கா: திங்கள்நகர்">
+          </div>
+          <div class="form-group">
             <label>கடை தொடர்பு எண் (Calling No) *</label>
             <input type="tel" id="sCallPhone" required placeholder="94431234560">
           </div>
@@ -1051,6 +1063,11 @@
               <option value="உண்டு / Yes">🚚 உண்டு / Yes (ஹோம் டெலிவரி செய்யப்படும்)</option>
               <option value="இல்லை / No">🏪 இல்லை / No (நேரடி விற்பனை மட்டுமே)</option>
             </select>
+          </div>
+
+          <div class="form-group">
+            <label>கடை / பொருள் புகைப்படம் <span class="opt-tag">(விருப்பப்பட்டால் மட்டும் / Optional - Max 2MB)</span></label>
+            <input type="file" id="sPhoto" accept="image/*" style="padding: 7px; font-size: 12px;">
           </div>
 
           <div class="form-group">
@@ -1101,6 +1118,10 @@
             <input type="text" id="jTown" required placeholder="எ.கா: நாகர்கோவில் வடசேரி">
           </div>
           <div class="form-group">
+            <label>ஊர் / பகுதி பெயர் (Town / Area) *</label>
+            <input type="text" id="jTownArea" required placeholder="எ.கா: நாகர்கோவில்">
+          </div>
+          <div class="form-group">
             <label>தொடர்பு எண் *</label>
             <input type="tel" id="jPhone" required placeholder="94431234562">
           </div>
@@ -1111,6 +1132,10 @@
               <option value="பகுதி நேரம் / Part Time">பகுதி நேரம் (Part Time)</option>
               <option value="தினக்கூலி / Daily Wage">தினக்கூலி / ஒப்பந்த முறை</option>
             </select>
+          </div>
+          <div class="form-group">
+            <label>நிறுவன லோகோ / புகைப்படம் <span class="opt-tag">(விருப்பப்பட்டால் மட்டும் / Optional - Max 2MB)</span></label>
+            <input type="file" id="jPhoto" accept="image/*" style="padding: 7px; font-size: 12px;">
           </div>
           <div class="form-group">
             <label>சம்பளம் / தினக்கூலி <span class="opt-tag">(விரும்பினால் மட்டும் / Optional)</span></label>
