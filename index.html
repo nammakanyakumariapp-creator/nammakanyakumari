@@ -46,24 +46,7 @@
       margin: 0 auto;
     }
 
-    /* 1. Main TN 74 Top Banner */
-    .top-promo-banner {
-      width: 100%;
-      border-radius: 16px;
-      overflow: hidden;
-      margin-bottom: 14px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-      border: 1px solid #334155;
-      background: #000;
-      cursor: pointer;
-    }
-    .top-promo-banner img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    /* 3. Sponsor Ad Strip */
+    /* Sponsor Ad Strip */
     .sponsor-ad-card {
       background: linear-gradient(135deg, #1E293B, #2A384C);
       border: 1.5px dashed var(--yellow);
@@ -93,7 +76,7 @@
       border-radius: 6px;
     }
 
-    /* 4. 3x3 Category Grid */
+    /* 3x3 Category Grid */
     .category-grid-container {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -149,7 +132,7 @@
       color: var(--text-muted);
     }
 
-    /* 5. Dual Registration Blocks */
+    /* Dual Registration Blocks */
     .dual-register-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -522,11 +505,6 @@
 <body>
 
   <div class="container">
-
-    <!-- 1. Main TN 74 Top Banner -->
-    <div class="top-promo-banner" onclick="openDedicatedCategory('போக்குவரத்து / Transport')">
-      <img src="https://lh3.googleusercontent.com/d/1gO8usoDEpdXpWyxTgwf0M9G_x7LimFSR" alt="TN 74 நம்ம கன்னியாகுமரி">
-    </div>
 
     <!-- 3. Sponsor Ad Strip -->
     <div class="sponsor-ad-card" onclick="openDedicatedPage('pageSponsor')">
