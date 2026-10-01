@@ -630,20 +630,6 @@
   </div>
 
   <!-- DEDICATED FULL SCREEN CATEGORY VIEW (SEARCH RESULTS) -->
-  <div class="fullpage-view" id="fullpageView">
-    <div class="fullpage-header">
-      <div class="fullpage-header-left">
-        <button class="back-btn" onclick="closeAllPages()">
-          <i class="fa-solid fa-arrow-left"></i>
-        </button>
-        <h3 id="dedicatedTitle">சேவை பட்டியல் / Results</h3>
-      </div>
-      <span id="dedicatedTown" style="font-size: 13px; color: var(--yellow);">அழகப்பபுரம்</span>
-    </div>
-    <div class="fullpage-content" id="dedicatedList"></div>
-  </div>
-
-  <!-- NEW ADVANCED SEARCH PAGE (Triggered from bottom Search tab) -->
   <div class="fullpage-view" id="pageAdvancedSearch">
     <div class="fullpage-header">
       <div class="fullpage-header-left">
@@ -673,7 +659,7 @@
         <div class="form-group">
           <label>என்ன சேவை வேண்டும்? / Required Service *</label>
           <div style="position: relative; display: flex; align-items: center;">
-            <input type="text" id="advancedKeyword" placeholder="எ.கா: ஆட்டோ, சூப்பர் மார்க்கெட்..." style="padding-right: 42px;">
+            <input type="text" id="advancedKeyword" placeholder="எ.கா: ஆட்டோ, சூப்பர் மார்க்கெட்...">
           </div>
         </div>
 
@@ -1154,14 +1140,10 @@
       const town = document.getElementById("advancedTown").value.trim();
       
       closeAllPages();
-      const view = document.getElementById("fullpageView");
+      const view = document.getElementById("pageAdvancedSearch");
       const list = document.getElementById("dedicatedList");
       const title = document.getElementById("dedicatedTitle");
       const townLabel = document.getElementById("dedicatedTown");
-
-      title.innerText = keyword ? keyword : selectedSearchCategory;
-      townLabel.innerText = town ? "📍 " + town : "📍 கன்னியாகுமரி";
-      list.innerHTML = "";
 
       const filtered = serviceList.filter(item => {
         const matchesTown = !town || item.area.toLowerCase().includes(town.toLowerCase());
@@ -1172,85 +1154,12 @@
         return matchesTown && matchesKeyword && item.status !== 'expired';
       });
 
-      if (filtered.length === 0) {
-        list.innerHTML = `
-          <div style="background:#1E293B; border:1px solid #334155; padding:24px; border-radius:12px; text-align:center; color:#94A3B8; margin-top:20px;">
-            <i class="fa-solid fa-triangle-exclamation" style="font-size:32px; color:var(--yellow); margin-bottom:10px;"></i>
-            <p>இந்தத் தேடலுக்கான சேவை தற்போது கிடைக்கவில்லை.</p>
-          </div>
-        `;
-      } else {
-        filtered.forEach(item => {
-          let badgeHtml = item.status === 'active' ? 
-            `<span class="status-badge active-green"><i class="fa-solid fa-check"></i> சரிபார்க்கப்பட்டது</span>` : 
-            `<span class="status-badge pending-yellow"><i class="fa-solid fa-clock"></i> சரிபார்ப்பில்</span>`;
-
-          list.innerHTML += `
-            <div class="item-card">
-              <h4>${item.name} ${badgeHtml}</h4>
-              <div class="item-meta"><i class="fa-solid fa-location-dot"></i> ${item.area} • ${item.category}</div>
-              <div class="item-desc">${item.desc}</div>
-              <div class="item-actions">
-                <a href="tel:${item.phone}" class="btn-call"><i class="fa-solid fa-phone"></i> அழைப்பு / Call</a>
-                <a href="https://wa.me/91${item.wa}" class="btn-wa"><i class="fa-brands fa-whatsapp"></i> வாட்ஸ்அப்</a>
-              </div>
-            </div>
-          `;
-        });
-      }
-
       view.classList.add("active");
     }
 
     function openDedicatedCategory(categoryName) {
       closeAllPages();
-      const view = document.getElementById("fullpageView");
-      const list = document.getElementById("dedicatedList");
-      const title = document.getElementById("dedicatedTitle");
-      const townLabel = document.getElementById("dedicatedTown");
-
-      title.innerText = categoryName;
-      townLabel.innerText = "📍 கன்னியாகுமரி";
-      list.innerHTML = "";
-
-      const query = categoryName.toLowerCase();
-      const filtered = serviceList.filter(item => {
-        const matchesCategory = 
-          query.includes("அனைத்து") || query.includes("all") ||
-          (query.includes("போக்குவரத்து") || query.includes("transport")) && (item.category.includes("ஆட்டோ") || item.category.includes("டாக்ஸி")) ||
-          item.category.toLowerCase().includes(query) ||
-          item.name.toLowerCase().includes(query) ||
-          item.desc.toLowerCase().includes(query);
-        return matchesCategory && item.status !== 'expired';
-      });
-
-      if (filtered.length === 0) {
-        list.innerHTML = `
-          <div style="background:#1E293B; border:1px solid #334155; padding:24px; border-radius:12px; text-align:center; color:#94A3B8; margin-top:20px;">
-            <i class="fa-solid fa-triangle-exclamation" style="font-size:32px; color:var(--yellow); margin-bottom:10px;"></i>
-            <p>இந்தப் பிரிவில் சேவைகள் தற்போது இல்லை.</p>
-          </div>
-        `;
-      } else {
-        filtered.forEach(item => {
-          let badgeHtml = item.status === 'active' ? 
-            `<span class="status-badge active-green"><i class="fa-solid fa-check"></i> சரிபார்க்கப்பட்டது</span>` : 
-            `<span class="status-badge pending-yellow"><i class="fa-solid fa-clock"></i> சரிபார்ப்பில்</span>`;
-
-          list.innerHTML += `
-            <div class="item-card">
-              <h4>${item.name} ${badgeHtml}</h4>
-              <div class="item-meta"><i class="fa-solid fa-location-dot"></i> ${item.area} • ${item.category}</div>
-              <div class="item-desc">${item.desc}</div>
-              <div class="item-actions">
-                <a href="tel:${item.phone}" class="btn-call"><i class="fa-solid fa-phone"></i> அழைப்பு / Call</a>
-                <a href="https://wa.me/91${item.wa}" class="btn-wa"><i class="fa-brands fa-whatsapp"></i> வாட்ஸ்அப்</a>
-              </div>
-            </div>
-          `;
-        });
-      }
-
+      const view = document.getElementById("pageAdvancedSearch");
       view.classList.add("active");
     }
 
@@ -1331,122 +1240,12 @@
           <div class="terms-rule-card">
             <h4>1. வாடிக்கையாளர்களுக்கு 100% இலவசம் / 100% Free for Customers</h4>
             <p>நம்ம கன்னியாகுமரி தளத்தைப் பயன்படுத்தித் தங்களுக்குத் தேவையான சேவைகளைத் தேடுவதற்கும், தேவையைப் பதிவிடுவதற்கும் வாடிக்கையாளர்களிடம் இருந்து எவ்விதப் பயன்பாட்டுக் கட்டணமோ, பதிவுக் கட்டணமோ அல்லது கமிஷனோ பெறப்படாது.</p>
-            <p class="en-sub">Completely free of cost for all customers. Zero usage fees, zero registration fees, and zero commissions charged from consumers.</p>
-          </div>
-          <div class="terms-rule-card">
-            <h4>2. நேரடித் தொடர்பு முறை / Direct Provider Contact Only</h4>
-            <p>வாடிக்கையாளர்கள் தங்களுக்குத் தேவையான ஆட்டோ ஓட்டுநர்கள், கடை உரிமையாளர்கள் அல்லது தொழிலாளர்களை நேரடியாகத் தொடர்பு கொண்டு மட்டுமே கட்டணம் மற்றும் தேவையைப் பேசி முடிவு செய்ய வேண்டும்.</p>
-            <p class="en-sub">Customers connect directly with service providers. All terms, fares, and service requests must be mutually agreed between both parties.</p>
-          </div>
-          <div class="terms-rule-card">
-            <h4>3. பணப் பரிவர்த்தனைப் பொறுப்பு / No Direct Booking Mediation</h4>
-            <p>நம்ம கன்னியாகுமரி தளம் வாடிக்கையாளர்களிடம் இருந்து எந்தவொரு முன்பதிவு முன்பணத்தையோ (Advance) அல்லது கட்டணத் தொகையையோ நேரடியாகப் பெறுவது கிடையாது. பணக் கொடுக்கல்-வாங்கல் இருதரப்பின் நேரடிப் பொறுப்பாகும்.</p>
-            <p class="en-sub">The platform never mediates in ride bookings, store advance payments, or customer transactions.</p>
-          </div>
-          <div class="terms-rule-card">
-            <h4>4. பொறுப்புத் துறப்பு / Safety & Disclaimer</h4>
-            <p>சேவை வழங்குநர்களின் சேவைத் தரம், காலதாமதம் அல்லது தனிப்பட்ட விவகாரங்களுக்கு தளம் பொறுப்பேற்காது; இது பொதுமக்களுக்கான கட்டணமில்லா உள்ளூர் வழிகாட்டித் தளம் மட்டுமே.</p>
-            <p class="en-sub">The platform acts purely as an open local directory and holds no legal liability for provider delays or service disputes.</p>
-          </div>
-          <button type="button" class="form-submit-btn active-btn" onclick="closeTermsPage()">
-            ← படித்துவிட்டேன் / படிவத்திற்குத் திரும்புக
-          </button>
-        `;
-      } else if (category === 'vehicle') {
-        title.innerText = "வாகன சேவை விதிமுறைகள் / Vehicle Terms";
-        body.innerHTML = `
-          <div class="terms-rule-card">
-            <h4>1. நேரடித் தொடர்பு மட்டுமே / Direct Contact Only</h4>
-            <p>நம்ம கன்னியாகுமரி தளம் வாடிக்கையாளர்களிடம் இருந்து பயண முன்பதிவையோ அல்லது பயண முன்பணத்தையோ நேரடியாகப் பெறுவது கிடையாது. பயணிகள் ஓட்டுநரை நேரடியாகத் தொடர்புகொண்டு மட்டுமே சவாரி மற்றும் கட்டணத்தை முடிவு செய்ய வேண்டும்.</p>
-            <div class="${subVisibilityClass}">
-              <p style="color: var(--yellow); font-weight:700;">💳 தளப் பராமரிப்பு சந்தா விபரம்:</p>
-              <p style="font-size: 11.5px;">தளப் பராமரிப்பு மற்றும் நேரடி வாடிக்கையாளர் அழைப்பு சேவைக்காக மாதம் ₹199 சந்தா முறை பொருந்தும்.</p>
-            </div>
-            <p class="en-sub">Direct contact only. The platform does not handle direct ride bookings or advance fares.</p>
-          </div>
-          <div class="terms-rule-card">
-            <h4>2. 0% கமிஷன் கொள்கை / Zero Commission Policy</h4>
-            <p>ஓட்டுநர்களின் சவாரி வருமானத்திலோ அல்லது வாடகையிலோ தளம் எந்தவொரு சதவீதக் கமிஷனோ அல்லது தரகுப் பணமோ எடுப்பது கிடையாது. சவாரி மூலம் கிடைக்கும் வருமானம் 100% முழுமையாக ஓட்டுநருக்கே சேரும்.</p>
-            <p class="en-sub">Strictly 0% commission from trip earnings; 100% fare belongs to the driver.</p>
-          </div>
-          <div class="terms-rule-card">
-            <h4>3. சரியான ஆவணங்கள் & தகுதி / Valid Documents</h4>
-            <p>ஓட்டுநர் உரிமம் (DL), வாகன ஆர்.சி. புக் (RC) மற்றும் இன்சூரன்ஸ் கட்டாயம் நடப்பில் வைத்திருக்க வேண்டும்.</p>
-            <p class="en-sub">Valid Driving License, RC Book, and active Insurance are strictly mandatory.</p>
-          </div>
-          <div class="terms-rule-card">
-            <h4>4. பாதுகாப்பு & பொறுப்புத் துறப்பு / Safety & Disclaimer</h4>
-            <p>மது அருந்திவிட்டு வாகனம் ஓட்டுவது அல்லது பயணிகளிடம் ஒழுங்கீனமாக நடப்பது கண்டறியப்பட்டால் சேவைப் பட்டியல் உடனடியாக ரத்து செய்யப்படும்.</p>
-            <p class="en-sub">Zero tolerance for misconduct. The platform bears no liability for on-road incidents.</p>
-          </div>
-          <button type="button" class="form-submit-btn active-btn" onclick="closeTermsPage()">
-            ← படித்துவிட்டேன் / படிவத்திற்குத் திரும்புக
-          </button>
-        `;
-      } else if (category === 'shop') {
-        title.innerText = "வர்த்தக விதிமுறைகள் / Business Terms";
-        body.innerHTML = `
-          <div class="terms-rule-card">
-            <h4>1. நேரடி வர்த்தகம் மட்டுமே / Direct Trade Only</h4>
-            <p>வாடிக்கையாளர்களிடம் இருந்து பொருட்களுக்கான ஆர்டர்களையோ, பணத்தையோ அல்லது முன்பதிவையோ தளம் நேரடியாகக் கையாளுவது கிடையாது. வாடிக்கையாளர் கடைக்கு நேரடியாக அழைத்தோ அல்லது வாட்ஸ்அப் மூலமாகவோ பேசி மட்டுமே வியாபாரத்தை முடிக்க வேண்டும்.</p>
-            <div class="${subVisibilityClass}">
-              <p style="color: var(--yellow); font-weight:700;">💳 தளப் பராமரிப்பு சந்தா விபரம்:</p>
-              <p style="font-size: 11.5px;">தளப் பராமரிப்பு மற்றும் வாடிக்கையாளர் பார்வைக்காக மாதம் ₹199 வணிகப் பட்டியல் சந்தா முறை பொருந்தும்.</p>
-            </div>
-            <p class="en-sub">The platform does not process store orders, deliveries, or payments.</p>
-          </div>
-          <div class="terms-rule-card">
-            <h4>2. 0% விற்பனை கமிஷன் / Zero Sales Commission</h4>
-            <p>கடைகளின் விற்பனையிலோ அல்லது வியாபாரப் பரிவர்த்தனையிலோ தளம் எந்தவித விற்பனை கமிஷனோ அல்லது தரகோ எடுப்பதில்லை. வியாபார லாபம் 100% வணிகருக்கே சேரும்.</p>
-            <p class="en-sub">0% commission on product sales. All merchant earnings remain fully with the shop owner.</p>
-          </div>
-          <div class="terms-rule-card">
-            <h4>3. தரம் & நியாயமான விலை / Quality & Fair Pricing</h4>
-            <p>விற்பனை செய்யப்படும் பொருட்கள் தரமாகவும், கலப்படமின்றியும், FSSAI விதிமுறைகளின்படியும் இருத்தல் வேண்டும்.</p>
-            <p class="en-sub">Products must be genuine, hygienic, accurately weighed, and sold at fair pricing.</p>
-          </div>
-          <div class="terms-rule-card">
-            <h4>4. தடைசெய்யப்பட்டவை & தகராறுகள் / Prohibitions & Disputes</h4>
-            <p>காலாவதியான பொருட்கள், போலி பிராண்டுகள் விற்கக் கூடாது. பணக் கொடுக்கல்-வாங்கலில் தளம் தலையிடாது.</p>
-            <p class="en-sub">Illicit or expired products are banned. The platform takes no liability for disputes.</p>
-          </div>
-          <button type="button" class="form-submit-btn active-btn" onclick="closeTermsPage()">
-            ← படித்துவிட்டேன் / படிவத்திற்குத் திரும்புக
-          </button>
-        `;
-      } else if (category === 'job') {
-        title.innerText = "வேலைவாய்ப்பு விதிமுறைகள் / Job Terms";
-        body.innerHTML = `
-          <div class="terms-rule-card">
-            <h4>1. நேரடி ஆள்சேர்ப்பு முறை / Direct Hiring Only</h4>
-            <p>வேலை தேடுபவர்களுக்கும் முதலாளிகளுக்கும் இடையே தளம் வெறும் தகவல் பாலமாக மட்டுமே செயல்படுகிறது. நேர்காணல் அல்லது வேலை ஒப்பந்தங்களில் தளம் தலையிடுவதில்லை.</p>
-            <div class="${subVisibilityClass}">
-              <p style="color: var(--yellow); font-weight:700;">💳 தளப் பராமரிப்பு சந்தா விபரம்:</p>
-              <p style="font-size: 11.5px;">தள மேம்பாட்டுக்கான மாதாந்திர சந்தா முறை விதிகளுக்கு உட்பட்டது.</p>
-            </div>
-            <p class="en-sub">The platform is an open information board only and never mediates in employment agreements.</p>
-          </div>
-          <div class="terms-rule-card">
-            <h4>2. 0% தரகு இன்மை / Zero Brokerage</h4>
-            <p>வேலை தருபவரிடமோ அல்லது வேலை தேடுபவரிடமோ தளம் எந்தவொரு வேலைவாய்ப்புக் கமிஷனோ அல்லது சம்பளப் பிடித்தமோ செய்வது கிடையாது.</p>
-            <p class="en-sub">Zero placement commission or recruitment cut is deducted from either party.</p>
-          </div>
-          <div class="terms-rule-card">
-            <h4>3. முன்பணம் வாங்குவது முற்றிலும் தடை / Strictly No Upfront Fees</h4>
-            <p>வேலை தருவதற்காக வேலை தேடும் நபர்களிடம் எந்தவித முன்பணமோ, பதிவுக் கட்டணமோ வசூலிக்கக் கூடாது.</p>
-            <p class="en-sub">Collecting deposits, advance charges, or registration fees is strictly prohibited.</p>
-          </div>
-          <div class="terms-rule-card">
-            <h4>4. உண்மைத் தன்மை & பொறுப்புத் துறப்பு / Genuine Openings & Disclaimer</h4>
-            <p>உண்மையான வேலைவாய்ப்புகளை மட்டுமே பதிவிட வேண்டும். பணியாளரின் நன்னடத்தைக்கோ தளம் பொறுப்பேற்காது.</p>
-            <p class="en-sub">Only authentic vacancies must be posted. The platform carries no legal liability.</p>
           </div>
           <button type="button" class="form-submit-btn active-btn" onclick="closeTermsPage()">
             ← படித்துவிட்டேன் / படிவத்திற்குத் திரும்புக
           </button>
         `;
       }
-
       termsPage.classList.add("active");
     }
 
