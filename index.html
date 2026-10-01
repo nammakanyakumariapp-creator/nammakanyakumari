@@ -649,7 +649,7 @@
       </div>
 
       <div class="qs-help-note">
-        ℹ️ <strong>பயன்பாடு / Note:</strong> GPS ஆன் செய்து, தேவையான சேவையைத் தட்டச்சு செய்தோ அல்லது மைக் மூலமாகவோ உடனடியாகத் தேடலாம்.
+        ℹ️️ <strong>பயன்பாடு / Note:</strong> GPS ஆன் செய்து, தேவையான சேவையைத் தட்டச்சு செய்தோ அல்லது மைக் மூலமாகவோ உடனடியாகத் தேடலாம்.
       </div>
     </div>
 
@@ -895,7 +895,7 @@
         </form>
       </div>
 
-      <!-- FORM SECTION 2: மளிகை & வியாபாரப் பிரிவு -->
+      <!-- FORM SECTION 2: மளிகை & வியாபாரப் பிரிவு (With Home Delivery Option Added) -->
       <div class="form-box" id="secShopForm" style="display: none;">
         <form onsubmit="handleVendorSubmit(event, 'வியாபாரம்')">
           <div class="form-group">
@@ -929,9 +929,19 @@
             <label>செயல்படும் நேரம்</label>
             <input type="text" id="sTiming" placeholder="காலை 8:00 AM - இரவு 9:30 PM">
           </div>
+          
+          <!-- Newly Added: Home Delivery Selection -->
+          <div class="form-group">
+            <label>ஹோம் டெலிவரி வசதி உண்டா? (Home Delivery) *</label>
+            <select id="sHomeDelivery" required>
+              <option value="உண்டு / Yes">🚚 உண்டு / Yes (ஹோம் டெலிவரி செய்யப்படும்)</option>
+              <option value="இல்லை / No">🏪 இல்லை / No (நேரடி விற்பனை மட்டுமே)</option>
+            </select>
+          </div>
+
           <div class="form-group">
             <label>சிறப்பு விபரங்கள் / சலுகைகள்</label>
-            <textarea id="sDetails" rows="2" placeholder="எ.கா: ஹோம் டெலிவரி வசதி உண்டு, தூய கொம்புத்தேன் கிடைக்கும்"></textarea>
+            <textarea id="sDetails" rows="2" placeholder="எ.கா: சுத்தமான கொம்புத்தேன் கிடைக்கும், Google Pay வசதி உண்டு"></textarea>
           </div>
 
           <!-- Dynamic Terms & Smart Submit -->
@@ -1113,11 +1123,10 @@
   </nav>
 
   <script>
-    // System Configs controlled by Google Sheets logic (Default: Hidden / Inactive)
-    let isTermsSwitchOn = false; // When switched ON, unhides ₹199 subscription clause
-    let isGlobalActiveNotice = false; // When switched ON, triggers activation popup
+    // 🔴 FOR TESTING: Switched to TRUE so you can verify the ₹199 monthly subscription clause
+    let isTermsSwitchOn = true; 
 
-    // Status: active, pending, expired (used to display badges and toggle search visibility)
+    // 11-digit testing numbers preserved
     const serviceList = [
       { id: 1, name: "அழகப்பபுரம் ஸ்டாண்டு ஆட்டோ (மாரியப்பன்)", category: "ஆட்டோ / Auto", area: "அழகப்பபுரம்", desc: "24 மணி நேர லோக்கல் & அவசர சவாரி • Alagappapuram Stand", phone: "94431234560", wa: "98421234560", status: "active" },
       { id: 2, name: "மயிலாடி முருகன் ஆட்டோ", category: "ஆட்டோ / Auto", area: "மயிலாடி", desc: "மயிலாடி சந்திப்பு, கோவில் & மருத்துவமனை சவாரி", phone: "94431234561", wa: "98421234560", status: "active" },
@@ -1214,7 +1223,6 @@
       list.innerHTML = "";
 
       const query = categoryName.toLowerCase();
-      // Only active and pending services are displayed, expired ones are hidden
       const filtered = serviceList.filter(item => {
         const matchesTown = allowedTowns.includes(item.area);
         const matchesCategory = 
@@ -1310,7 +1318,6 @@
       }
     }
 
-    // Dynamic Terms Display with Hidden ₹199 Subscription Clause Controlled by Switch
     function openDedicatedTerms(category) {
       const termsPage = document.getElementById("pageTermsView");
       const title = document.getElementById("termsHeaderTitle");
