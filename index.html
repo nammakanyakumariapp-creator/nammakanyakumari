@@ -24,6 +24,7 @@
       --card-container-bg: #1E293B;
       --text-light: #F8FAFC;
       --text-muted: #94A3B8;
+      --en-text-bright: #CBD5E1; /* ஆங்கில எழுத்துக்கள் பளிச்செனத் தெரிய */
     }
 
     * {
@@ -77,10 +78,10 @@
       flex: 1;
       border: none;
       background: transparent;
-      color: var(--text-muted);
+      color: var(--en-text-bright);
       padding: 8px 4px;
       border-radius: 8px;
-      font-size: 11.5px;
+      font-size: 12px;
       font-weight: 700;
       cursor: pointer;
       display: flex;
@@ -115,7 +116,7 @@
       background: transparent;
       border: none;
       color: #fff;
-      font-size: 12px;
+      font-size: 12.5px;
       outline: none;
     }
     .home-town-input input::placeholder, .home-search-input-box input::placeholder {
@@ -162,8 +163,9 @@
       font-weight: 700;
     }
     .sponsor-ad-card p {
-      font-size: 11px;
-      color: #CBD5E1;
+      font-size: 11.5px;
+      color: var(--en-text-bright);
+      font-weight: 500;
     }
     .sponsor-tag {
       background: var(--green);
@@ -174,7 +176,7 @@
       border-radius: 6px;
     }
 
-    /* 3x3 Category Grid (First 9 Icons) */
+    /* Category Grids */
     .category-grid-container {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -182,7 +184,6 @@
       margin-bottom: 12px;
     }
     
-    /* Extra Row of 3 Icons (New 3 Icons making total 12) */
     .extra-category-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -229,12 +230,11 @@
     .icon-pros2 { background: #FEF3C7; color: #D97706; }
     .icon-pros3 { background: #FCE7F3; color: #DB2777; }
 
-    /* New 3 Icons Colors & Symbols */
-    .icon-extra1 { background: #E0E7FF; color: #3730A3; } /* Sports & Gym */
-    .icon-extra2 { background: #FEE2E2; color: #991B1B; } /* Used Cars & Bikes */
-    .icon-extra3 { background: #F3E8FF; color: #6B21A8; } /* Home Parlour & Events */
+    .icon-extra1 { background: #E0E7FF; color: #3730A3; }
+    .icon-extra2 { background: #FEE2E2; color: #991B1B; }
+    .icon-extra3 { background: #F3E8FF; color: #6B21A8; }
 
-    /* Typography Update: Enhanced contrast and size for Sub-text */
+    /* Main & English Text Display */
     .cat-btn .main-text {
       font-size: 12px;
       font-weight: 700;
@@ -244,7 +244,7 @@
     .cat-btn .sub-text {
       font-size: 11px;
       font-weight: 600;
-      color: #CBD5E1;
+      color: var(--en-text-bright);
       line-height: 1.1;
     }
 
@@ -253,7 +253,7 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 12px;
-      margin-bottom: 20px;
+      margin-bottom: 24px;
     }
     .reg-block {
       background: #1E293B;
@@ -274,8 +274,9 @@
       line-height: 1.3;
     }
     .reg-block-info p {
-      font-size: 10px;
-      color: var(--text-muted);
+      font-size: 10.5px;
+      font-weight: 600;
+      color: var(--en-text-bright);
     }
 
     /* Status Badges */
@@ -291,7 +292,7 @@
     .status-badge.pending-yellow { background: #F59E0B; color: #000; }
     .status-badge.expired-red { background: #DC2626; color: #fff; }
 
-    /* DEDICATED FULL SCREEN VIEWS */
+    /* Fullpage Dedicated View */
     .fullpage-view {
       position: fixed;
       top: 0;
@@ -332,6 +333,11 @@
       font-size: 15px;
       font-weight: 700;
     }
+    .fullpage-header span.tag-right {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--yellow);
+    }
     .fullpage-content {
       flex: 1;
       overflow-y: auto;
@@ -341,7 +347,7 @@
       margin: 0 auto;
     }
 
-    /* Category Switcher Tabs */
+    /* Tabs Inside Modals */
     .vendor-nav-tabs, .search-nav-tabs {
       display: flex;
       background: #0F172A;
@@ -355,10 +361,10 @@
       flex: 1;
       border: none;
       background: transparent;
-      color: var(--text-muted);
+      color: var(--en-text-bright);
       padding: 8px 4px;
       border-radius: 8px;
-      font-size: 11.5px;
+      font-size: 12px;
       font-weight: 700;
       cursor: pointer;
       display: flex;
@@ -388,7 +394,8 @@
       font-weight: 700;
     }
     .emergency-info p {
-      font-size: 11.5px;
+      font-size: 12px;
+      font-weight: 600;
       color: var(--yellow);
     }
     .btn-emergency-call {
@@ -420,7 +427,12 @@
       font-size: 12.5px;
       font-weight: 600;
       margin-bottom: 4px;
-      color: #CBD5E1;
+      color: #F8FAFC;
+    }
+    .form-group label span.en-label {
+      color: var(--en-text-bright);
+      font-weight: 600;
+      font-size: 12px;
     }
     .form-group label span.opt-tag {
       font-size: 11px;
@@ -438,7 +450,7 @@
       outline: none;
     }
 
-    /* Terms Box & Verification */
+    /* Terms Box & Smart Verification */
     .terms-check-container {
       background: #0F172A;
       border-radius: 10px;
@@ -465,11 +477,11 @@
     }
     .view-terms-link {
       display: inline-block;
-      margin-top: 6px;
+      margin-top: 8px;
       color: var(--yellow);
-      font-size: 12px;
+      font-size: 12.5px;
       text-decoration: underline;
-      font-weight: 600;
+      font-weight: 700;
       cursor: pointer;
     }
 
@@ -500,7 +512,7 @@
       box-shadow: 0 4px 12px rgba(22, 163, 74, 0.4);
     }
 
-    /* Cards */
+    /* Item Card */
     .item-card {
       background: #1E293B;
       border-radius: 14px;
@@ -520,8 +532,8 @@
       margin: 3px 0 6px 0;
     }
     .item-card .item-desc {
-      font-size: 12px;
-      color: #CBD5E1;
+      font-size: 12.5px;
+      color: var(--en-text-bright);
       margin-bottom: 10px;
       line-height: 1.4;
     }
@@ -545,7 +557,7 @@
     .btn-call { background: #0284C7; color: #fff; }
     .btn-wa { background: #16A34A; color: #fff; }
 
-    /* Terms Rules Card Inside Dedicated Terms Page */
+    /* Comprehensive Terms Rule Card Styling */
     .terms-rule-card {
       background: #1E293B;
       border: 1px solid #334155;
@@ -557,19 +569,23 @@
       font-size: 13.5px;
       color: var(--yellow);
       margin-bottom: 6px;
+      font-weight: 700;
+      line-height: 1.3;
     }
-    .terms-rule-card p {
+    .terms-rule-card p.ta-main {
       font-size: 12.5px;
-      color: #E2E8F0;
+      color: #F8FAFC;
       line-height: 1.5;
-      margin-bottom: 4px;
+      margin-bottom: 6px;
     }
     .terms-rule-card p.en-sub {
-      font-size: 11.5px;
-      color: var(--text-muted);
+      font-size: 12px;
+      color: var(--en-text-bright);
+      font-weight: 500;
+      line-height: 1.4;
     }
 
-    /* Fixed Bottom Bar */
+    /* Bottom Bar */
     .bottom-bar {
       position: fixed;
       bottom: 0;
@@ -583,12 +599,13 @@
       z-index: 900;
     }
     .bar-link {
-      color: #94A3B8;
+      color: var(--en-text-bright);
       text-decoration: none;
       display: flex;
       flex-direction: column;
       align-items: center;
-      font-size: 11px;
+      font-size: 11.5px;
+      font-weight: 600;
       gap: 3px;
       cursor: pointer;
     }
@@ -612,13 +629,13 @@
     <!-- Home Filter Tabs: Vehicle, Vendor, Job -->
     <div class="home-filter-tabs">
       <button class="home-tab-btn active" id="homeTabVehicle" onclick="switchHomeTab('வாகனம்')">
-        <i class="fa-solid fa-car"></i> வாகனம்
+        <i class="fa-solid fa-car"></i> வாகனம் / Vehicle
       </button>
       <button class="home-tab-btn" id="homeTabShop" onclick="switchHomeTab('வியாபாரம்')">
-        <i class="fa-solid fa-shop"></i> வியாபாரம்
+        <i class="fa-solid fa-shop"></i> வியாபாரம் / Business
       </button>
       <button class="home-tab-btn" id="homeTabJob" onclick="switchHomeTab('வேலைவாய்ப்பு')">
-        <i class="fa-solid fa-briefcase"></i> வேலைவாய்ப்பு
+        <i class="fa-solid fa-briefcase"></i> வேலைவாய்ப்பு / Jobs
       </button>
     </div>
 
@@ -626,11 +643,11 @@
     <div class="home-search-row">
       <div class="home-town-input">
         <i class="fa-solid fa-location-dot" style="color: var(--yellow); font-size: 11px;"></i>
-        <input type="text" id="homeTownInput" placeholder="ஊர் பெயர்...">
+        <input type="text" id="homeTownInput" placeholder="ஊர் / Town...">
       </div>
       <div class="home-search-input-box">
         <i class="fa-solid fa-magnifying-glass"></i>
-        <input type="text" id="homeKeywordInput" placeholder="எ.கா: ஆட்டோ, டாக்ஸி, ஹோட்டல்..." onkeypress="handleHomeSearchKey(event)" style="padding-right: 28px;">
+        <input type="text" id="homeKeywordInput" placeholder="எ.கா: ஆட்டோ, டாக்ஸி, மால்ட்..." onkeypress="handleHomeSearchKey(event)" style="padding-right: 28px;">
         <button type="button" class="home-mic-btn" id="homeMicBtn" onclick="triggerHomeVoiceInput()" title="Voice Search" style="position: absolute; right: 6px; top: 50%; transform: translateY(-50%);">
           <i class="fa-solid fa-microphone"></i>
         </button>
@@ -780,12 +797,12 @@
         </button>
         <h3 id="dedicatedTitle">சேவை பட்டியல் / Results</h3>
       </div>
-      <span id="dedicatedTown" style="font-size: 13px; color: var(--yellow);">அழகப்பபுரம்</span>
+      <span id="dedicatedTown" class="tag-right">அழகப்பபுரம்</span>
     </div>
     <div class="fullpage-content" id="dedicatedList"></div>
   </div>
 
-  <!-- NEW ADVANCED SEARCH PAGE (Triggered from bottom Search tab) -->
+  <!-- ADVANCED SEARCH PAGE -->
   <div class="fullpage-view" id="pageAdvancedSearch">
     <div class="fullpage-header">
       <div class="fullpage-header-left">
@@ -794,26 +811,25 @@
         </button>
         <h3>தேடல் / Advanced Search</h3>
       </div>
-      <span style="font-size: 12px; color: var(--yellow);">Search</span>
+      <span class="tag-right">Search</span>
     </div>
     <div class="fullpage-content">
       <div class="form-box">
         
-        <!-- Category Filter Tabs -->
         <div class="search-nav-tabs">
           <button class="search-tab-btn active" id="searchTabVehicle" onclick="switchSearchCategory('வாகனம்')">
-            <i class="fa-solid fa-car"></i> வாகனம்
+            <i class="fa-solid fa-car"></i> வாகனம் / Vehicle
           </button>
           <button class="search-tab-btn" id="searchTabShop" onclick="switchSearchCategory('வியாபாரம்')">
-            <i class="fa-solid fa-shop"></i> வியாபாரம்
+            <i class="fa-solid fa-shop"></i> வியாபாரம் / Business
           </button>
           <button class="search-tab-btn" id="searchTabJob" onclick="switchSearchCategory('வேலைவாய்ப்பு')">
-            <i class="fa-solid fa-briefcase"></i> வேலைவாய்ப்பு
+            <i class="fa-solid fa-briefcase"></i> வேலை / Jobs
           </button>
         </div>
 
         <div class="form-group">
-          <label>என்ன சேவை வேண்டும்? / Required Service *</label>
+          <label>என்ன சேவை வேண்டும்? <span class="en-label">/ Required Service *</span></label>
           <div style="position: relative; display: flex; align-items: center;">
             <input type="text" id="advancedKeyword" placeholder="எ.கா: ஆட்டோ, ஹோம்மேட்..." style="padding-right: 42px;">
             <button type="button" class="qs-mic-btn" id="btnAdvMic" onclick="triggerAdvancedVoiceInput()" style="position: absolute; right: 6px;" title="Voice Search">
@@ -823,7 +839,7 @@
         </div>
 
         <div class="form-group">
-          <label>ஊர் / பகுதி பெயர் / Town or Area *</label>
+          <label>ஊர் / பகுதி பெயர் <span class="en-label">/ Town or Area *</span></label>
           <input type="text" id="advancedTown" placeholder="எ.கா: அழகப்பபுரம், மயிலாடி...">
         </div>
 
@@ -835,7 +851,7 @@
     </div>
   </div>
 
-  <!-- EMERGENCY HELPLINE PAGE (Triggered from bottom 108 tab) -->
+  <!-- EMERGENCY HELPLINE PAGE -->
   <div class="fullpage-view" id="pageEmergency">
     <div class="fullpage-header">
       <div class="fullpage-header-left">
@@ -844,14 +860,14 @@
         </button>
         <h3>அவசர உதவி எண்கள் / Emergency</h3>
       </div>
-      <span style="font-size: 12px; color: var(--red);">24x7 Helpline</span>
+      <span class="tag-right" style="color: var(--red);">24x7 Helpline</span>
     </div>
     <div class="fullpage-content">
       
       <div class="emergency-card">
         <div class="emergency-info">
           <h4>🚑 ஆம்புலன்ஸ் / Ambulance</h4>
-          <p>மருத்துவ அவசர உதவி • 108</p>
+          <p>மருத்துவ அவசர உதவி • Medical 108</p>
         </div>
         <a href="tel:108" class="btn-emergency-call"><i class="fa-solid fa-phone"></i> 108</a>
       </div>
@@ -859,7 +875,7 @@
       <div class="emergency-card">
         <div class="emergency-info">
           <h4>🚒 தீயணைப்பு நிலையம் / Fire Station</h4>
-          <p>தீ விபத்து & மீட்பு பணி • 101</p>
+          <p>தீ விபத்து & மீட்பு பணி • Fire & Rescue 101</p>
         </div>
         <a href="tel:101" class="btn-emergency-call"><i class="fa-solid fa-phone"></i> 101</a>
       </div>
@@ -867,15 +883,15 @@
       <div class="emergency-card">
         <div class="emergency-info">
           <h4>👮 காவல்துறை / Police</h4>
-          <p>சட்டம் ஒழுங்கு அவசரம் • 112 / 100</p>
+          <p>சட்டம் ஒழுங்கு அவசரம் • Police 112 / 100</p>
         </div>
         <a href="tel:112" class="btn-emergency-call"><i class="fa-solid fa-phone"></i> 112</a>
       </div>
 
       <div class="emergency-card">
         <div class="emergency-info">
-          <h4>👶 குழந்தைகள் உதவி எண் / Child Helpline</h4>
-          <p>குழந்தைகள் பாதுகாப்பு • 1098</p>
+          <h4>👶 குழந்தைகள் உதவி எண் / Childline</h4>
+          <p>குழந்தைகள் பாதுகாப்பு • Child Helpline 1098</p>
         </div>
         <a href="tel:1098" class="btn-emergency-call"><i class="fa-solid fa-phone"></i> 1098</a>
       </div>
@@ -883,7 +899,7 @@
       <div class="emergency-card">
         <div class="emergency-info">
           <h4>👩 பெண்கள் உதவி எண் / Women Helpline</h4>
-          <p>பெண்கள் பாதுகாப்பு • 181</p>
+          <p>பெண்கள் பாதுகாப்பு • Women Safety 181</p>
         </div>
         <a href="tel:181" class="btn-emergency-call"><i class="fa-solid fa-phone"></i> 181</a>
       </div>
@@ -900,32 +916,32 @@
         </button>
         <h3>வாடிக்கையாளர் தேவைப் பதிவு</h3>
       </div>
-      <span style="font-size: 12px; color: var(--yellow);">Customer</span>
+      <span class="tag-right">Customer Need</span>
     </div>
     <div class="fullpage-content">
       <div class="form-box">
         <form onsubmit="handleCustomerSubmit(event)">
           <div class="form-group">
-            <label>உங்கள் பெயர் / Name *</label>
+            <label>உங்கள் பெயர் <span class="en-label">/ Full Name *</span></label>
             <input type="text" id="cName" required placeholder="உங்கள் பெயர்">
           </div>
           <div class="form-group">
-            <label>மொபைல் எண் / Mobile *</label>
+            <label>மொபைல் எண் <span class="en-label">/ Mobile Number *</span></label>
             <input type="tel" id="cPhone" required placeholder="94431234560">
           </div>
           <div class="form-group">
-            <label>தாலுக்கா / Taluk *</label>
+            <label>தாலுக்கா <span class="en-label">/ Taluk *</span></label>
             <select id="cTaluk" required>
               <option value="">தாலுக்காவைத் தேர்வு செய்க ▼</option>
-              <option value="அகத்தீஸ்வரம்">அகத்தீஸ்வரம் தாலுக்கா</option>
-              <option value="தோவாளை">தோவாளை தாலுக்கா</option>
-              <option value="கல்குளம்">கல்குளம் தாலுக்கா</option>
-              <option value="விளவங்கோடு">விளவங்கோடு தாலுக்கா</option>
-              <option value="பத்மநாபபுரம்">பத்மநாபபுரம் தாலுக்கா</option>
+              <option value="அகத்தீஸ்வரம்">அகத்தீஸ்வரம் தாலுக்கா / Agastheeswaram</option>
+              <option value="தோவாளை">தோவாளை தாலுக்கா / Thovalai</option>
+              <option value="கல்குளம்">கல்குளம் தாலுக்கா / Kalkulam</option>
+              <option value="விளவங்கோடு">விளவங்கோடு தாலுக்கா / Vilavancode</option>
+              <option value="பத்மநாபபுரம்">பத்மநாபபுரம் தாலுக்கா / Padmanabhapuram</option>
             </select>
           </div>
           <div class="form-group">
-            <label>ஊர் / Town or Village *</label>
+            <label>ஊர் / பகுதி <span class="en-label">/ Town or Village *</span></label>
             <input type="text" id="cArea" required placeholder="எ.கா: அழகப்பபுரம் / மயிலாடி">
           </div>
 
@@ -960,20 +976,20 @@
         </button>
         <h3>சேவை வழங்குநர் பதிவு</h3>
       </div>
-      <span style="font-size: 12px; color: var(--yellow);">Vendor Form</span>
+      <span class="tag-right">Vendor Form</span>
     </div>
     <div class="fullpage-content">
       
       <!-- 3 Category Navigation Tabs -->
       <div class="vendor-nav-tabs">
         <button class="vendor-tab-btn active" id="tabBtnVehicle" onclick="switchVendorSection('vehicle')">
-          <i class="fa-solid fa-car"></i> வாகனம்
+          <i class="fa-solid fa-car"></i> வாகனம் / Vehicle
         </button>
         <button class="vendor-tab-btn" id="tabBtnShop" onclick="switchVendorSection('shop')">
-          <i class="fa-solid fa-shop"></i> வியாபாரம்
+          <i class="fa-solid fa-shop"></i> வியாபாரம் / Business
         </button>
         <button class="vendor-tab-btn" id="tabBtnJob" onclick="switchVendorSection('job')">
-          <i class="fa-solid fa-briefcase"></i> வேலைவாய்ப்பு
+          <i class="fa-solid fa-briefcase"></i> வேலை / Jobs
         </button>
       </div>
 
@@ -981,45 +997,45 @@
       <div class="form-box" id="secVehicleForm">
         <form onsubmit="handleVendorSubmit(event, 'வாகனம்')">
           <div class="form-group">
-            <label>ஓட்டுநர் / உரிமையாளர் பெயர் *</label>
+            <label>ஓட்டுநர் / உரிமையாளர் பெயர் <span class="en-label">/ Driver Name *</span></label>
             <input type="text" id="vName" required placeholder="எ.கா: மாரியப்பன்">
           </div>
           <div class="form-group">
-            <label>வாகன வகை *</label>
+            <label>வாகன வகை <span class="en-label">/ Vehicle Type *</span></label>
             <select id="vCategory" required>
-              <option value="ஆட்டோ / Auto">🛺 ஆட்டோ / Auto</option>
-              <option value="டாக்ஸி / Taxi">🚕 டாக்ஸி / Taxi</option>
-              <option value="லோடு வாகனம் / Load">🚚 லோடு வாகனம் (Tata Ace/Pickup)</option>
-              <option value="செகண்ட் ஹேண்ட் கார் & பைக்">🚗 செகண்ட் ஹேண்ட் கார் & பைக் விற்பனை</option>
+              <option value="ஆட்டோ / Auto">🛺 ஆட்டோ / Auto (3 Seater)</option>
+              <option value="டாக்ஸி / Taxi">🚕 டாக்ஸி / Taxi (Car / Tourist Vehicle)</option>
+              <option value="லோடு வாகனம் / Load">🚚 லோடு வாகனம் / Load (Tata Ace / Pickup)</option>
+              <option value="செகண்ட் ஹேண்ட் கார் & பைக்">🚗 செகண்ட் ஹேண்ட் கார் & பைக் விற்பனை / Used Vehicles</option>
             </select>
           </div>
           <div class="form-group">
-            <label>இயங்கும் ஸ்டாண்டு / ஊர் *</label>
+            <label>இயங்கும் ஸ்டாண்டு <span class="en-label">/ Stand Location *</span></label>
             <input type="text" id="vStand" required placeholder="எ.கா: அழகப்பபுரம் மெயின் ஸ்டாண்டு">
           </div>
           <div class="form-group">
-            <label>ஊர் / பகுதி பெயர் (Town / Area) *</label>
+            <label>ஊர் / பகுதி பெயர் <span class="en-label">/ Town or Area *</span></label>
             <input type="text" id="vTownArea" required placeholder="எ.கா: அழகப்பபுரம் / மயிலாடி">
           </div>
           <div class="form-group">
-            <label>நேரடி அழைப்பு எண் (Calling Number) *</label>
+            <label>நேரடி அழைப்பு எண் <span class="en-label">/ Calling Number *</span></label>
             <input type="tel" id="vCallPhone" required placeholder="94431234560">
           </div>
           <div class="form-group">
-            <label>வாட்ஸ்அப் எண் (WhatsApp Number)</label>
+            <label>வாட்ஸ்அப் எண் <span class="en-label">/ WhatsApp Number</span></label>
             <input type="tel" id="vWaPhone" placeholder="98421234560">
           </div>
           <div class="form-group">
-            <label>வாகன பதிவு எண் (TN 74 ...) *</label>
-            <input type="text" id="vRcNum" required placeholder="TN 74 AX 1234 (அட்மின் சரிபார்ப்புக்கு மட்டும்)">
+            <label>வாகன பதிவு எண் <span class="en-label">/ Vehicle Number (TN 74 ...) *</span></label>
+            <input type="text" id="vRcNum" required placeholder="TN 74 AX 1234 (சரிபார்ப்புக்கு மட்டும்)">
           </div>
           <div class="form-group">
-            <label>வாகன புகைப்படம் / Photo <span class="opt-tag">(விருப்பப்பட்டால் மட்டும் / Optional - Max 2MB)</span></label>
+            <label>வாகன புகைப்படம் <span class="opt-tag">(விருப்பப்பட்டால் மட்டும் / Optional - Max 2MB)</span></label>
             <input type="file" id="vPhoto" accept="image/*" style="padding: 7px; font-size: 12px;">
           </div>
           <div class="form-group">
-            <label>சேவை விபரம் / கூடுதல் குறிப்பு</label>
-            <textarea id="vDesc" rows="2" placeholder="எ.கா: 24 மணி நேர சவாரி, கார் விற்பனை விபரம்"></textarea>
+            <label>சேவை விபரம் <span class="en-label">/ Service Details</span></label>
+            <textarea id="vDesc" rows="2" placeholder="எ.கா: 24 மணி நேர சவாரி, வெளியூர் பயணம்"></textarea>
           </div>
 
           <!-- Dynamic Terms & Smart Submit -->
@@ -1046,11 +1062,11 @@
       <div class="form-box" id="secShopForm" style="display: none;">
         <form onsubmit="handleVendorSubmit(event, 'வியாபாரம்')">
           <div class="form-group">
-            <label>நிறுவனம் / கடை பெயர் *</label>
+            <label>நிறுவனம் / கடை பெயர் <span class="en-label">/ Shop Name *</span></label>
             <input type="text" id="sName" required placeholder="எ.கா: குமரி ஹோம்மேட்ஸ்">
           </div>
           <div class="form-group">
-            <label>வணிக வகை *</label>
+            <label>வணிக வகை <span class="en-label">/ Category *</span></label>
             <select id="sCategory" required>
               <option value="ஹோம்மேட் & ஆரோக்கியப் பொருட்கள்">ஹோம்மேட் & ஆரோக்கியப் பொருட்கள் (ABC Malt, தொக்கு)</option>
               <option value="வீட்டு சேவைகள் (பிளம்பர்/எலக்ட்ரீசியன்)">வீட்டு சேவைகள் (பிளம்பர் / வயரிங்)</option>
@@ -1060,28 +1076,28 @@
             </select>
           </div>
           <div class="form-group">
-            <label>கடை அமைந்துள்ள இடம் / ஊர் *</label>
+            <label>கடை அமைந்துள்ள இடம் <span class="en-label">/ Shop Address *</span></label>
             <input type="text" id="sTown" required placeholder="எ.கா: திங்கள்நகர் மெயின் ரோடு">
           </div>
           <div class="form-group">
-            <label>ஊர் / பகுதி பெயர் (Town / Area) *</label>
+            <label>ஊர் / பகுதி பெயர் <span class="en-label">/ Town or Area *</span></label>
             <input type="text" id="sTownArea" required placeholder="எ.கா: திங்கள்நகர்">
           </div>
           <div class="form-group">
-            <label>கடை தொடர்பு எண் (Calling No) *</label>
+            <label>கடை தொடர்பு எண் <span class="en-label">/ Calling Number *</span></label>
             <input type="tel" id="sCallPhone" required placeholder="94431234560">
           </div>
           <div class="form-group">
-            <label>வாட்ஸ்அப் ஆர்டர் எண்</label>
+            <label>வாட்ஸ்அப் ஆர்டர் எண் <span class="en-label">/ WhatsApp Number</span></label>
             <input type="tel" id="sWaPhone" placeholder="98421234560">
           </div>
           <div class="form-group">
-            <label>செயல்படும் நேரம்</label>
+            <label>செயல்படும் நேரம் <span class="en-label">/ Business Timing</span></label>
             <input type="text" id="sTiming" placeholder="காலை 8:00 AM - இரவு 9:30 PM">
           </div>
           
           <div class="form-group">
-            <label>ஹோம் டெலிவரி வசதி உண்டா? (Home Delivery) *</label>
+            <label>ஹோம் டெலிவரி வசதி உண்டா? <span class="en-label">/ Home Delivery *</span></label>
             <select id="sHomeDelivery" required>
               <option value="உண்டு / Yes">🚚 உண்டு / Yes (ஹோம் டெலிவரி செய்யப்படும்)</option>
               <option value="இல்லை / No">🏪 இல்லை / No (நேரடி விற்பனை மட்டுமே)</option>
@@ -1094,7 +1110,7 @@
           </div>
 
           <div class="form-group">
-            <label>சிறப்பு விபரங்கள் / சலுகைகள்</label>
+            <label>சிறப்பு விபரங்கள் <span class="en-label">/ Specialty & Offers</span></label>
             <textarea id="sDetails" rows="2" placeholder="எ.கா: ஏபிசி மால்ட், பிரண்டை தொக்கு கிடைக்கும்"></textarea>
           </div>
 
@@ -1122,34 +1138,34 @@
       <div class="form-box" id="secJobForm" style="display: none;">
         <form onsubmit="handleVendorSubmit(event, 'வேலைவாய்ப்பு')">
           <div class="form-group">
-            <label>பதிவு நோக்கம் *</label>
+            <label>பதிவு நோக்கம் <span class="en-label">/ Purpose *</span></label>
             <select id="jType" required>
               <option value="வேலைக்கு ஆட்கள் தேவை">வேலைக்கு ஆட்கள் தேவை (Employer / Hiring)</option>
               <option value="வேலை தேடுகிறேன்">வேலை தேடுகிறேன் (Job Seeker)</option>
             </select>
           </div>
           <div class="form-group">
-            <label>வேலை / பணித் தலைப்பு *</label>
+            <label>வேலை / பணித் தலைப்பு <span class="en-label">/ Job Role *</span></label>
             <input type="text" id="jTitle" required placeholder="எ.கா: கடை விற்பனை உதவியாளர் தேவை">
           </div>
           <div class="form-group">
-            <label>நிறுவனம் / முதலாளி பெயர் *</label>
+            <label>நிறுவனம் / முதலாளி பெயர் <span class="en-label">/ Employer Name *</span></label>
             <input type="text" id="jEmployer" required placeholder="எ.கா: குமரி டெக்ஸ்டைல்ஸ்">
           </div>
           <div class="form-group">
-            <label>வேலை அமையும் இடம் / ஊர் *</label>
+            <label>வேலை அமையும் இடம் <span class="en-label">/ Work Location *</span></label>
             <input type="text" id="jTown" required placeholder="எ.கா: நாகர்கோவில் வடசேரி">
           </div>
           <div class="form-group">
-            <label>ஊர் / பகுதி பெயர் (Town / Area) *</label>
+            <label>ஊர் / பகுதி பெயர் <span class="en-label">/ Town or Area *</span></label>
             <input type="text" id="jTownArea" required placeholder="எ.கா: நாகர்கோவில்">
           </div>
           <div class="form-group">
-            <label>தொடர்பு எண் *</label>
+            <label>தொடர்பு எண் <span class="en-label">/ Contact Number *</span></label>
             <input type="tel" id="jPhone" required placeholder="94431234562">
           </div>
           <div class="form-group">
-            <label>வேலை முறை *</label>
+            <label>வேலை முறை <span class="en-label">/ Job Type *</span></label>
             <select id="jShift" required>
               <option value="முழு நேரம் / Full Time">முழு நேரம் (Full Time)</option>
               <option value="பகுதி நேரம் / Part Time">பகுதி நேரம் (Part Time)</option>
@@ -1157,7 +1173,7 @@
             </select>
           </div>
           <div class="form-group">
-            <label>நிறுவன லோகோ / புகைப்படம் <span class="opt-tag">(விருப்பப்பட்டால் மட்டும் / Optional - Max 2MB)</span></label>
+            <label>நிறுவன லோகோ <span class="opt-tag">(விருப்பப்பட்டால் மட்டும் / Optional - Max 2MB)</span></label>
             <input type="file" id="jPhoto" accept="image/*" style="padding: 7px; font-size: 12px;">
           </div>
           <div class="form-group">
@@ -1201,7 +1217,7 @@
         </button>
         <h3 id="termsHeaderTitle">விதிமுறைகள் & நிபந்தனைகள்</h3>
       </div>
-      <span style="font-size: 12px; color: var(--yellow);">Terms</span>
+      <span class="tag-right">Terms</span>
     </div>
     <div class="fullpage-content" id="termsContentBody"></div>
   </div>
@@ -1215,7 +1231,7 @@
         </button>
         <h3>விளம்பர முன்பதிவு / Sponsor Ad</h3>
       </div>
-      <span style="font-size: 12px; color: var(--yellow);">Sponsor</span>
+      <span class="tag-right">Sponsor</span>
     </div>
     <div class="fullpage-content">
       <div class="form-box">
@@ -1276,7 +1292,7 @@
     </a>
     <a href="javascript:void(0)" onclick="openEmergencyPage()" class="bar-link">
       <i class="fa-solid fa-truck-medical"></i>
-      <span>108 அவசரம்</span>
+      <span>108 அவசரம் / Emergency</span>
     </a>
     <a href="javascript:void(0)" onclick="shareAppDirect()" class="bar-link">
       <i class="fa-solid fa-share-nodes"></i>
@@ -1333,14 +1349,14 @@
 
         recognition.onresult = function(event) {
           keywordInput.value = event.results[0][0].transcript;
-          keywordInput.placeholder = "எ.கா: ஆட்டோ, டாக்ஸி, ஹோட்டல்...";
+          keywordInput.placeholder = "எ.கா: ஆட்டோ, டாக்ஸி, மால்ட்...";
           micBtn.classList.remove("listening");
           executeHomeSearch();
         };
 
         recognition.onerror = function() {
           micBtn.classList.remove("listening");
-          keywordInput.placeholder = "எ.கா: ஆட்டோ, டாக்ஸி, ஹோட்டல்...";
+          keywordInput.placeholder = "எ.கா: ஆட்டோ, டாக்ஸி, மால்ட்...";
         };
 
         recognition.onend = function() {
@@ -1377,7 +1393,7 @@
 
       if (filtered.length === 0) {
         list.innerHTML = `
-          <div style="background:#1E293B; border:1px solid #334155; padding:24px; border-radius:12px; text-align:center; color:#94A3B8; margin-top:20px;">
+          <div style="background:#1E293B; border:1px solid #334155; padding:24px; border-radius:12px; text-align:center; color:#CBD5E1; margin-top:20px;">
             <i class="fa-solid fa-triangle-exclamation" style="font-size:32px; color:var(--yellow); margin-bottom:10px;"></i>
             <p>இந்தத் தேடலுக்கான சேவை தற்போது கிடைக்கவில்லை.</p>
           </div>
@@ -1395,7 +1411,7 @@
               <div class="item-desc">${item.desc}</div>
               <div class="item-actions">
                 <a href="tel:${item.phone}" class="btn-call"><i class="fa-solid fa-phone"></i> அழைப்பு / Call</a>
-                <a href="https://wa.me/91${item.wa}" class="btn-wa"><i class="fa-brands fa-whatsapp"></i> வாட்ஸ்அப்</a>
+                <a href="https://wa.me/91${item.wa}" class="btn-wa"><i class="fa-brands fa-whatsapp"></i> வாட்ஸ்அப் / WhatsApp</a>
               </div>
             </div>
           `;
@@ -1435,7 +1451,7 @@
       const title = document.getElementById("dedicatedTitle");
       const townLabel = document.getElementById("dedicatedTown");
 
-      title.innerText = keyword ? keyword : "தேடல் முடிவு";
+      title.innerText = keyword ? keyword : "தேடல் முடிவு / Search Results";
       townLabel.innerText = town ? "📍 " + town : "📍 கன்னியாகுமரி";
       list.innerHTML = "";
 
@@ -1450,7 +1466,7 @@
 
       if (filtered.length === 0) {
         list.innerHTML = `
-          <div style="background:#1E293B; border:1px solid #334155; padding:24px; border-radius:12px; text-align:center; color:#94A3B8; margin-top:20px;">
+          <div style="background:#1E293B; border:1px solid #334155; padding:24px; border-radius:12px; text-align:center; color:#CBD5E1; margin-top:20px;">
             <i class="fa-solid fa-triangle-exclamation" style="font-size:32px; color:var(--yellow); margin-bottom:10px;"></i>
             <p>இந்தத் தேடலுக்கான சேவை தற்போது கிடைக்கவில்லை.</p>
           </div>
@@ -1468,7 +1484,7 @@
               <div class="item-desc">${item.desc}</div>
               <div class="item-actions">
                 <a href="tel:${item.phone}" class="btn-call"><i class="fa-solid fa-phone"></i> அழைப்பு / Call</a>
-                <a href="https://wa.me/91${item.wa}" class="btn-wa"><i class="fa-brands fa-whatsapp"></i> வாட்ஸ்அப்</a>
+                <a href="https://wa.me/91${item.wa}" class="btn-wa"><i class="fa-brands fa-whatsapp"></i> வாட்ஸ்அப் / WhatsApp</a>
               </div>
             </div>
           `;
@@ -1524,7 +1540,7 @@
 
       if (filtered.length === 0) {
         list.innerHTML = `
-          <div style="background:#1E293B; border:1px solid #334155; padding:24px; border-radius:12px; text-align:center; color:#94A3B8; margin-top:20px;">
+          <div style="background:#1E293B; border:1px solid #334155; padding:24px; border-radius:12px; text-align:center; color:#CBD5E1; margin-top:20px;">
             <i class="fa-solid fa-triangle-exclamation" style="font-size:32px; color:var(--yellow); margin-bottom:10px;"></i>
             <p>இந்தப் பிரிவில் சேவைகள் தற்போது இல்லை.</p>
           </div>
@@ -1542,7 +1558,7 @@
               <div class="item-desc">${item.desc}</div>
               <div class="item-actions">
                 <a href="tel:${item.phone}" class="btn-call"><i class="fa-solid fa-phone"></i> அழைப்பு / Call</a>
-                <a href="https://wa.me/91${item.wa}" class="btn-wa"><i class="fa-brands fa-whatsapp"></i> வாட்ஸ்அப்</a>
+                <a href="https://wa.me/91${item.wa}" class="btn-wa"><i class="fa-brands fa-whatsapp"></i> வாட்ஸ்அப் / WhatsApp</a>
               </div>
             </div>
           `;
@@ -1617,6 +1633,7 @@
       }
     }
 
+    /* FULL COMPREHENSIVE TERMS AND CONDITIONS RESTORED (NO TRUNCATION) */
     function openDedicatedTerms(category) {
       const termsPage = document.getElementById("pageTermsView");
       const title = document.getElementById("termsHeaderTitle");
@@ -1626,12 +1643,19 @@
         title.innerText = "வாடிக்கையாளர் விதிமுறைகள் / Customer Terms";
         body.innerHTML = `
           <div class="terms-rule-card">
-            <h4>1. வாடிக்கையாளர்களுக்கு 100% இலவசம் / 100% Free for Customers</h4>
-            <p>நம்ம கன்னியாகுமரி தளத்தைப் பயன்படுத்தித் தங்களுக்குத் தேவையான சேவைகளைத் தேடுவதற்கும், தேவையைப் பதிவிடுவதற்கும் வாடிக்கையாளர்களிடம் இருந்து எவ்விதப் பயன்பாட்டுக் கட்டணமோ, பதிவுக் கட்டணமோ அல்லது கமிஷனோ பெறப்படாது.</p>
+            <h4>1. வாடிக்கையாளர்களுக்கு 100% முற்றிலும் இலவசம் / 100% Free Service</h4>
+            <p class="ta-main">நம்ம கன்னியாகுமரி தளத்தைப் பயன்படுத்தித் தங்களுக்குத் தேவையான சேவைகளைத் தேடுவதற்கும், தேவையைப் பதிவிடுவதற்கும் வாடிக்கையாளர்களிடம் இருந்து எவ்விதப் பயன்பாட்டுக் கட்டணமோ, பதிவுக் கட்டணமோ அல்லது கமிஷனோ பெறப்படாது.</p>
+            <p class="en-sub">This platform is 100% free for customers to search and connect with local service providers without any platform commission.</p>
           </div>
           <div class="terms-rule-card">
             <h4>2. நேரடித் தொடர்பு முறை / Direct Provider Contact Only</h4>
-            <p>வாடிக்கையாளர்கள் தங்களுக்குத் தேவையான சேவைகளை நேரடியாகத் தொடர்பு கொண்டு பேசி முடிவு செய்ய வேண்டும்.</p>
+            <p class="ta-main">வாடிக்கையாளர்கள் தங்களுக்குத் தேவையான சேவைகளை நேரடியாகச் சேவை வழங்குநரிடம் போன் அல்லது வாட்ஸ்அப் மூலம் பேசி, கட்டணம் மற்றும் பணிகளை முடிவு செய்து கொள்ள வேண்டும்.</p>
+            <p class="en-sub">Customers must contact the providers directly to negotiate fares, prices, and terms. The platform does not handle bookings.</p>
+          </div>
+          <div class="terms-rule-card">
+            <h4>3. தளத்தின் சட்டப் பொறுப்பு வரம்பு / Platform Disclaimer</h4>
+            <p class="ta-main">சேவை வழங்குநரின் தரம், தாமதம், கட்டண முரண்பாடுகள் அல்லது தனிப்பட்ட விவகாரங்களுக்கு இத்தளம் எவ்விதத்திலும் பொறுப்பேற்காது. வாடிக்கையாளர்கள் சுய விழிப்புணர்வுடன் செயல்பட வேண்டும்.</p>
+            <p class="en-sub">The platform is solely a digital directory and bears no responsibility for service quality, price disputes, or individual conduct.</p>
           </div>
           <button type="button" class="form-submit-btn active-btn" onclick="closeTermsPage()">
             ← படித்துவிட்டேன் / படிவத்திற்குத் திரும்புக
@@ -1641,8 +1665,24 @@
         title.innerText = "வாகன சேவை விதிமுறைகள் / Vehicle Terms";
         body.innerHTML = `
           <div class="terms-rule-card">
-            <h4>1. நேரடித் தொடர்பு மட்டுமே / Direct Contact Only</h4>
-            <p>நம்ம கன்னியாகுமரி தளம் பயண முன்பதிவையோ அல்லது முன்பணத்தையோ பெறுவதில்லை.</p>
+            <h4>1. சுய அறிவிப்பு & உண்மைத் தன்மை / Self-Declaration</h4>
+            <p class="ta-main">வழங்கப்பட்டுள்ள பெயர், தொடர்பு எண், வாகன பதிவு எண் (RC) மற்றும் வாகன விபரங்கள் அனைத்தும் உண்மையானவை என உறுதியளிக்கிறேன்.</p>
+            <p class="en-sub">I hereby declare that the personal details, contact numbers, and vehicle registration info provided are genuine and accurate.</p>
+          </div>
+          <div class="terms-rule-card">
+            <h4>2. சட்டரீதியான பொறுப்பு விலக்கு / Legal Disclaimer</h4>
+            <p class="ta-main">இந்த தளம் பயணிகள் மற்றும் ஓட்டுநர்களை இணைக்கும் ஒரு தகவல் மேடை மட்டுமே. கட்டண விவகாரங்கள், விபத்துக்கள் அல்லது சட்டரீதியான எந்தவொரு பிரச்சினைகளுக்கும் இத்தளத்தின் நிர்வாகம் பொறுப்பல்ல. ஓட்டுநரே முழுப் பொறுப்பு.</p>
+            <p class="en-sub">This platform is solely a listing directory. The management is not responsible for fares, accidents, disputes, or legal claims. The driver holds sole responsibility.</p>
+          </div>
+          <div class="terms-rule-card">
+            <h4>3. நடத்தை நெறிமுறை & நீக்கம் / Code of Conduct & Removal</h4>
+            <p class="ta-main">பயணிகளிடம் கண்ணியமாக நடந்துகொள்வேன். பயணிகளிடம் இருந்து கடுமையான புகார்கள் வந்தாலோ அல்லது தவறான தகவல் அளிக்கப்பட்டாலோ எனது பதிவு முன்னறிவிப்பின்றி உடனடியாக நீக்கப்படும் என்பதை ஒப்புக்கொள்கிறேன்.</p>
+            <p class="en-sub">I agree to maintain professional conduct with passengers. Misbehavior or verified complaints will lead to immediate removal from the platform.</p>
+          </div>
+          <div class="terms-rule-card">
+            <h4>4. நேரடி சவாரி & கட்டணம் / Direct Ride & Fare</h4>
+            <p class="ta-main">சவாரி முன்பதிவோ அல்லது கட்டண கமிஷனோ இத்தளத்தால் வசூலிக்கப்படுவதில்லை; அனைத்தும் ஓட்டுநருக்கும் வாடிக்கையாளருக்கும் இடையே நேரடியானது.</p>
+            <p class="en-sub">The platform does not charge commissions or manage ride payments. All rides and settlements are purely direct.</p>
           </div>
           <button type="button" class="form-submit-btn active-btn" onclick="closeTermsPage()">
             ← படித்துவிட்டேன் / படிவத்திற்குத் திரும்புக
@@ -1653,7 +1693,18 @@
         body.innerHTML = `
           <div class="terms-rule-card">
             <h4>1. நேரடி வர்த்தகம் மட்டுமே / Direct Trade Only</h4>
-            <p>வாடிக்கையாளர்களிடம் இருந்து பொருட்களுக்கான ஆர்டர்களையோ பணத்தையோ தளம் கையாளுவதில்லை.</p>
+            <p class="ta-main">வாடிக்கையாளர்களிடம் இருந்து பொருட்களுக்கான ஆர்டர்களையோ அல்லது பணத்தையோ தளம் கையாளுவதில்லை. அனைத்து வியாபாரப் பரிவர்த்தனைகளும் வாடிக்கையாளருக்கும் கடை உரிமையாளருக்கும் இடையிலான நேரடிப் பொறுப்பாகும்.</p>
+            <p class="en-sub">The platform does not process orders, transactions, or customer payments. All trade interactions are direct between shop and customer.</p>
+          </div>
+          <div class="terms-rule-card">
+            <h4>2. தரக் கட்டுப்பாடு & உத்தரவாதம் / Product Quality & Safety</h4>
+            <p class="ta-main">விற்பனை செய்யப்படும் ஹோம்மேட் உணவுப் பொருட்கள், தின்பண்டங்கள் மற்றும் இதர பொருட்களின் தரம், சுகாதாரம் மற்றும் உரிய உரிமங்களுக்கு (எ.கா: FSSAI) தயாரிப்பாளரே முழுப் பொறுப்பாவார்.</p>
+            <p class="en-sub">The vendor is entirely responsible for product hygiene, quality standards, packaging, and regulatory compliances (such as FSSAI).</p>
+          </div>
+          <div class="terms-rule-card">
+            <h4>3. தவறான விபரங்கள் மீதான நடவடிக்கை / Removal of False Listings</h4>
+            <p class="ta-main">தவறான தயாரிப்பு விபரங்கள், போலி வாக்குறுதிகள் அல்லது வாடிக்கையாளர் ஏமாற்று புகார்கள் உறுதிசெய்யப்பட்டால், நிறுவனத்தின் பதிவு உடனடியாக முடக்கப்படும்.</p>
+            <p class="en-sub">Listings containing false claims, counterfeit items, or verified fraud complaints will be suspended immediately without notice.</p>
           </div>
           <button type="button" class="form-submit-btn active-btn" onclick="closeTermsPage()">
             ← படித்துவிட்டேன் / படிவத்திற்குத் திரும்புக
@@ -1664,7 +1715,18 @@
         body.innerHTML = `
           <div class="terms-rule-card">
             <h4>1. நேரடி ஆள்சேர்ப்பு முறை / Direct Hiring Only</h4>
-            <p>வேலை தேடுபவர்களுக்கும் முதலாளிகளுக்கும் இடையே தளம் வெறும் தகவல் பாலமாக மட்டுமே செயல்படுகிறது.</p>
+            <p class="ta-main">வேலை தேடுபவர்களுக்கும் பணி வழங்குநர்களுக்கும் இடையே தளம் ஒரு தகவல் பாலமாக மட்டுமே செயல்படுகிறது. நேர்காணல் மற்றும் வேலை நியமனங்கள் இரு தரப்பின் நேரடி முடிவாகும்.</p>
+            <p class="en-sub">The platform acts solely as a communication bridge between recruiters and job seekers without intermediary involvement.</p>
+          </div>
+          <div class="terms-rule-card">
+            <h4>2. முன்பணம் பெறுவது முற்றிலும் தடை / No Registration Fees Allowed</h4>
+            <p class="ta-main">வேலை வாய்ப்பு தருவதாகக் கூறி விண்ணப்பதாரர்களிடம் எந்தவித முன்பணமோ, பதிவுக் கட்டணமோ கோருவது சட்டவிரோதமானது. கட்டணம் கோரும் நிறுவனப் பதிவுகள் உடனடியாக நீக்கப்படும்.</p>
+            <p class="en-sub">Demanding upfront fees or deposit money for job offers is strictly prohibited and leads to immediate banning of the employer account.</p>
+          </div>
+          <div class="terms-rule-card">
+            <h4>3. பொறுப்பு விலக்கு / Employment Disclaimer</h4>
+            <p class="ta-main">சம்பளம் வழங்குதல், பணிச் சூழல் மற்றும் ஊழியர் நடத்தை சார்ந்த எந்தவொரு பிரச்சினைகளுக்கும் இத்தளம் பொறுப்பேற்காது.</p>
+            <p class="en-sub">The platform is not responsible for salary disputes, workplace conditions, or candidate background verification.</p>
           </div>
           <button type="button" class="form-submit-btn active-btn" onclick="closeTermsPage()">
             ← படித்துவிட்டேன் / படிவத்திற்குத் திரும்புக
