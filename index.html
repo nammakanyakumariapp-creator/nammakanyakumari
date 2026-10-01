@@ -649,7 +649,7 @@
       </div>
 
       <div class="qs-help-note">
-        ℹ️️ <strong>பயன்பாடு / Note:</strong> GPS ஆன் செய்து, தேவையான சேவையைத் தட்டச்சு செய்தோ அல்லது மைக் மூலமாகவோ உடனடியாகத் தேடலாம்.
+        ℹ <strong>பயன்பாடு / Note:</strong> GPS ஆன் செய்து, தேவையான சேவையைத் தட்டச்சு செய்தோ அல்லது மைக் மூலமாகவோ உடனடியாகத் தேடலாம்.
       </div>
     </div>
 
@@ -774,7 +774,7 @@
     <div class="fullpage-content" id="dedicatedList"></div>
   </div>
 
-  <!-- DEDICATED FULL SCREEN PAGE: வாடிக்கையாளர் தேவைப் பதிவு -->
+  <!-- DEDICATED FULL SCREEN PAGE: வாடிக்கையாளர் தேவைப் பதிவு (NOW FULLY UPGRADED WITH TERMS & SMART SUBMIT) -->
   <div class="fullpage-view" id="pageCustomer">
     <div class="fullpage-header">
       <div class="fullpage-header-left">
@@ -804,8 +804,23 @@
             <label>தேவைப்படும் சேவை / Required Service *</label>
             <input type="text" id="cReq" required placeholder="எ.கா: ஆட்டோ சவாரி, பிளம்பிங்">
           </div>
-          <button type="submit" class="form-submit-btn active-btn">
-            <i class="fa-solid fa-paper-plane"></i> சமர்ப்பிக்க / Submit Need
+
+          <!-- Customer Smart Terms Verification -->
+          <div class="terms-check-container">
+            <div class="terms-row">
+              <input type="checkbox" id="chkTermsCustomer" onchange="toggleCustomerSubmitState()">
+              <label for="chkTermsCustomer" class="terms-text-label">
+                <strong>Agree All / வாடிக்கையாளர் விதிமுறைகளை ஏற்கிறேன்</strong><br>
+                இத்தளம் வாடிக்கையாளருக்கு முற்றிலும் இலவசமானது; சேவை வழங்குநரிடம் நேரடியாகத் தொடர்பு கொள்வேன் என்பதை ஏற்கிறேன்.
+              </label>
+            </div>
+            <a href="javascript:void(0)" onclick="openDedicatedTerms('customer')" class="view-terms-link">
+              📜 வாடிக்கையாளர் விதிமுறைகளைப் படிக்க / View Customer Terms ↗
+            </a>
+          </div>
+
+          <button type="submit" id="btnSubmitCustomer" class="form-submit-btn disabled-btn" disabled>
+            🔒 விதிமுறைகளை ஏற்று டிக் செய்யவும்
           </button>
         </form>
       </div>
@@ -895,7 +910,7 @@
         </form>
       </div>
 
-      <!-- FORM SECTION 2: மளிகை & வியாபாரப் பிரிவு (With Home Delivery Option Added) -->
+      <!-- FORM SECTION 2: மளிகை & வியாபாரப் பிரிவு -->
       <div class="form-box" id="secShopForm" style="display: none;">
         <form onsubmit="handleVendorSubmit(event, 'வியாபாரம்')">
           <div class="form-group">
@@ -930,7 +945,6 @@
             <input type="text" id="sTiming" placeholder="காலை 8:00 AM - இரவு 9:30 PM">
           </div>
           
-          <!-- Newly Added: Home Delivery Selection -->
           <div class="form-group">
             <label>ஹோம் டெலிவரி வசதி உண்டா? (Home Delivery) *</label>
             <select id="sHomeDelivery" required>
@@ -1318,13 +1332,57 @@
       }
     }
 
+    // Customer Form Submit State Toggle
+    function toggleCustomerSubmitState() {
+      const chk = document.getElementById("chkTermsCustomer");
+      const btn = document.getElementById("btnSubmitCustomer");
+      if (chk.checked) {
+        btn.disabled = false;
+        btn.classList.remove("disabled-btn");
+        btn.classList.add("active-btn");
+        btn.innerHTML = `<i class="fa-solid fa-paper-plane"></i> சமர்ப்பிக்க / Submit Need`;
+      } else {
+        btn.disabled = true;
+        btn.classList.remove("active-btn");
+        btn.classList.add("disabled-btn");
+        btn.innerHTML = `🔒 விதிமுறைகளை ஏற்று டிக் செய்யவும்`;
+      }
+    }
+
     function openDedicatedTerms(category) {
       const termsPage = document.getElementById("pageTermsView");
       const title = document.getElementById("termsHeaderTitle");
       const body = document.getElementById("termsContentBody");
       const subVisibilityClass = isTermsSwitchOn ? "hidden-subscription-clause live-visible" : "hidden-subscription-clause";
 
-      if (category === 'vehicle') {
+      if (category === 'customer') {
+        title.innerText = "வாடிக்கையாளர் விதிமுறைகள் / Customer Terms";
+        body.innerHTML = `
+          <div class="terms-rule-card">
+            <h4>1. வாடிக்கையாளர்களுக்கு 100% இலவசம் / 100% Free for Customers</h4>
+            <p>நம்ம கன்னியாகுமரி தளத்தைப் பயன்படுத்தித் தங்களுக்குத் தேவையான சேவைகளைத் தேடுவதற்கும், தேவையைப் பதிவிடுவதற்கும் வாடிக்கையாளர்களிடம் இருந்து எவ்விதப் பயன்பாட்டுக் கட்டணமோ, பதிவுக் கட்டணமோ அல்லது கமிஷனோ பெறப்படாது.</p>
+            <p class="en-sub">Completely free of cost for all customers. Zero usage fees, zero registration fees, and zero commissions charged from consumers.</p>
+          </div>
+          <div class="terms-rule-card">
+            <h4>2. நேரடித் தொடர்பு முறை / Direct Provider Contact Only</h4>
+            <p>வாடிக்கையாளர்கள் தங்களுக்குத் தேவையான ஆட்டோ ஓட்டுநர்கள், கடை உரிமையாளர்கள் அல்லது தொழிலாளர்களை நேரடியாகத் தொடர்பு கொண்டு மட்டுமே கட்டணம் மற்றும் தேவையைப் பேசி முடிவு செய்ய வேண்டும்.</p>
+            <p class="en-sub">Customers connect directly with service providers. All terms, fares, and service requests must be mutually agreed between both parties.</p>
+          </div>
+          <div class="terms-rule-card">
+            <h4>3. பணப் பரிவர்த்தனைப் பொறுப்பு / No Direct Booking Mediation</h4>
+            <p>நம்ம கன்னியாகுமரி தளம் வாடிக்கையாளர்களிடம் இருந்து எந்தவொரு முன்பதிவு முன்பணத்தையோ (Advance) அல்லது கட்டணத் தொகையையோ நேரடியாகப் பெறுவது கிடையாது. பணக் கொடுக்கல்-வாங்கல் இருதரப்பின் நேரடிப் பொறுப்பாகும்.</p>
+            <p class="en-sub">The platform never mediates in ride bookings, store advance payments, or customer transactions.</p>
+          </div>
+          <div class="terms-rule-card">
+            <h4>4. பொறுப்புத் துறப்பு / Safety & Disclaimer</h4>
+            <p>சேவை வழங்குநர்களின் சேவைத் தரம், காலதாமதம் அல்லது தனிப்பட்ட விவகாரங்களுக்கு தளம் பொறுப்பேற்காது; இது பொதுமக்களுக்கான கட்டணமில்லா உள்ளூர் வழிகாட்டித் தளம் மட்டுமே.</p>
+            <p class="en-sub">The platform acts purely as an open local directory and holds no legal liability for provider delays or service disputes.</p>
+          </div>
+          <button type="button" class="form-submit-btn active-btn" onclick="closeTermsPage()">
+            ← படித்துவிட்டேன் / படிவத்திற்குத் திரும்புக
+          </button>
+        `;
+      } else if (category === 'vehicle') {
         title.innerText = "வாகன சேவை விதிமுறைகள் / Vehicle Terms";
         body.innerHTML = `
           <div class="terms-rule-card">
