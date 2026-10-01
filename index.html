@@ -18,8 +18,8 @@
       --pink: #EC4899;
       --red: #EF4444;
       --teal: #14B8A6;
-      --light-blue: #3B82F6;
-      
+      --light-blue: #38BDF8;
+
       --page-bg: #0F172A;
       --card-container-bg: #1E293B;
       --text-light: #F8FAFC;
@@ -50,7 +50,7 @@
     /* Top Main Promo Banner */
     .top-promo-banner {
       width: 100%;
-      border-radius: 16px;
+      border-radius: 14px;
       overflow: hidden;
       margin-bottom: 12px;
       box-shadow: 0 4px 15px rgba(0,0,0,0.3);
@@ -58,6 +58,7 @@
       background: #000;
       cursor: pointer;
     }
+
     .top-promo-banner img {
       width: 100%;
       height: auto;
@@ -67,516 +68,173 @@
     /* Category Switcher Tabs */
     .home-filter-tabs {
       display: flex;
-      background: #1E293B;
+      background: #172554;
       border-radius: 12px;
       padding: 4px;
-      margin-bottom: 10px;
-      border: 1px solid #334155;
+      margin-bottom: 14px;
       gap: 4px;
+      border: 1px solid #1E3A8A;
     }
-    .home-tab-btn {
+
+    .tab-btn {
       flex: 1;
-      border: none;
-      background: transparent;
-      color: var(--en-text-bright);
-      padding: 8px 4px;
-      border-radius: 8px;
-      font-size: 12px;
+      padding: 10px 4px;
+      font-size: 13px;
       font-weight: 700;
+      text-align: center;
+      border-radius: 9px;
+      color: #93C5FD;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 5px;
+      gap: 6px;
+      border: none;
+      background: transparent;
       transition: all 0.2s ease;
     }
-    .home-tab-btn.active {
+
+    .tab-btn.active {
       background: var(--primary-blue);
-      color: #fff;
+      color: #FFFFFF;
+      box-shadow: 0 2px 8px rgba(13, 110, 253, 0.4);
     }
 
-    /* Town & Search Bar Row */
-    .home-search-row {
-      display: grid;
-      grid-template-columns: 110px 1fr;
-      gap: 8px;
+    /* Search Box */
+    .search-section {
       margin-bottom: 14px;
     }
-    .home-town-input, .home-search-input-box {
-      background: #1E293B;
-      border: 1px solid #334155;
-      border-radius: 12px;
-      padding: 8px 10px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .home-town-input input, .home-search-input-box input {
-      width: 100%;
-      background: transparent;
-      border: none;
-      color: #fff;
-      font-size: 12.5px;
-      outline: none;
-    }
-    .home-town-input input::placeholder, .home-search-input-box input::placeholder {
-      color: var(--text-muted);
-    }
-    .home-search-input-box {
+
+    .search-input-wrap {
       position: relative;
-    }
-    .home-search-input-box i.fa-magnifying-glass {
-      color: var(--text-muted);
-      font-size: 13px;
-    }
-    .home-mic-btn {
-      background: none;
-      border: none;
-      color: var(--yellow);
-      font-size: 14px;
-      cursor: pointer;
-      padding: 4px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: color 0.2s ease;
-    }
-    .home-mic-btn.listening {
-      color: var(--green) !important;
+      width: 100%;
     }
 
-    /* Sponsor Ad Strip */
-    .sponsor-ad-card {
-      background: linear-gradient(135deg, #1E293B, #2A384C);
-      border: 1.5px dashed var(--yellow);
+    .search-input-wrap i {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      font-size: 15px;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 11px 14px 11px 40px;
+      background: #1E293B;
+      border: 1.5px solid #334155;
       border-radius: 12px;
-      padding: 10px 14px;
-      margin-bottom: 16px;
+      color: #FFF;
+      font-size: 14px;
+      outline: none;
+    }
+
+    .search-input:focus {
+      border-color: var(--primary-blue);
+    }
+
+    /* Cards */
+    .vendor-card {
+      background: var(--card-container-bg);
+      border: 1px solid #334155;
+      border-radius: 14px;
+      padding: 14px;
+      margin-bottom: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+
+    .vendor-card h3 {
+      font-size: 16px;
+      color: #FFF;
+      margin-bottom: 4px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      cursor: pointer;
     }
-    .sponsor-ad-card h4 {
-      font-size: 13.5px;
-      color: #FEF08A;
-      font-weight: 700;
-    }
-    .sponsor-ad-card p {
-      font-size: 11.5px;
-      color: var(--en-text-bright);
-      font-weight: 500;
-    }
-    .sponsor-tag {
-      background: var(--green);
-      color: #fff;
+
+    .badge-category {
       font-size: 11px;
-      font-weight: 700;
       padding: 3px 8px;
       border-radius: 6px;
+      background: #334155;
+      color: var(--yellow);
+      font-weight: 600;
     }
 
-    /* Category Grids */
-    .category-grid-container {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-bottom: 12px;
-    }
-    
-    .extra-category-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-bottom: 18px;
+    .vendor-card p {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 4px;
     }
 
-    .cat-btn {
-      background: #1E293B;
-      border: 1px solid #334155;
-      border-radius: 16px;
-      padding: 14px 4px;
+    .vendor-card .village-txt {
+      color: var(--light-blue);
+      font-weight: 500;
+    }
+
+    .vendor-card .action-buttons {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .btn-call {
+      flex: 1;
+      background: #2563EB;
+      color: #FFF;
+      padding: 9px;
+      border-radius: 8px;
       text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
-      cursor: pointer;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-      transition: transform 0.15s ease;
-    }
-    .cat-btn:active {
-      transform: scale(0.96);
-    }
-    
-    .cat-btn .circle-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
-    
-    .icon-auto { background: #FFEDD5; color: #C2410C; }
-    .icon-taxi { background: #DBEAFE; color: #1D4ED8; }
-    .icon-load { background: #DCFCE7; color: #15803D; }
-    .icon-home { background: #EDE9FE; color: #6D28D9; }
-    .icon-shop { background: #FEF9C3; color: #A16207; }
-    .icon-jobs { background: #FCE7F3; color: #BE185D; }
-    .icon-pros1 { background: #CCFBF1; color: #0F766E; }
-    .icon-pros2 { background: #FEF3C7; color: #D97706; }
-    .icon-pros3 { background: #FCE7F3; color: #DB2777; }
-
-    .icon-extra1 { background: #E0E7FF; color: #3730A3; }
-    .icon-extra2 { background: #FEE2E2; color: #991B1B; }
-    .icon-extra3 { background: #F3E8FF; color: #6B21A8; }
-
-    .cat-btn .main-text {
-      font-size: 12px;
-      font-weight: 700;
-      color: #F8FAFC;
-      line-height: 1.2;
-    }
-    .cat-btn .sub-text {
-      font-size: 11px;
-      font-weight: 600;
-      color: var(--en-text-bright);
-      line-height: 1.1;
-    }
-
-    /* Dual Registration Blocks */
-    .dual-register-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-bottom: 24px;
-    }
-    .reg-block {
-      background: #1E293B;
-      border-radius: 12px;
-      padding: 12px;
-      border: 1px solid #334155;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      cursor: pointer;
-    }
-    .reg-block.customer i { color: var(--primary-blue); font-size: 22px; }
-    .reg-block.vendor i { color: var(--orange); font-size: 22px; }
-    .reg-block-info h5 {
-      font-size: 12px;
-      font-weight: 700;
-      color: #F8FAFC;
-      line-height: 1.3;
-    }
-    .reg-block-info p {
-      font-size: 10.5px;
-      font-weight: 600;
-      color: var(--en-text-bright);
-    }
-
-    /* Status Badges */
-    .status-badge {
-      display: inline-block;
-      font-size: 10px;
-      padding: 2px 7px;
-      border-radius: 6px;
-      font-weight: 700;
-      margin-left: 6px;
-    }
-    .status-badge.active-green { background: #16A34A; color: #fff; }
-    .status-badge.pending-yellow { background: #F59E0B; color: #000; }
-    .status-badge.expired-red { background: #DC2626; color: #fff; }
-
-    /* Fullpage Dedicated View */
-    .fullpage-view {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: var(--page-bg);
-      z-index: 1000;
-      display: none;
-      flex-direction: column;
-    }
-    .fullpage-view.active {
-      display: flex;
-    }
-    .fullpage-header {
-      background: #020617;
-      color: #fff;
-      padding: 14px 16px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid #334155;
-    }
-    .fullpage-header-left {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .back-btn {
-      background: none;
-      border: none;
-      color: #fff;
-      font-size: 18px;
-      cursor: pointer;
-      padding: 4px;
-    }
-    .fullpage-header h3 {
-      font-size: 15px;
-      font-weight: 700;
-    }
-    .fullpage-header span.tag-right {
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--yellow);
-    }
-    .fullpage-content {
-      flex: 1;
-      overflow-y: auto;
-      padding: 16px;
-      max-width: 480px;
-      width: 100%;
-      margin: 0 auto;
-    }
-
-    /* Tabs Inside Modals */
-    .vendor-nav-tabs, .search-nav-tabs {
-      display: flex;
-      background: #0F172A;
-      border-radius: 10px;
-      padding: 4px;
-      margin-bottom: 16px;
-      border: 1px solid #334155;
-      gap: 4px;
-    }
-    .vendor-tab-btn, .search-tab-btn {
-      flex: 1;
-      border: none;
-      background: transparent;
-      color: var(--en-text-bright);
-      padding: 8px 4px;
-      border-radius: 8px;
-      font-size: 12px;
-      font-weight: 700;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 5px;
-    }
-    .vendor-tab-btn.active, .search-tab-btn.active {
-      background: var(--primary-blue);
-      color: #fff;
-    }
-
-    /* Emergency Contact Cards */
-    .emergency-card {
-      background: #1E293B;
-      border: 1px solid #334155;
-      border-radius: 14px;
-      padding: 14px;
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .emergency-info h4 {
-      font-size: 14.5px;
-      color: #F8FAFC;
-      font-weight: 700;
-    }
-    .emergency-info p {
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--yellow);
-    }
-    .btn-emergency-call {
-      background: var(--red);
-      color: #fff;
       text-decoration: none;
-      padding: 8px 14px;
-      border-radius: 8px;
       font-size: 13px;
       font-weight: 700;
       display: flex;
       align-items: center;
-      gap: 6px;
-      box-shadow: 0 4px 10px rgba(239, 68, 68, 0.3);
-    }
-
-    /* Form Fields Styling */
-    .form-box {
-      background: #1E293B;
-      border-radius: 16px;
-      padding: 16px;
-      border: 1px solid #334155;
-    }
-    .form-group {
-      margin-bottom: 12px;
-    }
-    .form-group label {
-      display: block;
-      font-size: 12.5px;
-      font-weight: 600;
-      margin-bottom: 4px;
-      color: #F8FAFC;
-    }
-    .form-group label span.en-label {
-      color: var(--en-text-bright);
-      font-weight: 600;
-      font-size: 12px;
-    }
-    .form-group label span.opt-tag {
-      font-size: 11px;
-      color: var(--yellow);
-      font-weight: normal;
-    }
-    .form-group input, .form-group select, .form-group textarea {
-      width: 100%;
-      padding: 10px;
-      border-radius: 8px;
-      border: 1px solid #475569;
-      background: #0F172A;
-      color: #fff;
-      font-size: 13.5px;
-      outline: none;
-    }
-
-    /* Terms Box & Smart Verification */
-    .terms-check-container {
-      background: #0F172A;
-      border-radius: 10px;
-      padding: 12px;
-      margin-top: 14px;
-      border: 1px solid #334155;
-    }
-    .terms-row {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-    }
-    .terms-row input[type="checkbox"] {
-      width: 19px;
-      height: 19px;
-      margin-top: 2px;
-      cursor: pointer;
-    }
-    .terms-text-label {
-      font-size: 12.5px;
-      color: #E2E8F0;
-      line-height: 1.4;
-      cursor: pointer;
-    }
-    .view-terms-link {
-      display: inline-block;
-      margin-top: 8px;
-      color: var(--yellow);
-      font-size: 12.5px;
-      text-decoration: underline;
-      font-weight: 700;
-      cursor: pointer;
-    }
-
-    /* Dynamic Submit Button with Color Transition */
-    .form-submit-btn {
-      width: 100%;
-      border: none;
-      border-radius: 8px;
-      padding: 13px;
-      font-size: 14px;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
       justify-content: center;
-      gap: 8px;
-      margin-top: 14px;
-      transition: all 0.3s ease;
-    }
-    .form-submit-btn.disabled-btn {
-      background: #334155;
-      color: #94A3B8;
-      cursor: not-allowed;
-    }
-    .form-submit-btn.active-btn {
-      background: var(--green);
-      color: #fff;
-      cursor: pointer;
-      box-shadow: 0 4px 12px rgba(22, 163, 74, 0.4);
+      gap: 6px;
     }
 
-    /* Item Card */
-    .item-card {
-      background: #1E293B;
-      border-radius: 14px;
-      padding: 14px;
-      margin-bottom: 12px;
-      border: 1px solid #334155;
-    }
-    .item-card h4 {
-      font-size: 14.5px;
-      font-weight: 700;
-      color: #F8FAFC;
-    }
-    .item-card .item-meta {
-      font-size: 12px;
-      color: var(--yellow);
-      font-weight: 600;
-      margin: 3px 0 6px 0;
-    }
-    .item-card .item-desc {
-      font-size: 12.5px;
-      color: var(--en-text-bright);
-      margin-bottom: 10px;
-      line-height: 1.4;
-    }
-    .item-actions {
-      display: flex;
-      gap: 10px;
-    }
-    .btn-call, .btn-wa {
+    .btn-wa {
       flex: 1;
-      text-align: center;
-      padding: 8px;
+      background: #16A34A;
+      color: #FFF;
+      padding: 9px;
       border-radius: 8px;
-      font-size: 12.5px;
-      font-weight: 700;
+      text-align: center;
       text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 6px;
     }
-    .btn-call { background: #0284C7; color: #fff; }
-    .btn-wa { background: #16A34A; color: #fff; }
 
-    /* Comprehensive Terms Rule Card Styling */
+    /* விதிமுறைகள் பக்கம் & கார்டுகள் */
     .terms-rule-card {
       background: #1E293B;
       border: 1px solid #334155;
       border-radius: 12px;
       padding: 14px;
       margin-bottom: 12px;
+      text-align: left;
     }
+
     .terms-rule-card h4 {
       font-size: 13.5px;
       color: var(--yellow);
       margin-bottom: 6px;
       font-weight: 700;
-      line-height: 1.3;
     }
+
     .terms-rule-card p.ta-main {
       font-size: 12.5px;
       color: #F8FAFC;
       line-height: 1.5;
       margin-bottom: 6px;
     }
+
     .terms-rule-card p.en-sub {
       font-size: 12px;
       color: var(--en-text-bright);
@@ -584,39 +242,53 @@
       line-height: 1.4;
     }
 
-    /* எதிர்கால சந்தா வாசகத்தை மறைத்து வைக்கும் கிளாஸ் */
+    /* சந்தா முறை வெளிப்படையாகத் தோன்றும் பகுதி */
     .hidden-subscription-clause {
-      display: none !important;
+      display: block !important; 
+      background: #334155;
+      padding: 12px;
+      border-radius: 8px;
+      margin-top: 10px;
+      border-left: 3px solid var(--yellow);
     }
 
-    /* Bottom Bar */
-    .bottom-bar {
+    /* Bottom Navigation Bar */
+    .bottom-nav {
       position: fixed;
       bottom: 0;
       left: 0;
       right: 0;
-      background: #020617;
+      height: 60px;
+      background: #0B1120;
+      border-top: 1px solid #1E293B;
       display: flex;
       justify-content: space-around;
-      padding: 10px 0;
-      border-top: 1px solid #1E293B;
-      z-index: 900;
+      align-items: center;
+      max-width: 480px;
+      margin: 0 auto;
+      z-index: 100;
     }
-    .bar-link {
-      color: var(--en-text-bright);
-      text-decoration: none;
+
+    .nav-item {
       display: flex;
       flex-direction: column;
       align-items: center;
-      font-size: 11.5px;
-      font-weight: 600;
       gap: 3px;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 11px;
+      font-weight: 500;
       cursor: pointer;
+      background: transparent;
+      border: none;
     }
-    .bar-link.active {
-      color: var(--yellow);
+
+    .nav-item.active {
+      color: var(--primary-blue);
+      font-weight: 700;
     }
-    .bar-link i {
+
+    .nav-item i {
       font-size: 17px;
     }
   </style>
@@ -624,1233 +296,52 @@
 <body>
 
   <div class="container">
-
-    <!-- Top Main Promo Banner -->
-    <div class="top-promo-banner" onclick="openDedicatedCategory('போக்குவரத்து / Transport')">
-      <img src="https://lh3.googleusercontent.com/d/1VreUYprfYVoSxJZxHn6_LnEdfKcCVL8H" alt="நம்ம கன்னியாகுமரி பேனர்">
+    <!-- வாகன சேவை விதிமுறைகள் பகுதி -->
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px;">
+      <h3 style="font-size: 15px; color: #FFF;">
+        <i class="fa-solid fa-file-contract" style="color: var(--yellow); margin-right: 6px;"></i>
+        வாகன சேவை விதிமுறைகள் / Vehicle Terms
+      </h3>
     </div>
 
-    <!-- Home Filter Tabs: Vehicle, Vendor, Job -->
-    <div class="home-filter-tabs">
-      <button class="home-tab-btn active" id="homeTabVehicle" onclick="switchHomeTab('வாகனம்')">
-        <i class="fa-solid fa-car"></i> வாகனம் / Vehicle
-      </button>
-      <button class="home-tab-btn" id="homeTabShop" onclick="switchHomeTab('வியாபாரம்')">
-        <i class="fa-solid fa-shop"></i> வியாபாரம் / Business
-      </button>
-      <button class="home-tab-btn" id="homeTabJob" onclick="switchHomeTab('வேலைவாய்ப்பு')">
-        <i class="fa-solid fa-briefcase"></i> வேலைவாய்ப்பு / Jobs
-      </button>
-    </div>
-
-    <!-- Town & Search Bar with Voice Mic -->
-    <div class="home-search-row">
-      <div class="home-town-input">
-        <i class="fa-solid fa-location-dot" style="color: var(--yellow); font-size: 11px;"></i>
-        <input type="text" id="homeTownInput" placeholder="ஊர் / Town...">
-      </div>
-      <div class="home-search-input-box">
-        <i class="fa-solid fa-magnifying-glass"></i>
-        <input type="text" id="homeKeywordInput" placeholder="எ.கா: ஆட்டோ, டாக்ஸி, மால்ட்..." onkeypress="handleHomeSearchKey(event)" style="padding-right: 28px;">
-        <button type="button" class="home-mic-btn" id="homeMicBtn" onclick="triggerHomeVoiceInput()" title="Voice Search" style="position: absolute; right: 6px; top: 50%; transform: translateY(-50%);">
-          <i class="fa-solid fa-microphone"></i>
-        </button>
-      </div>
-    </div>
-
-    <!-- Sponsor Ad Strip -->
-    <div class="sponsor-ad-card" onclick="openDedicatedPage('pageSponsor')">
-      <div>
-        <h4>குமரி இயற்கை அங்காடி / Kumari Nature Mart</h4>
-        <p>சுத்தமான தேன் & தின்பண்டங்கள் • திங்கள்நகர்</p>
-      </div>
-      <div class="sponsor-tag">
-        <i class="fa-solid fa-check"></i> ஸ்பான்சர்
-      </div>
-    </div>
-
-    <!-- 3x3 Category Grid (First 9 Icons) -->
-    <div class="category-grid-container">
-      <div class="cat-btn" onclick="openDedicatedCategory('ஆட்டோ / Auto')">
-        <div class="circle-icon icon-auto">
-          <i class="fa-solid fa-taxi"></i>
-        </div>
-        <span class="main-text">ஆட்டோ</span>
-        <span class="sub-text">Auto Service</span>
-      </div>
-
-      <div class="cat-btn" onclick="openDedicatedCategory('டாக்ஸி / Taxi')">
-        <div class="circle-icon icon-taxi">
-          <i class="fa-solid fa-car-side"></i>
-        </div>
-        <span class="main-text">டாக்ஸி / கார்</span>
-        <span class="sub-text">Taxi & Tours</span>
-      </div>
-
-      <div class="cat-btn" onclick="openDedicatedCategory('லோடு வாகனம் / Load Vehicle')">
-        <div class="circle-icon icon-load">
-          <i class="fa-solid fa-truck-pickup"></i>
-        </div>
-        <span class="main-text">லோடு வாகனம்</span>
-        <span class="sub-text">Tata Ace / Pickup</span>
-      </div>
-
-      <div class="cat-btn" onclick="openDedicatedCategory('வீட்டு சேவைகள் / Home Services')">
-        <div class="circle-icon icon-home">
-          <i class="fa-solid fa-screwdriver-wrench"></i>
-        </div>
-        <span class="main-text">வீட்டு சேவைகள்</span>
-        <span class="sub-text">Home Services</span>
-      </div>
-
-      <div class="cat-btn" onclick="openDedicatedCategory('ஹோம்மேட் & ஆரோக்கியப் பொருட்கள்')">
-        <div class="circle-icon icon-shop">
-          <i class="fa-solid fa-jar"></i>
-        </div>
-        <span class="main-text">ஹோம்மேட் பொருட்கள்</span>
-        <span class="sub-text">Homemade & Organic</span>
-      </div>
-
-      <div class="cat-btn" onclick="openDedicatedCategory('வேலை வாய்ப்பு / Jobs')">
-        <div class="circle-icon icon-jobs">
-          <i class="fa-solid fa-bullhorn"></i>
-        </div>
-        <span class="main-text">வேலை வாய்ப்பு</span>
-        <span class="sub-text">Jobs & Works</span>
-      </div>
-
-      <div class="cat-btn" onclick="openDedicatedCategory('மின் & குழாய் வல்லுநர்')">
-        <div class="circle-icon icon-pros1">
-          <i class="fa-solid fa-bolt"></i>
-        </div>
-        <span class="main-text">மின் & குழாய்</span>
-        <span class="sub-text">Electrician & Plumber</span>
-      </div>
-
-      <div class="cat-btn" onclick="openDedicatedCategory('கட்டுமானம் & தச்சு')">
-        <div class="circle-icon icon-pros2">
-          <i class="fa-solid fa-hammer"></i>
-        </div>
-        <span class="main-text">கட்டுமானம் & தச்சு</span>
-        <span class="sub-text">Mason & Carpentry</span>
-      </div>
-
-      <div class="cat-btn" onclick="openDedicatedCategory('உபகரண மெக்கானிக்')">
-        <div class="circle-icon icon-pros3">
-          <i class="fa-solid fa-screwdriver"></i>
-        </div>
-        <span class="main-text">உபகரண மெக்கானிக்</span>
-        <span class="sub-text">AC & Appliance Repair</span>
-      </div>
-    </div>
-
-    <!-- Extra Row of 3 Icons (Total 12 Icons) -->
-    <div class="extra-category-grid">
-      <div class="cat-btn" onclick="openDedicatedCategory('ஸ்போர்ட்ஸ் & ஜிம்')">
-        <div class="circle-icon icon-extra1">
-          <i class="fa-solid fa-dumbbell"></i>
-        </div>
-        <span class="main-text">ஸ்போர்ட்ஸ் & ஜிம்</span>
-        <span class="sub-text">Sports, Gym & Turf</span>
-      </div>
-
-      <div class="cat-btn" onclick="openDedicatedCategory('செகண்ட் ஹேண்ட் கார் & பைக்')">
-        <div class="circle-icon icon-extra2">
-          <i class="fa-solid fa-car-rear"></i>
-        </div>
-        <span class="main-text">செகண்ட் ஹேண்ட் கார்</span>
-        <span class="sub-text">Used Cars & Bikes</span>
-      </div>
-
-      <div class="cat-btn" onclick="openDedicatedCategory('ஹோம் பார்லர் & விழா உபகரணங்கள்')">
-        <div class="circle-icon icon-extra3">
-          <i class="fa-solid fa-wand-magic-sparkles"></i>
-        </div>
-        <span class="main-text">ஹோம் பார்லர் & விழா</span>
-        <span class="sub-text">Parlour & Events</span>
-      </div>
-    </div>
-
-    <!-- Dual Registration Blocks -->
-    <div class="dual-register-row">
-      <div class="reg-block customer" onclick="openDedicatedPage('pageCustomer')">
-        <i class="fa-solid fa-user-plus"></i>
-        <div class="reg-block-info">
-          <h5>வாடிக்கையாளர் தேவைப் பதிவு</h5>
-          <p>Customer Requirement</p>
-        </div>
-      </div>
-
-      <div class="reg-block vendor" onclick="openDedicatedPage('pageVendor')">
-        <i class="fa-solid fa-shop"></i>
-        <div class="reg-block-info">
-          <h5>சேவை வழங்குநர் பதிவு</h5>
-          <p>Vendor Listing</p>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- DEDICATED FULL SCREEN CATEGORY VIEW -->
-  <div class="fullpage-view" id="fullpageView">
-    <div class="fullpage-header">
-      <div class="fullpage-header-left">
-        <button class="back-btn" onclick="closeAllPages()">
-          <i class="fa-solid fa-arrow-left"></i>
-        </button>
-        <h3 id="dedicatedTitle">சேவை பட்டியல் / Results</h3>
-      </div>
-      <span id="dedicatedTown" class="tag-right">அழகப்பபுரம்</span>
-    </div>
-    <div class="fullpage-content" id="dedicatedList"></div>
-  </div>
-
-  <!-- ADVANCED SEARCH PAGE -->
-  <div class="fullpage-view" id="pageAdvancedSearch">
-    <div class="fullpage-header">
-      <div class="fullpage-header-left">
-        <button class="back-btn" onclick="closeAllPages()">
-          <i class="fa-solid fa-arrow-left"></i>
-        </button>
-        <h3>தேடல் / Advanced Search</h3>
-      </div>
-      <span class="tag-right">Search</span>
-    </div>
-    <div class="fullpage-content">
-      <div class="form-box">
-        
-        <div class="search-nav-tabs">
-          <button class="search-tab-btn active" id="searchTabVehicle" onclick="switchSearchCategory('வாகனம்')">
-            <i class="fa-solid fa-car"></i> வாகனம் / Vehicle
-          </button>
-          <button class="search-tab-btn" id="searchTabShop" onclick="switchSearchCategory('வியாபாரம்')">
-            <i class="fa-solid fa-shop"></i> வியாபாரம் / Business
-          </button>
-          <button class="search-tab-btn" id="searchTabJob" onclick="switchSearchCategory('வேலைவாய்ப்பு')">
-            <i class="fa-solid fa-briefcase"></i> வேலை / Jobs
-          </button>
-        </div>
-
-        <div class="form-group">
-          <label>என்ன சேவை வேண்டும்? <span class="en-label">/ Required Service *</span></label>
-          <div style="position: relative; display: flex; align-items: center;">
-            <input type="text" id="advancedKeyword" placeholder="எ.கா: ஆட்டோ, ஹோம்மேட்..." style="padding-right: 42px;">
-            <button type="button" class="qs-mic-btn" id="btnAdvMic" onclick="triggerAdvancedVoiceInput()" style="position: absolute; right: 6px;" title="Voice Search">
-              <i class="fa-solid fa-microphone"></i>
-            </button>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label>ஊர் / பகுதி பெயர் <span class="en-label">/ Town or Area *</span></label>
-          <input type="text" id="advancedTown" placeholder="எ.கா: அழகப்பபுரம், மயிலாடி...">
-        </div>
-
-        <button type="button" class="form-submit-btn active-btn" onclick="executeAdvancedSearchFromPage()">
-          <i class="fa-solid fa-magnifying-glass"></i> தேடுக / Search Results
-        </button>
-
-      </div>
-    </div>
-  </div>
-
-  <!-- EMERGENCY HELPLINE PAGE -->
-  <div class="fullpage-view" id="pageEmergency">
-    <div class="fullpage-header">
-      <div class="fullpage-header-left">
-        <button class="back-btn" onclick="closeAllPages()">
-          <i class="fa-solid fa-arrow-left"></i>
-        </button>
-        <h3>அவசர உதவி எண்கள் / Emergency</h3>
-      </div>
-      <span class="tag-right" style="color: var(--red);">24x7 Helpline</span>
-    </div>
-    <div class="fullpage-content">
+    <!-- விதிமுறை 1 (சந்தா விவரங்களுடன் கூடிய கார்டு) -->
+    <div class="terms-rule-card">
+      <h4>1. 0% கமிஷன் தளம் / 0% Commission Platform</h4>
+      <p class="ta-main">ஓட்டுநர்கள் பெறும் சவாரித் தொகையில் இருந்து நம்ம கன்னியாகுமரி தளம் எவ்வித கமிஷனும் (0% Commission) வசூலிப்பதில்லை. சவாரி மற்றும் கட்டணப் பரிவர்த்தனைகளுக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது;</strong> ஓட்டுநரே முழுப் பொறுப்பு.</p>
+      <p class="en-sub">The platform charges 0% commission on your ride fares. <strong>Namma Kanyakumari platform is not responsible</strong> for ride payments; the driver bears full responsibility.</p>
       
-      <div class="emergency-card">
-        <div class="emergency-info">
-          <h4>🚑 ஆம்புலன்ஸ் / Ambulance</h4>
-          <p>மருத்துவ அவசர உதவி • Medical 108</p>
-        </div>
-        <a href="tel:108" class="btn-emergency-call"><i class="fa-solid fa-phone"></i> 108</a>
+      <!-- திரையில் வெளிப்படையாகத் தெரியும் சந்தா விவரம் -->
+      <div class="hidden-subscription-clause">
+        <p class="ta-main" style="color: #FBBF24; margin-top: 2px;">
+          *(குறிப்பு: இத்தளம் சவாரி அல்லது விற்பனையில் எவ்வித கமிஷனும் எடுப்பதில்லை (0% Commission). தளம் தற்போது ஆரம்பகால இலவச முன்னோட்டமாக (Introductory Free Access) வழங்கப்படுகிறது. எதிர்காலத்தில் நிர்வாகக் கொள்கைப்படி தளம் தொடர்ந்து இயங்க சிறிய அளவிலான சேவைப் பராமரிப்புக் கட்டணம் / சந்தா முறை நடைமுறைப்படுத்தப்படலாம். <strong>மாதாந்திர சந்தா: ₹199</strong>, <strong>6 மாத சலுகை: ₹999</strong>, <strong>1 வருட சிறப்புத் திட்டம்: ₹1,799</strong>. அவ்வாறு மாற்றப்படும் போது அதனை ஏற்றுச் செயல்பட சம்மதிக்கிறேன்; கட்டண முடிவுகள் மற்றும் சேவை தொடர்பாக எழும் எவ்வித இழப்புகளுக்கும் <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது.</strong>)*
+        </p>
+        <p class="en-sub">
+          *(Note: The platform charges 0% commission and is currently offered under an introductory free access period. In accordance with future management policy, a nominal platform maintenance fee or subscription plan may be introduced: <strong>Monthly Plan: ₹199</strong>, <strong>6 Months Offer: ₹999</strong>, <strong>1 Year Plan: ₹1,799</strong>. Providers agree to comply upon formal notice; <strong>Namma Kanyakumari platform is not responsible</strong> for any related service disputes.)*
+        </p>
       </div>
+    </div>
 
-      <div class="emergency-card">
-        <div class="emergency-info">
-          <h4>🚒 தீயணைப்பு நிலையம் / Fire Station</h4>
-          <p>தீ விபத்து & மீட்பு பணி • Fire & Rescue 101</p>
-        </div>
-        <a href="tel:101" class="btn-emergency-call"><i class="fa-solid fa-phone"></i> 101</a>
-      </div>
+    <!-- விதிமுறை 2 -->
+    <div class="terms-rule-card">
+      <h4>2. சுய அறிவிப்பு & விபரங்களின் உண்மைத்தன்மை / Self-Declaration</h4>
+      <p class="ta-main">வழங்கப்பட்டுள்ள பெயர், தொடர்பு எண், வாகன பதிவு எண் (RC) விபரங்கள் உண்மையானவை. தவறான தகவல் கொடுத்தால் ஏற்படும் எவ்வித சட்டரீதியான விளைவுகளுக்கும் <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது;</strong> ஓட்டுநரே முழுப் பொறுப்பு.</p>
+      <p class="en-sub">I declare all vehicle and personal credentials are genuine. <strong>Namma Kanyakumari platform is not responsible</strong> for incorrect details; the driver is solely responsible.</p>
+    </div>
 
-      <div class="emergency-card">
-        <div class="emergency-info">
-          <h4>👮 காவல்துறை / Police</h4>
-          <p>சட்டம் ஒழுங்கு அவசரம் • Police 112 / 100</p>
-        </div>
-        <a href="tel:112" class="btn-emergency-call"><i class="fa-solid fa-phone"></i> 112</a>
-      </div>
+    <!-- விதிமுறை 3 -->
+    <div class="terms-rule-card">
+      <h4>3. பயணக் கட்டணம் & சவாரி பேரம் / Fares & Bargaining</h4>
+      <p class="ta-main">பயணிகளிடம் பேசப்படும் கட்டண முறை, சவாரி பேரம் மற்றும் பணப் பரிவர்த்தனைகளில் ஏற்படும் தகராறுகளுக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது;</strong> ஓட்டுநரும் பயணியுமே பேசித் தீர்க்க முழுப் பொறுப்பு.</p>
+      <p class="en-sub"><strong>Namma Kanyakumari platform is not responsible</strong> for fare disputes, bargaining, or passenger settlements; driver and rider are fully responsible.</p>
+    </div>
 
-      <div class="emergency-card">
-        <div class="emergency-info">
-          <h4>👶 குழந்தைகள் உதவி எண் / Childline</h4>
-          <p>குழந்தைகள் பாதுகாப்பு • Child Helpline 1098</p>
-        </div>
-        <a href="tel:1098" class="btn-emergency-call"><i class="fa-solid fa-phone"></i> 1098</a>
-      </div>
-
-      <div class="emergency-card">
-        <div class="emergency-info">
-          <h4>👩 பெண்கள் உதவி எண் / Women Helpline</h4>
-          <p>பெண்கள் பாதுகாப்பு • Women Safety 181</p>
-        </div>
-        <a href="tel:181" class="btn-emergency-call"><i class="fa-solid fa-phone"></i> 181</a>
-      </div>
-
+    <!-- விதிமுறை 4 -->
+    <div class="terms-rule-card">
+      <h4>4. விபத்து & இழப்பீட்டுப் பொறுப்பு விலக்கு / Accident Disclaimer</h4>
+      <p class="ta-main">பயணத்தின் போது நிகழும் சாலை விபத்துக்கள், வாகன சேதங்கள் அல்லது பயணிகளுக்கு ஏற்படும் எவ்வித உடல்/பொருள் இழப்புகளுக்கும் <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது;</strong> ஓட்டுநர் மற்றும் அவரது வாகன காப்பீடே (Insurance) முழுப் பொறுப்பு.</p>
+      <p class="en-sub"><strong>Namma Kanyakumari platform is not responsible</strong> for road accidents, damage, or personal loss; the driver and insurance are solely responsible.</p>
     </div>
   </div>
 
-  <!-- DEDICATED FULL SCREEN PAGE: வாடிக்கையாளர் தேவைப் பதிவு -->
-  <div class="fullpage-view" id="pageCustomer">
-    <div class="fullpage-header">
-      <div class="fullpage-header-left">
-        <button class="back-btn" onclick="closeAllPages()">
-          <i class="fa-solid fa-arrow-left"></i>
-        </button>
-        <h3>வாடிக்கையாளர் தேவைப் பதிவு</h3>
-      </div>
-      <span class="tag-right">Customer Need</span>
-    </div>
-    <div class="fullpage-content">
-      <div class="form-box">
-        <form onsubmit="handleCustomerSubmit(event)">
-          <div class="form-group">
-            <label>உங்கள் பெயர் <span class="en-label">/ Full Name *</span></label>
-            <input type="text" id="cName" required placeholder="உங்கள் பெயர்">
-          </div>
-          <div class="form-group">
-            <label>மொபைல் எண் <span class="en-label">/ Mobile Number *</span></label>
-            <input type="tel" id="cPhone" required placeholder="94431234560">
-          </div>
-          <div class="form-group">
-            <label>தாலுக்கா <span class="en-label">/ Taluk *</span></label>
-            <select id="cTaluk" required>
-              <option value="">தாலுக்காவைத் தேர்வு செய்க ▼</option>
-              <option value="அகத்தீஸ்வரம்">அகத்தீஸ்வரம் தாலுக்கா / Agastheeswaram</option>
-              <option value="தோவாளை">தோவாளை தாலுக்கா / Thovalai</option>
-              <option value="கல்குளம்">கல்குளம் தாலுக்கா / Kalkulam</option>
-              <option value="விளவங்கோடு">விளவங்கோடு தாலுக்கா / Vilavancode</option>
-              <option value="பத்மநாபபுரம்">பத்மநாபபுரம் தாலுக்கா / Padmanabhapuram</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>ஊர் / பகுதி <span class="en-label">/ Town or Village *</span></label>
-            <input type="text" id="cArea" required placeholder="எ.கா: அழகப்பபுரம் / மயிலாடி">
-          </div>
-
-          <!-- Customer Smart Terms Verification -->
-          <div class="terms-check-container">
-            <div class="terms-row">
-              <input type="checkbox" id="chkTermsCustomer" onchange="toggleCustomerSubmitState()">
-              <label for="chkTermsCustomer" class="terms-text-label">
-                <strong>Agree All / வாடிக்கையாளர் விதிமுறைகளை ஏற்கிறேன்</strong><br>
-                இத்தளம் வாடிக்கையாளருக்கு முற்றிலும் இலவசமானது; சேவை வழங்குநரிடம் நேரடியாகத் தொடர்பு கொள்வேன் என்பதை ஏற்கிறேன்.
-              </label>
-            </div>
-            <a href="javascript:void(0)" onclick="openDedicatedTerms('customer')" class="view-terms-link">
-              📜 வாடிக்கையாளர் விதிமுறைகளைப் படிக்க / View Customer Terms ↗
-            </a>
-          </div>
-
-          <button type="submit" id="btnSubmitCustomer" class="form-submit-btn disabled-btn" disabled>
-            🔒 விதிமுறைகளை ஏற்று டிக் செய்யவும்
-          </button>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <!-- DEDICATED FULL SCREEN PAGE: சேவை வழங்குநர் பதிவு -->
-  <div class="fullpage-view" id="pageVendor">
-    <div class="fullpage-header">
-      <div class="fullpage-header-left">
-        <button class="back-btn" onclick="closeAllPages()">
-          <i class="fa-solid fa-arrow-left"></i>
-        </button>
-        <h3>சேவை வழங்குநர் பதிவு</h3>
-      </div>
-      <span class="tag-right">Vendor Form</span>
-    </div>
-    <div class="fullpage-content">
-      
-      <!-- 3 Category Navigation Tabs -->
-      <div class="vendor-nav-tabs">
-        <button class="vendor-tab-btn active" id="tabBtnVehicle" onclick="switchVendorSection('vehicle')">
-          <i class="fa-solid fa-car"></i> வாகனம் / Vehicle
-        </button>
-        <button class="vendor-tab-btn" id="tabBtnShop" onclick="switchVendorSection('shop')">
-          <i class="fa-solid fa-shop"></i> வியாபாரம் / Business
-        </button>
-        <button class="vendor-tab-btn" id="tabBtnJob" onclick="switchVendorSection('job')">
-          <i class="fa-solid fa-briefcase"></i> வேலை / Jobs
-        </button>
-      </div>
-
-      <!-- FORM SECTION 1: வாகனப் பிரிவு -->
-      <div class="form-box" id="secVehicleForm">
-        <form onsubmit="handleVendorSubmit(event, 'வாகனம்')">
-          <div class="form-group">
-            <label>ஓட்டுநர் / உரிமையாளர் பெயர் <span class="en-label">/ Driver Name *</span></label>
-            <input type="text" id="vName" required placeholder="எ.கா: மாரியப்பன்">
-          </div>
-          <div class="form-group">
-            <label>வாகன வகை <span class="en-label">/ Vehicle Type *</span></label>
-            <select id="vCategory" required>
-              <option value="ஆட்டோ / Auto">🛺 ஆட்டோ / Auto (3 Seater)</option>
-              <option value="டாக்ஸி / Taxi">🚕 டாக்ஸி / Taxi (Car / Tourist Vehicle)</option>
-              <option value="லோடு வாகனம் / Load">🚚 லோடு வாகனம் / Load (Tata Ace / Pickup)</option>
-              <option value="செகண்ட் ஹேண்ட் கார் & பைக்">🚗 செகண்ட் ஹேண்ட் கார் & பைக் விற்பனை / Used Vehicles</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>இயங்கும் ஸ்டாண்டு <span class="en-label">/ Stand Location *</span></label>
-            <input type="text" id="vStand" required placeholder="எ.கா: அழகப்பபுரம் மெயின் ஸ்டாண்டு">
-          </div>
-          <div class="form-group">
-            <label>ஊர் / பகுதி பெயர் <span class="en-label">/ Town or Area *</span></label>
-            <input type="text" id="vTownArea" required placeholder="எ.கா: அழகப்பபுரம் / மயிலாடி">
-          </div>
-          <div class="form-group">
-            <label>நேரடி அழைப்பு எண் <span class="en-label">/ Calling Number *</span></label>
-            <input type="tel" id="vCallPhone" required placeholder="94431234560">
-          </div>
-          <div class="form-group">
-            <label>வாட்ஸ்அப் எண் <span class="en-label">/ WhatsApp Number</span></label>
-            <input type="tel" id="vWaPhone" placeholder="98421234560">
-          </div>
-          <div class="form-group">
-            <label>வாகன பதிவு எண் <span class="en-label">/ Vehicle Number (TN 74 ...) *</span></label>
-            <input type="text" id="vRcNum" required placeholder="TN 74 AX 1234 (சரிபார்ப்புக்கு மட்டும்)">
-          </div>
-          <div class="form-group">
-            <label>வாகன புகைப்படம் <span class="opt-tag">(விருப்பப்பட்டால் மட்டும் / Optional - Max 2MB)</span></label>
-            <input type="file" id="vPhoto" accept="image/*" style="padding: 7px; font-size: 12px;">
-          </div>
-          <div class="form-group">
-            <label>சேவை விபரம் <span class="en-label">/ Service Details</span></label>
-            <textarea id="vDesc" rows="2" placeholder="எ.கா: 24 மணி நேர சவாரி, வெளியூர் பயணம்"></textarea>
-          </div>
-
-          <div class="terms-check-container">
-            <div class="terms-row">
-              <input type="checkbox" id="chkTermsVehicle" onchange="toggleSubmitState('Vehicle')">
-              <label for="chkTermsVehicle" class="terms-text-label">
-                <strong>Agree All / வாகன சேவை விதிமுறைகளை ஏற்கிறேன்</strong><br>
-                100% சரியான விபரங்களை மட்டுமே வழங்கியுள்ளேன் என உறுதிசெய்கிறேன்.
-              </label>
-            </div>
-            <a href="javascript:void(0)" onclick="openDedicatedTerms('vehicle')" class="view-terms-link">
-              📜 வாகன விதிமுறைகளைப் படிக்க / View Vehicle Terms ↗
-            </a>
-          </div>
-
-          <button type="submit" id="btnSubmitVehicle" class="form-submit-btn disabled-btn" disabled>
-            🔒 விதிமுறைகளை ஏற்று டிக் செய்யவும்
-          </button>
-        </form>
-      </div>
-
-      <!-- FORM SECTION 2: மளிகை & வியாபாரப் பிரிவு -->
-      <div class="form-box" id="secShopForm" style="display: none;">
-        <form onsubmit="handleVendorSubmit(event, 'வியாபாரம்')">
-          <div class="form-group">
-            <label>நிறுவனம் / கடை பெயர் <span class="en-label">/ Shop Name *</span></label>
-            <input type="text" id="sName" required placeholder="எ.கா: குமரி ஹோம்மேட்ஸ்">
-          </div>
-          <div class="form-group">
-            <label>வணிக வகை <span class="en-label">/ Category *</span></label>
-            <select id="sCategory" required>
-              <option value="ஹோம்மேட் & ஆரோக்கியப் பொருட்கள்">ஹோம்மேட் & ஆரோக்கியப் பொருட்கள் (ABC Malt, தொக்கு)</option>
-              <option value="வீட்டு சேவைகள் (பிளம்பர்/எலக்ட்ரீசியன்)">வீட்டு சேவைகள் (பிளம்பர் / வயரிங்)</option>
-              <option value="ஸ்போர்ட்ஸ் & ஜிம்">ஸ்போர்ட்ஸ், ஜிம் & டர்ப் மைதானம்</option>
-              <option value="ஹோம் பார்லர் & விழா உபகரணங்கள்">ஹோம் பார்லர் & விழா உபகரணங்கள் (Popcorn Machine)</option>
-              <option value="பிற வணிகங்கள்">பிற வணிக நிறுவனங்கள்</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>கடை அமைந்துள்ள இடம் <span class="en-label">/ Shop Address *</span></label>
-            <input type="text" id="sTown" required placeholder="எ.கா: திங்கள்நகர் மெயின் ரோடு">
-          </div>
-          <div class="form-group">
-            <label>ஊர் / பகுதி பெயர் <span class="en-label">/ Town or Area *</span></label>
-            <input type="text" id="sTownArea" required placeholder="எ.கா: திங்கள்நகர்">
-          </div>
-          <div class="form-group">
-            <label>கடை தொடர்பு எண் <span class="en-label">/ Calling Number *</span></label>
-            <input type="tel" id="sCallPhone" required placeholder="94431234560">
-          </div>
-          <div class="form-group">
-            <label>வாட்ஸ்அப் ஆர்டர் எண் <span class="en-label">/ WhatsApp Number</span></label>
-            <input type="tel" id="sWaPhone" placeholder="98421234560">
-          </div>
-          <div class="form-group">
-            <label>செயல்படும் நேரம் <span class="en-label">/ Business Timing</span></label>
-            <input type="text" id="sTiming" placeholder="காலை 8:00 AM - இரவு 9:30 PM">
-          </div>
-          
-          <div class="form-group">
-            <label>ஹோம் டெலிவரி வசதி உண்டா? <span class="en-label">/ Home Delivery *</span></label>
-            <select id="sHomeDelivery" required>
-              <option value="உண்டு / Yes">🚚 உண்டு / Yes (ஹோம் டெலிவரி செய்யப்படும்)</option>
-              <option value="இல்லை / No">🏪 இல்லை / No (நேரடி விற்பனை மட்டுமே)</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label>பொருள் புகைப்படம் <span class="opt-tag">(விருப்பப்பட்டால் மட்டும் / Optional - Max 2MB)</span></label>
-            <input type="file" id="sPhoto" accept="image/*" style="padding: 7px; font-size: 12px;">
-          </div>
-
-          <div class="form-group">
-            <label>சிறப்பு விபரங்கள் <span class="en-label">/ Specialty & Offers</span></label>
-            <textarea id="sDetails" rows="2" placeholder="எ.கா: ஏபிசி மால்ட், பிரண்டை தொக்கு கிடைக்கும்"></textarea>
-          </div>
-
-          <div class="terms-check-container">
-            <div class="terms-row">
-              <input type="checkbox" id="chkTermsShop" onchange="toggleSubmitState('Shop')">
-              <label for="chkTermsShop" class="terms-text-label">
-                <strong>Agree All / வியாபார விதிமுறைகளை ஏற்கிறேன்</strong><br>
-                நேரடி வாடிக்கையாளர் தொடர்புக்கு மட்டுமே தளம் இயங்குகிறது என்பதை ஏற்கிறேன்.
-              </label>
-            </div>
-            <a href="javascript:void(0)" onclick="openDedicatedTerms('shop')" class="view-terms-link">
-              📜 வர்த்தக விதிமுறைகளைப் படிக்க / View Shop Terms ↗
-            </a>
-          </div>
-
-          <button type="submit" id="btnSubmitShop" class="form-submit-btn disabled-btn" disabled>
-            🔒 விதிமுறைகளை ஏற்று டிக் செய்யவும்
-          </button>
-        </form>
-      </div>
-
-      <!-- FORM SECTION 3: வேலைவாய்ப்புப் பிரிவு -->
-      <div class="form-box" id="secJobForm" style="display: none;">
-        <form onsubmit="handleVendorSubmit(event, 'வேலைவாய்ப்பு')">
-          <div class="form-group">
-            <label>பதிவு நோக்கம் <span class="en-label">/ Purpose *</span></label>
-            <select id="jType" required>
-              <option value="வேலைக்கு ஆட்கள் தேவை">வேலைக்கு ஆட்கள் தேவை (Employer / Hiring)</option>
-              <option value="வேலை தேடுகிறேன்">வேலை தேடுகிறேன் (Job Seeker)</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>வேலை / பணித் தலைப்பு <span class="en-label">/ Job Role *</span></label>
-            <input type="text" id="jTitle" required placeholder="எ.கா: கடை விற்பனை உதவியாளர் தேவை">
-          </div>
-          <div class="form-group">
-            <label>நிறுவனம் / முதலாளி பெயர் <span class="en-label">/ Employer Name *</span></label>
-            <input type="text" id="jEmployer" required placeholder="எ.கா: குமரி டெக்ஸ்டைல்ஸ்">
-          </div>
-          <div class="form-group">
-            <label>வேலை அமையும் இடம் <span class="en-label">/ Work Location *</span></label>
-            <input type="text" id="jTown" required placeholder="எ.கா: நாகர்கோவில் வடசேரி">
-          </div>
-          <div class="form-group">
-            <label>ஊர் / பகுதி பெயர் <span class="en-label">/ Town or Area *</span></label>
-            <input type="text" id="jTownArea" required placeholder="எ.கா: நாகர்கோவில்">
-          </div>
-          <div class="form-group">
-            <label>தொடர்பு எண் <span class="en-label">/ Contact Number *</span></label>
-            <input type="tel" id="jPhone" required placeholder="94431234562">
-          </div>
-          <div class="form-group">
-            <label>வேலை முறை <span class="en-label">/ Job Type *</span></label>
-            <select id="jShift" required>
-              <option value="முழு நேரம் / Full Time">முழு நேரம் (Full Time)</option>
-              <option value="பகுதி நேரம் / Part Time">பகுதி நேரம் (Part Time)</option>
-              <option value="தினக்கூலி / Daily Wage">தினக்கூலி / ஒப்பந்த முறை</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>நிறுவன லோகோ <span class="opt-tag">(விருப்பப்பட்டால் மட்டும் / Optional - Max 2MB)</span></label>
-            <input type="file" id="jPhoto" accept="image/*" style="padding: 7px; font-size: 12px;">
-          </div>
-          <div class="form-group">
-            <label>சம்பளம் / தினக்கூலி <span class="opt-tag">(விரும்பினால் மட்டும் / Optional)</span></label>
-            <input type="text" id="jSalary" placeholder="எ.கா: ₹10,000 / மாதம் அல்லது நேரில் பேசலாம்">
-          </div>
-          <div class="form-group">
-            <label>கல்வித் தகுதி & அனுபவம் <span class="opt-tag">(விரும்பினால் மட்டும் / Optional)</span></label>
-            <input type="text" id="jEdu" placeholder="எ.கா: 10th / அனுபவம் உள்ளவர்கள் முன்னுரிமை">
-          </div>
-
-          <div class="terms-check-container">
-            <div class="terms-row">
-              <input type="checkbox" id="chkTermsJob" onchange="toggleSubmitState('Job')">
-              <label for="chkTermsJob" class="terms-text-label">
-                <strong>Agree All / வேலைவாய்ப்பு விதிமுறைகளை ஏற்கிறேன்</strong><br>
-                முன்பணம் கோரப்பட மாட்டாது; நேரடி வேலை ஒப்பந்தத்திற்கு உட்படுகிறேன்.
-              </label>
-            </div>
-            <a href="javascript:void(0)" onclick="openDedicatedTerms('job')" class="view-terms-link">
-              📜 வேலைவாய்ப்பு விதிமுறைகளைப் படிக்க / View Job Terms ↗
-            </a>
-          </div>
-
-          <button type="submit" id="btnSubmitJob" class="form-submit-btn disabled-btn" disabled>
-            🔒 விதிமுறைகளை ஏற்று டிக் செய்யவும்
-          </button>
-        </form>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- DEDICATED FULL SCREEN PAGE: விதிமுறைகள் & நிபந்தனைகள் -->
-  <div class="fullpage-view" id="pageTermsView" style="z-index: 1100;">
-    <div class="fullpage-header">
-      <div class="fullpage-header-left">
-        <button class="back-btn" onclick="closeTermsPage()">
-          <i class="fa-solid fa-arrow-left"></i>
-        </button>
-        <h3 id="termsHeaderTitle">விதிமுறைகள் & நிபந்தனைகள்</h3>
-      </div>
-      <span class="tag-right">Terms</span>
-    </div>
-    <div class="fullpage-content" id="termsContentBody"></div>
-  </div>
-
-  <!-- DEDICATED FULL SCREEN PAGE: விளம்பர முன்பதிவு -->
-  <div class="fullpage-view" id="pageSponsor">
-    <div class="fullpage-header">
-      <div class="fullpage-header-left">
-        <button class="back-btn" onclick="closeAllPages()">
-          <i class="fa-solid fa-arrow-left"></i>
-        </button>
-        <h3>விளம்பர முன்பதிவு / Sponsor Ad</h3>
-      </div>
-      <span class="tag-right">Sponsor</span>
-    </div>
-    <div class="fullpage-content">
-      <div class="form-box">
-        <form onsubmit="sendSponsorWhatsApp(event)">
-          <div class="form-group">
-            <label>நிறுவனம் / Shop Name *</label>
-            <input type="text" id="spShop" required placeholder="எ.கா: அன்னை ஏஜென்சிஸ்">
-          </div>
-          <div class="form-group">
-            <label>தொடர்பாளர் பெயர் / Contact Name *</label>
-            <input type="text" id="spName" required placeholder="உங்கள் பெயர்">
-          </div>
-          <div class="form-group">
-            <label>WhatsApp மொபைல் எண் *</label>
-            <input type="tel" id="spPhone" required placeholder="94431234560">
-          </div>
-          <div class="form-group">
-            <label>கால அளவு / Duration *</label>
-            <select id="spDuration" required>
-              <option value="1 மாதம் / 1 Month">1 மாதம் / 1 Month</option>
-              <option value="2 மாதங்கள் / 2 Months">2 மாதங்கள் / 2 Months</option>
-              <option value="3 மாதங்கள் / 3 Months">3 மாதங்கள் / 3 Months</option>
-              <option value="6 மாதங்கள் / 6 Months">6 மாதங்கள் / 6 Months</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>விளம்பர வாசகம் / Details</label>
-            <textarea id="spDetails" rows="2" placeholder="ஆஃபர் அல்லது சேவைகள்"></textarea>
-          </div>
-
-          <div class="terms-check-container">
-            <div class="terms-row">
-              <input type="checkbox" id="chkTermsSponsor" required>
-              <label for="chkTermsSponsor" class="terms-text-label">
-                <strong>Agree All / அனைத்தையும் ஏற்கிறேன்</strong><br>
-                சட்டவிரோத அல்லது தவறான விளம்பரங்கள் நிராகரிக்கப்படும் என்பதை அறிவேன்.
-              </label>
-            </div>
-          </div>
-
-          <button type="submit" class="form-submit-btn active-btn">
-            <i class="fa-brands fa-whatsapp"></i> முன்பதிவு செய்க / Submit Ad
-          </button>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <!-- Fixed Bottom Navigation Bar -->
-  <nav class="bottom-bar">
-    <a href="#" class="bar-link active">
-      <i class="fa-solid fa-house"></i>
-      <span>முகப்பு / Home</span>
-    </a>
-    <a href="javascript:void(0)" onclick="openAdvancedSearchPage()" class="bar-link">
-      <i class="fa-solid fa-magnifying-glass"></i>
-      <span>தேடல் / Search</span>
-    </a>
-    <a href="javascript:void(0)" onclick="openEmergencyPage()" class="bar-link">
-      <i class="fa-solid fa-truck-medical"></i>
-      <span>108 அவசரம் / Emergency</span>
-    </a>
-    <a href="javascript:void(0)" onclick="shareAppDirect()" class="bar-link">
-      <i class="fa-solid fa-share-nodes"></i>
-      <span>பகிர்வு / Share</span>
-    </a>
-  </nav>
-
-  <script>
-    let isTermsSwitchOn = true; 
-    let selectedHomeCategory = "வாகனம்";
-
-    const serviceList = [
-      { id: 1, name: "அழகப்பபுரம் ஸ்டாண்டு ஆட்டோ (மாரியப்பன்)", category: "ஆட்டோ / Auto", area: "அழகப்பபுரம்", desc: "24 மணி நேர லோக்கல் & அவசர சவாரி • Alagappapuram Stand", phone: "94431234560", wa: "98421234560", status: "active" },
-      { id: 2, name: "மயிலாடி முருகன் ஆட்டோ", category: "ஆட்டோ / Auto", area: "மயிலாடி", desc: "மயிலாடி சந்திப்பு, கோவில் & மருத்துவமனை சவாரி", phone: "94431234561", wa: "98421234560", status: "active" },
-      { id: 3, name: "அஞ்சுகிராமம் காமராஜ் ஆட்டோ", category: "ஆட்டோ / Auto", area: "அஞ்சுகிராமம்", desc: "அஞ்சுகிராமம் ரவுண்டானா • அனைத்து லோக்கல் சவாரிகள்", phone: "94431234562", wa: "98421234560", status: "pending" },
-      { id: 4, name: "செல்வம் ஆட்டோ சர்வீஸ்", category: "ஆட்டோ / Auto", area: "நாகர்கோவில்", desc: "நாகர்கோவில் வடசேரி & அண்ணா பஸ் ஸ்டாண்ட் சவாரி", phone: "94431234501", wa: "98421234560", status: "active" },
-      { id: 5, name: "குமரி டிராவல்ஸ் டாக்ஸி", category: "டாக்ஸி / Taxi", area: "அழகப்பபுரம்", desc: "திருவனந்தபுரம் ஏர்போர்ட், மதுரை டூர்ஸ்", phone: "94431234506", wa: "98421234560", status: "active" },
-      { id: 6, name: "மயிலாடி சரவணா எலக்ட்ரிக்கல்ஸ்", category: "வீட்டு சேவைகள் / Home Services", area: "மயிலாடி", desc: "பிளம்பிங், வயரிங் & மோட்டார் ரிப்பேர்", phone: "94431234504", wa: "98421234560", status: "active" },
-      { id: 7, name: "குமரி நேச்சுரல்ஸ் ஹோம்மேட்", category: "ஹோம்மேட் & ஆரோக்கியப் பொருட்கள்", area: "திங்கள்நகர்", desc: "ஏபிசி மால்ட், சத்து மாவு, பிரண்டை தொக்கு & மீன் ஊறுகாய்", phone: "94431234580", wa: "98421234560", status: "active" },
-      { id: 8, name: "நாகர்கோவில் டர்ப் ஸ்போர்ட்ஸ்", category: "ஸ்போர்ட்ஸ் & ஜிம்", area: "நாகர்கோவில்", desc: "கிரிக்கெட் டர்ப் மைதானம், ஜிம் & கராத்தே பயிற்சி", phone: "94431234581", wa: "98421234560", status: "active" },
-      { id: 9, name: "குமரி செகண்ட் ஹேண்ட் கார்ஸ்", category: "செகண்ட் ஹேண்ட் கார் & பைக்", area: "மார்சல்நகர்", desc: "பழைய கார்கள் மற்றும் இருசக்கர வாகனங்கள் வாங்குதல் / விற்பனை", phone: "94431234582", wa: "98421234560", status: "active" }
-    ];
-
-    function switchHomeTab(cat) {
-      selectedHomeCategory = cat;
-      document.getElementById("homeTabVehicle").classList.remove("active");
-      document.getElementById("homeTabShop").classList.remove("active");
-      document.getElementById("homeTabJob").classList.remove("active");
-
-      if (cat === 'வாகனம்') document.getElementById("homeTabVehicle").classList.add("active");
-      else if (cat === 'வியாபாரம்') document.getElementById("homeTabShop").classList.add("active");
-      else if (cat === 'வேலைவாய்ப்பு') document.getElementById("homeTabJob").classList.add("active");
-    }
-
-    function handleHomeSearchKey(e) {
-      if (e.key === 'Enter') {
-        executeHomeSearch();
-      }
-    }
-
-    function triggerHomeVoiceInput() {
-      const keywordInput = document.getElementById("homeKeywordInput");
-      const micBtn = document.getElementById("homeMicBtn");
-
-      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-      if (SpeechRecognition) {
-        const recognition = new SpeechRecognition();
-        recognition.lang = 'ta-IN';
-        
-        recognition.onstart = function() {
-          micBtn.classList.add("listening");
-          keywordInput.placeholder = "மைக் கேட்கிறது... பேசுங்கள்...";
-        };
-
-        recognition.onresult = function(event) {
-          keywordInput.value = event.results[0][0].transcript;
-          keywordInput.placeholder = "எ.கா: ஆட்டோ, டாக்ஸி, மால்ட்...";
-          micBtn.classList.remove("listening");
-          executeHomeSearch();
-        };
-
-        recognition.onerror = function() {
-          micBtn.classList.remove("listening");
-          keywordInput.placeholder = "எ.கா: ஆட்டோ, டாக்ஸி, மால்ட்...";
-        };
-
-        recognition.onend = function() {
-          micBtn.classList.remove("listening");
-        };
-
-        recognition.start();
-      } else {
-        alert("உங்கள் பிரவுசர் குரல் தேடலை ஆதரிக்கவில்லை.");
-      }
-    }
-
-    function executeHomeSearch() {
-      const town = document.getElementById("homeTownInput").value.trim();
-      const keyword = document.getElementById("homeKeywordInput").value.trim();
-
-      const view = document.getElementById("fullpageView");
-      const list = document.getElementById("dedicatedList");
-      const title = document.getElementById("dedicatedTitle");
-      const townLabel = document.getElementById("dedicatedTown");
-
-      title.innerText = keyword ? keyword : selectedHomeCategory;
-      townLabel.innerText = town ? "📍 " + town : "📍 கன்னியாகுமரி";
-      list.innerHTML = "";
-
-      const filtered = serviceList.filter(item => {
-        const matchesTown = !town || item.area.toLowerCase().includes(town.toLowerCase());
-        const matchesKeyword = !keyword || 
-          item.name.toLowerCase().includes(keyword.toLowerCase()) ||
-          item.category.toLowerCase().includes(keyword.toLowerCase()) ||
-          item.desc.toLowerCase().includes(keyword.toLowerCase());
-        return matchesTown && matchesKeyword && item.status !== 'expired';
-      });
-
-      if (filtered.length === 0) {
-        list.innerHTML = `
-          <div style="background:#1E293B; border:1px solid #334155; padding:24px; border-radius:12px; text-align:center; color:#CBD5E1; margin-top:20px;">
-            <i class="fa-solid fa-triangle-exclamation" style="font-size:32px; color:var(--yellow); margin-bottom:10px;"></i>
-            <p>இந்தத் தேடலுக்கான சேவை தற்போது கிடைக்கவில்லை.</p>
-          </div>
-        `;
-      } else {
-        filtered.forEach(item => {
-          let badgeHtml = item.status === 'active' ? 
-            `<span class="status-badge active-green"><i class="fa-solid fa-check"></i> சரிபார்க்கப்பட்டது</span>` : 
-            `<span class="status-badge pending-yellow"><i class="fa-solid fa-clock"></i> சரிபார்ப்பில்</span>`;
-
-          list.innerHTML += `
-            <div class="item-card">
-              <h4>${item.name} ${badgeHtml}</h4>
-              <div class="item-meta"><i class="fa-solid fa-location-dot"></i> ${item.area} • ${item.category}</div>
-              <div class="item-desc">${item.desc}</div>
-              <div class="item-actions">
-                <a href="tel:${item.phone}" class="btn-call"><i class="fa-solid fa-phone"></i> அழைப்பு / Call</a>
-                <a href="https://wa.me/91${item.wa}" class="btn-wa"><i class="fa-brands fa-whatsapp"></i> வாட்ஸ்அப் / WhatsApp</a>
-              </div>
-            </div>
-          `;
-        });
-      }
-
-      view.classList.add("active");
-    }
-
-    function openAdvancedSearchPage() {
-      closeAllPages();
-      document.getElementById("pageAdvancedSearch").classList.add("active");
-    }
-
-    function openEmergencyPage() {
-      closeAllPages();
-      document.getElementById("pageEmergency").classList.add("active");
-    }
-
-    function switchSearchCategory(cat) {
-      document.getElementById("searchTabVehicle").classList.remove("active");
-      document.getElementById("searchTabShop").classList.remove("active");
-      document.getElementById("searchTabJob").classList.remove("active");
-
-      if (cat === 'வாகனம்') document.getElementById("searchTabVehicle").classList.add("active");
-      else if (cat === 'வியாபாரம்') document.getElementById("searchTabShop").classList.add("active");
-      else if (cat === 'வேலைவாய்ப்பு') document.getElementById("searchTabJob").classList.add("active");
-    }
-
-    function executeAdvancedSearchFromPage() {
-      const keyword = document.getElementById("advancedKeyword").value.trim();
-      const town = document.getElementById("advancedTown").value.trim();
-      
-      closeAllPages();
-      const view = document.getElementById("fullpageView");
-      const list = document.getElementById("dedicatedList");
-      const title = document.getElementById("dedicatedTitle");
-      const townLabel = document.getElementById("dedicatedTown");
-
-      title.innerText = keyword ? keyword : "தேடல் முடிவு / Search Results";
-      townLabel.innerText = town ? "📍 " + town : "📍 கன்னியாகுமரி";
-      list.innerHTML = "";
-
-      const filtered = serviceList.filter(item => {
-        const matchesTown = !town || item.area.toLowerCase().includes(town.toLowerCase());
-        const matchesKeyword = !keyword || 
-          item.name.toLowerCase().includes(keyword.toLowerCase()) ||
-          item.category.toLowerCase().includes(keyword.toLowerCase()) ||
-          item.desc.toLowerCase().includes(keyword.toLowerCase());
-        return matchesTown && matchesKeyword && item.status !== 'expired';
-      });
-
-      if (filtered.length === 0) {
-        list.innerHTML = `
-          <div style="background:#1E293B; border:1px solid #334155; padding:24px; border-radius:12px; text-align:center; color:#CBD5E1; margin-top:20px;">
-            <i class="fa-solid fa-triangle-exclamation" style="font-size:32px; color:var(--yellow); margin-bottom:10px;"></i>
-            <p>இந்தத் தேடலுக்கான சேவை தற்போது கிடைக்கவில்லை.</p>
-          </div>
-        `;
-      } else {
-        filtered.forEach(item => {
-          let badgeHtml = item.status === 'active' ? 
-            `<span class="status-badge active-green"><i class="fa-solid fa-check"></i> சரிபார்க்கப்பட்டது</span>` : 
-            `<span class="status-badge pending-yellow"><i class="fa-solid fa-clock"></i> சரிபார்ப்பில்</span>`;
-
-          list.innerHTML += `
-            <div class="item-card">
-              <h4>${item.name} ${badgeHtml}</h4>
-              <div class="item-meta"><i class="fa-solid fa-location-dot"></i> ${item.area} • ${item.category}</div>
-              <div class="item-desc">${item.desc}</div>
-              <div class="item-actions">
-                <a href="tel:${item.phone}" class="btn-call"><i class="fa-solid fa-phone"></i> அழைப்பு / Call</a>
-                <a href="https://wa.me/91${item.wa}" class="btn-wa"><i class="fa-brands fa-whatsapp"></i> வாட்ஸ்அப் / WhatsApp</a>
-              </div>
-            </div>
-          `;
-        });
-      }
-
-      view.classList.add("active");
-    }
-
-    function triggerAdvancedVoiceInput() {
-      const keywordInput = document.getElementById("advancedKeyword");
-      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-      if (SpeechRecognition) {
-        const recognition = new SpeechRecognition();
-        recognition.lang = 'ta-IN';
-        recognition.onstart = function() {
-          keywordInput.placeholder = "மைக் கேட்கிறது... பேசுங்கள்...";
-        };
-        recognition.onresult = function(event) {
-          keywordInput.value = event.results[0][0].transcript;
-          keywordInput.placeholder = "எ.கா: ஆட்டோ, ஹோம்மேட்...";
-        };
-        recognition.onerror = function() {
-          keywordInput.placeholder = "எ.கா: ஆட்டோ, ஹோம்மேட்...";
-        };
-        recognition.start();
-      } else {
-        alert("குரல் தேடல் ஆதரிக்கப்படவில்லை.");
-      }
-    }
-
-    function openDedicatedCategory(categoryName) {
-      closeAllPages();
-      const view = document.getElementById("fullpageView");
-      const list = document.getElementById("dedicatedList");
-      const title = document.getElementById("dedicatedTitle");
-      const townLabel = document.getElementById("dedicatedTown");
-
-      title.innerText = categoryName;
-      townLabel.innerText = "📍 கன்னியாகுமரி";
-      list.innerHTML = "";
-
-      const query = categoryName.toLowerCase();
-      const filtered = serviceList.filter(item => {
-        const matchesCategory = 
-          query.includes("அனைத்து") || query.includes("all") ||
-          (query.includes("போக்குவரத்து") || query.includes("transport")) && (item.category.includes("ஆட்டோ") || item.category.includes("டாக்ஸி")) ||
-          item.category.toLowerCase().includes(query) ||
-          item.name.toLowerCase().includes(query) ||
-          item.desc.toLowerCase().includes(query);
-        return matchesCategory && item.status !== 'expired';
-      });
-
-      if (filtered.length === 0) {
-        list.innerHTML = `
-          <div style="background:#1E293B; border:1px solid #334155; padding:24px; border-radius:12px; text-align:center; color:#CBD5E1; margin-top:20px;">
-            <i class="fa-solid fa-triangle-exclamation" style="font-size:32px; color:var(--yellow); margin-bottom:10px;"></i>
-            <p>இந்தப் பிரிவில் சேவைகள் தற்போது இல்லை.</p>
-          </div>
-        `;
-      } else {
-        filtered.forEach(item => {
-          let badgeHtml = item.status === 'active' ? 
-            `<span class="status-badge active-green"><i class="fa-solid fa-check"></i> சரிபார்க்கப்பட்டது</span>` : 
-            `<span class="status-badge pending-yellow"><i class="fa-solid fa-clock"></i> சரிபார்ப்பில்</span>`;
-
-          list.innerHTML += `
-            <div class="item-card">
-              <h4>${item.name} ${badgeHtml}</h4>
-              <div class="item-meta"><i class="fa-solid fa-location-dot"></i> ${item.area} • ${item.category}</div>
-              <div class="item-desc">${item.desc}</div>
-              <div class="item-actions">
-                <a href="tel:${item.phone}" class="btn-call"><i class="fa-solid fa-phone"></i> அழைப்பு / Call</a>
-                <a href="https://wa.me/91${item.wa}" class="btn-wa"><i class="fa-brands fa-whatsapp"></i> வாட்ஸ்அப் / WhatsApp</a>
-              </div>
-            </div>
-          `;
-        });
-      }
-
-      view.classList.add("active");
-    }
-
-    function openDedicatedPage(pageId) {
-      closeAllPages();
-      const target = document.getElementById(pageId);
-      if (target) {
-        target.classList.add("active");
-      }
-    }
-
-    function closeAllPages() {
-      document.querySelectorAll(".fullpage-view").forEach(p => p.classList.remove("active"));
-    }
-
-    function switchVendorSection(type) {
-      document.getElementById("secVehicleForm").style.display = "none";
-      document.getElementById("secShopForm").style.display = "none";
-      document.getElementById("secJobForm").style.display = "none";
-
-      document.getElementById("tabBtnVehicle").classList.remove("active");
-      document.getElementById("tabBtnShop").classList.remove("active");
-      document.getElementById("tabBtnJob").classList.remove("active");
-
-      if (type === 'vehicle') {
-        document.getElementById("secVehicleForm").style.display = "block";
-        document.getElementById("tabBtnVehicle").classList.add("active");
-      } else if (type === 'shop') {
-        document.getElementById("secShopForm").style.display = "block";
-        document.getElementById("tabBtnShop").classList.add("active");
-      } else if (type === 'job') {
-        document.getElementById("secJobForm").style.display = "block";
-        document.getElementById("tabBtnJob").classList.add("active");
-      }
-    }
-
-    function toggleSubmitState(type) {
-      const chk = document.getElementById(`chkTerms${type}`);
-      const btn = document.getElementById(`btnSubmit${type}`);
-      if (chk.checked) {
-        btn.disabled = false;
-        btn.classList.remove("disabled-btn");
-        btn.classList.add("active-btn");
-        btn.innerHTML = `<i class="fa-solid fa-check"></i> பதிவு செய்க / Submit Free`;
-      } else {
-        btn.disabled = true;
-        btn.classList.remove("active-btn");
-        btn.classList.add("disabled-btn");
-        btn.innerHTML = `🔒 விதிமுறைகளை ஏற்று டிக் செய்யவும்`;
-      }
-    }
-
-    function toggleCustomerSubmitState() {
-      const chk = document.getElementById("chkTermsCustomer");
-      const btn = document.getElementById("btnSubmitCustomer");
-      if (chk.checked) {
-        btn.disabled = false;
-        btn.classList.remove("disabled-btn");
-        btn.classList.add("active-btn");
-        btn.innerHTML = `<i class="fa-solid fa-paper-plane"></i> சமர்ப்பிக்க / Submit Need`;
-      } else {
-        btn.disabled = true;
-        btn.classList.remove("active-btn");
-        btn.classList.add("disabled-btn");
-        btn.innerHTML = `🔒 விதிமுறைகளை ஏற்று டிக் செய்யவும்`;
-      }
-    }
-
-    /* இறுதி செய்யப்பட்ட 4 படிவங்களுக்கான முழுமையான 5 விதிமுறைகள் */
-    function openDedicatedTerms(category) {
-      const termsPage = document.getElementById("pageTermsView");
-      const title = document.getElementById("termsHeaderTitle");
-      const body = document.getElementById("termsContentBody");
-
-      if (category === 'customer') {
-        title.innerText = "வாடிக்கையாளர் விதிமுறைகள் / Customer Terms";
-        body.innerHTML = `
-          <div class="terms-rule-card">
-            <h4>1. 100% முற்றிலும் இலவச சேவை / 100% Free Service</h4>
-            <p class="ta-main">வாடிக்கையாளர்கள் சேவைகளைத் தேடுவதற்கும், தேவையைப் பதிவிடுவதற்கும் இத்தளம் 100% இலவசமானது; எவ்வித பதிவுக் கட்டணமோ, கமிஷனோ அல்லது பயன்பாட்டுக் கட்டணமோ கிடையாது. அங்கீகரிக்கப்படாத நபரிடம் பணம் கொடுத்து ஏமாறுவதற்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது;</strong> வாடிக்கையாளரே முழுப் பொறுப்பு.</p>
-            <p class="en-sub">This platform is 100% free for customers with zero fees and zero commission. <strong>Namma Kanyakumari platform is not responsible</strong> if you pay any unauthorized charges.</p>
-          </div>
-
-          <div class="terms-rule-card">
-            <h4>2. நேரடித் தொடர்பு & கட்டண முடிவு / Direct Contact & Negotiation</h4>
-            <p class="ta-main">சேவை வழங்குநரிடம் நேரடியாகப் பேசி கட்டணம் மற்றும் வேலை விபரங்களை முடிவு செய்து கொள்ள வேண்டும்; கட்டண முரண்பாடுகளுக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது;</strong> வாடிக்கையாளரும் தொழிலாளியுமே முழுப் பொறுப்பு.</p>
-            <p class="en-sub">Customers must discuss price and service terms directly. <strong>Namma Kanyakumari platform is not responsible</strong> for price disagreements between users and providers.</p>
-          </div>
-
-          <div class="terms-rule-card">
-            <h4>3. பணியின் தரம் & மதிப்பீடு / Service Quality & Workmanship</h4>
-            <p class="ta-main">தொழிலாளியின் வேலையில் தரம் குறைவு, தாமதம் அல்லது அரைகுறையாக முடிப்பதற்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது;</strong> வேலையை ஆய்வு செய்து திருப்தியடைந்த பின் ஏற்க வாடிக்கையாளரே முழுப் பொறுப்பு.</p>
-            <p class="en-sub"><strong>Namma Kanyakumari platform is not responsible</strong> for service quality, delays, or unfinished tasks; approving the work is the customer's sole responsibility.</p>
-          </div>
-
-          <div class="terms-rule-card">
-            <h4>4. உடைமைப் பாதுகாப்பு & தனிநபர் விழிப்புணர்வு / Property Safety & Vigilance</h4>
-            <p class="ta-main">வீட்டிற்கு சேவை செய்ய வருபவர்களின் செயல்பாடுகள், பொருட்கள் காணாமல் போவது அல்லது சேதங்களுக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது;</strong> உரிய முன்னெச்சரிக்கையுடன் கண்காணிக்க வாடிக்கையாளரே முழுப் பொறுப்பு.</p>
-            <p class="en-sub"><strong>Namma Kanyakumari platform is not responsible</strong> for household safety, property damage, or lost valuables; vigilant supervision is the customer's duty.</p>
-          </div>
-
-          <div class="terms-rule-card">
-            <h4>5. முரண்பாடுகள் & புகார்கள் / Civil Disputes</h4>
-            <p class="ta-main">வாடிக்கையாளருக்கும் சேவை வழங்குநருக்கும் இடையே எழும் தனிப்பட்ட தகராறுகள் அல்லது நஷ்டங்களுக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது;</strong> பேசித் தீர்க்கவோ அல்லது சட்டப்படி அணுகவோ சம்பந்தப்பட்ட நபர்களே முழுப் பொறுப்பு.</p>
-            <p class="en-sub"><strong>Namma Kanyakumari platform is not responsible</strong> for personal disputes or damages arising between customers and vendors.</p>
-          </div>
-
-          <button type="button" class="form-submit-btn active-btn" onclick="closeTermsPage()">
-            ← படித்துவிட்டேன் / படிவத்திற்குத் திரும்புக
-          </button>
-        `;
-      } else if (category === 'vehicle') {
-        title.innerText = "வாகன சேவை விதிமுறைகள் / Vehicle Terms";
-        body.innerHTML = `
-          <div class="terms-rule-card">
-            <h4>1. 0% கமிஷன் தளம் / 0% Commission Platform</h4>
-            <p class="ta-main">ஓட்டுநர்கள் பெறும் சவாரித் தொகையில் இருந்து நம்ம கன்னியாகுமரி தளம் எவ்வித கமிஷனும் (0% Commission) வசூலிப்பதில்லை. சவாரி மற்றும் கட்டணப் பரிவர்த்தனைகளுக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது;</strong> ஓட்டுநரே முழுப் பொறுப்பு.</p>
-            <p class="en-sub">The platform charges 0% commission on your ride fares. <strong>Namma Kanyakumari platform is not responsible</strong> for ride payments; the driver bears full responsibility.</p>
-            <div class="hidden-subscription-clause">
-              <p class="ta-main" style="color: #FBBF24; margin-top: 6px;">
-                *(குறிப்பு: இத்தளம் சவாரி அல்லது விற்பனையில் எவ்வித கமிஷனும் எடுப்பதில்லை (0% Commission). தளம் தற்போது ஆரம்பகால இலவச முன்னோட்டமாக (Introductory Free Access) வழங்கப்படுகிறது. எதிர்காலத்தில் நிர்வாகக் கொள்கைப்படி தளம் தொடர்ந்து இயங்க சிறிய அளவிலான சேவைப் பராமரிப்புக் கட்டணம் / சந்தா முறை நடைமுறைப்படுத்தப்படலாம். <strong>மாதாந்திர சந்தா: ₹199</strong>, <strong>6 மாத சலுகை: ₹999</strong>, <strong>1 வருட சிறப்புத் திட்டம்: ₹1,799</strong>. அவ்வாறு மாற்றப்படும் போது அதனை ஏற்றுச் செயல்பட சம்மதிக்கிறேன்; கட்டண முடிவுகள் மற்றும் சேவை தொடர்பாக எழும் எவ்வித இழப்புகளுக்கும் <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது.</strong>)*
-              </p>
-              <p class="en-sub">
-                *(Note: The platform charges 0% commission and is currently offered under an introductory free access period. In accordance with future management policy, a nominal platform maintenance fee or subscription plan may be introduced: <strong>Monthly Plan: ₹199</strong>, <strong>6 Months Offer: ₹999</strong>, <strong>1 Year Plan: ₹1,799</strong>. Providers agree to comply upon formal notice; <strong>Namma Kanyakumari platform is not responsible</strong> for any related service disputes.)*
-              </p>
-            </div>
-          </div>
-
-          <div class="terms-rule-card">
-            <h4>2. சுய அறிவிப்பு & விபரங்களின் உண்மைத்தன்மை / Self-Declaration</h4>
-            <p class="ta-main">வழங்கப்பட்டுள்ள பெயர், தொடர்பு எண், வாகன பதிவு எண் (RC) விபரங்கள் உண்மையானவை. தவறான தகவல் கொடுத்தால் ஏற்படும் எவ்வித சட்டரீதியான விளைவுகளுக்கும் <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது;</strong> ஓட்டுநரே முழுப் பொறுப்பு.</p>
-            <p class="en-sub">I declare all vehicle and personal credentials are genuine. <strong>Namma Kanyakumari platform is not responsible</strong> for incorrect details; the driver is solely responsible.</p>
-          </div>
-
-          <div class="terms-rule-card">
-            <h4>3. பயணக் கட்டணம் & சவாரி பேரம் / Fares & Bargaining</h4>
-            <p class="ta-main">பயணிகளிடம் பேசப்படும் கட்டண முறை, சவாரி பேரம் மற்றும் பணப் பரிவர்த்தனைகளில் ஏற்படும் தகராறுகளுக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது;</strong> ஓட்டுநரும் பயணியுமே பேசித் தீர்க்க முழுப் பொறுப்பு.</p>
-            <p class="en-sub"><strong>Namma Kanyakumari platform is not responsible</strong> for fare disputes, bargaining, or passenger settlements; driver and rider are fully responsible.</p>
-          </div>
-
-          <div class="terms-rule-card">
-            <h4>4. விபத்து & இழப்பீட்டுப் பொறுப்பு விலக்கு / Accident Disclaimer</h4>
-            <p class="ta-main">பயணத்தின் போது நிகழும் சாலை விபத்துக்கள், வாகன சேதங்கள் அல்லது பயண தாமதங்களுக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது;</strong> ஓட்டுநர் மற்றும் அவரது வாகனக் காப்பீடே (Insurance) முழுப் பொறுப்பு.</p>
-            <p class="en-sub"><strong>Namma Kanyakumari platform is not responsible</strong> for road accidents, damage, or trip delays; the driver and vehicle insurance are solely liable.</p>
-          </div>
-
-          <div class="terms-rule-card">
-            <h4>5. நடத்தை நெறிமுறை & கணக்கு நீக்கம் / Code of Conduct & Removal</h4>
-            <p class="ta-main">பயணிகளிடம் கண்ணியமாக நடக்க வேண்டும். தகாத நடத்தை, சட்டம் ஒழுங்கு மீறல்கள் அல்லது தொடர் புகார்கள் காரணமாகக் கணக்கு நீக்கப்படுவதால் ஏற்படும் வணிக இழப்புகளுக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது;</strong> ஓட்டுநரே சட்டப்படி முழுப் பொறுப்பு.</p>
-            <p class="en-sub">Misconduct or unlawful acts will lead to immediate listing termination. <strong>Namma Kanyakumari platform is not responsible</strong> for business losses; the driver is fully responsible.</p>
-          </div>
-
-          <button type="button" class="form-submit-btn active-btn" onclick="closeTermsPage()">
-            ← படித்துவிட்டேன் / படிவத்திற்குத் திரும்புக
-          </button>
-        `;
-      } else if (category === 'shop') {
-        title.innerText = "வர்த்தக விதிமுறைகள் / Business Terms";
-        body.innerHTML = `
-          <div class="terms-rule-card">
-            <h4>1. 0% கமிஷன் & நேரடி வர்த்தகம் / 0% Commission & Direct Trade</h4>
-            <p class="ta-main">பொருட்கள் விற்பனையில் நம்ம கன்னியாகுமரி தளம் வியாபாரிகளிடம் எவ்வித விற்பனைக் கமிஷனும் (0% Commission) பெறுவதில்லை. வியாபாரப் பரிவர்த்தனைகளில் ஏற்படும் இழப்புகளுக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது;</strong> வணிகரே முழுப் பொறுப்பு.</p>
-            <p class="en-sub">The platform charges 0% sales commission. <strong>Namma Kanyakumari platform is not responsible</strong> for financial transactions; the merchant bears sole responsibility.</p>
-            <div class="hidden-subscription-clause">
-              <p class="ta-main" style="color: #FBBF24; margin-top: 6px;">
-                *(குறிப்பு: இத்தளம் சவாரி அல்லது விற்பனையில் எவ்வித கமிஷனும் எடுப்பதில்லை (0% Commission). தளம் தற்போது ஆரம்பகால இலவச முன்னோட்டமாக (Introductory Free Access) வழங்கப்படுகிறது. எதிர்காலத்தில் நிர்வாகக் கொள்கைப்படி தளம் தொடர்ந்து இயங்க சிறிய அளவிலான சேவைப் பராமரிப்புக் கட்டணம் / சந்தா முறை நடைமுறைப்படுத்தப்படலாம். <strong>மாதாந்திர சந்தா: ₹199</strong>, <strong>6 மாத சலுகை: ₹999</strong>, <strong>1 வருட சிறப்புத் திட்டம்: ₹1,799</strong>. அவ்வாறு மாற்றப்படும் போது அதனை ஏற்றுச் செயல்பட சம்மதிக்கிறேன்; கட்டண முடிவுகள் மற்றும் சேவை தொடர்பாக எழும் எவ்வித இழப்புகளுக்கும் <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது.</strong>)*
-              </p>
-              <p class="en-sub">
-                *(Note: The platform charges 0% commission and is currently offered under an introductory free access period. In accordance with future management policy, a nominal platform maintenance fee or subscription plan may be introduced: <strong>Monthly Plan: ₹199</strong>, <strong>6 Months Offer: ₹999</strong>, <strong>1 Year Plan: ₹1,799</strong>. Providers agree to comply upon formal notice; <strong>Namma Kanyakumari platform is not responsible</strong> for any related service disputes.)*
-              </p>
-            </div>
-          </div>
-
-          <div class="terms-rule-card">
-            <h4>2. உணவுத் தரம் & பாதுகாப்பு / Product Quality & Hygiene</h4>
-            <p class="ta-main">விற்பனை செய்யப்படும் ஹோம்மேட் உணவுகள், மால்ட் மற்றும் பொருட்களின் தரம், சுகாதாரம் அல்லது கெட்டுப்போதலுக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது;</strong> தயாரிப்பாளரே சட்டப்படி முழுப் பொறுப்பு.</p>
-            <p class="en-sub"><strong>Namma Kanyakumari platform is not responsible</strong> for food quality, spoilage, or hygiene issues; the producer/seller is legally responsible.</p>
-          </div>
-
-          <div class="terms-rule-card">
-            <h4>3. அரசு உரிமங்கள் & சான்றிதழ் / Licensing & FSSAI Compliance</h4>
-            <p class="ta-main">உணவு பாதுகாப்பு உரிமம் (FSSAI) மற்றும் வணிக அனுமதிகள் பெறாததால் எழும் அரசு நடவடிக்கைகளுக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது;</strong> வணிக உரிமையாளரே முழுப் பொறுப்பு.</p>
-            <p class="en-sub"><strong>Namma Kanyakumari platform is not responsible</strong> for lack of commercial or FSSAI statutory licenses; the merchant bears full responsibility.</p>
-          </div>
-
-          <div class="terms-rule-card">
-            <h4>4. ஹோம் டெலிவரி & பொருள் சேதம் / Delivery & Damage</h4>
-            <p class="ta-main">பொருட்கள் டெலிவரி செய்யும் போதான தாமதம், பொருள் இழப்பு அல்லது உடைசல் சேதங்களுக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது;</strong> கடை நிர்வாகமும் டெலிவரி செய்பவருமே முழுப் பொறுப்பு.</p>
-            <p class="en-sub"><strong>Namma Kanyakumari platform is not responsible</strong> for courier delays, breakages, or delivery failures; the store management is solely responsible.</p>
-          </div>
-
-          <div class="terms-rule-card">
-            <h4>5. போலி விளம்பரம் & கணக்கு முடக்கம் / Fraudulent Listings & Suspension</h4>
-            <p class="ta-main">போலி தயாரிப்புகள் அல்லது வாடிக்கையாளர் ஏமாற்றுப் புகார்களால் கணக்கு முடக்கப்படும் போது ஏற்படும் இழப்புகளுக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது;</strong> தவறான விபரமளித்த நிறுவனமே முழுப் பொறுப்பு.</p>
-            <p class="en-sub"><strong>Namma Kanyakumari platform is not responsible</strong> for business losses caused by terminating misleading listings; the merchant is fully responsible.</p>
-          </div>
-
-          <button type="button" class="form-submit-btn active-btn" onclick="closeTermsPage()">
-            ← படித்துவிட்டேன் / படிவத்திற்குத் திரும்புக
-          </button>
-        `;
-      } else if (category === 'job') {
-        title.innerText = "வேலைவாய்ப்பு விதிமுறைகள் / Job Terms";
-        body.innerHTML = `
-          <div class="terms-rule-card">
-            <h4>1. 0% கமிஷன் நேரடி ஆள்சேர்ப்பு / 0% Commission Direct Hiring</h4>
-            <p class="ta-main">வேலை வாய்ப்புகளுக்கோ அல்லது ஆள்சேர்ப்புக்கோ தளம் எவ்வித கமிஷனும் வசூலிப்பதில்லை. முதலாளி மற்றும் தொழிலாளியின் ஒப்பந்த முடிவுகளுக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது;</strong> இரு தரப்பினருமே முழுப் பொறுப்பு.</p>
-            <p class="en-sub">The platform charges 0% hiring commission. <strong>Namma Kanyakumari platform is not responsible</strong> for employment contracts; both parties are fully responsible.</p>
-            <div class="hidden-subscription-clause">
-              <p class="ta-main" style="color: #FBBF24; margin-top: 6px;">
-                *(குறிப்பு: இத்தளம் சவாரி அல்லது விற்பனையில் எவ்வித கமிஷனும் எடுப்பதில்லை (0% Commission). தளம் தற்போது ஆரம்பகால இலவச முன்னோட்டமாக (Introductory Free Access) வழங்கப்படுகிறது. எதிர்காலத்தில் நிர்வாகக் கொள்கைப்படி தளம் தொடர்ந்து இயங்க சிறிய அளவிலான சேவைப் பராமரிப்புக் கட்டணம் / சந்தா முறை நடைமுறைப்படுத்தப்படலாம். <strong>மாதாந்திர சந்தா: ₹199</strong>, <strong>6 மாத சலுகை: ₹999</strong>, <strong>1 வருட சிறப்புத் திட்டம்: ₹1,799</strong>. அவ்வாறு மாற்றப்படும் போது அதனை ஏற்றுச் செயல்பட சம்மதிக்கிறேன்; கட்டண முடிவுகள் மற்றும் சேவை தொடர்பாக எழும் எவ்வித இழப்புகளுக்கும் <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது.</strong>)*
-              </p>
-              <p class="en-sub">
-                *(Note: The platform charges 0% commission and is currently offered under an introductory free access period. In accordance with future management policy, a nominal platform maintenance fee or subscription plan may be introduced: <strong>Monthly Plan: ₹199</strong>, <strong>6 Months Offer: ₹999</strong>, <strong>1 Year Plan: ₹1,799</strong>. Providers agree to comply upon formal notice; <strong>Namma Kanyakumari platform is not responsible</strong> for any related service disputes.)*
-              </p>
-            </div>
-          </div>
-
-          <div class="terms-rule-card">
-            <h4>2. முன்பணம் வாங்குவது முற்றிலும் தடை / No Upfront Fees</h4>
-            <p class="ta-main">வேலை தருவதாகக் கூறி விண்ணப்பதாரரிடம் எந்தவித முன்பணமும் கோரக் கூடாது; மோசடி பண இழப்புகளுக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது;</strong> கட்டணம் கோரும் நிறுவனமே சட்டப்படி முழுப் பொறுப்பு.</p>
-            <p class="en-sub">Demanding job registration or processing fees is illegal. <strong>Namma Kanyakumari platform is not responsible</strong> for financial fraud; the recruiter is solely liable.</p>
-          </div>
-
-          <div class="terms-rule-card">
-            <h4>3. சம்பளம் & ஊதிய முரண்பாடுகள் / Salary & Wage Disputes</h4>
-            <p class="ta-main">சம்பள பாக்கி, தினக்கூலி குறைப்பு அல்லது ஊதிய முரண்பாடுகள் சார்ந்த பிரச்சனைகளுக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது;</strong> நிறுவனமும் தொழிலாளியுமே முழுப் பொறுப்பு.</p>
-            <p class="en-sub"><strong>Namma Kanyakumari platform is not responsible</strong> for unpaid salaries, wage cuts, or pay disputes; the contracting parties are completely responsible.</p>
-          </div>
-
-          <div class="terms-rule-card">
-            <h4>4. பணிச்சூழல் & பாதுகாப்பு / Workplace Safety</h4>
-            <p class="ta-main">வேலை செய்யும் இடத்தில் ஏற்படும் விபத்துக்கள், பாதுகாப்பு குறைபாடுகள் அல்லது காயங்களுக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது;</strong> சம்பந்தப்பட்ட நிறுவனமே முழுப் பொறுப்பு.</p>
-            <p class="en-sub"><strong>Namma Kanyakumari platform is not responsible</strong> for workplace accidents, hazards, or employee injuries; the employer is wholly responsible.</p>
-          </div>
-
-          <div class="terms-rule-card">
-            <h4>5. ஆவண சரிபார்ப்பு & நடத்தை / Verification & Conduct</h4>
-            <p class="ta-main">வேலை தேடுபவரின் சான்றிதழ்கள், உண்மைத்தன்மை அல்லது ஊழியரின் நடத்தைக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது;</strong> சரிபார்த்து பணியமர்த்த வேண்டியது நிறுவனத்தின் முழுப் பொறுப்பு.</p>
-            <p class="en-sub"><strong>Namma Kanyakumari platform is not responsible</strong> for verifying applicant credentials or workplace conduct; background checks are the employer's responsibility.</p>
-          </div>
-
-          <button type="button" class="form-submit-btn active-btn" onclick="closeTermsPage()">
-            ← படித்துவிட்டேன் / படிவத்திற்குத் திரும்புக
-          </button>
-        `;
-      }
-
-      termsPage.classList.add("active");
-    }
-
-    function closeTermsPage() {
-      document.getElementById("pageTermsView").classList.remove("active");
-    }
-
-    function sendSponsorWhatsApp(e) {
-      e.preventDefault();
-      const shop = document.getElementById("spShop").value;
-      const name = document.getElementById("spName").value;
-      const phone = document.getElementById("spPhone").value;
-      const duration = document.getElementById("spDuration").value;
-      const details = document.getElementById("spDetails").value;
-
-      const adminWa = "919443100000";
-      const text = `*📢 நம்ம கன்னியாகுமரி - விளம்பர முன்பதிவு / Ad Booking*%0A%0A*Shop:* ${shop}%0A*Contact:* ${name}%0A*Mobile:* ${phone}%0A*Duration:* ${duration}%0A*Details:* ${details}`;
-      window.open(`https://wa.me/${adminWa}?text=${text}`, '_blank');
-      closeAllPages();
-    }
-
-    function handleCustomerSubmit(e) {
-      e.preventDefault();
-      alert("உங்கள் தேவை வெற்றிகரமாகப் பதிவு செய்யப்பட்டது!");
-      closeAllPages();
-    }
-
-    function handleVendorSubmit(e, catName) {
-      e.preventDefault();
-      alert(`உங்கள் ${catName} பிரிவு விபரங்கள் பெறப்பட்டது! அட்மின் சரிபார்ப்புக்குப் பின் சேர்க்கப்படும்.`);
-      closeAllPages();
-    }
-
-    function shareAppDirect() {
-      const shareUrl = "https://nammakanyakumariapp-creator.github.io/nammakanyakumari/";
-      window.open("https://wa.me/?text=" + encodeURIComponent("நம்ம கன்னியாகுமரி Local Platform: " + shareUrl), '_blank');
-    }
-  </script>
 </body>
 </html>
