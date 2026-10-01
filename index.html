@@ -63,7 +63,7 @@
       display: block;
     }
 
-    /* 2. ⚡ Big Quick Search Box */
+    /* 2. ⚡ Clean Quick Search Box (GPS Removed, Town & Search Row Added) */
     .quick-search-card {
       background: var(--card-container-bg);
       border-radius: 16px;
@@ -89,38 +89,12 @@
     .qs-badge i {
       color: var(--yellow);
     }
-    .qs-gps-trigger {
-      background: var(--primary-blue);
-      color: #fff;
-      border: none;
-      padding: 6px 12px;
-      border-radius: 8px;
-      font-size: 12px;
-      font-weight: 600;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .qs-location-bar {
-      background: #0F172A;
-      border: 1px solid #334155;
-      border-radius: 10px;
-      padding: 8px 12px;
-      font-size: 13.5px;
-      font-weight: 600;
-      color: #E2E8F0;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 10px;
-    }
 
     .qs-search-bar {
       position: relative;
       display: flex;
       align-items: center;
+      margin-bottom: 10px;
     }
     .qs-search-bar .search-icon {
       position: absolute;
@@ -130,7 +104,7 @@
     }
     .qs-search-bar input {
       width: 100%;
-      padding: 12px 75px 12px 38px;
+      padding: 12px 50px 12px 38px;
       border-radius: 10px;
       border: 1.5px solid #334155;
       font-size: 13.5px;
@@ -144,11 +118,11 @@
 
     .qs-mic-btn {
       position: absolute;
-      right: 42px;
+      right: 12px;
       background: none;
       border: none;
       color: var(--yellow);
-      font-size: 17px;
+      font-size: 18px;
       cursor: pointer;
       padding: 6px;
       display: flex;
@@ -159,30 +133,40 @@
       color: var(--red);
       animation: pulse 1.2s infinite;
     }
-    .qs-action-go {
-      position: absolute;
-      right: 6px;
+
+    /* Side-by-Side Town Input and Search Button Row */
+    .qs-bottom-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 8px;
+      align-items: center;
+    }
+    .qs-town-input {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: 1.5px solid #334155;
+      font-size: 13px;
+      background: #0F172A;
+      color: #fff;
+      outline: none;
+    }
+    .qs-town-input:focus {
+      border-color: var(--primary-blue);
+    }
+    .qs-action-go-btn {
       background: var(--primary-blue);
       color: #fff;
       border: none;
-      width: 32px;
-      height: 32px;
+      padding: 10px 16px;
       border-radius: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
       display: flex;
       align-items: center;
-      justify-content: center;
-      cursor: pointer;
-    }
-
-    .qs-help-note {
-      font-size: 11.5px;
-      color: var(--text-muted);
-      margin-top: 8px;
-      line-height: 1.4;
-      background: #0F172A;
-      padding: 6px 10px;
-      border-radius: 6px;
-      border-left: 3px solid var(--primary-blue);
+      gap: 6px;
+      white-space: nowrap;
     }
 
     /* 3. Sponsor Ad Strip */
@@ -394,6 +378,40 @@
       color: #fff;
     }
 
+    /* Emergency Contact Cards */
+    .emergency-card {
+      background: #1E293B;
+      border: 1px solid #334155;
+      border-radius: 14px;
+      padding: 14px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .emergency-info h4 {
+      font-size: 14.5px;
+      color: #F8FAFC;
+      font-weight: 700;
+    }
+    .emergency-info p {
+      font-size: 11.5px;
+      color: var(--yellow);
+    }
+    .btn-emergency-call {
+      background: var(--red);
+      color: #fff;
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 4px 10px rgba(239, 68, 68, 0.3);
+    }
+
     /* Form Fields Styling */
     .form-box {
       background: #1E293B;
@@ -579,6 +597,7 @@
       align-items: center;
       font-size: 11px;
       gap: 3px;
+      cursor: pointer;
     }
     .bar-link.active {
       color: var(--yellow);
@@ -615,40 +634,30 @@
       <img src="https://lh3.googleusercontent.com/d/1jg5ATB7FemADytaOwXzOXNrhRv1VnILO" alt="TN 74 நம்ம கன்னியாகுமரி">
     </div>
 
-    <!-- 2. ⚡ Big Quick Search Box -->
+    <!-- 2. ⚡ Direct Quick Search Box (GPS Removed, Town & Search Button Added) -->
     <div class="quick-search-card">
       <div class="qs-top-row">
         <div class="qs-badge">
           <i class="fa-solid fa-bolt"></i>
           <span>குவிக் சர்ச் / Quick Search</span>
         </div>
-        <button class="qs-gps-trigger" onclick="runGPSDetection()">
-          <i class="fa-solid fa-crosshairs"></i> என் இடம் / GPS
-        </button>
       </div>
 
-      <!-- Current Town -->
-      <div class="qs-location-bar">
-        <i class="fa-solid fa-location-dot" style="color: #EF4444;"></i>
-        <span id="lblCurrentArea">அழகப்பபுரம் / Alagappapuram</span>
-      </div>
-
-      <!-- Clean Search Bar -->
+      <!-- Main Search Keyword Input with Mic -->
       <div class="qs-search-bar">
         <i class="fa-solid fa-magnifying-glass search-icon"></i>
-        <input type="text" id="txtSearchInput" placeholder="ஆட்டோ, Taxi, Hotel...">
-        
-        <button class="qs-mic-btn" id="btnMicSearch" onclick="triggerVoiceInput()" title="Voice Search">
+        <input type="text" id="homeKeywordInput" placeholder="ஆட்டோ அழகப்பபுரம், சூப்பர் மார்க்கெட்...">
+        <button type="button" class="qs-mic-btn" id="btnHomeMic" onclick="triggerHomeVoiceInput()" title="Voice Search">
           <i class="fa-solid fa-microphone"></i>
-        </button>
-
-        <button class="qs-action-go" onclick="runQuickSearch()">
-          <i class="fa-solid fa-arrow-right"></i>
         </button>
       </div>
 
-      <div class="qs-help-note">
-        ℹ️ <strong>பயன்பாடு / Note:</strong> GPS ஆன் செய்து, தேவையான சேவையைத் தட்டச்சு செய்தோ அல்லது மைக் மூலமாகவோ உடனடியாகத் தேடலாம்.
+      <!-- Side-by-Side Town Input and Search Button -->
+      <div class="qs-bottom-row">
+        <input type="text" id="homeTownInput" class="qs-town-input" placeholder="ஊர் / Town (எ.கா: அழகப்பபுரம்)">
+        <button type="button" class="qs-action-go-btn" onclick="executeHomeSearch()">
+          <i class="fa-solid fa-magnifying-glass"></i> தேடுக
+        </button>
       </div>
     </div>
 
@@ -803,7 +812,7 @@
         <div class="form-group">
           <label>என்ன சேவை வேண்டும்? / Required Service *</label>
           <div style="position: relative; display: flex; align-items: center;">
-            <input type="text" id="advancedKeyword" placeholder="எ.கா: ஆட்டோ அழகப்பபுரம், சூப்பர் மார்க்கெட்..." style="padding-right: 42px;">
+            <input type="text" id="advancedKeyword" placeholder="எ.கா: ஆட்டோ, சூப்பர் மார்க்கெட்..." style="padding-right: 42px;">
             <button type="button" class="qs-mic-btn" id="btnAdvMic" onclick="triggerAdvancedVoiceInput()" style="position: absolute; right: 6px;" title="Voice Search">
               <i class="fa-solid fa-microphone"></i>
             </button>
@@ -812,7 +821,7 @@
 
         <div class="form-group">
           <label>ஊர் / பகுதி பெயர் / Town or Area *</label>
-          <input type="text" id="advancedTown" placeholder="எ.கா: அழகப்பபுரம், மயிலாடி, நாகர்கோவில்...">
+          <input type="text" id="advancedTown" placeholder="எ.கா: அழகப்பபுரம், மயிலாடி...">
         </div>
 
         <button type="button" class="form-submit-btn active-btn" onclick="executeAdvancedSearch()">
@@ -820,6 +829,62 @@
         </button>
 
       </div>
+    </div>
+  </div>
+
+  <!-- EMERGENCY HELPLINE PAGE (Triggered from bottom 108 tab) -->
+  <div class="fullpage-view" id="pageEmergency">
+    <div class="fullpage-header">
+      <div class="fullpage-header-left">
+        <button class="back-btn" onclick="closeAllPages()">
+          <i class="fa-solid fa-arrow-left"></i>
+        </button>
+        <h3>அவசர உதவி எண்கள் / Emergency</h3>
+      </div>
+      <span style="font-size: 12px; color: var(--red);">24x7 Helpline</span>
+    </div>
+    <div class="fullpage-content">
+      
+      <div class="emergency-card">
+        <div class="emergency-info">
+          <h4>🚑 ஆம்புலன்ஸ் / Ambulance</h4>
+          <p>மருத்துவ அவசர உதவி • 108</p>
+        </div>
+        <a href="tel:108" class="btn-emergency-call"><i class="fa-solid fa-phone"></i> 108</a>
+      </div>
+
+      <div class="emergency-card">
+        <div class="emergency-info">
+          <h4>🚒 தீயணைப்பு நிலையம் / Fire Station</h4>
+          <p>தீ விபத்து & மீட்பு பணி • 101</p>
+        </div>
+        <a href="tel:101" class="btn-emergency-call"><i class="fa-solid fa-phone"></i> 101</a>
+      </div>
+
+      <div class="emergency-card">
+        <div class="emergency-info">
+          <h4>👮 காவல்துறை / Police</h4>
+          <p>சட்டம் ஒழுங்கு அவசரம் • 112 / 100</p>
+        </div>
+        <a href="tel:112" class="btn-emergency-call"><i class="fa-solid fa-phone"></i> 112</a>
+      </div>
+
+      <div class="emergency-card">
+        <div class="emergency-info">
+          <h4>👶 குழந்தைகள் உதவி எண் / Child Helpline</h4>
+          <p>குழந்தைகள் பாதுகாப்பு • 1098</p>
+        </div>
+        <a href="tel:1098" class="btn-emergency-call"><i class="fa-solid fa-phone"></i> 1098</a>
+      </div>
+
+      <div class="emergency-card">
+        <div class="emergency-info">
+          <h4>👩 பெண்கள் உதவி எண் / Women Helpline</h4>
+          <p>பெண்கள் பாதுகாப்பு • 181</p>
+        </div>
+        <a href="tel:181" class="btn-emergency-call"><i class="fa-solid fa-phone"></i> 181</a>
+      </div>
+
     </div>
   </div>
 
@@ -1182,7 +1247,7 @@
       <i class="fa-solid fa-magnifying-glass"></i>
       <span>தேடல் / Search</span>
     </a>
-    <a href="tel:108" class="bar-link">
+    <a href="javascript:void(0)" onclick="openEmergencyPage()" class="bar-link">
       <i class="fa-solid fa-truck-medical"></i>
       <span>108 அவசரம்</span>
     </a>
@@ -1206,50 +1271,9 @@
       { id: 6, name: "மயிலாடி சரவணா எலக்ட்ரிக்கல்ஸ்", category: "வீட்டு சேவைகள் / Home Services", area: "மயிலாடி", desc: "பிளம்பிங், வயரிங் & மோட்டார் ரிப்பேர்", phone: "94431234504", wa: "98421234560", status: "active" }
     ];
 
-    const townClusters = {
-      "அழகப்பபுரம்": ["அழகப்பபுரம்", "மயிலாடி", "அஞ்சுகிராமம்"],
-      "மயிலாடி": ["மயிலாடி", "அழகப்பபுரம்", "மருங்கூர்"],
-      "அஞ்சுகிராமம்": ["அஞ்சுகிராமம்", "அழகப்பபுரம்", "கன்னியாகுமரி"],
-      "நாகர்கோவில்": ["நாகர்கோவில்"]
-    };
-
-    let userLocation = "அழகப்பபுரம்";
-
-    function runGPSDetection() {
-      const lbl = document.getElementById("lblCurrentArea");
-      lbl.innerHTML = "<i class='fa-solid fa-spinner fa-spin'></i> கண்டறிகிறது...";
-
-      if ("geolocation" in navigator) {
-        navigator.geolocation.getCurrentPosition(
-          (pos) => {
-            const lat = pos.coords.latitude;
-            const lng = pos.coords.longitude;
-            if (lat >= 8.13 && lat <= 8.18 && lng >= 77.50 && lng <= 77.56) {
-              userLocation = "மயிலாடி";
-            } else if (lat >= 8.11 && lat <= 8.16 && lng >= 77.53 && lng <= 77.58) {
-              userLocation = "அழகப்பபுரம்";
-            } else if (lat >= 8.15 && lat <= 8.21 && lng >= 77.40 && lng <= 77.46) {
-              userLocation = "நாகர்கோவில்";
-            } else {
-              userLocation = "அழகப்பபுரம்";
-            }
-            lbl.innerText = userLocation;
-          },
-          () => {
-            userLocation = "அழகப்பபுரம்";
-            lbl.innerText = userLocation;
-          },
-          { timeout: 5000 }
-        );
-      } else {
-        userLocation = "அழகப்பபுரம்";
-        lbl.innerText = userLocation;
-      }
-    }
-
-    function triggerVoiceInput() {
-      const mic = document.getElementById("btnMicSearch");
-      const txt = document.getElementById("txtSearchInput");
+    function triggerHomeVoiceInput() {
+      const mic = document.getElementById("btnHomeMic");
+      const txt = document.getElementById("homeKeywordInput");
 
       if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
         alert("குரல் தேடல் வசதி பிரவுசரில் இல்லை. தட்டச்சு செய்து தேடவும்.");
@@ -1264,11 +1288,64 @@
       rec.onresult = (e) => {
         txt.value = e.results[0][0].transcript;
         mic.classList.remove("active-mic");
-        runQuickSearch();
+        executeHomeSearch();
       };
       rec.onerror = () => mic.classList.remove("active-mic");
       rec.onend = () => mic.classList.remove("active-mic");
       rec.start();
+    }
+
+    function executeHomeSearch() {
+      const keyword = document.getElementById("homeKeywordInput").value.trim();
+      const town = document.getElementById("homeTownInput").value.trim();
+      
+      closeAllPages();
+      const view = document.getElementById("fullpageView");
+      const list = document.getElementById("dedicatedList");
+      const title = document.getElementById("dedicatedTitle");
+      const townLabel = document.getElementById("dedicatedTown");
+
+      title.innerText = keyword ? keyword : "தேடல் முடிவுகள் / Search";
+      townLabel.innerText = town ? "📍 " + town : "📍 கன்னியாகுமரி";
+      list.innerHTML = "";
+
+      const filtered = serviceList.filter(item => {
+        const matchesTown = !town || item.area.toLowerCase().includes(town.toLowerCase()) || item.desc.toLowerCase().includes(town.toLowerCase());
+        const matchesKeyword = !keyword || 
+          item.name.toLowerCase().includes(keyword.toLowerCase()) ||
+          item.category.toLowerCase().includes(keyword.toLowerCase()) ||
+          item.desc.toLowerCase().includes(keyword.toLowerCase());
+        return matchesTown && matchesKeyword && item.status !== 'expired';
+      });
+
+      if (filtered.length === 0) {
+        list.innerHTML = `
+          <div style="background:#1E293B; border:1px solid #334155; padding:24px; border-radius:12px; text-align:center; color:#94A3B8; margin-top:20px;">
+            <i class="fa-solid fa-triangle-exclamation" style="font-size:32px; color:var(--yellow); margin-bottom:10px;"></i>
+            <p>இந்தத் தேடலுக்கான சேவை தற்போது கிடைக்கவில்லை.</p>
+          </div>
+        `;
+      } else {
+        filtered.forEach(item => {
+          let badgeHtml = item.status === 'active' ? 
+            `<span class="status-badge active-green"><i class="fa-solid fa-check"></i> சரிபார்க்கப்பட்டது</span>` : 
+            `<span class="status-badge pending-yellow"><i class="fa-solid fa-clock"></i> சரிபார்ப்பில்</span>`;
+
+          list.innerHTML += `
+            <div class="item-card">
+              <h4>${item.name} ${badgeHtml}</h4>
+              <div class="item-meta"><i class="fa-solid fa-location-dot"></i> ${item.area} • ${item.category}</div>
+              <div class="item-desc">${item.desc}</div>
+              <div class="item-actions">
+                <a href="tel:${item.phone}" class="btn-call"><i class="fa-solid fa-phone"></i> அழைப்பு / Call</a>
+                <a href="https://wa.me/91${item.wa}" class="btn-wa"><i class="fa-brands fa-whatsapp"></i> வாட்ஸ்அப்</a>
+              </div>
+            </div>
+          `;
+        });
+      }
+
+      view.classList.add("active");
     }
 
     function triggerAdvancedVoiceInput() {
@@ -1294,14 +1371,14 @@
       rec.start();
     }
 
-    function runQuickSearch() {
-      const query = document.getElementById("txtSearchInput").value.trim();
-      openDedicatedCategory(query || "அனைத்து சேவைகள் / All");
-    }
-
     function openAdvancedSearchPage() {
       closeAllPages();
       document.getElementById("pageAdvancedSearch").classList.add("active");
+    }
+
+    function openEmergencyPage() {
+      closeAllPages();
+      document.getElementById("pageEmergency").classList.add("active");
     }
 
     function switchSearchCategory(cat) {
@@ -1326,12 +1403,11 @@
       const townLabel = document.getElementById("dedicatedTown");
 
       title.innerText = keyword ? keyword : selectedSearchCategory;
-      townLabel.innerText = town ? "📍 " + town : "📍 " + userLocation;
+      townLabel.innerText = town ? "📍 " + town : "📍 கன்னியாகுமரி";
       list.innerHTML = "";
 
-      const targetTown = town ? town : userLocation;
       const filtered = serviceList.filter(item => {
-        const matchesTown = item.area.toLowerCase().includes(targetTown.toLowerCase());
+        const matchesTown = !town || item.area.toLowerCase().includes(town.toLowerCase());
         const matchesKeyword = !keyword || 
           item.name.toLowerCase().includes(keyword.toLowerCase()) ||
           item.category.toLowerCase().includes(keyword.toLowerCase()) ||
@@ -1343,7 +1419,7 @@
         list.innerHTML = `
           <div style="background:#1E293B; border:1px solid #334155; padding:24px; border-radius:12px; text-align:center; color:#94A3B8; margin-top:20px;">
             <i class="fa-solid fa-triangle-exclamation" style="font-size:32px; color:var(--yellow); margin-bottom:10px;"></i>
-            <p><strong>${targetTown}</strong> வட்டாரத்தில் இந்த சேவை தற்போது கிடைக்கவில்லை.</p>
+            <p>இந்தத் தேடலுக்கான சேவை தற்போது கிடைக்கவில்லை.</p>
           </div>
         `;
       } else {
@@ -1371,33 +1447,31 @@
 
     function openDedicatedCategory(categoryName) {
       closeAllPages();
-      const allowedTowns = townClusters[userLocation] || [userLocation];
       const view = document.getElementById("fullpageView");
       const list = document.getElementById("dedicatedList");
       const title = document.getElementById("dedicatedTitle");
       const townLabel = document.getElementById("dedicatedTown");
 
       title.innerText = categoryName;
-      townLabel.innerText = "📍 " + userLocation;
+      townLabel.innerText = "📍 கன்னியாகுமரி";
       list.innerHTML = "";
 
       const query = categoryName.toLowerCase();
       const filtered = serviceList.filter(item => {
-        const matchesTown = allowedTowns.includes(item.area);
         const matchesCategory = 
           query.includes("அனைத்து") || query.includes("all") ||
           (query.includes("போக்குவரத்து") || query.includes("transport")) && (item.category.includes("ஆட்டோ") || item.category.includes("டாக்ஸி")) ||
           item.category.toLowerCase().includes(query) ||
           item.name.toLowerCase().includes(query) ||
           item.desc.toLowerCase().includes(query);
-        return matchesTown && matchesCategory && item.status !== 'expired';
+        return matchesCategory && item.status !== 'expired';
       });
 
       if (filtered.length === 0) {
         list.innerHTML = `
           <div style="background:#1E293B; border:1px solid #334155; padding:24px; border-radius:12px; text-align:center; color:#94A3B8; margin-top:20px;">
             <i class="fa-solid fa-triangle-exclamation" style="font-size:32px; color:var(--yellow); margin-bottom:10px;"></i>
-            <p><strong>${userLocation}</strong> வட்டாரத்தில் இந்த சேவை தற்போது இல்லை.</p>
+            <p>இந்தப் பிரிவில் சேவைகள் தற்போது இல்லை.</p>
           </div>
         `;
       } else {
