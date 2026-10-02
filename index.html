@@ -345,9 +345,10 @@
     }
     .fullpage-content {
       flex: 1;
+      min-height: 0;
       overflow-y: auto;
       padding: 16px;
-      padding-bottom: 40px;
+      padding-bottom: 100px;
       max-width: 480px;
       width: 100%;
       margin: 0 auto;
@@ -592,9 +593,9 @@
       line-height: 1.4;
     }
   
-    /* எதிர்கால சந்தா வாசகத்தை மறைத்து வைக்கும் கிளாஸ் */
+    /* எதிர்கால சந்தா வாசகத்தை கட்டுப்படுத்தும் கிளாஸ் */
     .hidden-subscription-clause {
-      display: none !important;
+      display: none;
     }
   
     /* Bottom Bar */
@@ -1666,6 +1667,9 @@
       const termsPage = document.getElementById("pageTermsView");
       const title = document.getElementById("termsHeaderTitle");
       const body = document.getElementById("termsContentBody");
+      
+      // கூகுள் சீட் சுவிட்ச் நிலைக்கு ஏற்ப சந்தா வாசகத்தைக் காட்டும் அல்லது மறைக்கும் நடைமுறை
+      const subClauseStyle = isTermsSwitchOn ? "display: block;" : "display: none;";
   
       if (category === 'customer') {
         title.innerText = "வாடிக்கையாளர் விதிமுறைகள் / Customer Terms";
@@ -1711,7 +1715,7 @@
             <h4>1. 0% கமிஷன் தளம் / 0% Commission Platform</h4>
             <p class="ta-main">ஓட்டுநர்கள் பெறும் சவாரித் தொகையில் இருந்து நம்ம கன்னியாகுமரி தளம் எவ்வித கமிஷனும் (0% Commission) வசூலிப்பதில்லை. சவாரி மற்றும் கட்டணப் பரிவர்த்தனைகளுக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது;</strong> ஓட்டுநரே முழுப் பொறுப்பு.</p>
             <p class="en-sub">The platform charges 0% commission on your ride fares. <strong>Namma Kanyakumari platform is not responsible</strong> for ride payments; the driver bears full responsibility.</p>
-            <div class="hidden-subscription-clause">
+            <div class="hidden-subscription-clause" style="${subClauseStyle}">
               <p class="ta-main" style="color: #FBBF24; margin-top: 6px;">
                 *(குறிப்பு: இத்தளம் சவாரி அல்லது விற்பனையில் எவ்வித கமிஷனும் எடுப்பதில்லை (0% Commission). தளம் தற்போது ஆரம்பகால இலவச முன்னோட்டமாக (Introductory Free Access) வழங்கப்படுகிறது. எதிர்காலத்தில் நிர்வாகக் கொள்கைப்படி தளம் தொடர்ந்து இயங்க சிறிய அளவிலான சேவைப் பராமரிப்புக் கட்டணம் / சந்தா முறை நடைமுறைப்படுத்தப்படலாம். <strong>மாதாந்திர சந்தா: ₹199</strong>, <strong>6 மாத சலுகை: ₹999</strong>, <strong>1 வருட சிறப்புத் திட்டம்: ₹1,799</strong>. அவ்வாறு மாற்றப்படும் போது அதனை ஏற்றுச் செயல்பட சம்மதிக்கிறேன்; கட்டண முடிவுகள் மற்றும் சேவை தொடர்பாக எழும் எவ்வித இழப்புகளுக்கும் <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது.</strong>)*
               </p>
@@ -1756,7 +1760,7 @@
             <h4>1. 0% கமிஷன் & நேரடி வர்த்தகம் / 0% Commission & Direct Trade</h4>
             <p class="ta-main">பொருட்கள் விற்பனையில் நம்ம கன்னியாகுமரி தளம் வியாபாரிகளிடம் எவ்வித விற்பனைக் கமிஷனும் (0% Commission) பெறுவதில்லை. வியாபாரப் பரிவர்த்தனைகளில் ஏற்படும் இழப்புகளுக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது;</strong> வணிகரே முழுப் பொறுப்பு.</p>
             <p class="en-sub">The platform charges 0% sales commission. <strong>Namma Kanyakumari platform is not responsible</strong> for financial transactions; the merchant bears sole responsibility.</p>
-            <div class="hidden-subscription-clause">
+            <div class="hidden-subscription-clause" style="${subClauseStyle}">
               <p class="ta-main" style="color: #FBBF24; margin-top: 6px;">
                 *(குறிப்பு: இத்தளம் சவாரி அல்லது விற்பனையில் எவ்வித கமிஷனும் எடுப்பதில்லை (0% Commission). தளம் தற்போது ஆரம்பகால இலவச முன்னோட்டமாக (Introductory Free Access) வழங்கப்படுகிறது. எதிர்காலத்தில் நிர்வாகக் கொள்கைப்படி தளம் தொடர்ந்து இயங்க சிறிய அளவிலான சேவைப் பராமரிப்புக் கட்டணம் / சந்தா முறை நடைமுறைப்படுத்தப்படலாம். <strong>மாதாந்திர சந்தா: ₹199</strong>, <strong>6 மாத சலுகை: ₹999</strong>, <strong>1 வருட சிறப்புத் திட்டம்: ₹1,799</strong>. அவ்வாறு மாற்றப்படும் போது அதனை ஏற்றுச் செயல்பட சம்மதிக்கிறேன்; கட்டண முடிவுகள் மற்றும் சேவை தொடர்பாக எழும் எவ்வித இழப்புகளுக்கும் <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது.</strong>)*
               </p>
@@ -1801,7 +1805,7 @@
             <h4>1. 0% கமிஷன் நேரடி ஆள்சேர்ப்பு / 0% Commission Direct Hiring</h4>
             <p class="ta-main">வேலை வாய்ப்புகளுக்கோ அல்லது ஆள்சேர்ப்புக்கோ தளம் எவ்வித கமிஷனும் வசூலிப்பதில்லை. முதலாளி மற்றும் தொழிலாளியின் ஒப்பந்த முடிவுகளுக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது;</strong> இரு தரப்பினருமே முழுப் பொறுப்பு.</p>
             <p class="en-sub">The platform charges 0% hiring commission. <strong>Namma Kanyakumari platform is not responsible</strong> for employment contracts; both parties are fully responsible.</p>
-            <div class="hidden-subscription-clause">
+            <div class="hidden-subscription-clause" style="${subClauseStyle}">
               <p class="ta-main" style="color: #FBBF24; margin-top: 6px;">
                 *(குறிப்பு: இத்தளம் சவாரி அல்லது விற்பனையில் எவ்வித கமிஷனும் எடுப்பதில்லை (0% Commission). தளம் தற்போது ஆரம்பகால இலவச முன்னோட்டமாக (Introductory Free Access) வழங்கப்படுகிறது. எதிர்காலத்தில் நிர்வாகக் கொள்கைப்படி தளம் தொடர்ந்து இயங்க சிறிய அளவிலான சேவைப் பராமரிப்புக் கட்டணம் / சந்தா முறை நடைமுறைப்படுத்தப்படலாம். <strong>மாதாந்திர சந்தா: ₹199</strong>, <strong>6 மாத சலுகை: ₹999</strong>, <strong>1 வருட சிறப்புத் திட்டம்: ₹1,799</strong>. அவ்வாறு மாற்றப்படும் போது அதனை ஏற்றுச் செயல்பட சம்மதிக்கிறேன்; கட்டண முடிவுகள் மற்றும் சேவை தொடர்பாக எழும் எவ்வித இழப்புகளுக்கும் <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது.</strong>)*
               </p>
