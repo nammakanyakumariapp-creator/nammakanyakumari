@@ -20,9 +20,9 @@
       --teal: #14B8A6;
       --light-blue: #3B82F6;
       
-      --page-bg: #0B2D5B;         /* முதல் படத்தின் ராயல் நேவி ப்ளூ பிரதான பின்னணி */
-      --card-container-bg: #102A4E; /* முதல் படத்தின் டார்க் ப்ளூ கார்டு பின்னணி */
-      --text-light: #FFF8E7;      /* முதல் படத்தின் கிரீம் ஐவரி எழுத்துக்கள் */
+      --page-bg: #0B2D5B;         /* ராயல் நேவி ப்ளூ பிரதான பின்னணி */
+      --card-container-bg: #102A4E; /* டார்க் ப்ளூ கார்டு பின்னணி */
+      --text-light: #FFF8E7;      /* கிரீம் ஐவரி எழுத்துக்கள் */
       --text-muted: #94A3B8;
       --en-text-bright: #CBD5E1;
       --gold-border: rgba(212, 175, 55, 0.35); /* மெல்லிய கோல்டன் பார்டர் */
@@ -42,16 +42,19 @@
       padding-bottom: 75px;
     }
   
+    /* கணினியில் அழகாக விரிந்து, மொபைலில் கச்சிதமாக இருக்கும் ரெஸ்பான்சிவ் அமைப்பு */
     .container {
       padding: 12px;
-      max-width: 480px;
+      max-width: 1100px;
       margin: 0 auto;
+      width: 100%;
     }
   
     /* Top Main Promo Banner */
     .top-promo-banner {
-      width: 92%;
-      margin: 0 auto 12px auto;
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto 14px auto;
       border-radius: 14px;
       overflow: hidden;
       box-shadow: 0 4px 15px rgba(0,0,0,0.3);
@@ -86,7 +89,8 @@
       background: var(--card-container-bg);
       border-radius: 12px;
       padding: 4px;
-      margin-bottom: 10px;
+      margin: 0 auto 10px auto;
+      max-width: 900px;
       border: 1px solid var(--gold-border);
       gap: 4px;
     }
@@ -95,15 +99,15 @@
       border: none;
       background: transparent;
       color: var(--en-text-bright);
-      padding: 8px 4px;
+      padding: 10px 4px;
       border-radius: 8px;
-      font-size: 12px;
+      font-size: 13px;
       font-weight: 700;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 5px;
+      gap: 6px;
       transition: all 0.2s ease;
     }
     .home-tab-btn.active {
@@ -114,25 +118,26 @@
     /* Town & Search Bar Row */
     .home-search-row {
       display: grid;
-      grid-template-columns: 110px 1fr;
-      gap: 8px;
-      margin-bottom: 14px;
+      grid-template-columns: 140px 1fr;
+      gap: 10px;
+      margin: 0 auto 14px auto;
+      max-width: 900px;
     }
     .home-town-input, .home-search-input-box {
       background: var(--card-container-bg);
       border: 1px solid var(--gold-border);
       border-radius: 12px;
-      padding: 8px 10px;
+      padding: 10px 12px;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
     }
     .home-town-input input, .home-search-input-box input {
       width: 100%;
       background: transparent;
       border: none;
       color: #fff;
-      font-size: 12.5px;
+      font-size: 13px;
       outline: none;
     }
     .home-town-input input::placeholder, .home-search-input-box input::placeholder {
@@ -143,13 +148,13 @@
     }
     .home-search-input-box i.fa-magnifying-glass {
       color: var(--text-muted);
-      font-size: 13px;
+      font-size: 14px;
     }
     .home-mic-btn {
       background: none;
       border: none;
       color: var(--yellow);
-      font-size: 14px;
+      font-size: 15px;
       cursor: pointer;
       padding: 4px;
       display: flex;
@@ -166,21 +171,22 @@
       background: linear-gradient(135deg, #102A4E, #163866);
       border: 1.5px dashed var(--yellow);
       border-radius: 12px;
-      padding: 7px 12px;
-      margin-bottom: 14px;
+      padding: 9px 16px;
+      margin: 0 auto 16px auto;
+      max-width: 900px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       cursor: pointer;
     }
     .sponsor-ad-card h4 {
-      font-size: 12.5px;
+      font-size: 13.5px;
       color: #FFF8E7;
       font-weight: 700;
       line-height: 1.2;
     }
     .sponsor-ad-card p {
-      font-size: 11px;
+      font-size: 11.5px;
       color: var(--yellow);
       font-weight: 500;
       margin-top: 2px;
@@ -188,14 +194,14 @@
     .sponsor-tag {
       background: var(--green);
       color: #fff;
-      font-size: 10.5px;
+      font-size: 11px;
       font-weight: 700;
-      padding: 3px 8px;
+      padding: 4px 10px;
       border-radius: 6px;
       white-space: nowrap;
     }
   
-    /* Category Grids */
+    /* Category Grids - மொபைலில் 3 நெடுவரிசைகள், கம்ப்யூட்டரில் 4 அல்லது 6 நெடுவரிசைகள் */
     .category-grid-container {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -207,15 +213,40 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 12px;
-      margin-bottom: 18px;
+      margin-bottom: 20px;
+    }
+
+    @media (min-width: 768px) {
+      .category-grid-container {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+      }
+      .extra-category-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
+      .home-search-row {
+        grid-template-columns: 180px 1fr;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .category-grid-container {
+        grid-template-columns: repeat(6, 1fr);
+        gap: 16px;
+      }
+      .extra-category-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
     }
   
     .cat-btn {
       background: #102A4E !important;
       border: 1px solid var(--gold-border) !important;
       border-radius: 16px;
-      padding: 10px 4px;
-      min-height: 104px;
+      padding: 12px 6px;
+      min-height: 108px;
       text-align: center;
       display: flex;
       flex-direction: column;
@@ -224,20 +255,23 @@
       gap: 6px;
       cursor: pointer;
       box-shadow: 0 4px 10px rgba(0,0,0,0.25);
-      transition: transform 0.15s ease;
+      transition: transform 0.15s ease, background 0.2s ease;
+    }
+    .cat-btn:hover {
+      background: #143563 !important;
     }
     .cat-btn:active {
       transform: scale(0.96);
     }
     
     .cat-btn .circle-icon {
-      width: 44px;
-      height: 44px;
+      width: 46px;
+      height: 46px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 19px;
+      font-size: 20px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
     
@@ -256,13 +290,13 @@
     .icon-extra3 { background: #F3E8FF; color: #6B21A8; }
   
     .cat-btn .main-text {
-      font-size: 12px;
+      font-size: 12.5px;
       font-weight: 700;
       color: #FFF8E7;
       line-height: 1.2;
     }
     .cat-btn .sub-text {
-      font-size: 10.5px;
+      font-size: 11px;
       font-weight: 600;
       color: var(--en-text-bright);
       line-height: 1.1;
@@ -272,29 +306,34 @@
     .dual-register-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-bottom: 24px;
+      gap: 14px;
+      margin: 0 auto 24px auto;
+      max-width: 900px;
     }
     .reg-block {
       background: var(--card-container-bg);
-      border-radius: 12px;
-      padding: 12px;
+      border-radius: 14px;
+      padding: 14px;
       border: 1px solid var(--gold-border);
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       cursor: pointer;
+      transition: background 0.2s ease;
     }
-    .reg-block.customer i { color: var(--primary-blue); font-size: 22px; }
-    .reg-block.vendor i { color: var(--orange); font-size: 22px; }
+    .reg-block:hover {
+      background: #143563;
+    }
+    .reg-block.customer i { color: var(--primary-blue); font-size: 24px; }
+    .reg-block.vendor i { color: var(--orange); font-size: 24px; }
     .reg-block-info h5 {
-      font-size: 12px;
+      font-size: 13px;
       font-weight: 700;
       color: #FFF8E7;
       line-height: 1.3;
     }
     .reg-block-info p {
-      font-size: 10.5px;
+      font-size: 11px;
       font-weight: 600;
       color: var(--en-text-bright);
     }
@@ -332,7 +371,7 @@
     .fullpage-header {
       background: #071E3D;
       color: #fff;
-      padding: 14px 16px;
+      padding: 14px 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -356,7 +395,7 @@
       padding: 4px;
     }
     .fullpage-header h3 {
-      font-size: 15px;
+      font-size: 16px;
       font-weight: 700;
     }
     .fullpage-header span.tag-right {
@@ -370,7 +409,7 @@
       overflow-y: auto;
       padding: 16px;
       padding-bottom: 100px;
-      max-width: 480px;
+      max-width: 900px;
       width: 100%;
       margin: 0 auto;
       -webkit-overflow-scrolling: touch;
@@ -391,9 +430,9 @@
       border: none;
       background: transparent;
       color: var(--en-text-bright);
-      padding: 8px 4px;
+      padding: 9px 4px;
       border-radius: 8px;
-      font-size: 12px;
+      font-size: 12.5px;
       font-weight: 700;
       cursor: pointer;
       display: flex;
@@ -411,7 +450,7 @@
       background: var(--card-container-bg);
       border: 1px solid var(--gold-border);
       border-radius: 14px;
-      padding: 14px;
+      padding: 14px 18px;
       margin-bottom: 12px;
       display: flex;
       align-items: center;
@@ -431,7 +470,7 @@
       background: var(--red);
       color: #fff;
       text-decoration: none;
-      padding: 8px 14px;
+      padding: 8px 16px;
       border-radius: 8px;
       font-size: 13px;
       font-weight: 700;
@@ -445,17 +484,17 @@
     .form-box {
       background: var(--card-container-bg);
       border-radius: 16px;
-      padding: 16px;
+      padding: 18px;
       border: 1px solid var(--gold-border);
     }
     .form-group {
-      margin-bottom: 12px;
+      margin-bottom: 14px;
     }
     .form-group label {
       display: block;
-      font-size: 12.5px;
+      font-size: 13px;
       font-weight: 600;
-      margin-bottom: 4px;
+      margin-bottom: 5px;
       color: #FFF8E7;
     }
     .form-group label span.en-label {
@@ -470,7 +509,7 @@
     }
     .form-group input, .form-group select, .form-group textarea {
       width: 100%;
-      padding: 10px;
+      padding: 11px;
       border-radius: 8px;
       border: 1px solid #475569;
       background: #071E3D;
@@ -483,7 +522,7 @@
     .terms-check-container {
       background: #071E3D;
       border-radius: 10px;
-      padding: 12px;
+      padding: 14px;
       margin-top: 14px;
       border: 1px solid var(--gold-border);
     }
@@ -493,8 +532,8 @@
       gap: 10px;
     }
     .terms-row input[type="checkbox"] {
-      width: 19px;
-      height: 19px;
+      width: 20px;
+      height: 20px;
       margin-top: 2px;
       cursor: pointer;
     }
@@ -526,7 +565,7 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
-      margin-top: 14px;
+      margin-top: 16px;
       transition: all 0.3s ease;
     }
     .form-submit-btn.disabled-btn {
@@ -545,37 +584,37 @@
     .item-card {
       background: var(--card-container-bg);
       border-radius: 14px;
-      padding: 14px;
+      padding: 16px;
       margin-bottom: 12px;
       border: 1px solid var(--gold-border);
     }
     .item-card h4 {
-      font-size: 14.5px;
+      font-size: 15px;
       font-weight: 700;
       color: #FFF8E7;
     }
     .item-card .item-meta {
-      font-size: 12px;
+      font-size: 12.5px;
       color: var(--yellow);
       font-weight: 600;
-      margin: 3px 0 6px 0;
+      margin: 4px 0 6px 0;
     }
     .item-card .item-desc {
-      font-size: 12.5px;
+      font-size: 13px;
       color: var(--en-text-bright);
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       line-height: 1.4;
     }
     .item-actions {
       display: flex;
-      gap: 10px;
+      gap: 12px;
     }
     .btn-call, .btn-wa {
       flex: 1;
       text-align: center;
-      padding: 8px;
+      padding: 9px;
       border-radius: 8px;
-      font-size: 12.5px;
+      font-size: 13px;
       font-weight: 700;
       text-decoration: none;
       display: flex;
@@ -591,18 +630,18 @@
       background: var(--card-container-bg);
       border: 1px solid var(--gold-border);
       border-radius: 12px;
-      padding: 14px;
+      padding: 16px;
       margin-bottom: 12px;
     }
     .terms-rule-card h4 {
-      font-size: 13.5px;
+      font-size: 14px;
       color: var(--yellow);
       margin-bottom: 6px;
       font-weight: 700;
       line-height: 1.3;
     }
     .terms-rule-card p.ta-main {
-      font-size: 12.5px;
+      font-size: 13px;
       color: #FFF8E7;
       line-height: 1.5;
       margin-bottom: 6px;
@@ -631,6 +670,17 @@
       padding: 8px 0 6px 0;
       border-top: 1px solid var(--gold-border);
       z-index: 900;
+      max-width: 100%;
+    }
+    @media (min-width: 1024px) {
+      .bottom-bar {
+        max-width: 900px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 14px 14px 0 0;
+        border: 1px solid var(--gold-border);
+        border-bottom: none;
+      }
     }
     .bar-link {
       color: var(--en-text-bright);
@@ -672,9 +722,9 @@
       background: var(--card-container-bg);
       border: 1.5px solid var(--yellow);
       border-radius: 16px;
-      padding: 20px;
+      padding: 22px;
       width: 100%;
-      max-width: 360px;
+      max-width: 380px;
       box-shadow: 0 10px 25px rgba(0,0,0,0.5);
       text-align: center;
     }
@@ -1467,7 +1517,6 @@
   </nav>
   
   <script>
-    // ஆரம்பத்தில் மறைந்திருக்க false என அமைக்கப்பட்டுள்ளது
     let isTermsSwitchOn = false; 
     let selectedHomeCategory = "வாகனம்";
     let liveSettings = {};
@@ -1526,7 +1575,6 @@
         .then(response => response.json())
         .then(data => {
           if (data.status === "success") {
-            // கூகுள் சீட்டில் டிக் பாக்ஸ் TRUE என இருந்தால் மட்டுமே வாசகம் தெரியும்
             isTermsSwitchOn = String(data.showSubscription).toLowerCase() === "true";
             liveSettings = data.settings || {};
             
@@ -1888,7 +1936,6 @@
       
       const subClauseStyle = isTermsSwitchOn ? "display: block;" : "display: none;";
 
-      // கூகுள் சீட் மதிப்புகளை எடுத்தல்
       const mPrice = liveSettings["MONTHLY_PRICE"] || "199";
       const hPrice = liveSettings["HALF_YEARLY_PRICE"] || "999";
       const yPrice = liveSettings["YEARLY_PRICE"] || "1,799";
@@ -2105,7 +2152,7 @@
     }
   
     function shareAppDirect() {
-      const shareUrl = "https://nammakanyakumariapp-creator.github.io/nammakanyakumari/";
+      const shareUrl = "https://nammakanyakumari.in/";
       const text = encodeURIComponent("நம்ம கன்னியாகுமரி - உள்ளூர் ஆட்டோ, டாக்ஸி, வீட்டுச் சேவைகள் மற்றும் வர்த்தகத் தகவல்களுக்கான தளம்: " + shareUrl);
       window.open("https://wa.me/?text=" + text, '_blank');
     }
