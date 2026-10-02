@@ -11,20 +11,21 @@
   <style>
     :root {
       --primary-blue: #0D6EFD;
-      --yellow: #FBBF24;
-      --green: #16A34A;
-      --orange: #F97316;
+      --yellow: #D4AF37;          /* ராயல் கோல்ட் */
+      --green: #16A34A;           /* எமரால்டு கிரீன் */
+      --orange: #FF8C42;          /* சன்செட் ஆரஞ்சு */
       --purple: #8B5CF6;
       --pink: #EC4899;
       --red: #EF4444;
       --teal: #14B8A6;
       --light-blue: #3B82F6;
       
-      --page-bg: #0F172A;
-      --card-container-bg: #1E293B;
-      --text-light: #F8FAFC;
+      --page-bg: #0B2D5B;         /* முதல் படத்தின் ராயல் நேவி ப்ளூ பிரதான பின்னணி */
+      --card-container-bg: #102A4E; /* முதல் படத்தின் டார்க் ப்ளூ கார்டு பின்னணி */
+      --text-light: #FFF8E7;      /* முதல் படத்தின் கிரீம் ஐவரி எழுத்துக்கள் */
       --text-muted: #94A3B8;
       --en-text-bright: #CBD5E1;
+      --gold-border: rgba(212, 175, 55, 0.35); /* மெல்லிய கோல்டன் பார்டர் */
     }
   
     * {
@@ -54,7 +55,7 @@
       border-radius: 14px;
       overflow: hidden;
       box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-      border: 1px solid #334155;
+      border: 1px solid var(--gold-border);
       background: #000;
       position: relative;
       cursor: default;
@@ -82,11 +83,11 @@
     /* Category Switcher Tabs */
     .home-filter-tabs {
       display: flex;
-      background: #1E293B;
+      background: var(--card-container-bg);
       border-radius: 12px;
       padding: 4px;
       margin-bottom: 10px;
-      border: 1px solid #334155;
+      border: 1px solid var(--gold-border);
       gap: 4px;
     }
     .home-tab-btn {
@@ -118,8 +119,8 @@
       margin-bottom: 14px;
     }
     .home-town-input, .home-search-input-box {
-      background: #1E293B;
-      border: 1px solid #334155;
+      background: var(--card-container-bg);
+      border: 1px solid var(--gold-border);
       border-radius: 12px;
       padding: 8px 10px;
       display: flex;
@@ -162,7 +163,7 @@
   
     /* Sponsor Ad Strip */
     .sponsor-ad-card {
-      background: linear-gradient(135deg, #1E293B, #2A384C);
+      background: linear-gradient(135deg, #102A4E, #163866);
       border: 1.5px dashed var(--yellow);
       border-radius: 12px;
       padding: 7px 12px;
@@ -174,13 +175,13 @@
     }
     .sponsor-ad-card h4 {
       font-size: 12.5px;
-      color: #FEF08A;
+      color: #FFF8E7;
       font-weight: 700;
       line-height: 1.2;
     }
     .sponsor-ad-card p {
       font-size: 11px;
-      color: var(--en-text-bright);
+      color: var(--yellow);
       font-weight: 500;
       margin-top: 2px;
     }
@@ -210,8 +211,8 @@
     }
   
     .cat-btn {
-      background: #1E293B;
-      border: 1px solid #334155;
+      background: #102A4E !important;
+      border: 1px solid var(--gold-border) !important;
       border-radius: 16px;
       padding: 10px 4px;
       min-height: 104px;
@@ -222,7 +223,7 @@
       justify-content: center;
       gap: 6px;
       cursor: pointer;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.25);
       transition: transform 0.15s ease;
     }
     .cat-btn:active {
@@ -257,7 +258,7 @@
     .cat-btn .main-text {
       font-size: 12px;
       font-weight: 700;
-      color: #F8FAFC;
+      color: #FFF8E7;
       line-height: 1.2;
     }
     .cat-btn .sub-text {
@@ -275,10 +276,10 @@
       margin-bottom: 24px;
     }
     .reg-block {
-      background: #1E293B;
+      background: var(--card-container-bg);
       border-radius: 12px;
       padding: 12px;
-      border: 1px solid #334155;
+      border: 1px solid var(--gold-border);
       display: flex;
       align-items: center;
       gap: 10px;
@@ -289,7 +290,7 @@
     .reg-block-info h5 {
       font-size: 12px;
       font-weight: 700;
-      color: #F8FAFC;
+      color: #FFF8E7;
       line-height: 1.3;
     }
     .reg-block-info p {
@@ -329,13 +330,13 @@
       display: flex;
     }
     .fullpage-header {
-      background: #020617;
+      background: #071E3D;
       color: #fff;
       padding: 14px 16px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-bottom: 1px solid #334155;
+      border-bottom: 1px solid var(--gold-border);
       position: sticky;
       top: 0;
       z-index: 10;
@@ -378,11 +379,11 @@
     /* Tabs Inside Modals */
     .vendor-nav-tabs, .search-nav-tabs {
       display: flex;
-      background: #0F172A;
+      background: #071E3D;
       border-radius: 10px;
       padding: 4px;
       margin-bottom: 16px;
-      border: 1px solid #334155;
+      border: 1px solid var(--gold-border);
       gap: 4px;
     }
     .vendor-tab-btn, .search-tab-btn {
@@ -407,8 +408,8 @@
   
     /* Emergency Contact Cards */
     .emergency-card {
-      background: #1E293B;
-      border: 1px solid #334155;
+      background: var(--card-container-bg);
+      border: 1px solid var(--gold-border);
       border-radius: 14px;
       padding: 14px;
       margin-bottom: 12px;
@@ -418,7 +419,7 @@
     }
     .emergency-info h4 {
       font-size: 14.5px;
-      color: #F8FAFC;
+      color: #FFF8E7;
       font-weight: 700;
     }
     .emergency-info p {
@@ -442,10 +443,10 @@
   
     /* Form Fields Styling */
     .form-box {
-      background: #1E293B;
+      background: var(--card-container-bg);
       border-radius: 16px;
       padding: 16px;
-      border: 1px solid #334155;
+      border: 1px solid var(--gold-border);
     }
     .form-group {
       margin-bottom: 12px;
@@ -455,7 +456,7 @@
       font-size: 12.5px;
       font-weight: 600;
       margin-bottom: 4px;
-      color: #F8FAFC;
+      color: #FFF8E7;
     }
     .form-group label span.en-label {
       color: var(--en-text-bright);
@@ -472,7 +473,7 @@
       padding: 10px;
       border-radius: 8px;
       border: 1px solid #475569;
-      background: #0F172A;
+      background: #071E3D;
       color: #fff;
       font-size: 13.5px;
       outline: none;
@@ -480,11 +481,11 @@
   
     /* Terms Box & Smart Verification */
     .terms-check-container {
-      background: #0F172A;
+      background: #071E3D;
       border-radius: 10px;
       padding: 12px;
       margin-top: 14px;
-      border: 1px solid #334155;
+      border: 1px solid var(--gold-border);
     }
     .terms-row {
       display: flex;
@@ -542,16 +543,16 @@
   
     /* Item Card */
     .item-card {
-      background: #1E293B;
+      background: var(--card-container-bg);
       border-radius: 14px;
       padding: 14px;
       margin-bottom: 12px;
-      border: 1px solid #334155;
+      border: 1px solid var(--gold-border);
     }
     .item-card h4 {
       font-size: 14.5px;
       font-weight: 700;
-      color: #F8FAFC;
+      color: #FFF8E7;
     }
     .item-card .item-meta {
       font-size: 12px;
@@ -587,8 +588,8 @@
   
     /* Comprehensive Terms Rule Card Styling */
     .terms-rule-card {
-      background: #1E293B;
-      border: 1px solid #334155;
+      background: var(--card-container-bg);
+      border: 1px solid var(--gold-border);
       border-radius: 12px;
       padding: 14px;
       margin-bottom: 12px;
@@ -602,7 +603,7 @@
     }
     .terms-rule-card p.ta-main {
       font-size: 12.5px;
-      color: #F8FAFC;
+      color: #FFF8E7;
       line-height: 1.5;
       margin-bottom: 6px;
     }
@@ -624,11 +625,11 @@
       bottom: 0;
       left: 0;
       right: 0;
-      background: #020617;
+      background: #0B2D5B;
       display: flex;
       justify-content: space-around;
       padding: 8px 0 6px 0;
-      border-top: 1px solid #1E293B;
+      border-top: 1px solid var(--gold-border);
       z-index: 900;
     }
     .bar-link {
@@ -668,7 +669,7 @@
       display: flex;
     }
     .secret-admin-box {
-      background: #1E293B;
+      background: var(--card-container-bg);
       border: 1.5px solid var(--yellow);
       border-radius: 16px;
       padding: 20px;
@@ -679,7 +680,7 @@
     }
     .secret-admin-box h3 {
       font-size: 16px;
-      color: #F8FAFC;
+      color: #FFF8E7;
       margin-bottom: 6px;
     }
     .secret-admin-box p {
@@ -692,7 +693,7 @@
       padding: 12px;
       border-radius: 8px;
       border: 1px solid #475569;
-      background: #0F172A;
+      background: #071E3D;
       color: #fff;
       font-size: 14px;
       text-align: center;
@@ -1633,7 +1634,7 @@
   
       if (filtered.length === 0) {
         list.innerHTML = `
-          <div style="background:#1E293B; border:1px solid #334155; padding:24px; border-radius:12px; text-align:center; color:#CBD5E1; margin-top:20px;">
+          <div style="background:var(--card-container-bg); border:1px solid var(--gold-border); padding:24px; border-radius:12px; text-align:center; color:#CBD5E1; margin-top:20px;">
             <i class="fa-solid fa-triangle-exclamation" style="font-size:32px; color:var(--yellow); margin-bottom:10px;"></i>
             <p>இந்தத் தேடலுக்கான சேவை தற்போது கிடைக்கவில்லை.</p>
           </div>
@@ -1707,7 +1708,7 @@
   
       if (filtered.length === 0) {
         list.innerHTML = `
-          <div style="background:#1E293B; border:1px solid #334155; padding:24px; border-radius:12px; text-align:center; color:#CBD5E1; margin-top:20px;">
+          <div style="background:var(--card-container-bg); border:1px solid var(--gold-border); padding:24px; border-radius:12px; text-align:center; color:#CBD5E1; margin-top:20px;">
             <i class="fa-solid fa-triangle-exclamation" style="font-size:32px; color:var(--yellow); margin-bottom:10px;"></i>
             <p>இந்தத் தேடலுக்கான சேவை தற்போது கிடைக்கவில்லை.</p>
           </div>
@@ -1786,7 +1787,7 @@
   
       if (filtered.length === 0) {
         list.innerHTML = `
-          <div style="background:#1E293B; border:1px solid #334155; padding:24px; border-radius:12px; text-align:center; color:#CBD5E1; margin-top:20px;">
+          <div style="background:var(--card-container-bg); border:1px solid var(--gold-border); padding:24px; border-radius:12px; text-align:center; color:#CBD5E1; margin-top:20px;">
             <i class="fa-solid fa-triangle-exclamation" style="font-size:32px; color:var(--yellow); margin-bottom:10px;"></i>
             <p>இந்தப் பிரிவில் சேவைகள் தற்போது இல்லை.</p>
           </div>
@@ -1941,7 +1942,7 @@
             <p class="ta-main">ஓட்டுநர்கள் பெறும் சவாரித் தொகையில் இருந்து நம்ம கன்னியாகுமரி தளம் எவ்வித கமிஷனும் (0% Commission) வசூலிப்பதில்லை. சவாரி மற்றும் கட்டணப் பரிவர்த்தனைகளுக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது;</strong> ஓட்டுநரே முழுப் பொறுப்பு.</p>
             <p class="en-sub">The platform charges 0% commission on your ride fares. <strong>Namma Kanyakumari platform is not responsible</strong> for ride payments; the driver bears full responsibility.</p>
             <div class="hidden-subscription-clause" style="${subClauseStyle}">
-              <p class="ta-main" style="color: #FBBF24; margin-top: 6px;">
+              <p class="ta-main" style="color: #D4AF37; margin-top: 6px;">
                 ${dynamicNoticeTa}
               </p>
               <p class="en-sub">
@@ -1986,7 +1987,7 @@
             <p class="ta-main">பொருட்கள் விற்பனையில் நம்ம கன்னியாகுமரி தளம் வியாபாரிகளிடம் எவ்வித விற்பனைக் கமிஷனும் (0% Commission) பெறுவதில்லை. வியாபாரப் பரிவர்த்தனைகளில் ஏற்படும் இழப்புகளுக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது;</strong> வணிகரே முழுப் பொறுப்பு.</p>
             <p class="en-sub">The platform charges 0% sales commission. <strong>Namma Kanyakumari platform is not responsible</strong> for financial transactions; the merchant bears sole responsibility.</p>
             <div class="hidden-subscription-clause" style="${subClauseStyle}">
-              <p class="ta-main" style="color: #FBBF24; margin-top: 6px;">
+              <p class="ta-main" style="color: #D4AF37; margin-top: 6px;">
                 ${dynamicNoticeTa}
               </p>
               <p class="en-sub">
@@ -2031,7 +2032,7 @@
             <p class="ta-main">வேலை வாய்ப்புகளுக்கோ அல்லது ஆள்சேர்ப்புக்கோ தளம் எவ்வித கமிஷனும் வசூலிப்பதில்லை. முதலாளி மற்றும் தொழிலாளியின் ஒப்பந்த முடிவுகளுக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது;</strong> இரு தரப்பினருமே முழுப் பொறுப்பு.</p>
             <p class="en-sub">The platform charges 0% hiring commission. <strong>Namma Kanyakumari platform is not responsible</strong> for employment contracts; both parties are fully responsible.</p>
             <div class="hidden-subscription-clause" style="${subClauseStyle}">
-              <p class="ta-main" style="color: #FBBF24; margin-top: 6px;">
+              <p class="ta-main" style="color: #D4AF37; margin-top: 6px;">
                 ${dynamicNoticeTa}
               </p>
               <p class="en-sub">
@@ -2222,7 +2223,7 @@
       container.innerHTML = "";
       listToRender.forEach(v => {
         container.innerHTML += `
-          <div style="background: #0F172A; border: 1px solid #334155; border-radius: 10px; padding: 10px; margin-bottom: 8px;">
+          <div style="background: #071E3D; border: 1px solid var(--gold-border); border-radius: 10px; padding: 10px; margin-bottom: 8px;">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
               <h5 style="font-size: 13px; color: #fff;">${v.name}</h5>
               <span class="status-badge ${v.status === 'active' ? 'active-green' : 'pending-yellow'}">${v.status}</span>
