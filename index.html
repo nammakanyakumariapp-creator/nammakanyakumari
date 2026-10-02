@@ -57,15 +57,17 @@
       border: 1px solid #334155;
       background: #000;
       position: relative;
+      cursor: default;
     }
     .top-promo-banner img {
       width: 100%;
       height: auto;
       display: block;
       pointer-events: none;
+      user-select: none;
     }
     
-    /* Secret Admin Tap Zone - பேனரின் இடது ஓரத்தில் லோகோ இருக்கும் பகுதியில் ரகசிய தொடு பகுதி */
+    /* Secret Admin Tap Zone - இடது கார்னர் லோகோ பகுதி மட்டும் இயங்கும் */
     .secret-logo-touch-area {
       position: absolute;
       top: 0;
@@ -724,9 +726,9 @@
   
   <div class="container">
   
-    <!-- Top Main Promo Banner (ஆட்டோ லிங்க் நீக்கப்பட்டு ரகசிய தொடுதல் மட்டும் இயங்கும்) -->
+    <!-- Top Main Promo Banner (எந்த கிளிக்கும் இல்லாமல் அமைதியாக இருக்கும்; இடது கார்னர் மட்டுமே ரகசியமாக வேலை செய்யும்) -->
     <div class="top-promo-banner">
-      <!-- லோகோ உள்ள பகுதியில் ரகசிய 5 முறை தொடும் பகுதி -->
+      <!-- இடது கார்னரில் உள்ள லோகோவை 5 முறை தட்டுவதற்கான ரகசிய தொடு பகுதி -->
       <div class="secret-logo-touch-area" onclick="handleSecretLogoTap(event)"></div>
       <img src="https://lh3.googleusercontent.com/d/1VreUYprfYVoSxJZxHn6_LnEdfKcCVL8H" alt="நம்ம கன்னியாகுமரி பேனர்">
     </div>
@@ -2053,7 +2055,10 @@
     let secretTapTimer = null;
 
     function handleSecretLogoTap(e) {
-      if (e) e.stopPropagation();
+      if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
       secretLogoTapCount++;
       
       clearTimeout(secretTapTimer);
