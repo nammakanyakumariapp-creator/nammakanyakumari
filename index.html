@@ -47,7 +47,7 @@
       margin: 0 auto;
     }
   
-    /* Top Main Promo Banner - வெட்டப்படாமல் முழுமையாகச் சுருங்கி நடுவில் அமையும் அமைப்பு */
+    /* Top Main Promo Banner */
     .top-promo-banner {
       width: 92%;
       margin: 0 auto 12px auto;
@@ -1448,7 +1448,7 @@
     </div>
   </div>
   
-  <!-- Fixed Bottom Navigation Bar -->
+  <!-- Fixed Bottom Navigation Bar (108 எண் நீக்கப்பட்டு அவசரம் / Emergency என மட்டுமே அமைக்கப்பட்டுள்ளது) -->
   <nav class="bottom-bar">
     <a href="#" class="bar-link active">
       <i class="fa-solid fa-house"></i>
@@ -1460,7 +1460,7 @@
     </a>
     <a href="javascript:void(0)" onclick="openEmergencyPage()" class="bar-link">
       <i class="fa-solid fa-truck-medical"></i>
-      <span>108 அவசரம் / Emergency</span>
+      <span>அவசரம் / Emergency</span>
     </a>
     <a href="javascript:void(0)" onclick="shareAppDirect()" class="bar-link">
       <i class="fa-solid fa-share-nodes"></i>
@@ -1477,7 +1477,7 @@
     // கூகுள் சீட் Web App API இணைப்பு
     const GOOGLE_SHEET_API = "https://script.google.com/macros/s/AKfycbxPEY186IyKWg0HV23Ef7NijzuTxWu9lwA5Ato_6Wq55iwnYki6rLtzkQ3c1HvhRnRl/exec";
 
-    // கூகுள் சீட்டிலிருந்து தரவுகளை எடுத்து சுவிட்ச் மற்றும் வெண்டர்களை இயக்குதல்
+    // கூகுள் சீட்டிலிருந்து தரவுகளை எடுத்து இணையதளத்திற்கு ஏற்றவாறு இணைக்கும் நேரடி செயல்பாடு
     function fetchLiveDataFromSheet() {
       fetch(GOOGLE_SHEET_API)
         .then(response => response.json())
@@ -1485,9 +1485,21 @@
           if (data.status === "success") {
             isTermsSwitchOn = data.showSubscription;
             liveSettings = data.settings || {};
+            
+            // சீட் நெடுவரிசைகளை (Categories, Village, etc.) தளம் புரிந்துகொள்ளும் வகையில் இணைத்தல்
             if (data.vendors && data.vendors.length > 0) {
-              liveVendors = data.vendors;
+              liveVendors = data.vendors.map(v => ({
+                id: v.VendorId || v.id,
+                name: v.ProviderOrShopName || v.name || "",
+                category: v.Categories || v.category || "",
+                area: v.Village || v.area || "",
+                desc: v.VehicleOrJobDetails || v.Description || v.desc || "",
+                phone: v.PrimaryPhone || v.phone || "",
+                wa: v.WhatsAppPhone || v.wa || v.PrimaryPhone || "",
+                status: (v.Account_Status === 'ON' && v.Verification_Status === 'Approved') ? 'active' : 'pending'
+              }));
             }
+            
             const hiddenElements = document.querySelectorAll('.hidden-subscription-clause');
             hiddenElements.forEach(el => {
               el.style.display = isTermsSwitchOn ? 'block' : 'none';
@@ -1729,12 +1741,16 @@
       const query = categoryName.toLowerCase();
       const displayData = liveVendors.length > 0 ? liveVendors : serviceList;
       const filtered = displayData.filter(item => {
+        const cat = (item.category || "").toLowerCase();
+        const nm = (item.name || "").toLowerCase();
+        const ds = (item.desc || "").toLowerCase();
+        
         const matchesCategory = 
           query.includes("அனைத்து") || query.includes("all") ||
-          (query.includes("போக்குவரத்து") || query.includes("transport")) && (item.category.includes("ஆட்டோ") || item.category.includes("டாக்ஸி")) ||
-          item.category.toLowerCase().includes(query) ||
-          item.name.toLowerCase().includes(query) ||
-          item.desc.toLowerCase().includes(query);
+          (query.includes("போக்குவரத்து") || query.includes("transport")) && (cat.includes("ஆட்டோ") || cat.includes("டாக்ஸி")) ||
+          cat.includes(query) || query.includes(cat) ||
+          nm.includes(query) ||
+          ds.includes(query);
         return matchesCategory && item.status !== 'expired';
       });
   
