@@ -67,7 +67,7 @@
       user-select: none;
     }
     
-    /* Secret Admin Tap Zone - இடது கார்னர் லோகோ பகுதி மட்டும் இயங்கும் */
+    /* Secret Admin Tap Zone */
     .secret-logo-touch-area {
       position: absolute;
       top: 0;
@@ -732,9 +732,8 @@
   
   <div class="container">
   
-    <!-- Top Main Promo Banner (எந்த கிளிக்கும் இல்லாமல் அமைதியாக இருக்கும்; இடது கார்னர் மட்டுமே ரகசியமாக வேலை செய்யும்) -->
+    <!-- Top Main Promo Banner -->
     <div class="top-promo-banner">
-      <!-- இடது கார்னரில் உள்ள லோகோவை 5 முறை தட்டுவதற்கான ரகசிய தொடு பகுதி -->
       <div class="secret-logo-touch-area" onclick="handleSecretLogoTap(event)"></div>
       <img src="https://lh3.googleusercontent.com/d/1VreUYprfYVoSxJZxHn6_LnEdfKcCVL8H" alt="நம்ம கன்னியாகுமரி பேனர்">
     </div>
@@ -1118,7 +1117,7 @@
             <select id="vCategory" required>
               <option value="ஆட்டோ / Auto">🛺 ஆட்டோ / Auto (3 Seater)</option>
               <option value="டாக்ஸி / Taxi">🚕 டாக்ஸி / Taxi (Car / Tourist Vehicle)</option>
-              <option value="லோடு வாகனம் / Load">🚚 லோடு வாகனம் / Load (Tata Ace / Pickup)</option>
+              <option value="லோடு வாகனம் / Load Vehicle">🚚 லோடு வாகனம் / Load (Tata Ace / Pickup)</option>
               <option value="செகண்ட் ஹேண்ட் கார் & பைக்">🚗 செகண்ட் ஹேண்ட் கார் & பைக் விற்பனை / Used Vehicles</option>
             </select>
           </div>
@@ -1181,7 +1180,7 @@
             <label>வணிக வகை <span class="en-label">/ Category *</span></label>
             <select id="sCategory" required>
               <option value="ஹோம்மேட் & ஆரோக்கியப் பொருட்கள்">ஹோம்மேட் & ஆரோக்கியப் பொருட்கள் (ABC Malt, தொக்கு)</option>
-              <option value="வீட்டு சேவைகள் (பிளம்பர்/எலக்ட்ரீசியன்)">வீட்டு சேவைகள் (பிளம்பர் / வயரிங்)</option>
+              <option value="வீட்டு சேவைகள் / Home Services">வீட்டு சேவைகள் (பிளம்பர் / வயரிங்)</option>
               <option value="ஸ்போர்ட்ஸ் & ஜிம்">ஸ்போர்ட்ஸ், ஜிம் & டர்ப் மைதானம்</option>
               <option value="ஹோம் பார்லர் & விழா உபகரணங்கள்">ஹோம் பார்லர் & விழா உபகரணங்கள் (Popcorn Machine)</option>
               <option value="பிற வணிகங்கள்">பிற வணிக நிறுவனங்கள்</option>
@@ -1403,7 +1402,6 @@
     </div>
     <div class="fullpage-content">
       
-      <!-- Master Admin Only Controls -->
       <div id="masterOnlySection" class="form-box" style="margin-bottom: 16px;">
         <h4 style="font-size: 14px; color: var(--yellow); margin-bottom: 10px;">
           <i class="fa-solid fa-sliders"></i> பிரதான அமைப்புகள் / Master Switches
@@ -1421,7 +1419,6 @@
         </div>
       </div>
 
-      <!-- Vendor Approval List Section (Both Master & Assistant) -->
       <div class="form-box">
         <h4 style="font-size: 14px; color: var(--yellow); margin-bottom: 10px;">
           <i class="fa-solid fa-users-gear"></i> வெண்டர் மேலாண்மை / Vendor List
@@ -1434,7 +1431,7 @@
     </div>
   </div>
 
-  <!-- ரகசிய லாகின் பாப்-அப் பெட்டி (Modal) -->
+  <!-- ரகசிய லாகின் பாப்-அப் பெட்டி -->
   <div class="secret-admin-modal" id="secretAdminModal">
     <div class="secret-admin-box">
       <i class="fa-solid fa-shield-halved" style="font-size: 30px; color: var(--yellow); margin-bottom: 10px;"></i>
@@ -1448,7 +1445,7 @@
     </div>
   </div>
   
-  <!-- Fixed Bottom Navigation Bar (108 எண் நீக்கப்பட்டு அவசரம் / Emergency என மட்டுமே அமைக்கப்பட்டுள்ளது) -->
+  <!-- Fixed Bottom Navigation Bar -->
   <nav class="bottom-bar">
     <a href="#" class="bar-link active">
       <i class="fa-solid fa-house"></i>
@@ -1477,7 +1474,50 @@
     // கூகுள் சீட் Web App API இணைப்பு
     const GOOGLE_SHEET_API = "https://script.google.com/macros/s/AKfycbxPEY186IyKWg0HV23Ef7NijzuTxWu9lwA5Ato_6Wq55iwnYki6rLtzkQ3c1HvhRnRl/exec";
 
-    // கூகுள் சீட்டிலிருந்து தரவுகளை எடுத்து இணையதளத்திற்கு ஏற்றவாறு இணைக்கும் நேரடி செயல்பாடு
+    // 12 முக்கியப் பிரிவுகள் மற்றும் அவற்றின் 24 உட்பிரிவுகளுக்கான முழுமையான 120 மாதிரி வெண்டர்கள்
+    const all120MasterVendors = [];
+    const masterCats = [
+      { name: "ஆட்டோ / Auto", sub1: "லோக்கல் சவாரி", sub2: "வெளியூர் & அவசரம்", type: "Vehicle" },
+      { name: "டாக்ஸி / Taxi", sub1: "ஏர்போர்ட் டிராப்", sub2: "டூர்ஸ் & பேக்கேஜ்", type: "Vehicle" },
+      { name: "லோடு வாகனம் / Load Vehicle", sub1: "டாட்டா ஏஸ்", sub2: "பிக்கப் லாரி", type: "Vehicle" },
+      { name: "வீட்டு சேவைகள் / Home Services", sub1: "வீடு சுத்தம்", sub2: "பூச்சி கட்டுப்பாடு", type: "Service" },
+      { name: "ஹோம்மேட் & ஆரோக்கியப் பொருட்கள்", sub1: "மால்ட் & சத்து மாவு", sub2: "தொக்கு & ஊறுகாய்", type: "Shop" },
+      { name: "வேலை வாய்ப்பு / Jobs", sub1: "ஆட்கள் தேவை", sub2: "வேலை தேடுகிறேன்", type: "Job" },
+      { name: "மின் & குழாய் வல்லுநர்", sub1: "எலக்ட்ரீசியன்", sub2: "பிளம்பர்", type: "Service" },
+      { name: "கட்டுமானம் & தச்சு", sub1: "தச்சு & வுட்", sub2: "மேஸ்திரி & டைல்ஸ்", type: "Service" },
+      { name: "உபகரண மெக்கானிக்", sub1: "ஏசி & பிரிட்ஜ்", sub2: "வாஷிங் மெஷின்", type: "Service" },
+      { name: "ஸ்போர்ட்ஸ் & ஜிம்", sub1: "டர்ப் மைதானம்", sub2: "உடற்பயிற்சி கூடம்", type: "Shop" },
+      { name: "செகண்ட் ஹேண்ட் கார் & பைக்", sub1: "பயன்படுத்திய கார்கள்", sub2: "பயன்படுத்திய பைக்குகள்", type: "Shop" },
+      { name: "ஹோம் பார்லர் & விழா உபகரணங்கள்", sub1: "பிரைடல் மேக்கப்", sub2: "பாப்கார்ன் மெஷின்", type: "Service" }
+    ];
+    const masterTowns = ["அழகப்பபுரம்", "மயிலாடி", "அஞ்சுகிராமம்", "நாகர்கோவில்", "திங்கள்நகர்"];
+
+    let vCounter = 1;
+    masterCats.forEach(catObj => {
+      for (let i = 1; i <= 10; i++) {
+        const pNum = String(vCounter).padStart(3, '0');
+        const phone = "94431000" + pNum;
+        const town = masterTowns[(i - 1) % 5];
+        const subName = (i <= 5) ? catObj.sub1 : catObj.sub2;
+        const vTitle = `${catObj.name.split('/')[0].trim()} - Provider ${i}`;
+        const vDesc = `[${subName}] 24 மணி நேர நம்பகமான சேவை • பகுதி: ${town}`;
+
+        all120MasterVendors.push({
+          id: "V-" + (2000 + vCounter),
+          name: vTitle,
+          category: catObj.name,
+          area: town,
+          desc: vDesc,
+          phone: phone,
+          wa: phone,
+          status: "active"
+        });
+        vCounter++;
+      }
+    });
+
+    const serviceList = all120MasterVendors;
+
     function fetchLiveDataFromSheet() {
       fetch(GOOGLE_SHEET_API)
         .then(response => response.json())
@@ -1486,7 +1526,6 @@
             isTermsSwitchOn = data.showSubscription;
             liveSettings = data.settings || {};
             
-            // சீட் நெடுவரிசைகளை (Categories, Village, etc.) தளம் புரிந்துகொள்ளும் வகையில் இணைத்தல்
             if (data.vendors && data.vendors.length > 0) {
               liveVendors = data.vendors.map(v => ({
                 id: v.VendorId || v.id,
@@ -1512,18 +1551,6 @@
         });
     }
     fetchLiveDataFromSheet();
-  
-    const serviceList = [
-      { id: 1, name: "அழகப்பபுரம் ஸ்டாண்டு ஆட்டோ (மாரியப்பன்)", category: "ஆட்டோ / Auto", area: "அழகப்பபுரம்", desc: "24 மணி நேர லோக்கல் & அவசர சவாரி • Alagappapuram Stand", phone: "94431234560", wa: "98421234560", status: "active" },
-      { id: 2, name: "மயிலாடி முருகன் ஆட்டோ", category: "ஆட்டோ / Auto", area: "மயிலாடி", desc: "மயிலாடி சந்திப்பு, கோவில் & மருத்துவமனை சவாரி", phone: "94431234561", wa: "98421234560", status: "active" },
-      { id: 3, name: "அஞ்சுகிராமம் காமராஜ் ஆட்டோ", category: "ஆட்டோ / Auto", area: "அஞ்சுகிராமம்", desc: "அஞ்சுகிராமம் ரவுண்டானா • அனைத்து லோக்கல் சவாரிகள்", phone: "94431234562", wa: "98421234560", status: "pending" },
-      { id: 4, name: "செல்வம் ஆட்டோ சர்வீஸ்", category: "ஆட்டோ / Auto", area: "நாகர்கோவில்", desc: "நாகர்கோவில் வடசேரி & அண்ணா பஸ் ஸ்டாண்ட் சவாரி", phone: "94431234501", wa: "98421234560", status: "active" },
-      { id: 5, name: "குமரி டிராவல்ஸ் டாக்ஸி", category: "டாக்ஸி / Taxi", area: "அழகப்பபுரம்", desc: "திருவனந்தபுரம் ஏர்போர்ட், மதுரை டூர்ஸ்", phone: "94431234506", wa: "98421234560", status: "active" },
-      { id: 6, name: "மயிலாடி சரவணா எலக்ட்ரிக்கல்ஸ்", category: "வீட்டு சேவைகள் / Home Services", area: "மயிலாடி", desc: "பிளம்பிங், வயரிங் & மோட்டார் ரிப்பேர்", phone: "94431234504", wa: "98421234560", status: "active" },
-      { id: 7, name: "குமரி நேச்சுரல்ஸ் ஹோம்மேட்", category: "ஹோம்மேட் & ஆரோக்கியப் பொருட்கள்", area: "திங்கள்நகர்", desc: "ஏபிசி மால்ட், சத்து மாவு, பிரண்டை தொக்கு & மீன் ஊறுகாய்", phone: "94431234580", wa: "98421234560", status: "active" },
-      { id: 8, name: "நாகர்கோவில் டர்ப் ஸ்போர்ட்ஸ்", category: "ஸ்போர்ட்ஸ் & ஜிம்", area: "நாகர்கோவில்", desc: "கிரிக்கெட் டர்ப் மைதானம், ஜிம் & கராத்தே பயிற்சி", phone: "94431234581", wa: "98421234560", status: "active" },
-      { id: 9, name: "குமரி செகண்ட் ஹேண்ட் கார்ஸ்", category: "செகண்ட் ஹேண்ட் கார் & பைக்", area: "மார்சல்நகர்", desc: "பழைய கார்கள் மற்றும் இருசக்கர வாகனங்கள் வாங்குதல் / விற்பனை", phone: "94431234582", wa: "98421234560", status: "active" }
-    ];
   
     function switchHomeTab(cat) {
       selectedHomeCategory = cat;
@@ -1849,7 +1876,6 @@
       }
     }
   
-    /* இறுதி செய்யப்பட்ட 4 படிவங்களுக்கான முழுமையான 5 விதிமுறைகள் */
     function openDedicatedTerms(category) {
       const termsPage = document.getElementById("pageTermsView");
       const title = document.getElementById("termsHeaderTitle");
@@ -2070,9 +2096,7 @@
       window.open("https://wa.me/?text=" + text, '_blank');
     }
 
-    // ==========================================
-    // ரகசிய 5 முறை தொடுதல் & அட்மின் கண்ட்ரோல் லாஜிக் (Secret 5-Tap Gesture)
-    // ==========================================
+    // ரகசிய அட்மின் லாஜிக்
     let secretLogoTapCount = 0;
     let secretTapTimer = null;
 
@@ -2086,7 +2110,7 @@
       clearTimeout(secretTapTimer);
       secretTapTimer = setTimeout(() => {
         secretLogoTapCount = 0;
-      }, 1500); // 1.5 விநாடிகளுக்குள் 5 முறை தொட வேண்டும்
+      }, 1500);
 
       if (secretLogoTapCount >= 5) {
         secretLogoTapCount = 0;
