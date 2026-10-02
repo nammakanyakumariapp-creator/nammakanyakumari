@@ -1315,7 +1315,7 @@
     let selectedHomeCategory = "வாகனம்";
 
     // கூகுள் சீட் Web App API இணைப்பு
-    const GOOGLE_SHEET_API = "https://script.google.com/macros/s/AKfycbzu4kZGylGsyyL9Zddhu-RkPS5k4ppMRjwn3208y09jnyzJ9Mh3jGEKvpRMHMx12sqr/exec";
+    const GOOGLE_SHEET_API = "https://script.google.com/macros/s/AKfycbz6jHAL3YGvxUvmHC8OozEBuT8w6x2HlyVdsdLKcy1DvVlVqa83iPuBXfOjbw2ZYZQ/exec";
 
     // கூகுள் சீட்டிலிருந்து சுவிட்ச் நிலையை எடுத்து ஆன்/ஆஃப் செய்தல்
     fetch(GOOGLE_SHEET_API)
@@ -1529,6 +1529,7 @@
       if (SpeechRecognition) {
         const recognition = new SpeechRecognition();
         recognition.lang = 'ta-IN';
+        
         recognition.onstart = function() {
           keywordInput.placeholder = "மைக் கேட்கிறது... பேசுங்கள்...";
         };
