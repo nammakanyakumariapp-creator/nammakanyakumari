@@ -650,7 +650,7 @@
       font-size: 16px;
     }
 
-    /* ரகசிய அட்மின் லாகின் பாப்-அப் மாடல் ஸ்டைல் */
+    /* Secret Admin Modal */
     .secret-admin-modal {
       display: none;
       position: fixed;
@@ -1466,7 +1466,8 @@
   </nav>
   
   <script>
-    let isTermsSwitchOn = true; 
+    // ஆரம்பத்தில் மறைந்திருக்க false என அமைக்கப்பட்டுள்ளது
+    let isTermsSwitchOn = false; 
     let selectedHomeCategory = "வாகனம்";
     let liveSettings = {};
     let liveVendors = [];
@@ -1474,7 +1475,7 @@
     // கூகுள் சீட் Web App API இணைப்பு
     const GOOGLE_SHEET_API = "https://script.google.com/macros/s/AKfycbxPEY186IyKWg0HV23Ef7NijzuTxWu9lwA5Ato_6Wq55iwnYki6rLtzkQ3c1HvhRnRl/exec";
 
-    // 12 முக்கியப் பிரிவுகள் மற்றும் அவற்றின் 24 உட்பிரிவுகளுக்கான முழுமையான 120 மாதிரி வெண்டர்கள்
+    // 120 மாதிரி வெண்டர்கள் பட்டியல் (12 பிரிவுகள் x 10 வெண்டர்கள்)
     const all120MasterVendors = [];
     const masterCats = [
       { name: "ஆட்டோ / Auto", sub1: "லோக்கல் சவாரி", sub2: "வெளியூர் & அவசரம்", type: "Vehicle" },
@@ -1518,12 +1519,14 @@
 
     const serviceList = all120MasterVendors;
 
+    // கூகுள் சீட்டிலிருந்து டிக் பாக்ஸ் மற்றும் கட்டணங்களைப் படிக்கும் இணைப்பு
     function fetchLiveDataFromSheet() {
       fetch(GOOGLE_SHEET_API)
         .then(response => response.json())
         .then(data => {
           if (data.status === "success") {
-            isTermsSwitchOn = data.showSubscription;
+            // கூகுள் சீட்டில் டிக் பாக்ஸ் TRUE என இருந்தால் மட்டுமே வாசகம் தெரியும்
+            isTermsSwitchOn = String(data.showSubscription).toLowerCase() === "true";
             liveSettings = data.settings || {};
             
             if (data.vendors && data.vendors.length > 0) {
@@ -1876,12 +1879,22 @@
       }
     }
   
+    // கூகுள் சீட்டிலிருந்து தானாகவே கட்டணங்களைப் பொருத்தும் டைனமிக் விதிமுறைகள்
     function openDedicatedTerms(category) {
       const termsPage = document.getElementById("pageTermsView");
       const title = document.getElementById("termsHeaderTitle");
       const body = document.getElementById("termsContentBody");
       
       const subClauseStyle = isTermsSwitchOn ? "display: block;" : "display: none;";
+
+      // கூகுள் சீட் மதிப்புகளை எடுத்தல்
+      const mPrice = liveSettings["MONTHLY_PRICE"] || "199";
+      const hPrice = liveSettings["HALF_YEARLY_PRICE"] || "999";
+      const yPrice = liveSettings["YEARLY_PRICE"] || "1,799";
+
+      const dynamicNoticeTa = `*(முக்கிய அறிவிப்பு: இத்தளம் சவாரி அல்லது விற்பனையில் ஆரம்பம் முதலே எவ்வித கமிஷனும் இன்றி <strong>0% கமிஷன்</strong> முறையிலேயே செயல்பட்டு வருகிறது. உள்ளூர் மக்களையும் தொழிலாளர்களையும் இணைக்கும் இத்தளம் எவ்விதத் தடையுமின்றித் தொடர்ந்து செயல்படவும், தொழில்நுட்பப் பராமரிப்பிற்காகவும் மிகக் குறைந்த அளவிலான பங்களிப்புக் கட்டணம் நிர்ணயிக்கப்பட்டுள்ளது: <strong>மாதாந்திர சந்தா: ₹${mPrice}</strong>, <strong>6 மாத சிறப்புச் சலுகை: ₹${hPrice}</strong>, <strong>1 வருட முழுத் திட்டம்: ₹${yPrice}</strong>. இத்தளத்தைச் சந்தா செலுத்தித் தொடர்ந்து நன்முறையில் வழிநடத்த உதவுமாறு அன்புடன் கேட்டுக்கொள்கிறோம்; வாடிக்கையாளர் நேரடிப் பரிவர்த்தனைகளுக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது.</strong>)*`;
+
+      const dynamicNoticeEn = `*(Important Notice: This platform operates strictly on a <strong>0% commission</strong> model for all rides and sales. To maintain server operations and ensure uninterrupted service, a nominal platform maintenance fee is applicable: <strong>Monthly Plan: ₹${mPrice}</strong>, <strong>6 Months Offer: ₹${hPrice}</strong>, <strong>1 Year Plan: ₹${yPrice}</strong>. We kindly request your valuable support through subscription to sustain this community service; <strong>Namma Kanyakumari platform is not responsible</strong> for direct customer transactions.)*`;
   
       if (category === 'customer') {
         title.innerText = "வாடிக்கையாளர் விதிமுறைகள் / Customer Terms";
@@ -1929,10 +1942,10 @@
             <p class="en-sub">The platform charges 0% commission on your ride fares. <strong>Namma Kanyakumari platform is not responsible</strong> for ride payments; the driver bears full responsibility.</p>
             <div class="hidden-subscription-clause" style="${subClauseStyle}">
               <p class="ta-main" style="color: #FBBF24; margin-top: 6px;">
-                *(குறிப்பு: இத்தளம் சவாரி அல்லது விற்பனையில் எவ்வித கமிஷனும் எடுப்பதில்லை (0% Commission). தளம் தற்போது ஆரம்பகால இலவச முன்னோட்டமாக (Introductory Free Access) வழங்கப்படுகிறது. எதிர்காலத்தில் நிர்வாகக் கொள்கைப்படி தளம் தொடர்ந்து இயங்க சிறிய அளவிலான சேவைப் பராமரிப்புக் கட்டணம் / சந்தா முறை நடைமுறைப்படுத்தப்படலாம். <strong>மாதாந்திர சந்தா: ₹199</strong>, <strong>6 மாத சலுகை: ₹999</strong>, <strong>1 வருட சிறப்புத் திட்டம்: ₹1,799</strong>. அவ்வாறு மாற்றப்படும் போது அதனை ஏற்றுச் செயல்பட சம்மதிக்கிறேன்; கட்டண முடிவுகள் மற்றும் சேவை தொடர்பாக எழும் எவ்வித இழப்புகளுக்கும் <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது.</strong>)*
+                ${dynamicNoticeTa}
               </p>
               <p class="en-sub">
-                *(Note: The platform charges 0% commission and is currently offered under an introductory free access period. In accordance with future management policy, a nominal platform maintenance fee or subscription plan may be introduced: <strong>Monthly Plan: ₹199</strong>, <strong>6 Months Offer: ₹999</strong>, <strong>1 Year Plan: ₹1,799</strong>. Providers agree to comply upon formal notice; <strong>Namma Kanyakumari platform is not responsible</strong> for any related service disputes.)*
+                ${dynamicNoticeEn}
               </p>
             </div>
           </div>
@@ -1974,10 +1987,10 @@
             <p class="en-sub">The platform charges 0% sales commission. <strong>Namma Kanyakumari platform is not responsible</strong> for financial transactions; the merchant bears sole responsibility.</p>
             <div class="hidden-subscription-clause" style="${subClauseStyle}">
               <p class="ta-main" style="color: #FBBF24; margin-top: 6px;">
-                *(குறிப்பு: இத்தளம் சவாரி அல்லது விற்பனையில் எவ்வித கமிஷனும் எடுப்பதில்லை (0% Commission). தளம் தற்போது ஆரம்பகால இலவச முன்னோட்டமாக (Introductory Free Access) வழங்கப்படுகிறது. எதிர்காலத்தில் நிர்வாகக் கொள்கைப்படி தளம் தொடர்ந்து இயங்க சிறிய அளவிலான சேவைப் பராமரிப்புக் கட்டணம் / சந்தா முறை நடைமுறைப்படுத்தப்படலாம். <strong>மாதாந்திர சந்தா: ₹199</strong>, <strong>6 மாத சலுகை: ₹999</strong>, <strong>1 வருட சிறப்புத் திட்டம்: ₹1,799</strong>. அவ்வாறு மாற்றப்படும் போது அதனை ஏற்றுச் செயல்பட சம்மதிக்கிறேன்; கட்டண முடிவுகள் மற்றும் சேவை தொடர்பாக எழும் எவ்வித இழப்புகளுக்கும் <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது.</strong>)*
+                ${dynamicNoticeTa}
               </p>
               <p class="en-sub">
-                *(Note: The platform charges 0% commission and is currently offered under an introductory free access period. In accordance with future management policy, a nominal platform maintenance fee or subscription plan may be introduced: <strong>Monthly Plan: ₹199</strong>, <strong>6 Months Offer: ₹999</strong>, <strong>1 Year Plan: ₹1,799</strong>. Providers agree to comply upon formal notice; <strong>Namma Kanyakumari platform is not responsible</strong> for any related service disputes.)*
+                ${dynamicNoticeEn}
               </p>
             </div>
           </div>
@@ -2019,10 +2032,10 @@
             <p class="en-sub">The platform charges 0% hiring commission. <strong>Namma Kanyakumari platform is not responsible</strong> for employment contracts; both parties are fully responsible.</p>
             <div class="hidden-subscription-clause" style="${subClauseStyle}">
               <p class="ta-main" style="color: #FBBF24; margin-top: 6px;">
-                *(குறிப்பு: இத்தளம் சவாரி அல்லது விற்பனையில் எவ்வித கமிஷனும் எடுப்பதில்லை (0% Commission). தளம் தற்போது ஆரம்பகால இலவச முன்னோட்டமாக (Introductory Free Access) வழங்கப்படுகிறது. எதிர்காலத்தில் நிர்வாகக் கொள்கைப்படி தளம் தொடர்ந்து இயங்க சிறிய அளவிலான சேவைப் பராமரிப்புக் கட்டணம் / சந்தா முறை நடைமுறைப்படுத்தப்படலாம். <strong>மாதாந்திர சந்தா: ₹199</strong>, <strong>6 மாத சலுகை: ₹999</strong>, <strong>1 வருட சிறப்புத் திட்டம்: ₹1,799</strong>. அவ்வாறு மாற்றப்படும் போது அதனை ஏற்றுச் செயல்பட சம்மதிக்கிறேன்; கட்டண முடிவுகள் மற்றும் சேவை தொடர்பாக எழும் எவ்வித இழப்புகளுக்கும் <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது.</strong>)*
+                ${dynamicNoticeTa}
               </p>
               <p class="en-sub">
-                *(Note: The platform charges 0% commission and is currently offered under an introductory free access period. In accordance with future management policy, a nominal platform maintenance fee or subscription plan may be introduced: <strong>Monthly Plan: ₹199</strong>, <strong>6 Months Offer: ₹999</strong>, <strong>1 Year Plan: ₹1,799</strong>. Providers agree to comply upon formal notice; <strong>Namma Kanyakumari platform is not responsible</strong> for any related service disputes.)*
+                ${dynamicNoticeEn}
               </p>
             </div>
           </div>
