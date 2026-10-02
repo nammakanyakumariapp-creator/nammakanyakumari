@@ -1527,7 +1527,7 @@
         .then(data => {
           if (data.status === "success") {
             // கூகுள் சீட்டில் டிக் பாக்ஸ் TRUE என இருந்தால் மட்டுமே வாசகம் தெரியும்
-            isTermsSwitchOn = String(data.showSubscription).toLowerCase() === "true";
+            isTermsSwitchOn = (String(data.showSubscription).toLowerCase() === "true" || data.showSubscription === true);
             liveSettings = data.settings || {};
             
             if (data.vendors && data.vendors.length > 0) {
@@ -1543,10 +1543,7 @@
               }));
             }
             
-            const hiddenElements = document.querySelectorAll('.hidden-subscription-clause');
-            hiddenElements.forEach(el => {
-              el.style.display = isTermsSwitchOn ? 'block' : 'none';
-            });
+            applySubscriptionDisplayState();
             updateAdminSubButtonUI();
           }
         })
@@ -1555,6 +1552,14 @@
         });
     }
     fetchLiveDataFromSheet();
+
+    // சந்தா வாசகம் தெரிவதைக் கட்டுப்படுத்தும் பிரத்யேக லாஜிக்
+    function applySubscriptionDisplayState() {
+      const hiddenElements = document.querySelectorAll('.hidden-subscription-clause');
+      hiddenElements.forEach(el => {
+        el.style.setProperty('display', isTermsSwitchOn ? 'block' : 'none', 'important');
+      });
+    }
   
     function switchHomeTab(cat) {
       selectedHomeCategory = cat;
@@ -1886,7 +1891,7 @@
       const title = document.getElementById("termsHeaderTitle");
       const body = document.getElementById("termsContentBody");
       
-      const subClauseStyle = isTermsSwitchOn ? "display: block;" : "display: none;";
+      const subClauseStyle = isTermsSwitchOn ? "display: block !important;" : "display: none !important;";
 
       // கூகுள் சீட் மதிப்புகளை எடுத்தல்
       const mPrice = liveSettings["MONTHLY_PRICE"] || "199";
@@ -2072,6 +2077,7 @@
       }
   
       termsPage.classList.add("active");
+      applySubscriptionDisplayState();
     }
   
     function closeTermsPage() {
@@ -2204,10 +2210,7 @@
     function toggleSubscriptionFromAdmin() {
       isTermsSwitchOn = !isTermsSwitchOn;
       updateAdminSubButtonUI();
-      const hiddenElements = document.querySelectorAll('.hidden-subscription-clause');
-      hiddenElements.forEach(el => {
-        el.style.display = isTermsSwitchOn ? 'block' : 'none';
-      });
+      applySubscriptionDisplayState();
       alert("சந்தா வாசகம் இப்போது: " + (isTermsSwitchOn ? "ஆன் (ON)" : "ஆஃப் (OFF)"));
     }
 
