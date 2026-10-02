@@ -56,13 +56,13 @@
       box-shadow: 0 4px 15px rgba(0,0,0,0.3);
       border: 1px solid #334155;
       background: #000;
-      cursor: pointer;
       position: relative;
     }
     .top-promo-banner img {
       width: 100%;
       height: auto;
       display: block;
+      pointer-events: none;
     }
     
     /* Secret Admin Tap Zone - பேனரின் இடது ஓரத்தில் லோகோ இருக்கும் பகுதியில் ரகசிய தொடு பகுதி */
@@ -70,10 +70,11 @@
       position: absolute;
       top: 0;
       left: 0;
-      width: 28%;
+      width: 30%;
       height: 100%;
-      z-index: 5;
+      z-index: 10;
       background: transparent;
+      cursor: pointer;
     }
   
     /* Category Switcher Tabs */
@@ -723,11 +724,11 @@
   
   <div class="container">
   
-    <!-- Top Main Promo Banner with Secret Logo 5-Tap Area -->
+    <!-- Top Main Promo Banner (ஆட்டோ லிங்க் நீக்கப்பட்டு ரகசிய தொடுதல் மட்டும் இயங்கும்) -->
     <div class="top-promo-banner">
-      <!-- லோகோ இருக்கும் பகுதியில் ரகசிய தொடுதலுக்கான மறைக்கப்பட்ட பகுதி (5-Tap Area) -->
+      <!-- லோகோ உள்ள பகுதியில் ரகசிய 5 முறை தொடும் பகுதி -->
       <div class="secret-logo-touch-area" onclick="handleSecretLogoTap(event)"></div>
-      <img src="https://lh3.googleusercontent.com/d/1VreUYprfYVoSxJZxHn6_LnEdfKcCVL8H" alt="நம்ம கன்னியாகுமரி பேனர்" onclick="openDedicatedCategory('போக்குவரத்து / Transport')">
+      <img src="https://lh3.googleusercontent.com/d/1VreUYprfYVoSxJZxHn6_LnEdfKcCVL8H" alt="நம்ம கன்னியாகுமரி பேனர்">
     </div>
   
     <!-- Home Filter Tabs: Vehicle, Vendor, Job -->
@@ -2052,7 +2053,7 @@
     let secretTapTimer = null;
 
     function handleSecretLogoTap(e) {
-      e.stopPropagation();
+      if (e) e.stopPropagation();
       secretLogoTapCount++;
       
       clearTimeout(secretTapTimer);
@@ -2083,7 +2084,6 @@
       const masterKey = String(liveSettings["MASTER_ADMIN_KEY"] || "").trim();
       const assistantKey = String(liveSettings["ASSISTANT_ADMIN_ACCESS"] || "").trim();
 
-      // டீஃபால்ட் சாவிகள் அல்லது கூகுள் சீட் சாவிகளோடு ஒப்பிடுதல்
       const isMaster = (masterKey && inputKey === masterKey) || inputKey === "NK@Master2026";
       const isAssistant = (assistantKey && inputKey === assistantKey) || inputKey === "NK@Staff2026";
 
