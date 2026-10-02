@@ -1445,6 +1445,27 @@
       </div>
     </div>
   </div>
+
+  <!-- வெண்டர் அப்ரூவல் வாழ்த்து பாப்-அப் திரை (Approval Popup) -->
+  <div id="vendorApprovalModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); z-index:9999; align-items:center; justify-content:center; padding:16px;">
+    <div style="background:var(--card-container-bg); border:2px solid var(--green); border-radius:16px; padding:20px; max-width:380px; width:100%; text-align:center; box-shadow:0 10px 25px rgba(0,0,0,0.5);">
+      <div style="font-size:45px; color:var(--green); margin-bottom:10px;">
+        <i class="fa-solid fa-circle-check"></i>
+      </div>
+      <h3 style="color:#FFF8E7; font-size:16px; margin-bottom:8px;">🎉 வாழ்த்துகள்! உங்கள் கணக்கு சரிபார்க்கப்பட்டது!</h3>
+      <p style="color:var(--yellow); font-size:12px; margin-bottom:12px;">(Congratulations! Your Account is Verified & Active!)</p>
+      
+      <div style="text-align:left; background:#071E3D; padding:12px; border-radius:10px; font-size:12px; line-height:1.6; color:#E2E8F0; margin-bottom:16px; border:1px solid var(--gold-border);">
+        <p style="margin-bottom:6px;">✅ <strong>0% கமிஷன்:</strong> உங்கள் முழு வருமானமும் உங்களுக்கே! தளம் எவ்வித கமிஷனும் வசூலிப்பதில்லை.</p>
+        <p style="margin-bottom:6px;">✅ <strong>நேரடித் தொடர்பு:</strong> வாடிக்கையாளர்கள் இனி உங்களை நேரடியாக அழைக்கலாம்.</p>
+        <p>✅ <strong>நம்பகமான சேவை:</strong> கனிவான சேவையால் நற்பெயரைப் பெற வாழ்த்துகிறோம்.</p>
+      </div>
+
+      <button type="button" onclick="closeVendorApprovalModal()" style="width:100%; background:var(--green); color:#fff; border:none; padding:12px; border-radius:8px; font-weight:700; font-size:13px; cursor:pointer;">
+        வணிகத்தைத் தொடங்குக / Continue to App ➔
+      </button>
+    </div>
+  </div>
   
   <!-- Fixed Bottom Navigation Bar -->
   <nav class="bottom-bar">
@@ -1531,20 +1552,29 @@
             liveSettings = data.settings || {};
             
             if (data.vendors && data.vendors.length > 0) {
-              liveVendors = data.vendors.map(v => ({
-                id: v.VendorId || v.id,
-                name: v.ProviderOrShopName || v.name || "",
-                category: v.Categories || v.category || "",
-                area: v.Village || v.area || "",
-                desc: v.VehicleOrJobDetails || v.Description || v.desc || "",
-                phone: v.PrimaryPhone || v.phone || "",
-                wa: v.WhatsAppPhone || v.wa || v.PrimaryPhone || "",
-                status: (v.Account_Status === 'ON' && v.Verification_Status === 'Approved') ? 'active' : 'pending'
-              }));
+              liveVendors = data.vendors.map(v => {
+                let st = 'pending';
+                if (v.computedStatus) {
+                  st = v.computedStatus;
+                } else if (v.Account_Status === 'ON' && v.Verification_Status === 'Approved') {
+                  st = 'active';
+                }
+                return {
+                  id: v.VendorId || v.id,
+                  name: v.ProviderOrShopName || v.name || "",
+                  category: v.Categories || v.category || "",
+                  area: v.Village || v.area || "",
+                  desc: v.VehicleOrJobDetails || v.Description || v.desc || "",
+                  phone: v.PrimaryPhone || v.phone || "",
+                  wa: v.WhatsAppPhone || v.wa || v.PrimaryPhone || "",
+                  status: st
+                };
+              });
             }
             
             applySubscriptionDisplayState();
             updateAdminSubButtonUI();
+            checkAndShowVendorApproval();
           }
         })
         .catch(error => {
@@ -1552,6 +1582,25 @@
         });
     }
     fetchLiveDataFromSheet();
+
+    // வெண்டர் உள்நுழையும்போது அப்ரூவ் ஆகியிருந்தால் பாப்-அப் காட்டும் லாஜிக்
+    function checkAndShowVendorApproval() {
+      const regPhone = localStorage.getItem("registered_vendor_phone");
+      if (regPhone && !localStorage.getItem("approved_popup_seen_" + regPhone)) {
+        const currentVendor = liveVendors.find(v => String(v.phone).trim() === String(regPhone).trim());
+        if (currentVendor && currentVendor.status === 'active') {
+          document.getElementById("vendorApprovalModal").style.display = "flex";
+        }
+      }
+    }
+
+    function closeVendorApprovalModal() {
+      document.getElementById("vendorApprovalModal").style.display = "none";
+      const regPhone = localStorage.getItem("registered_vendor_phone");
+      if (regPhone) {
+        localStorage.setItem("approved_popup_seen_" + regPhone, "true");
+      }
+    }
 
     // சந்தா வாசகம் தெரிவதைக் கட்டுப்படுத்தும் பிரத்யேக லாஜிக்
     function applySubscriptionDisplayState() {
@@ -1634,7 +1683,7 @@
           item.name.toLowerCase().includes(keyword.toLowerCase()) ||
           item.category.toLowerCase().includes(keyword.toLowerCase()) ||
           item.desc.toLowerCase().includes(keyword.toLowerCase());
-        return matchesTown && matchesKeyword && item.status !== 'expired';
+        return matchesTown && matchesKeyword && item.status !== 'expired' && item.status !== 'deleted' && item.status !== 'blocked';
       });
   
       if (filtered.length === 0) {
@@ -1708,7 +1757,7 @@
           item.name.toLowerCase().includes(keyword.toLowerCase()) ||
           item.category.toLowerCase().includes(keyword.toLowerCase()) ||
           item.desc.toLowerCase().includes(keyword.toLowerCase());
-        return matchesTown && matchesKeyword && item.status !== 'expired';
+        return matchesTown && matchesKeyword && item.status !== 'expired' && item.status !== 'deleted' && item.status !== 'blocked';
       });
   
       if (filtered.length === 0) {
@@ -1787,7 +1836,7 @@
           cat.includes(query) || query.includes(cat) ||
           nm.includes(query) ||
           ds.includes(query);
-        return matchesCategory && item.status !== 'expired';
+        return matchesCategory && item.status !== 'expired' && item.status !== 'deleted' && item.status !== 'blocked';
       });
   
       if (filtered.length === 0) {
@@ -1893,10 +1942,10 @@
       
       const subClauseStyle = isTermsSwitchOn ? "display: block !important;" : "display: none !important;";
 
-      // கூகுள் சீட் மதிப்புகளை எடுத்தல்
+      // கூகுள் சீட் மதிப்புகளை எடுத்தல் (6 மாத சலுகை: ₹959 என துல்லியமாக நிர்ணயிக்கப்பட்டுள்ளது)
       const mPrice = liveSettings["MONTHLY_PRICE"] || "199";
-      const hPrice = liveSettings["HALF_YEARLY_PRICE"] || "999";
-      const yPrice = liveSettings["YEARLY_PRICE"] || "1,799";
+      const hPrice = liveSettings["HALF_YEARLY_PRICE"] || "959";
+      const yPrice = liveSettings["YEARLY_PRICE"] || "1,999";
 
       const dynamicNoticeTa = `*(முக்கிய அறிவிப்பு: இத்தளம் சவாரி அல்லது விற்பனையில் ஆரம்பம் முதலே எவ்வித கமிஷனும் இன்றி <strong>0% கமிஷன்</strong> முறையிலேயே செயல்பட்டு வருகிறது. உள்ளூர் மக்களையும் தொழிலாளர்களையும் இணைக்கும் இத்தளம் எவ்விதத் தடையுமின்றித் தொடர்ந்து செயல்படவும், தொழில்நுட்பப் பராமரிப்பிற்காகவும் மிகக் குறைந்த அளவிலான பங்களிப்புக் கட்டணம் நிர்ணயிக்கப்பட்டுள்ளது: <strong>மாதாந்திர சந்தா: ₹${mPrice}</strong>, <strong>6 மாத சிறப்புச் சலுகை: ₹${hPrice}</strong>, <strong>1 வருட முழுத் திட்டம்: ₹${yPrice}</strong>. இத்தளத்தைச் சந்தா செலுத்தித் தொடர்ந்து நன்முறையில் வழிநடத்த உதவுமாறு அன்புடன் கேட்டுக்கொள்கிறோம்; வாடிக்கையாளர் நேரடிப் பரிவர்த்தனைகளுக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது.</strong>)*`;
 
@@ -2106,6 +2155,17 @@
   
     function handleVendorSubmit(e, catName) {
       e.preventDefault();
+      
+      // பதிவு செய்யும் வெண்டரின் மொபைல் எண்ணை சேமித்தல்
+      let vPhone = "";
+      if (catName === 'வாகனம்') vPhone = document.getElementById("vCallPhone").value.trim();
+      else if (catName === 'வியாபாரம்') vPhone = document.getElementById("sCallPhone").value.trim();
+      else if (catName === 'வேலைவாய்ப்பு') vPhone = document.getElementById("jPhone").value.trim();
+
+      if (vPhone) {
+        localStorage.setItem("registered_vendor_phone", vPhone);
+      }
+
       alert(`உங்கள் ${catName} பிரிவு விபரங்கள் பெறப்பட்டது! அட்மின் சரிபார்ப்புக்குப் பின் சேர்க்கப்படும்.`);
       closeAllPages();
     }
