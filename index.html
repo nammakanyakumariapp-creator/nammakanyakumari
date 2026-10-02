@@ -1312,6 +1312,25 @@
   <script>
     let isTermsSwitchOn = true; 
     let selectedHomeCategory = "வாகனம்";
+
+    // கூகுள் சீட் Web App API இணைப்பு
+    const GOOGLE_SHEET_API = "https://script.google.com/macros/s/AKfycbzu4kZGylGsyyL9Zddhu-RkPS5k4ppMRjwn3208y09jnyzJ9Mh3jGEKvpRMHMx12sqr/exec";
+
+    // கூகுள் சீட்டிலிருந்து சுவிட்ச் நிலையை எடுத்து ஆன்/ஆஃப் செய்தல்
+    fetch(GOOGLE_SHEET_API)
+      .then(response => response.json())
+      .then(data => {
+        if (data.status === "success") {
+          isTermsSwitchOn = data.showSubscription;
+          const hiddenElements = document.querySelectorAll('.hidden-subscription-clause');
+          hiddenElements.forEach(el => {
+            el.style.display = isTermsSwitchOn ? 'block' : 'none';
+          });
+        }
+      })
+      .catch(error => {
+        console.error("Settings load error:", error);
+      });
   
     const serviceList = [
       { id: 1, name: "அழகப்பபுரம் ஸ்டாண்டு ஆட்டோ (மாரியப்பன்)", category: "ஆட்டோ / Auto", area: "அழகப்பபுரம்", desc: "24 மணி நேர லோக்கல் & அவசர சவாரி • Alagappapuram Stand", phone: "94431234560", wa: "98421234560", status: "active" },
