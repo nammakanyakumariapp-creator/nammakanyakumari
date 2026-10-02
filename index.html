@@ -47,12 +47,12 @@
       margin: 0 auto;
     }
   
-    /* 1. Top Main Promo Banner (உயரம் 15-20% குறைக்கப்பட்டு max-height: 140px & object-fit: cover அமைக்கப்பட்டுள்ளது) */
+    /* Top Main Promo Banner - வெட்டப்படாமல் முழுமையாகச் சுருங்கி நடுவில் அமையும் அமைப்பு */
     .top-promo-banner {
-      width: 100%;
-      border-radius: 16px;
+      width: 92%;
+      margin: 0 auto 12px auto;
+      border-radius: 14px;
       overflow: hidden;
-      margin-bottom: 12px;
       box-shadow: 0 4px 15px rgba(0,0,0,0.3);
       border: 1px solid #334155;
       background: #000;
@@ -61,8 +61,7 @@
     }
     .top-promo-banner img {
       width: 100%;
-      max-height: 140px;
-      object-fit: cover;
+      height: auto;
       display: block;
       pointer-events: none;
       user-select: none;
@@ -161,7 +160,7 @@
       color: var(--green) !important;
     }
   
-    /* 3. Sponsor Ad Strip Compact (பேடிங் மற்றும் எழுத்து அளவு 12% குறைக்கப்பட்டு நெருக்கமின்றி ஆக்கப்பட்டுள்ளது) */
+    /* Sponsor Ad Strip */
     .sponsor-ad-card {
       background: linear-gradient(135deg, #1E293B, #2A384C);
       border: 1.5px dashed var(--yellow);
@@ -195,7 +194,7 @@
       white-space: nowrap;
     }
   
-    /* 4. Category Grids & Height Alignment (அனைத்து 12 கட்டங்களும் சீரான min-height: 104px உயரத்துடன் நேர்த்தியாக அமைக்கப்பட்டுள்ளது) */
+    /* Category Grids */
     .category-grid-container {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -619,7 +618,7 @@
       display: none;
     }
   
-    /* 5. Bottom Navigation Bar Optimization (எழுத்து இடைவெளி & font-size சிறிய திரைகளிலும் ஒற்றை வரியில் தெரிய optimize செய்யப்பட்டுள்ளது) */
+    /* Bottom Navigation Bar Optimization */
     .bottom-bar {
       position: fixed;
       bottom: 0;
@@ -753,7 +752,7 @@
       </button>
     </div>
   
-    <!-- 2. Town & Search Bar with Voice Mic (சுருக்கமான Placeholder உடன் நேர்த்தியாக உள்ளது) -->
+    <!-- Town & Search Bar with Voice Mic -->
     <div class="home-search-row">
       <div class="home-town-input">
         <i class="fa-solid fa-location-dot" style="color: var(--yellow); font-size: 11px;"></i>
