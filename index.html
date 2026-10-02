@@ -47,7 +47,7 @@
       margin: 0 auto;
     }
   
-    /* Top Main Promo Banner */
+    /* 1. Top Main Promo Banner (உயரம் 15-20% குறைக்கப்பட்டு max-height: 140px & object-fit: cover அமைக்கப்பட்டுள்ளது) */
     .top-promo-banner {
       width: 100%;
       border-radius: 16px;
@@ -61,7 +61,8 @@
     }
     .top-promo-banner img {
       width: 100%;
-      height: auto;
+      max-height: 140px;
+      object-fit: cover;
       display: block;
       pointer-events: none;
       user-select: none;
@@ -160,38 +161,41 @@
       color: var(--green) !important;
     }
   
-    /* Sponsor Ad Strip */
+    /* 3. Sponsor Ad Strip Compact (பேடிங் மற்றும் எழுத்து அளவு 12% குறைக்கப்பட்டு நெருக்கமின்றி ஆக்கப்பட்டுள்ளது) */
     .sponsor-ad-card {
       background: linear-gradient(135deg, #1E293B, #2A384C);
       border: 1.5px dashed var(--yellow);
       border-radius: 12px;
-      padding: 10px 14px;
-      margin-bottom: 16px;
+      padding: 7px 12px;
+      margin-bottom: 14px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       cursor: pointer;
     }
     .sponsor-ad-card h4 {
-      font-size: 13.5px;
+      font-size: 12.5px;
       color: #FEF08A;
       font-weight: 700;
+      line-height: 1.2;
     }
     .sponsor-ad-card p {
-      font-size: 11.5px;
+      font-size: 11px;
       color: var(--en-text-bright);
       font-weight: 500;
+      margin-top: 2px;
     }
     .sponsor-tag {
       background: var(--green);
       color: #fff;
-      font-size: 11px;
+      font-size: 10.5px;
       font-weight: 700;
       padding: 3px 8px;
       border-radius: 6px;
+      white-space: nowrap;
     }
   
-    /* Category Grids */
+    /* 4. Category Grids & Height Alignment (அனைத்து 12 கட்டங்களும் சீரான min-height: 104px உயரத்துடன் நேர்த்தியாக அமைக்கப்பட்டுள்ளது) */
     .category-grid-container {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -210,11 +214,13 @@
       background: #1E293B;
       border: 1px solid #334155;
       border-radius: 16px;
-      padding: 14px 4px;
+      padding: 10px 4px;
+      min-height: 104px;
       text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
       gap: 6px;
       cursor: pointer;
       box-shadow: 0 4px 10px rgba(0,0,0,0.15);
@@ -225,13 +231,13 @@
     }
     
     .cat-btn .circle-icon {
-      width: 48px;
-      height: 48px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 20px;
+      font-size: 19px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
     
@@ -256,7 +262,7 @@
       line-height: 1.2;
     }
     .cat-btn .sub-text {
-      font-size: 11px;
+      font-size: 10.5px;
       font-weight: 600;
       color: var(--en-text-bright);
       line-height: 1.1;
@@ -613,7 +619,7 @@
       display: none;
     }
   
-    /* Bottom Bar */
+    /* 5. Bottom Navigation Bar Optimization (எழுத்து இடைவெளி & font-size சிறிய திரைகளிலும் ஒற்றை வரியில் தெரிய optimize செய்யப்பட்டுள்ளது) */
     .bottom-bar {
       position: fixed;
       bottom: 0;
@@ -622,7 +628,7 @@
       background: #020617;
       display: flex;
       justify-content: space-around;
-      padding: 10px 0;
+      padding: 8px 0 6px 0;
       border-top: 1px solid #1E293B;
       z-index: 900;
     }
@@ -632,7 +638,8 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      font-size: 11.5px;
+      font-size: 11px;
+      letter-spacing: -0.2px;
       font-weight: 600;
       gap: 3px;
       cursor: pointer;
@@ -641,7 +648,7 @@
       color: var(--yellow);
     }
     .bar-link i {
-      font-size: 17px;
+      font-size: 16px;
     }
 
     /* ரகசிய அட்மின் லாகின் பாப்-அப் மாடல் ஸ்டைல் */
@@ -746,7 +753,7 @@
       </button>
     </div>
   
-    <!-- Town & Search Bar with Voice Mic -->
+    <!-- 2. Town & Search Bar with Voice Mic (சுருக்கமான Placeholder உடன் நேர்த்தியாக உள்ளது) -->
     <div class="home-search-row">
       <div class="home-town-input">
         <i class="fa-solid fa-location-dot" style="color: var(--yellow); font-size: 11px;"></i>
