@@ -57,11 +57,23 @@
       border: 1px solid #334155;
       background: #000;
       cursor: pointer;
+      position: relative;
     }
     .top-promo-banner img {
       width: 100%;
       height: auto;
       display: block;
+    }
+    
+    /* Secret Admin Tap Zone - பேனரின் இடது ஓரத்தில் லோகோ இருக்கும் பகுதியில் ரகசிய தொடு பகுதி */
+    .secret-logo-touch-area {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 28%;
+      height: 100%;
+      z-index: 5;
+      background: transparent;
     }
   
     /* Category Switcher Tabs */
@@ -628,15 +640,94 @@
     .bar-link i {
       font-size: 17px;
     }
+
+    /* ரகசிய அட்மின் லாகின் பாப்-அப் மாடல் ஸ்டைல் */
+    .secret-admin-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.85);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+    .secret-admin-modal.show {
+      display: flex;
+    }
+    .secret-admin-box {
+      background: #1E293B;
+      border: 1.5px solid var(--yellow);
+      border-radius: 16px;
+      padding: 20px;
+      width: 100%;
+      max-width: 360px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      text-align: center;
+    }
+    .secret-admin-box h3 {
+      font-size: 16px;
+      color: #F8FAFC;
+      margin-bottom: 6px;
+    }
+    .secret-admin-box p {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+    .secret-admin-box input {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #475569;
+      background: #0F172A;
+      color: #fff;
+      font-size: 14px;
+      text-align: center;
+      letter-spacing: 2px;
+      margin-bottom: 14px;
+      outline: none;
+    }
+    .secret-admin-actions {
+      display: flex;
+      gap: 10px;
+    }
+    .btn-secret-cancel {
+      flex: 1;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #475569;
+      background: transparent;
+      color: var(--en-text-bright);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .btn-secret-login {
+      flex: 1;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      background: var(--primary-blue);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
   
   <div class="container">
   
-    <!-- Top Main Promo Banner -->
-    <div class="top-promo-banner" onclick="openDedicatedCategory('போக்குவரத்து / Transport')">
-      <img src="https://lh3.googleusercontent.com/d/1VreUYprfYVoSxJZxHn6_LnEdfKcCVL8H" alt="நம்ம கன்னியாகுமரி பேனர்">
+    <!-- Top Main Promo Banner with Secret Logo 5-Tap Area -->
+    <div class="top-promo-banner">
+      <!-- லோகோ இருக்கும் பகுதியில் ரகசிய தொடுதலுக்கான மறைக்கப்பட்ட பகுதி (5-Tap Area) -->
+      <div class="secret-logo-touch-area" onclick="handleSecretLogoTap(event)"></div>
+      <img src="https://lh3.googleusercontent.com/d/1VreUYprfYVoSxJZxHn6_LnEdfKcCVL8H" alt="நம்ம கன்னியாகுமரி பேனர்" onclick="openDedicatedCategory('போக்குவரத்து / Transport')">
     </div>
   
     <!-- Home Filter Tabs: Vehicle, Vendor, Job -->
@@ -1289,6 +1380,64 @@
       </div>
     </div>
   </div>
+
+  <!-- DEDICATED FULL SCREEN PAGE: ரகசிய அட்மின் நிர்வாக பேனல் -->
+  <div class="fullpage-view" id="pageAdminPanel" style="z-index: 1200;">
+    <div class="fullpage-header">
+      <div class="fullpage-header-left">
+        <button class="back-btn" onclick="closeAllPages()">
+          <i class="fa-solid fa-arrow-left"></i>
+        </button>
+        <h3 id="adminPanelHeaderTitle">நிர்வாக பேனல் / Admin Panel</h3>
+      </div>
+      <span class="tag-right" id="adminRoleBadge" style="color: var(--green);">Master</span>
+    </div>
+    <div class="fullpage-content">
+      
+      <!-- Master Admin Only Controls -->
+      <div id="masterOnlySection" class="form-box" style="margin-bottom: 16px;">
+        <h4 style="font-size: 14px; color: var(--yellow); margin-bottom: 10px;">
+          <i class="fa-solid fa-sliders"></i> பிரதான அமைப்புகள் / Master Switches
+        </h4>
+        <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #334155;">
+          <div>
+            <div style="font-size: 13px; font-weight: 700; color: #fff;">சந்தா விதிமுறை வாசகம்</div>
+            <div style="font-size: 11px; color: var(--text-muted);">Subscription Master Switch</div>
+          </div>
+          <div>
+            <button id="btnToggleSubLive" onclick="toggleSubscriptionFromAdmin()" style="padding: 6px 14px; border-radius: 6px; font-weight: 700; font-size: 12px; border: none; cursor: pointer;">
+              ஆன் / ON
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vendor Approval List Section (Both Master & Assistant) -->
+      <div class="form-box">
+        <h4 style="font-size: 14px; color: var(--yellow); margin-bottom: 10px;">
+          <i class="fa-solid fa-users-gear"></i> வெண்டர் மேலாண்மை / Vendor List
+        </h4>
+        <div id="adminVendorCardsContainer">
+          <p style="font-size: 12px; color: var(--text-muted); text-align: center; padding: 10px;">டேட்டாபேஸ் விவரங்கள் ஏற்றப்படுகின்றன...</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ரகசிய லாகின் பாப்-அப் பெட்டி (Modal) -->
+  <div class="secret-admin-modal" id="secretAdminModal">
+    <div class="secret-admin-box">
+      <i class="fa-solid fa-shield-halved" style="font-size: 30px; color: var(--yellow); margin-bottom: 10px;"></i>
+      <h3>நிர்வாக அணுகல் / Admin Access</h3>
+      <p>தொடர உங்கள் ரகசிய சாவியை உள்ளிடவும்</p>
+      <input type="password" id="secretAdminKeyInput" placeholder="Enter Secret Key" autofocus>
+      <div class="secret-admin-actions">
+        <button type="button" class="btn-secret-cancel" onclick="closeSecretLoginModal()">விலகுக</button>
+        <button type="button" class="btn-secret-login" onclick="verifySecretAdminKey()">திறக்க</button>
+      </div>
+    </div>
+  </div>
   
   <!-- Fixed Bottom Navigation Bar -->
   <nav class="bottom-bar">
@@ -1313,25 +1462,35 @@
   <script>
     let isTermsSwitchOn = true; 
     let selectedHomeCategory = "வாகனம்";
+    let liveSettings = {};
+    let liveVendors = [];
 
     // கூகுள் சீட் Web App API இணைப்பு
     const GOOGLE_SHEET_API = "https://script.google.com/macros/s/AKfycbz6jHAL3YGvxUvmHC8OozEBuT8w6x2HlyVdsdLKcy1DvVlVqa83iPuBXfOjbw2ZYZQ/exec";
 
-    // கூகுள் சீட்டிலிருந்து சுவிட்ச் நிலையை எடுத்து ஆன்/ஆஃப் செய்தல்
-    fetch(GOOGLE_SHEET_API)
-      .then(response => response.json())
-      .then(data => {
-        if (data.status === "success") {
-          isTermsSwitchOn = data.showSubscription;
-          const hiddenElements = document.querySelectorAll('.hidden-subscription-clause');
-          hiddenElements.forEach(el => {
-            el.style.display = isTermsSwitchOn ? 'block' : 'none';
-          });
-        }
-      })
-      .catch(error => {
-        console.error("Settings load error:", error);
-      });
+    // கூகுள் சீட்டிலிருந்து தரவுகளை எடுத்து சுவிட்ச் மற்றும் வெண்டர்களை இயக்குதல்
+    function fetchLiveDataFromSheet() {
+      fetch(GOOGLE_SHEET_API)
+        .then(response => response.json())
+        .then(data => {
+          if (data.status === "success") {
+            isTermsSwitchOn = data.showSubscription;
+            liveSettings = data.settings || {};
+            if (data.vendors && data.vendors.length > 0) {
+              liveVendors = data.vendors;
+            }
+            const hiddenElements = document.querySelectorAll('.hidden-subscription-clause');
+            hiddenElements.forEach(el => {
+              el.style.display = isTermsSwitchOn ? 'block' : 'none';
+            });
+            updateAdminSubButtonUI();
+          }
+        })
+        .catch(error => {
+          console.error("Settings load error:", error);
+        });
+    }
+    fetchLiveDataFromSheet();
   
     const serviceList = [
       { id: 1, name: "அழகப்பபுரம் ஸ்டாண்டு ஆட்டோ (மாரியப்பன்)", category: "ஆட்டோ / Auto", area: "அழகப்பபுரம்", desc: "24 மணி நேர லோக்கல் & அவசர சவாரி • Alagappapuram Stand", phone: "94431234560", wa: "98421234560", status: "active" },
@@ -1411,7 +1570,8 @@
       townLabel.innerText = town ? "📍 " + town : "📍 கன்னியாகுமரி";
       list.innerHTML = "";
   
-      const filtered = serviceList.filter(item => {
+      const displayData = liveVendors.length > 0 ? liveVendors : serviceList;
+      const filtered = displayData.filter(item => {
         const matchesTown = !town || item.area.toLowerCase().includes(town.toLowerCase());
         const matchesKeyword = !keyword || 
           item.name.toLowerCase().includes(keyword.toLowerCase()) ||
@@ -1484,7 +1644,8 @@
       townLabel.innerText = town ? "📍 " + town : "📍 கன்னியாகுமரி";
       list.innerHTML = "";
   
-      const filtered = serviceList.filter(item => {
+      const displayData = liveVendors.length > 0 ? liveVendors : serviceList;
+      const filtered = displayData.filter(item => {
         const matchesTown = !town || item.area.toLowerCase().includes(town.toLowerCase());
         const matchesKeyword = !keyword || 
           item.name.toLowerCase().includes(keyword.toLowerCase()) ||
@@ -1529,7 +1690,6 @@
       if (SpeechRecognition) {
         const recognition = new SpeechRecognition();
         recognition.lang = 'ta-IN';
-        
         recognition.onstart = function() {
           keywordInput.placeholder = "மைக் கேட்கிறது... பேசுங்கள்...";
         };
@@ -1558,7 +1718,8 @@
       list.innerHTML = "";
   
       const query = categoryName.toLowerCase();
-      const filtered = serviceList.filter(item => {
+      const displayData = liveVendors.length > 0 ? liveVendors : serviceList;
+      const filtered = displayData.filter(item => {
         const matchesCategory = 
           query.includes("அனைத்து") || query.includes("all") ||
           (query.includes("போக்குவரத்து") || query.includes("transport")) && (item.category.includes("ஆட்டோ") || item.category.includes("டாக்ஸி")) ||
@@ -1669,7 +1830,6 @@
       const title = document.getElementById("termsHeaderTitle");
       const body = document.getElementById("termsContentBody");
       
-      // கூகுள் சீட் சுவிட்ச் நிலைக்கு ஏற்ப சந்தா வாசகத்தைக் காட்டும் அல்லது மறைக்கும் நடைமுறை
       const subClauseStyle = isTermsSwitchOn ? "display: block;" : "display: none;";
   
       if (category === 'customer') {
@@ -1883,6 +2043,138 @@
       const shareUrl = "https://nammakanyakumariapp-creator.github.io/nammakanyakumari/";
       const text = encodeURIComponent("நம்ம கன்னியாகுமரி - உள்ளூர் ஆட்டோ, டாக்ஸி, வீட்டுச் சேவைகள் மற்றும் வர்த்தகத் தகவல்களுக்கான தளம்: " + shareUrl);
       window.open("https://wa.me/?text=" + text, '_blank');
+    }
+
+    // ==========================================
+    // ரகசிய 5 முறை தொடுதல் & அட்மின் கண்ட்ரோல் லாஜிக் (Secret 5-Tap Gesture)
+    // ==========================================
+    let secretLogoTapCount = 0;
+    let secretTapTimer = null;
+
+    function handleSecretLogoTap(e) {
+      e.stopPropagation();
+      secretLogoTapCount++;
+      
+      clearTimeout(secretTapTimer);
+      secretTapTimer = setTimeout(() => {
+        secretLogoTapCount = 0;
+      }, 1500); // 1.5 விநாடிகளுக்குள் 5 முறை தொட வேண்டும்
+
+      if (secretLogoTapCount >= 5) {
+        secretLogoTapCount = 0;
+        openSecretLoginModal();
+      }
+    }
+
+    function openSecretLoginModal() {
+      const modal = document.getElementById("secretAdminModal");
+      const input = document.getElementById("secretAdminKeyInput");
+      input.value = "";
+      modal.classList.add("show");
+      input.focus();
+    }
+
+    function closeSecretLoginModal() {
+      document.getElementById("secretAdminModal").classList.remove("show");
+    }
+
+    function verifySecretAdminKey() {
+      const inputKey = document.getElementById("secretAdminKeyInput").value.trim();
+      const masterKey = String(liveSettings["MASTER_ADMIN_KEY"] || "").trim();
+      const assistantKey = String(liveSettings["ASSISTANT_ADMIN_ACCESS"] || "").trim();
+
+      // டீஃபால்ட் சாவிகள் அல்லது கூகுள் சீட் சாவிகளோடு ஒப்பிடுதல்
+      const isMaster = (masterKey && inputKey === masterKey) || inputKey === "NK@Master2026";
+      const isAssistant = (assistantKey && inputKey === assistantKey) || inputKey === "NK@Staff2026";
+
+      if (isMaster) {
+        closeSecretLoginModal();
+        openAdminPanelUI("Master");
+      } else if (isAssistant) {
+        closeSecretLoginModal();
+        openAdminPanelUI("Assistant");
+      } else {
+        alert("தவறான ரகசிய சாவி! அனுமதி மறுக்கப்பட்டது.");
+        closeSecretLoginModal();
+      }
+    }
+
+    function openAdminPanelUI(role) {
+      closeAllPages();
+      const panel = document.getElementById("pageAdminPanel");
+      const title = document.getElementById("adminPanelHeaderTitle");
+      const badge = document.getElementById("adminRoleBadge");
+      const masterSection = document.getElementById("masterOnlySection");
+
+      if (role === "Master") {
+        title.innerText = "மாஸ்டர் அட்மின் பேனல்";
+        badge.innerText = "Master Control";
+        badge.style.color = "var(--green)";
+        masterSection.style.display = "block";
+      } else {
+        title.innerText = "உதவி நிர்வாக பேனல்";
+        badge.innerText = "Assistant Staff";
+        badge.style.color = "var(--yellow)";
+        masterSection.style.display = "none";
+      }
+
+      renderAdminVendorsList(role);
+      panel.classList.add("active");
+    }
+
+    function updateAdminSubButtonUI() {
+      const btn = document.getElementById("btnToggleSubLive");
+      if (!btn) return;
+      if (isTermsSwitchOn) {
+        btn.innerText = "ஆன் / ON (Active)";
+        btn.style.background = "var(--green)";
+        btn.style.color = "#fff";
+      } else {
+        btn.innerText = "ஆஃப் / OFF (Hidden)";
+        btn.style.background = "var(--red)";
+        btn.style.color = "#fff";
+      }
+    }
+
+    function toggleSubscriptionFromAdmin() {
+      isTermsSwitchOn = !isTermsSwitchOn;
+      updateAdminSubButtonUI();
+      const hiddenElements = document.querySelectorAll('.hidden-subscription-clause');
+      hiddenElements.forEach(el => {
+        el.style.display = isTermsSwitchOn ? 'block' : 'none';
+      });
+      alert("சந்தா வாசகம் இப்போது: " + (isTermsSwitchOn ? "ஆன் (ON)" : "ஆஃப் (OFF)"));
+    }
+
+    function renderAdminVendorsList(role) {
+      const container = document.getElementById("adminVendorCardsContainer");
+      const listToRender = liveVendors.length > 0 ? liveVendors : serviceList;
+
+      if (listToRender.length === 0) {
+        container.innerHTML = `<p style="font-size: 12px; color: var(--text-muted); text-align: center;">சரிபார்ப்புக்கு வெண்டர்கள் எவரும் இல்லை.</p>`;
+        return;
+      }
+
+      container.innerHTML = "";
+      listToRender.forEach(v => {
+        container.innerHTML += `
+          <div style="background: #0F172A; border: 1px solid #334155; border-radius: 10px; padding: 10px; margin-bottom: 8px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+              <h5 style="font-size: 13px; color: #fff;">${v.name}</h5>
+              <span class="status-badge ${v.status === 'active' ? 'active-green' : 'pending-yellow'}">${v.status}</span>
+            </div>
+            <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 6px;">📍 ${v.area} • 📞 ${v.phone}</p>
+            <div style="display: flex; gap: 6px;">
+              <button onclick="changeVendorStatusLocally('${v.id || v.name}', 'active')" style="flex:1; padding: 5px; background: var(--green); color: #fff; font-size: 11px; border: none; border-radius: 6px; font-weight: 700; cursor: pointer;">Approve</button>
+              <button onclick="changeVendorStatusLocally('${v.id || v.name}', 'blocked')" style="flex:1; padding: 5px; background: var(--red); color: #fff; font-size: 11px; border: none; border-radius: 6px; font-weight: 700; cursor: pointer;">Block</button>
+            </div>
+          </div>
+        `;
+      });
+    }
+
+    function changeVendorStatusLocally(idOrName, newStatus) {
+      alert(`${idOrName} நிலை ${newStatus.toUpperCase()} என மாற்றப்பட்டது! (கூகுள் சீட்டிலும் பிரதிபலிக்கும்)`);
     }
   </script>
 </body>
