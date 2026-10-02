@@ -1,1 +1,10 @@
 
+{
+  "name": "நம்ம கன்னியாகுமரி",
+  "short_name": "nammakanyakumari",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0B2D5B",
+  "theme_color": "#0B2D5B",
+  "description": "நம்ம கன்னியாகுமரி - உள்ளூர் ஆட்டோ, டாக்ஸி, வீட்டுச் சேவைகள் மற்றும் வர்த்தகத் தகவல்களுக்கான தளம்"
+}
