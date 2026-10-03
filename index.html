@@ -2084,7 +2084,7 @@
       }
     }
 
-    // Opens Sub-Category Results Page with Two Separate Input Boxes for Town & Keyword (Fully Functional Manual Override)
+    // Opens Sub-Category Results Page with Two Separate Input Boxes for Town & Keyword (Fully Functional Default Prefill)
     function openSubCategoryResults(masterCategory, defaultKeyword, subName) {
       currentNavigationState = "results";
       activeSubCategoryKeyword = defaultKeyword;
@@ -2099,7 +2099,7 @@
       townLabel.innerText = "📍 தேடல் & பட்டியல்";
       list.innerHTML = "";
 
-      // Prefill town from home search bar if available, allowing manual change by user
+      // Prefill town from home search bar if available
       const initialTown = document.getElementById("homeTownInput") ? document.getElementById("homeTownInput").value.trim() : "";
 
       let containerHtml = `
@@ -2122,7 +2122,7 @@
       `;
 
       list.innerHTML = containerHtml;
-      // Immediately render default list based on prefilled town and sub-category keyword
+      // Immediately render default list based on home town and sub-category keyword
       renderTwoBoxFilteredList(masterCategory, defaultKeyword, initialTown, defaultKeyword);
       view.classList.add("active");
       history.pushState({page: "results"}, "", "");
@@ -2176,7 +2176,7 @@
       if (!container) return;
 
       const displayData = liveVendors.length > 0 ? liveVendors : serviceList;
-      const kw = searchKeyword !== undefined ? searchKeyword : defaultKeyword;
+      const kw = (searchKeyword !== undefined && searchKeyword !== "") ? searchKeyword : defaultKeyword;
       const town = searchTown !== undefined ? searchTown : "";
 
       const filtered = displayData.filter(item => {
@@ -2185,24 +2185,24 @@
         const itemDesc = (item.desc || "").toLowerCase();
         const itemArea = (item.area || "").toLowerCase();
 
-        const targetMaster = masterCategory ? masterCategory.toLowerCase().split('/')[0].trim() : "";
-        const matchesMaster = !targetMaster || cat.includes(targetMaster) || targetMaster.includes(cat) || itemName.includes(targetMaster);
-        
-        // Match Town
+        // Bilingual Town Matching
         const matchesTown = !town || itemArea.includes(town.toLowerCase()) || town.toLowerCase().includes(itemArea);
         
-        // Match Keyword (Flexible Tamil/English matching)
+        // Bilingual Keyword Matching for all categories (Tamil & English support)
         const targetKw = kw.toLowerCase();
         const matchesKeyword = !targetKw || 
           itemName.includes(targetKw) ||
           itemDesc.includes(targetKw) ||
           cat.includes(targetKw) ||
+          (targetKw.includes("ஆட்டோ") && (itemName.includes("ஆட்டோ") || itemDesc.includes("ஆட்டோ") || itemName.includes("auto"))) ||
+          (targetKw.includes("auto") && (itemName.includes("ஆட்டோ") || itemDesc.includes("ஆட்டோ") || itemName.includes("auto"))) ||
           (targetKw.includes("டாக்ஸி") && (itemName.includes("டாக்ஸி") || itemDesc.includes("டாக்ஸி") || itemName.includes("taxi"))) ||
           (targetKw.includes("taxi") && (itemName.includes("டாக்ஸி") || itemDesc.includes("டாக்ஸி") || itemName.includes("taxi"))) ||
-          (targetKw.includes("ஆட்டோ") && (itemName.includes("ஆட்டோ") || itemDesc.includes("ஆட்டோ") || itemName.includes("auto"))) ||
+          (targetKw.includes("லோடு") && (itemName.includes("லோடு") || itemDesc.includes("லோடு") || itemName.includes("load"))) ||
+          (targetKw.includes("டியூஷன்") && (itemName.includes("டியூஷன்") || itemDesc.includes("டியூஷன்") || itemName.includes("tuition"))) ||
           (targetKw.includes("மருத்துவமனை") && (itemName.includes("மருத்துவமனை") || itemDesc.includes("மருத்துவமனை") || itemName.includes("hospital")));
 
-        return matchesMaster && matchesTown && matchesKeyword && item.status !== 'expired' && item.status !== 'deleted' && item.status !== 'blocked';
+        return matchesTown && matchesKeyword && item.status !== 'expired' && item.status !== 'deleted' && item.status !== 'blocked';
       });
 
       if (filtered.length === 0) {
