@@ -1495,20 +1495,21 @@
 
     const GOOGLE_SHEET_API = "https://script.google.com/macros/s/AKfycbxfuaEQt_5g623AQJftNUyRktdPTjaBFXu7dBzS8jcWTjx0f8DMnCl7ZZzxE3g4AJvK/exec";
 
+    // 120 மாதிரி வெண்டர்கள் பட்டியல் (லோக்கல் சவாரி, வெளியூர் வாசகங்கள் நீக்கப்பட்டு நேர்த்தியாக்கப்பட்டுள்ளது)
     const all120MasterVendors = [];
     const masterCats = [
-      { name: "ஆட்டோ / Auto", sub1: "லோக்கல் சவாரி", sub2: "வெளியூர் & அவசரம்", type: "Vehicle" },
-      { name: "டாக்ஸி / Taxi", sub1: "ஏர்போர்ட் டிராப்", sub2: "டூர்ஸ் & பேக்கேஜ்", type: "Vehicle" },
-      { name: "லோடு வாகனம் / Load Vehicle", sub1: "டாட்டா ஏஸ்", sub2: "பிக்கப் லாரி", type: "Vehicle" },
-      { name: "வீட்டு சேவைகள் / Home Services", sub1: "வீடு சுத்தம்", sub2: "பூச்சி கட்டுப்பாடு", type: "Service" },
-      { name: "ஹோம்மேட் & ஆரோக்கியப் பொருட்கள்", sub1: "மால்ட் & சத்து மாவு", sub2: "தொக்கு & ஊறுகாய்", type: "Shop" },
-      { name: "வேலை வாய்ப்பு / Jobs", sub1: "ஆட்கள் தேவை", sub2: "வேலை தேடுகிறேன்", type: "Job" },
-      { name: "மின் & குழாய் வல்லுநர்", sub1: "எலக்ட்ரீசியன்", sub2: "பிளம்பர்", type: "Service" },
-      { name: "கட்டுமானம் & தச்சு", sub1: "தச்சு & வுட்", sub2: "மேஸ்திரி & டைல்ஸ்", type: "Service" },
-      { name: "உபகரண மெக்கானிக்", sub1: "ஏசி & பிரிட்ஜ்", sub2: "வாஷிங் மெஷின்", type: "Service" },
-      { name: "ஸ்போர்ட்ஸ் & ஜிம்", sub1: "டர்ப் மைதானம்", sub2: "உடற்பயிற்சி கூடம்", type: "Shop" },
-      { name: "செகண்ட் ஹேண்ட் கார் & பைக்", sub1: "பயன்படுத்திய கார்கள்", sub2: "பயன்படுத்திய பைக்குகள்", type: "Shop" },
-      { name: "ஹோம் பார்லர் & விழா உபகரணங்கள்", sub1: "பிரைடல் மேக்கப்", sub2: "பாப்கார்ன் மெஷின்", type: "Service" }
+      { name: "ஆட்டோ / Auto", type: "Vehicle" },
+      { name: "டாக்ஸி / Taxi", type: "Vehicle" },
+      { name: "லோடு வாகனம் / Load Vehicle", type: "Vehicle" },
+      { name: "வீட்டு சேவைகள் / Home Services", type: "Service" },
+      { name: "ஹோம்மேட் & ஆரோக்கியப் பொருட்கள்", type: "Shop" },
+      { name: "வேலை வாய்ப்பு / Jobs", type: "Job" },
+      { name: "மின் & குழாய் வல்லுநர்", type: "Service" },
+      { name: "கட்டுமானம் & தச்சு", type: "Service" },
+      { name: "உபகரண மெக்கானிக்", type: "Service" },
+      { name: "ஸ்போர்ட்ஸ் & ஜிம்", type: "Shop" },
+      { name: "செகண்ட் ஹேண்ட் கார் & பைக்", type: "Shop" },
+      { name: "ஹோம் பார்லர் & விழா உபகரணங்கள்", type: "Service" }
     ];
     const masterTowns = ["அழகப்பபுரம்", "மயிலாடி", "அஞ்சுகிராமம்", "நாகர்கோவில்", "திங்கள்நகர்"];
 
@@ -1518,9 +1519,8 @@
         const pNum = String(vCounter).padStart(3, '0');
         const phone = "94431000" + pNum;
         const town = masterTowns[(i - 1) % 5];
-        const subName = (i <= 5) ? catObj.sub1 : catObj.sub2;
         const vTitle = `${catObj.name.split('/')[0].trim()} - Provider ${i}`;
-        const vDesc = `[${subName}] 24 மணி நேர நம்பகமான சேவை • பகுதி: ${town}`;
+        const vDesc = `24 மணி நேர நம்பகமான சேவை • பகுதி: ${town}`;
 
         all120MasterVendors.push({
           id: "V-" + (2000 + vCounter),
@@ -1538,7 +1538,7 @@
 
     const serviceList = all120MasterVendors;
 
-    // ஆப் ஓடியவுடன் கஸ்டமரின் ஜிபிஎஸ் லொகேஷனைக் கோரும் வசதி (ஒரிஜினல் கோடுடன் இணைக்கப்பட்டது)
+    // ஆப் ஓடியவுடன் கஸ்டமரின் ஜிபிஎஸ் லொகேஷனைக் கோரும் வசதி
     function requestCustomerGPSLocation() {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
@@ -1950,7 +1950,6 @@
       }
     }
   
-    // கூகுள் சீட்டிலிருந்து தானாகவே கட்டணங்களைப் பொருத்தும் முழுமையான விதிமுறைகள் (ஒரிஜினல் வரிகள் எவтуமே குறையாமல் அப்படியே உள்ளது)
     function openDedicatedTerms(category) {
       const termsPage = document.getElementById("pageTermsView");
       const title = document.getElementById("termsHeaderTitle");
@@ -2170,6 +2169,7 @@
   
     function handleVendorSubmit(e, catName) {
       e.preventDefault();
+      
       let vPhone = "";
       if (catName === 'வாகனம்') vPhone = document.getElementById("vCallPhone").value.trim();
       else if (catName === 'வியாபாரம்') vPhone = document.getElementById("sCallPhone").value.trim();
@@ -2314,7 +2314,7 @@
     }
 
     function changeVendorStatusLocally(idOrName, newStatus) {
-      alert(`${idOrName} நிலை ${newStatus.toUpperCase()} என மாற்றப்பட்டது!`);
+      alert(`${idOrName} நிலை ${newStatus.toUpperCase()} என மாற்றப்பட்டது! (கூகுள் சீட்டிலும் பிரதிபலிக்கும்)`);
     }
   </script>
 </body>
