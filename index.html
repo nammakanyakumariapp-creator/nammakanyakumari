@@ -1560,7 +1560,7 @@
       <h3 style="color:#FFF8E7; font-size:16px; margin-bottom:8px;">🎉 வாழ்த்துகள்! உங்கள் கணக்கு சரிபார்க்கப்பட்டது!</h3>
       <p style="color:var(--yellow); font-size:12px; margin-bottom:12px;">(Congratulations! Your Account is Verified & Active!)</p>
       
-      <div style="text-align:left; background:#071E3D; padding:12px; border-radius:10px; font-size:1.6; color:#E2E8F0; margin-bottom:16px; border:1px solid var(--gold-border);">
+      <div style="text-align:left; background:#071E3D; padding:12px; border-radius:10px; font-size:12px; line-height:1.6; color:#E2E8F0; margin-bottom:16px; border:1px solid var(--gold-border);">
         <p style="margin-bottom:6px;">✅ <strong>0% கமிஷன்:</strong> உங்கள் முழு வருமானமும் உங்களுக்கே! தளம் எவ்வித கமிஷனும் வசூலிப்பதில்லை.</p>
         <p style="margin-bottom:6px;">✅ <strong>நேரடித் தொடர்பு:</strong> வாடிக்கையாளர்கள் இனி உங்களை நேரடியாக அழைக்கலாம்.</p>
         <p>✅ <strong>நம்பகமான சேவை:</strong> கனிவான சேவையால் நற்பெயரைப் பெற வாழ்த்துகிறோம்.</p>
@@ -2065,12 +2065,15 @@
       townLabel.innerText = "📍 தேடல் & பட்டியல்";
       list.innerHTML = "";
 
+      // Prefill town from home search bar if available
+      const initialTown = document.getElementById("homeTownInput") ? document.getElementById("homeTownInput").value.trim() : "";
+
       let containerHtml = `
         <div class="subcat-search-sticky-bar">
           <div class="subcat-filter-inputs">
             <div class="subcat-filter-input-box">
               <i class="fa-solid fa-location-dot" style="color:var(--yellow); font-size:11px;"></i>
-              <input type="text" id="filterTownInput" placeholder="ஊர் / Town..." oninput="triggerDynamicSubFilter('${masterCategory}', '${defaultKeyword}')" onkeypress="handleSearchEnterKey(event, '${masterCategory}', '${defaultKeyword}')">
+              <input type="text" id="filterTownInput" value="${initialTown}" placeholder="ஊர் / Town..." oninput="triggerDynamicSubFilter('${masterCategory}', '${defaultKeyword}')" onkeypress="handleSearchEnterKey(event, '${masterCategory}', '${defaultKeyword}')">
             </div>
             <div class="subcat-filter-input-box" style="position:relative;">
               <i class="fa-solid fa-magnifying-glass" style="color:var(--text-muted); font-size:11px;"></i>
@@ -2085,7 +2088,7 @@
       `;
 
       list.innerHTML = containerHtml;
-      renderFilteredVendorList(masterCategory, defaultKeyword, "", "");
+      renderFilteredVendorList(masterCategory, defaultKeyword, initialTown, defaultKeyword);
       view.classList.add("active");
     }
 
@@ -2093,7 +2096,6 @@
       if (e.key === 'Enter') {
         e.preventDefault();
         triggerDynamicSubFilter(masterCategory, defaultKeyword);
-        // Hide mobile keyboard on enter
         document.activeElement.blur();
       }
     }
@@ -2652,7 +2654,7 @@
       const btn = document.getElementById("btnToggleSubLive");
       if (!btn) return;
       if (isTermsSwitchOn) {
-        btn.innerText = "ஆன் / ON (Active)",
+        btn.innerText = "ஆன் / ON (Active)";
         btn.style.background = "var(--green)";
         btn.style.color = "#fff";
       } else {
@@ -2689,7 +2691,7 @@
             <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 6px;">📍 ${v.area} • 📞 ${v.phone}</p>
             <div style="display: flex; gap: 6px;">
               <button onclick="changeVendorStatusLocally('${v.id || v.name}', 'active')" style="flex:1; padding: 5px; background: var(--green); color: #fff; font-size: 11px; border: none; border-radius: 6px; font-weight: 700; cursor: pointer;">Approve</button>
-              <button onclick="changeVendorStatusLocally('${v.id || v.name}', 'blocked')" style="flex:1; padding: 5px; background: var(--red); color: #fff; font-size: 11px; border: none; border-radius: 6px; font-weight: 700; cursor: pointer;">Block</button>
+              <button onclick="changeValidatorStatusLocally('${v.id || v.name}', 'blocked')" style="flex:1; padding: 5px; background: var(--red); color: #fff; font-size: 11px; border: none; border-radius: 6px; font-weight: 700; cursor: pointer;">Block</button>
             </div>
           </div>
         `;
