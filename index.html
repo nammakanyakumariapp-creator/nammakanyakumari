@@ -1560,7 +1560,7 @@
       <h3 style="color:#FFF8E7; font-size:16px; margin-bottom:8px;">🎉 வாழ்த்துகள்! உங்கள் கணக்கு சரிபார்க்கப்பட்டது!</h3>
       <p style="color:var(--yellow); font-size:12px; margin-bottom:12px;">(Congratulations! Your Account is Verified & Active!)</p>
       
-      <div style="text-align:left; background:#071E3D; padding:12px; border-radius:10px; font-size:12px; line-height:1.6; color:#E2E8F0; margin-bottom:16px; border:1px solid var(--gold-border);">
+      <div style="text-align:left; background:#071E3D; padding:12px; border-radius:10px; font-size:1.6; color:#E2E8F0; margin-bottom:16px; border:1px solid var(--gold-border);">
         <p style="margin-bottom:6px;">✅ <strong>0% கமிஷன்:</strong> உங்கள் முழு வருமானமும் உங்களுக்கே! தளம் எவ்வித கமிஷனும் வசூலிப்பதில்லை.</p>
         <p style="margin-bottom:6px;">✅ <strong>நேரடித் தொடர்பு:</strong> வாடிக்கையாளர்கள் இனி உங்களை நேரடியாக அழைக்கலாம்.</p>
         <p>✅ <strong>நம்பகமான சேவை:</strong> கனிவான சேவையால் நற்பெயரைப் பெற வாழ்த்துகிறோம்.</p>
@@ -1599,6 +1599,8 @@
     let liveVendors = [];
     let currentNavigationState = "home"; // "home" -> "subcats" -> "results"
     let lastMasterCategory = "";
+    let activeSubCategoryKeyword = "";
+    let activeSubCategoryName = "";
 
     const GOOGLE_SHEET_API = "https://script.google.com/macros/s/AKfycbxfuaEQt_5g623AQJftNUyRktdPTjaBFXu7dBzS8jcWTjx0f8DMnCl7ZZzxE3g4AJvK/exec";
 
@@ -1679,10 +1681,17 @@
     masterCats.forEach(catObj => {
       for (let i = 1; i <= 15; i++) {
         const pNum = String(vCounter).padStart(3, '0');
-        const phone = "94431000" + pNum;
+        const phone = "94431000" + pNum; // 11-digit testing phone protection
         const town = masterTowns[(i - 1) % 5];
-        const vTitle = `${catObj.name.split('/')[0].trim()} - Provider ${i}`;
-        const vDesc = `நம்பகமான சேவை • பகுதி: ${town}`;
+        const baseName = catObj.name.split('/')[0].trim();
+        let specificKeyword = "சேவை";
+        if (baseName.includes("போக்குவரத்து")) specificKeyword = (i % 2 === 0) ? "ஆட்டோ" : "டாக்ஸி";
+        else if (baseName.includes("மருத்துவம்")) specificKeyword = "மருத்துவமனை";
+        else if (baseName.includes("கல்வி")) specificKeyword = "டியூஷன்";
+        else if (baseName.includes("வணிகம்")) specificKeyword = "ஹோம்மேட்";
+
+        const vTitle = `${baseName} ${specificKeyword} - ${i}`;
+        const vDesc = `நம்பகமான உள்ளூர் ${specificKeyword} சேவை • பகுதி: ${town}`;
 
         all120MasterVendors.push({
           id: "V-" + (2000 + vCounter),
@@ -2044,6 +2053,9 @@
     // Opens Sub-Category Results Page with Interactive Search Bar & Voice Input for Nearby Towns
     function openSubCategoryResults(masterCategory, defaultKeyword, subName) {
       currentNavigationState = "results";
+      activeSubCategoryKeyword = defaultKeyword;
+      activeSubCategoryName = subName;
+
       const view = document.getElementById("fullpageView");
       const list = document.getElementById("dedicatedList");
       const title = document.getElementById("dedicatedTitle");
@@ -2058,11 +2070,11 @@
           <div class="subcat-filter-inputs">
             <div class="subcat-filter-input-box">
               <i class="fa-solid fa-location-dot" style="color:var(--yellow); font-size:11px;"></i>
-              <input type="text" id="filterTownInput" placeholder="ஊர் / Town..." oninput="triggerDynamicSubFilter('${masterCategory}', '${defaultKeyword}')">
+              <input type="text" id="filterTownInput" placeholder="ஊர் / Town..." oninput="triggerDynamicSubFilter('${masterCategory}', '${defaultKeyword}')" onkeypress="handleSearchEnterKey(event, '${masterCategory}', '${defaultKeyword}')">
             </div>
             <div class="subcat-filter-input-box" style="position:relative;">
               <i class="fa-solid fa-magnifying-glass" style="color:var(--text-muted); font-size:11px;"></i>
-              <input type="text" id="filterKeywordInput" value="${defaultKeyword}" placeholder="தேடல்..." oninput="triggerDynamicSubFilter('${masterCategory}', '${defaultKeyword}')" style="padding-right:24px;">
+              <input type="text" id="filterKeywordInput" value="${defaultKeyword}" placeholder="தேடல்..." oninput="triggerDynamicSubFilter('${masterCategory}', '${defaultKeyword}')" onkeypress="handleSearchEnterKey(event, '${masterCategory}', '${defaultKeyword}')" style="padding-right:24px;">
               <button type="button" onclick="triggerSubVoiceSearch()" style="position:absolute; right:4px; top:50%; transform:translateY(-50%); background:none; border:none; color:var(--yellow); cursor:pointer; font-size:12px;">
                 <i class="fa-solid fa-microphone"></i>
               </button>
@@ -2075,6 +2087,15 @@
       list.innerHTML = containerHtml;
       renderFilteredVendorList(masterCategory, defaultKeyword, "", "");
       view.classList.add("active");
+    }
+
+    function handleSearchEnterKey(e, masterCategory, defaultKeyword) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        triggerDynamicSubFilter(masterCategory, defaultKeyword);
+        // Hide mobile keyboard on enter
+        document.activeElement.blur();
+      }
     }
 
     // Corrected Back Navigation Logic (Results -> Subcats -> Home)
@@ -2122,14 +2143,25 @@
 
       const filtered = displayData.filter(item => {
         const cat = (item.category || "").toLowerCase();
+        const itemName = (item.name || "").toLowerCase();
+        const itemDesc = (item.desc || "").toLowerCase();
+        const itemArea = (item.area || "").toLowerCase();
+
         const targetMaster = masterCategory ? masterCategory.toLowerCase().split('/')[0].trim() : "";
-        const matchesMaster = !targetMaster || cat.includes(targetMaster) || targetMaster.includes(cat);
+        const matchesMaster = !targetMaster || cat.includes(targetMaster) || targetMaster.includes(cat) || itemName.includes(targetMaster);
         
-        const matchesTown = !town || item.area.toLowerCase().includes(town.toLowerCase()) || town.toLowerCase().includes(item.area.toLowerCase());
-        const matchesKeyword = !kw || 
-          item.name.toLowerCase().includes(kw.toLowerCase()) ||
-          item.category.toLowerCase().includes(kw.toLowerCase()) ||
-          item.desc.toLowerCase().includes(kw.toLowerCase());
+        const matchesTown = !town || itemArea.includes(town.toLowerCase()) || town.toLowerCase().includes(itemArea);
+        
+        // Flexible keyword matching for Tamil & English terms
+        const targetKw = kw.toLowerCase();
+        const matchesKeyword = !targetKw || 
+          itemName.includes(targetKw) ||
+          itemDesc.includes(targetKw) ||
+          cat.includes(targetKw) ||
+          (targetKw.includes("டாக்ஸி") && (itemName.includes("டாக்ஸி") || itemDesc.includes("டாக்ஸி") || itemName.includes("taxi") || itemDesc.includes("taxi"))) ||
+          (targetKw.includes("taxi") && (itemName.includes("டாக்ஸி") || itemDesc.includes("டாக்ஸி") || itemName.includes("taxi") || itemDesc.includes("taxi"))) ||
+          (targetKw.includes("ஆட்டோ") && (itemName.includes("ஆட்டோ") || itemDesc.includes("ஆட்டோ") || itemName.includes("auto") || itemDesc.includes("auto"))) ||
+          (targetKw.includes("மருத்துவமனை") && (itemName.includes("மருத்துவமனை") || itemDesc.includes("மருத்துவமனை") || itemName.includes("hospital") || itemDesc.includes("clinic")));
 
         return matchesMaster && matchesTown && matchesKeyword && item.status !== 'expired' && item.status !== 'deleted' && item.status !== 'blocked';
       });
@@ -2620,7 +2652,7 @@
       const btn = document.getElementById("btnToggleSubLive");
       if (!btn) return;
       if (isTermsSwitchOn) {
-        btn.innerText = "ஆன் / ON (Active)";
+        btn.innerText = "ஆன் / ON (Active)",
         btn.style.background = "var(--green)";
         btn.style.color = "#fff";
       } else {
