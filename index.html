@@ -1134,6 +1134,10 @@
             <input type="text" id="vTownArea" required placeholder="எ.கா: அழகப்பபுரம் / மயிலாடி">
           </div>
           <div class="form-group">
+            <label>மாவட்டம் <span class="en-label">/ District *</span></label>
+            <input type="text" id="vDistrict" required placeholder="எ.கா: கன்னியாகுமரி">
+          </div>
+          <div class="form-group">
             <label>நேரடி அழைப்பு எண் <span class="en-label">/ Calling Number *</span></label>
             <input type="tel" id="vCallPhone" required placeholder="94431234560">
           </div>
@@ -1197,6 +1201,10 @@
           <div class="form-group">
             <label>ஊர் / பகுதி பெயர் <span class="en-label">/ Town or Area *</span></label>
             <input type="text" id="sTownArea" required placeholder="எ.கா: திங்கள்நகர்">
+          </div>
+          <div class="form-group">
+            <label>மாவட்டம் <span class="en-label">/ District *</span></label>
+            <input type="text" id="sDistrict" required placeholder="எ.கா: கன்னியாகுமரி">
           </div>
           <div class="form-group">
             <label>கடை தொடர்பு எண் <span class="en-label">/ Calling Number *</span></label>
@@ -1273,6 +1281,10 @@
           <div class="form-group">
             <label>ஊர் / பகுதி பெயர் <span class="en-label">/ Town or Area *</span></label>
             <input type="text" id="jTownArea" required placeholder="எ.கா: நாகர்கோவில்">
+          </div>
+          <div class="form-group">
+            <label>மாவட்டம் <span class="en-label">/ District *</span></label>
+            <input type="text" id="jDistrict" required placeholder="எ.கா: கன்னியாகுமரி">
           </div>
           <div class="form-group">
             <label>தொடர்பு எண் <span class="en-label">/ Contact Number *</span></label>
@@ -1984,7 +1996,7 @@
 
       const dynamicNoticeTa = `*(முக்கிய அறிவிப்பு: இத்தளம் சவாரி அல்லது விற்பனையில் ஆரம்பம் முதலே எவ்வித கமிஷனும் இன்றி <strong>0% கமிஷன்</strong> முறையிலேயே செயல்பட்டு வருகிறது. உள்ளூர் மக்களையும் தொழிலாளர்களையும் இணைக்கும் இத்தளம் எவ்விதத் தடையுமின்றித் தொடர்ந்து செயல்படவும், தொழில்நுட்பப் பராமரிப்பிற்காகவும் மிகக் குறைந்த அளவிலான பங்களிப்புக் கட்டணம் நிர்ணயிக்கப்பட்டுள்ளது: <strong>மாதாந்திர சந்தா: ₹${mPrice}</strong>, <strong>6 மாத சிறப்புச் சலுகை: ₹${hPrice}</strong>, <strong>1 வருட முழுத் திட்டம்: ₹${yPrice}</strong>. இத்தளத்தைச் சந்தா செலுத்தித் தொடர்ந்து நன்முறையில் வழிநடத்த உதவுமாறு அன்புடன் கேட்டுக்கொள்கிறோம்; வாடிக்கையாளர் நேரடிப் பரிவர்த்தனைகளுக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது.</strong>)*`;
 
-      const dynamicNoticeEn = `*(Important Notice: This platform operates strictly on a <strong>0% commission</strong> model for all rides and sales. To maintain server operations and ensure uninterrupted service, a nominal platform maintenance fee is applicable: <strong>Monthly Plan: ₹${mPrice}</strong>, <strong>6 Months Offer: ₹${hPrice}</strong>, <strong>1 Year Plan: ₹${yPrice}</strong>. We kindly request your valuable support through subscription to sustain this community service; <strong>Namma Kanyakumari platform is not responsible</strong> for direct customer transactions.)*`;
+      const dynamicNoticeEn = `*(Important Notice: This platform operates strictly on a <strong>0% commission</strong> model for all rides and sales. To maintain server operations and ensure uninterrupted service, a nominal platform maintenance fee is applicable: <strong>Monthly Plan: ₹${mPrice}</strong>, <span>6 Months Offer: ₹${hPrice}</span>, <span>1 Year Plan: ₹${yPrice}</span>. We kindly request your valuable support through subscription to sustain this community service; <strong>Namma Kanyakumari platform is not responsible</strong> for direct customer transactions.)*`;
   
       if (category === 'customer') {
         title.innerText = "வாடிக்கையாளர் விதிமுறைகள் / Customer Terms";
@@ -2327,7 +2339,7 @@
             <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 6px;">📍 ${v.area} • 📞 ${v.phone}</p>
             <div style="display: flex; gap: 6px;">
               <button onclick="changeVendorStatusLocally('${v.id || v.name}', 'active')" style="flex:1; padding: 5px; background: var(--green); color: #fff; font-size: 11px; border: none; border-radius: 6px; font-weight: 700; cursor: pointer;">Approve</button>
-              <button onclick="changeVersionStatusLocally('${v.id || v.name}', 'blocked')" style="flex:1; padding: 5px; background: var(--red); color: #fff; font-size: 11px; border: none; border-radius: 6px; font-weight: 700; cursor: pointer;">Block</button>
+              <button onclick="changeVendorStatusLocally('${v.id || v.name}', 'blocked')" style="flex:1; padding: 5px; background: var(--red); color: #fff; font-size: 11px; border: none; border-radius: 6px; font-weight: 700; cursor: pointer;">Block</button>
             </div>
           </div>
         `;
