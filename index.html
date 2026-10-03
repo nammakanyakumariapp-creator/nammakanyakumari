@@ -97,13 +97,13 @@
       color: var(--en-text-bright);
       padding: 8px 4px;
       border-radius: 8px;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 700;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 5px;
+      gap: 3px;
       transition: all 0.2s ease;
     }
     .home-tab-btn.active {
@@ -393,13 +393,13 @@
       color: var(--en-text-bright);
       padding: 8px 4px;
       border-radius: 8px;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 700;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 5px;
+      gap: 3px;
     }
     .vendor-tab-btn.active, .search-tab-btn.active {
       background: var(--primary-blue);
@@ -739,16 +739,16 @@
       <img src="https://lh3.googleusercontent.com/d/1VreUYprfYVoSxJZxHn6_LnEdfKcCVL8H" alt="நம்ம கன்னியாகுமரி பேனர்">
     </div>
   
-    <!-- Home Filter Tabs: Vehicle, Vendor, Job -->
+    <!-- Home Filter Tabs: உள்ளூர் சேவைகள் • உள்ளூர் வணிகங்கள் • உள்ளூர் வேலை வாய்ப்புகள் -->
     <div class="home-filter-tabs">
       <button class="home-tab-btn active" id="homeTabVehicle" onclick="switchHomeTab('வாகனம்')">
-        <i class="fa-solid fa-car"></i> வாகனம் / Vehicle
+        <i class="fa-solid fa-car"></i> உள்ளூர் சேவைகள்
       </button>
       <button class="home-tab-btn" id="homeTabShop" onclick="switchHomeTab('வியாபாரம்')">
-        <i class="fa-solid fa-shop"></i> வியாபாரம் / Business
+        <i class="fa-solid fa-shop"></i> உள்ளூர் வணிகங்கள்
       </button>
       <button class="home-tab-btn" id="homeTabJob" onclick="switchHomeTab('வேலைவாய்ப்பு')">
-        <i class="fa-solid fa-briefcase"></i> வேலைவாய்ப்பு / Jobs
+        <i class="fa-solid fa-briefcase"></i> உள்ளூர் வேலை வாய்ப்புகள்
       </button>
     </div>
   
@@ -929,15 +929,16 @@
     <div class="fullpage-content">
       <div class="form-box">
         
+        <!-- Search Nav Tabs: உள்ளூர் சேவைகள் • உள்ளூர் வணிகங்கள் • உள்ளூர் வேலை வாய்ப்புகள் -->
         <div class="search-nav-tabs">
           <button class="search-tab-btn active" id="searchTabVehicle" onclick="switchSearchCategory('வாகனம்')">
-            <i class="fa-solid fa-car"></i> வாகனம் / Vehicle
+            <i class="fa-solid fa-car"></i> உள்ளூர் சேவைகள்
           </button>
           <button class="search-tab-btn" id="searchTabShop" onclick="switchSearchCategory('வியாபாரம்')">
-            <i class="fa-solid fa-shop"></i> வியாபாரம் / Business
+            <i class="fa-solid fa-shop"></i> உள்ளூர் வணிகங்கள்
           </button>
           <button class="search-tab-btn" id="searchTabJob" onclick="switchSearchCategory('வேலைவாய்ப்பு')">
-            <i class="fa-solid fa-briefcase"></i> வேலை / Jobs
+            <i class="fa-solid fa-briefcase"></i> உள்ளூர் வேலை வாய்ப்புகள்
           </button>
         </div>
   
@@ -1096,13 +1097,13 @@
       <!-- 3 Category Navigation Tabs -->
       <div class="vendor-nav-tabs">
         <button class="vendor-tab-btn active" id="tabBtnVehicle" onclick="switchVendorSection('vehicle')">
-          <i class="fa-solid fa-car"></i> வாகனம் / Vehicle
+          <i class="fa-solid fa-car"></i> உள்ளூர் சேவைகள்
         </button>
         <button class="vendor-tab-btn" id="tabBtnShop" onclick="switchVendorSection('shop')">
-          <i class="fa-solid fa-shop"></i> வியாபாரம் / Business
+          <i class="fa-solid fa-shop"></i> வணிகங்கள்
         </button>
         <button class="vendor-tab-btn" id="tabBtnJob" onclick="switchVendorSection('job')">
-          <i class="fa-solid fa-briefcase"></i> வேலை / Jobs
+          <i class="fa-solid fa-briefcase"></i> வேலை
         </button>
       </div>
   
@@ -1148,7 +1149,7 @@
           </div>
           <div class="form-group">
             <label>சேவை விபரம் <span class="en-label">/ Service Details</span></label>
-            <textarea id="vDesc" rows="2" placeholder="எ.கா: 24 மணி நேர சவாரி, வெளியூர் பயணம்"></textarea>
+            <textarea id="vDesc" rows="2" placeholder="எ.கா: உள்ளூர் மற்றும் வெளியூர் சவாரி"></textarea>
           </div>
   
           <div class="terms-check-container">
@@ -1495,7 +1496,6 @@
 
     const GOOGLE_SHEET_API = "https://script.google.com/macros/s/AKfycbxfuaEQt_5g623AQJftNUyRktdPTjaBFXu7dBzS8jcWTjx0f8DMnCl7ZZzxE3g4AJvK/exec";
 
-    // 120 மாதிரி வெண்டர்கள் பட்டியல் (லோக்கல் சவாரி, வெளியூர் வாசகங்கள் நீக்கப்பட்டு நேர்த்தியாக்கப்பட்டுள்ளது)
     const all120MasterVendors = [];
     const masterCats = [
       { name: "ஆட்டோ / Auto", type: "Vehicle" },
@@ -1520,7 +1520,7 @@
         const phone = "94431000" + pNum;
         const town = masterTowns[(i - 1) % 5];
         const vTitle = `${catObj.name.split('/')[0].trim()} - Provider ${i}`;
-        const vDesc = `24 மணி நேர நம்பகமான சேவை • பகுதி: ${town}`;
+        const vDesc = `நம்பகமான சேவை • பகுதி: ${town}`;
 
         all120MasterVendors.push({
           id: "V-" + (2000 + vCounter),
@@ -1538,7 +1538,6 @@
 
     const serviceList = all120MasterVendors;
 
-    // ஆப் ஓடியவுடன் கஸ்டமரின் ஜிபிஎஸ் லொகேஷனைக் கோரும் வசதி
     function requestCustomerGPSLocation() {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
