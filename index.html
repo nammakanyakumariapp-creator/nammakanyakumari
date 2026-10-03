@@ -403,6 +403,44 @@
       font-size: 14px;
     }
 
+    /* Interactive Sub-Category Search & Scroll Results Header Bar */
+    .subcat-search-sticky-bar {
+      background: var(--card-container-bg);
+      border: 1px solid var(--gold-border);
+      border-radius: 12px;
+      padding: 10px;
+      margin-bottom: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .subcat-filter-inputs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .subcat-filter-input-box {
+      background: #071E3D;
+      border: 1px solid #475569;
+      border-radius: 8px;
+      padding: 8px 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      position: relative;
+    }
+    .subcat-filter-input-box input {
+      width: 100%;
+      background: transparent;
+      border: none;
+      color: #fff;
+      font-size: 12px;
+      outline: none;
+    }
+    .subcat-filter-input-box input::placeholder {
+      color: var(--text-muted);
+    }
+
     /* Tabs Inside Modals */
     .vendor-nav-tabs, .search-nav-tabs {
       display: flex;
@@ -1922,7 +1960,7 @@
       let htmlContainer = `<div class="subcat-grid">`;
       subCategories.forEach(sub => {
         htmlContainer += `
-          <div class="subcat-card" onclick="filterBySubCategory('${categoryName}', '${sub.keyword}', '${sub.name}')">
+          <div class="subcat-card" onclick="openSubCategoryResults('${categoryName}', '${sub.keyword}', '${sub.name}')">
             <div class="subcat-card-info">
               <h4>${sub.name}</h4>
               <span>${categoryName.split('/')[0].trim()} சேவைகள்</span>
@@ -1936,44 +1974,102 @@
       view.classList.add("active");
     }
 
-    function filterBySubCategory(masterCategory, keyword, subName) {
+    // Opens Sub-Category Results Page with Interactive Search Bar & Voice Input for Nearby Towns
+    function openSubCategoryResults(masterCategory, defaultKeyword, subName) {
       const view = document.getElementById("fullpageView");
       const list = document.getElementById("dedicatedList");
       const title = document.getElementById("dedicatedTitle");
       const townLabel = document.getElementById("dedicatedTown");
   
       title.innerText = subName;
-      townLabel.innerText = "📍 கன்னியாகுமரி";
+      townLabel.innerText = "📍 தேடல் & பட்டியல்";
       list.innerHTML = "";
-  
+
+      // We inject an interactive search bar at the top of the scrollable results list
+      let containerHtml = `
+        <div class="subcat-search-sticky-bar">
+          <div class="subcat-filter-inputs">
+            <div class="subcat-filter-input-box">
+              <i class="fa-solid fa-location-dot" style="color:var(--yellow); font-size:11px;"></i>
+              <input type="text" id="filterTownInput" placeholder="ஊர் / Town..." oninput="triggerDynamicSubFilter('${masterCategory}', '${defaultKeyword}')">
+            </div>
+            <div class="subcat-filter-input-box" style="position:relative;">
+              <i class="fa-solid fa-magnifying-glass" style="color:var(--text-muted); font-size:11px;"></i>
+              <input type="text" id="filterKeywordInput" value="${defaultKeyword}" placeholder="தேடல்..." oninput="triggerDynamicSubFilter('${masterCategory}', '${defaultKeyword}')" style="padding-right:24px;">
+              <button type="button" onclick="triggerSubVoiceSearch()" style="position:absolute; right:4px; top:50%; transform:translateY(-50%); background:none; border:none; color:var(--yellow); cursor:pointer; font-size:12px;">
+                <i class="fa-solid fa-microphone"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div id="dynamicVendorScrollContainer"></div>
+      `;
+
+      list.innerHTML = containerHtml;
+      renderFilteredVendorList(masterCategory, defaultKeyword, "", "");
+      view.classList.add("active");
+    }
+
+    function triggerDynamicSubFilter(masterCategory, defaultKeyword) {
+      const townVal = document.getElementById("filterTownInput").value.trim();
+      const keywordVal = document.getElementById("filterKeywordInput").value.trim();
+      renderFilteredVendorList(masterCategory, defaultKeyword, townVal, keywordVal);
+    }
+
+    function triggerSubVoiceSearch() {
+      const keywordInput = document.getElementById("filterKeywordInput");
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (SpeechRecognition) {
+        const recognition = new SpeechRecognition();
+        recognition.lang = 'ta-IN';
+        recognition.onresult = function(event) {
+          keywordInput.value = event.results[0][0].transcript;
+          const townVal = document.getElementById("filterTownInput").value.trim();
+          renderFilteredVendorList('', keywordInput.value, townVal, keywordInput.value);
+        };
+        recognition.start();
+      } else {
+        alert("குரல் தேடல் ஆதரிக்கப்படவில்லை.");
+      }
+    }
+
+    function renderFilteredVendorList(masterCategory, defaultKeyword, searchTown, searchKeyword) {
+      const container = document.getElementById("dynamicVendorScrollContainer");
+      if (!container) return;
+
       const displayData = liveVendors.length > 0 ? liveVendors : serviceList;
+      const kw = searchKeyword !== undefined ? searchKeyword : defaultKeyword;
+      const town = searchTown !== undefined ? searchTown : "";
+
       const filtered = displayData.filter(item => {
         const cat = (item.category || "").toLowerCase();
-        const targetMaster = masterCategory.toLowerCase().split('/')[0].trim();
-        const matchesMaster = cat.includes(targetMaster) || targetMaster.includes(cat);
+        const targetMaster = masterCategory ? masterCategory.toLowerCase().split('/')[0].trim() : "";
+        const matchesMaster = !targetMaster || cat.includes(targetMaster) || targetMaster.includes(cat);
         
-        const matchesKeyword = !keyword || 
-          item.name.toLowerCase().includes(keyword.toLowerCase()) ||
-          item.category.toLowerCase().includes(keyword.toLowerCase()) ||
-          item.desc.toLowerCase().includes(keyword.toLowerCase());
+        const matchesTown = !town || item.area.toLowerCase().includes(town.toLowerCase()) || town.toLowerCase().includes(item.area.toLowerCase());
+        const matchesKeyword = !kw || 
+          item.name.toLowerCase().includes(kw.toLowerCase()) ||
+          item.category.toLowerCase().includes(kw.toLowerCase()) ||
+          item.desc.toLowerCase().includes(kw.toLowerCase());
 
-        return matchesMaster && matchesKeyword && item.status !== 'expired' && item.status !== 'deleted' && item.status !== 'blocked';
+        return matchesMaster && matchesTown && matchesKeyword && item.status !== 'expired' && item.status !== 'deleted' && item.status !== 'blocked';
       });
-  
+
       if (filtered.length === 0) {
-        list.innerHTML = `
-          <div style="background:var(--card-container-bg); border:1px solid var(--gold-border); padding:24px; border-radius:12px; text-align:center; color:#CBD5E1; margin-top:20px;">
+        container.innerHTML = `
+          <div style="background:var(--card-container-bg); border:1px solid var(--gold-border); padding:24px; border-radius:12px; text-align:center; color:#CBD5E1; margin-top:10px;">
             <i class="fa-solid fa-triangle-exclamation" style="font-size:32px; color:var(--yellow); margin-bottom:10px;"></i>
-            <p>இந்தப் பிரிவில் சேவைகள் தற்போது இல்லை.</p>
+            <p>இந்தப் பகுதியில் சேவைகள் தற்போது கிடைக்கவில்லை.</p>
           </div>
         `;
       } else {
+        let resultsHtml = "";
         filtered.forEach(item => {
           let badgeHtml = item.status === 'active' ? 
             `<span class="status-badge active-green"><i class="fa-solid fa-check"></i> சரிபார்க்கப்பட்டது</span>` : 
             `<span class="status-badge pending-yellow"><i class="fa-solid fa-clock"></i> சரிபார்ப்பில்</span>`;
   
-          list.innerHTML += `
+          resultsHtml += `
             <div class="item-card">
               <h4>${item.name} ${badgeHtml}</h4>
               <div class="item-meta"><i class="fa-solid fa-location-dot"></i> ${item.area} • ${item.category}</div>
@@ -1985,8 +2081,8 @@
             </div>
           `;
         });
+        container.innerHTML = resultsHtml;
       }
-      view.classList.add("active");
     }
 
     function openDedicatedCategory(categoryName) {
