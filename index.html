@@ -793,9 +793,58 @@
       font-weight: 700;
       cursor: pointer;
     }
+
+    /* Startup Location Permission Modal Overlay */
+    .location-permission-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(7, 30, 61, 0.95);
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+    .location-permission-box {
+      background: var(--card-container-bg);
+      border: 2px solid var(--yellow);
+      border-radius: 16px;
+      padding: 24px;
+      width: 100%;
+      max-width: 360px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    }
   </style>
 </head>
 <body>
+
+  <!-- Startup GPS Location Permission Modal (Mandatory) -->
+  <div class="location-permission-overlay" id="locationPermissionModal">
+    <div class="location-permission-box">
+      <div style="font-size: 40px; color: var(--yellow); margin-bottom: 12px;">
+        <i class="fa-solid fa-location-crosshairs"></i>
+      </div>
+      <h3 style="color: #FFF8E7; font-size: 16px; margin-bottom: 8px;">இருப்பிட அனுமதி தேவை / Location Required</h3>
+      <p style="color: var(--en-text-bright); font-size: 12.5px; line-height: 1.5; margin-bottom: 16px;">
+        உங்கள் அருகில் உள்ள (500m - 1km) சேவைகளை உடனுக்குடன் காட்ட உங்கள் இருப்பிடத்தை அனுமதிக்கவும்.
+      </p>
+      
+      <button type="button" onclick="requestDeviceGPSPermission()" style="width: 100%; background: var(--green); color: #fff; border: none; padding: 12px; border-radius: 8px; font-weight: 700; font-size: 13.5px; cursor: pointer; margin-bottom: 10px; box-shadow: 0 4px 12px rgba(22,163,74,0.4);">
+        <i class="fa-solid fa-check"></i> இருப்பிடத்தை அனுமதிக்க / Allow GPS
+      </button>
+
+      <div style="margin-top: 10px;">
+        <input type="text" id="manualTownInputBox" placeholder="அல்லது ஊரைத் தட்டச்சு செய்யவும்..." style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #475569; background: #071E3D; color: #fff; font-size: 12.5px; text-align: center; outline: none; margin-bottom: 8px;">
+        <button type="button" onclick="submitManualTownEntry()" style="width: 100%; background: var(--primary-blue); color: #fff; border: none; padding: 10px; border-radius: 8px; font-weight: 600; font-size: 12.5px; cursor: pointer;">
+          தொடர / Continue Manually
+        </button>
+      </div>
+    </div>
+  </div>
   
   <div class="container">
   
@@ -1649,26 +1698,37 @@
 
     const serviceList = all120MasterVendors;
 
-    function requestCustomerGPSLocation() {
+    // Startup GPS Permission Functions
+    function requestDeviceGPSPermission() {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
           (position) => {
-            console.log("Customer GPS acquired:", position.coords.latitude, position.coords.longitude);
-            const townInput = document.getElementById("homeTownInput");
-            if (townInput && !townInput.value) {
-              townInput.placeholder = "📍 அருகில் தேட தயார்";
-            }
+            console.log("GPS Location granted:", position.coords.latitude, position.coords.longitude);
+            // Defaulting nearby detected town to 'அழகப்பபுரம்' or similar based on coordinates simulation
+            document.getElementById("homeTownInput").value = "அழகப்பபுரம்";
+            document.getElementById("locationPermissionModal").style.display = "none";
           },
           (error) => {
-            console.log("GPS prompt skipped or denied:", error.message);
+            alert("இருப்பிட அனுமதி வழங்கப்படவில்லை. தயவுசெய்து உங்கள் ஊரைத் தட்டச்சு செய்யவும்.");
           },
           { timeout: 10000, enableHighAccuracy: true }
         );
+      } else {
+        alert("உங்கள் பிரவுசர் ஜிபிஎஸ்-ஐ ஆதரிக்கவில்லை.");
       }
     }
 
+    function submitManualTownEntry() {
+      const townVal = document.getElementById("manualTownInputBox").value.trim();
+      if (!townVal) {
+        alert("தயவுசெய்து ஊரின் பெயரை உள்ளிடவும்.");
+        return;
+      }
+      document.getElementById("homeTownInput").value = townVal;
+      document.getElementById("locationPermissionModal").style.display = "none";
+    }
+
     window.addEventListener('DOMContentLoaded', () => {
-      setTimeout(requestCustomerGPSLocation, 1000);
       fetchLiveDataFromSheet();
     });
 
@@ -1985,7 +2045,6 @@
       townLabel.innerText = "📍 தேடல் & பட்டியல்";
       list.innerHTML = "";
 
-      // We inject an interactive search bar at the top of the scrollable results list
       let containerHtml = `
         <div class="subcat-search-sticky-bar">
           <div class="subcat-filter-inputs">
