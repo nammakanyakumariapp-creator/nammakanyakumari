@@ -366,6 +366,43 @@
       -webkit-overflow-scrolling: touch;
     }
   
+    /* Sub-Category Card Grid Style */
+    .subcat-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .subcat-card {
+      background: var(--card-container-bg);
+      border: 1px solid var(--gold-border);
+      border-radius: 12px;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+    .subcat-card:active {
+      transform: scale(0.98);
+      background: #163866;
+    }
+    .subcat-card-info h4 {
+      font-size: 14px;
+      color: #FFF8E7;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+    .subcat-card-info span {
+      font-size: 11.5px;
+      color: var(--en-text-bright);
+    }
+    .subcat-card i.fa-chevron-right {
+      color: var(--yellow);
+      font-size: 14px;
+    }
+
     /* Tabs Inside Modals */
     .vendor-nav-tabs, .search-nav-tabs {
       display: flex;
@@ -771,7 +808,7 @@
   
     <!-- 3x3 Category Grid (Strictly 9 Master Icons) -->
     <div class="category-grid-container">
-      <div class="cat-btn" onclick="openDedicatedCategory('போக்குவரத்து / Transport')">
+      <div class="cat-btn" onclick="openSubCategoryView('போக்குவரத்து / Transport')">
         <div class="circle-icon icon-auto">
           <i class="fa-solid fa-taxi"></i>
         </div>
@@ -779,7 +816,7 @@
         <span class="sub-text">Transport Services</span>
       </div>
   
-      <div class="cat-btn" onclick="openDedicatedCategory('வீடு & சொத்து / Real Estate')">
+      <div class="cat-btn" onclick="openSubCategoryView('வீடு & சொத்து / Real Estate')">
         <div class="circle-icon icon-home">
           <i class="fa-solid fa-house"></i>
         </div>
@@ -787,7 +824,7 @@
         <span class="sub-text">Real Estate</span>
       </div>
   
-      <div class="cat-btn" onclick="openDedicatedCategory('கல்வி & பயிற்சி / Education')">
+      <div class="cat-btn" onclick="openSubCategoryView('கல்வி & பயிற்சி / Education')">
         <div class="circle-icon icon-taxi">
           <i class="fa-solid fa-graduation-cap"></i>
         </div>
@@ -795,7 +832,7 @@
         <span class="sub-text">Education & Training</span>
       </div>
   
-      <div class="cat-btn" onclick="openDedicatedCategory('மருத்துவம் / Health Care')">
+      <div class="cat-btn" onclick="openSubCategoryView('மருத்துவம் / Health Care')">
         <div class="circle-icon icon-pros3">
           <i class="fa-solid fa-heart-pulse"></i>
         </div>
@@ -803,7 +840,7 @@
         <span class="sub-text">Health Care</span>
       </div>
   
-      <div class="cat-btn" onclick="openDedicatedCategory('வணிகம் & விற்பனை / Business')">
+      <div class="cat-btn" onclick="openSubCategoryView('வணிகம் & விற்பனை / Business')">
         <div class="circle-icon icon-shop">
           <i class="fa-solid fa-store"></i>
         </div>
@@ -811,7 +848,7 @@
         <span class="sub-text">Business & Shopping</span>
       </div>
   
-      <div class="cat-btn" onclick="openDedicatedCategory('பணியாளர் சேவைகள் / Job')">
+      <div class="cat-btn" onclick="openSubCategoryView('பணியாளர் சேவைகள் / Job')">
         <div class="circle-icon icon-jobs">
           <i class="fa-solid fa-briefcase"></i>
         </div>
@@ -819,7 +856,7 @@
         <span class="sub-text">Job & Recruitment</span>
       </div>
   
-      <div class="cat-btn" onclick="openDedicatedCategory('மின் & நீர் சேவைகள் / Utility')">
+      <div class="cat-btn" onclick="openSubCategoryView('மின் & நீர் சேவைகள் / Utility')">
         <div class="circle-icon icon-pros1">
           <i class="fa-solid fa-bolt"></i>
         </div>
@@ -827,7 +864,7 @@
         <span class="sub-text">Utility Services</span>
       </div>
   
-      <div class="cat-btn" onclick="openDedicatedCategory('சேவைகள் & பொழுதுபோக்கு / Events')">
+      <div class="cat-btn" onclick="openSubCategoryView('சேவைகள் & பொழுதுபோக்கு / Events')">
         <div class="circle-icon icon-load">
           <i class="fa-solid fa-calendar-days"></i>
         </div>
@@ -835,7 +872,7 @@
         <span class="sub-text">Events & Entertainment</span>
       </div>
   
-      <div class="cat-btn" onclick="openDedicatedCategory('மற்ற சேவைகள் / Other Services')">
+      <div class="cat-btn" onclick="openSubCategoryView('மற்ற சேவைகள் / Other Services')">
         <div class="circle-icon icon-pros2">
           <i class="fa-solid fa-shapes"></i>
         </div>
@@ -1476,6 +1513,65 @@
 
     const GOOGLE_SHEET_API = "https://script.google.com/macros/s/AKfycbxfuaEQt_5g623AQJftNUyRktdPTjaBFXu7dBzS8jcWTjx0f8DMnCl7ZZzxE3g4AJvK/exec";
 
+    // 9 Master Categories and their respective Sub-Categories mapping
+    const subCategoriesMap = {
+      "போக்குவரத்து / Transport": [
+        { name: "ஆட்டோ (Auto)", keyword: "ஆட்டோ" },
+        { name: "டாக்ஸி (Taxi / Cab)", keyword: "டாக்ஸி" },
+        { name: "லோடு வாகனம் (Load Auto / Pickup)", keyword: "லோடு" },
+        { name: "செகண்ட் ஹேண்ட் கார் & பைக் (Used Vehicles)", keyword: "செகண்ட் ஹேண்ட்" },
+        { name: "கார் பார்க்கிங் & ரெண்டல் (Car Parking & Rentals)", keyword: "பார்க்கிங்" }
+      ],
+      "வீடு & சொத்து / Real Estate": [
+        { name: "வீடு வாடகைக்கு (Sale & Rent Homes)", keyword: "வீடு" },
+        { name: "காலி மனை & நிலங்கள் (Plots & Lands)", keyword: "நிலம்" },
+        { name: "வணிகக் கட்டடங்கள் (Commercial Shops & Offices)", keyword: "கடை" },
+        { name: "கூட்டு ஒப்பந்தம் (Joint Ventures & Brokers)", keyword: "புரோக்கர்" }
+      ],
+      "கல்வி & பயிற்சி / Education": [
+        { name: "டியூஷன் சென்டர்கள் (Tuition & Coaching)", keyword: "டியூஷன்" },
+        { name: "கணினி & தொழில்நுட்பப் பயிற்சி (Computer Training)", keyword: "கணினி" },
+        { name: "தையல், எம்பிராய்டரி & ஆரி வொர்க் (Tailoring & Aari)", keyword: "தையல்" },
+        { name: "யோகா, கராத்தே & சிலம்பம் (Yoga & Silambam)", keyword: "யோகா" }
+      ],
+      "மருத்துவம் / Health Care": [
+        { name: "மருத்துவமனைகள் & கிளினிக்குகள் (Hospitals & Clinics)", keyword: "மருத்துவமனை" },
+        { name: "மெடிக்கல் ஷாப்புகள் (Pharmacies)", keyword: "மெடிக்கல்" },
+        { name: "வீட்டு நல்வாழ்வு பராமரிப்பு (Home Nursing)", keyword: "நார்சிங்" },
+        { name: "லேப் & ஸ்கேன் சென்டர்கள் (Diagnostic Labs & Scans)", keyword: "லேப்" }
+      ],
+      "வணிகம் & விற்பனை / Business": [
+        { name: "ஹோம்மேட் உணவுப் பொருட்கள் (Homemade Foods)", keyword: "ஹோம்மேட்" },
+        { name: "உடைகள் & ஜவுளிப் கடைகள் (Textiles & Garments)", keyword: "ஜவுளி" },
+        { name: "மளிகை & காய்கறி அங்காடிகள் (Groceries & Vegetables)", keyword: "மளிகை" },
+        { name: "வன்பொருள் & மின்சாதனக் கடைகள் (Hardware)", keyword: "ஹார்டுவேர்" }
+      ],
+      "பணியாளர் சேவைகள் / Job": [
+        { name: "கடை விற்பனை உதவியாளர் (Shop Sales Staff)", keyword: "விற்பனை" },
+        { name: "கட்டிட வேலை & தொழிலாளர்கள் (Construction Workers)", keyword: "கட்டிட வேலை" },
+        { name: "ஓட்டுநர் வேலைகள் (Driver Jobs)", keyword: "ஓட்டுநர் வேலை" },
+        { name: "அலுவலகப் பணிகள் (Office & Data Entry Jobs)", keyword: "அலுவலகம்" }
+      ],
+      "மின் & நீர் சேவைகள் / Utility": [
+        { name: "எலக்ட்ரிஷியன் & வயரிங் (Electrician & Wiring)", keyword: "எலக்ட்ரிஷியன்" },
+        { name: "பிளம்பிங் & குழாய் வேலைகள் (Plumbing & Water)", keyword: "பிளம்பிங்" },
+        { name: "போர்வெல் & மோட்டார் பழுதுபார்ப்பு (Borewell & Motor)", keyword: "போர்வெல்" },
+        { name: "ஏசி & குளிர்சாதனப் பழுதுபார்ப்பு (AC Repair)", keyword: "ஏசி" }
+      ],
+      "சேவைகள் & பொழுதுபோக்கு / Events": [
+        { name: "திருமண மண்டபங்கள் & பந்தல் (Marriage Halls & Tents)", keyword: "மண்டபம்" },
+        { name: "போட்டோகிராபி & வீடியோகிராபி (Photography & Video)", keyword: "போட்டோகிராபி" },
+        { name: "சவுண்ட் சர்வீஸ் & டிஜே (Sound Service & DJ)", keyword: "சவுண்ட்" },
+        { name: "விழா உபகரணங்கள் (Event Equipments)", keyword: "பாப்கார்ன்" }
+      ],
+      "மற்ற சேவைகள் / Other Services": [
+        { name: "பெட் கேர் & கிரூமிங் (Pet Care & Grooming)", keyword: "பெட்" },
+        { name: "வீடு சுத்தம் செய்யும் சேவைகள் (House Cleaning)", keyword: "சுத்தம்" },
+        { name: "ஜெராக்ஸ் & DTP சென்டர்கள் (Xerox & DTP Works)", keyword: "ஜெராக்ஸ்" },
+        { name: "பேக்கிங் & மூவிங் (Packers & Movers)", keyword: "பேக்கிங்" }
+      ]
+    };
+
     const all120MasterVendors = [];
     const masterCats = [
       { name: "போக்குவரத்து / Transport", type: "Vehicle" },
@@ -1804,6 +1900,95 @@
       }
     }
   
+    // New Sub-Category View Layer for all 9 Master Categories
+    function openSubCategoryView(categoryName) {
+      closeAllPages();
+      const view = document.getElementById("fullpageView");
+      const list = document.getElementById("dedicatedList");
+      const title = document.getElementById("dedicatedTitle");
+      const townLabel = document.getElementById("dedicatedTown");
+  
+      title.innerText = categoryName.split('/')[0].trim() + " - உட்பிரிவுகள்";
+      townLabel.innerText = "📍 உள் பிரிவு தேர்வு";
+      list.innerHTML = "";
+
+      const subCategories = subCategoriesMap[categoryName] || [];
+
+      if (subCategories.length === 0) {
+        openDedicatedCategory(categoryName);
+        return;
+      }
+
+      let htmlContainer = `<div class="subcat-grid">`;
+      subCategories.forEach(sub => {
+        htmlContainer += `
+          <div class="subcat-card" onclick="filterBySubCategory('${categoryName}', '${sub.keyword}', '${sub.name}')">
+            <div class="subcat-card-info">
+              <h4>${sub.name}</h4>
+              <span>${categoryName.split('/')[0].trim()} சேவைகள்</span>
+            </div>
+            <i class="fa-solid fa-chevron-right"></i>
+          </div>
+        `;
+      });
+      htmlContainer += `</div>`;
+      list.innerHTML = htmlContainer;
+      view.classList.add("active");
+    }
+
+    function filterBySubCategory(masterCategory, keyword, subName) {
+      const view = document.getElementById("fullpageView");
+      const list = document.getElementById("dedicatedList");
+      const title = document.getElementById("dedicatedTitle");
+      const townLabel = document.getElementById("dedicatedTown");
+  
+      title.innerText = subName;
+      townLabel.innerText = "📍 கன்னியாகுமரி";
+      list.innerHTML = "";
+  
+      const displayData = liveVendors.length > 0 ? liveVendors : serviceList;
+      const filtered = displayData.filter(item => {
+        const cat = (item.category || "").toLowerCase();
+        const targetMaster = masterCategory.toLowerCase().split('/')[0].trim();
+        const matchesMaster = cat.includes(targetMaster) || targetMaster.includes(cat);
+        
+        const matchesKeyword = !keyword || 
+          item.name.toLowerCase().includes(keyword.toLowerCase()) ||
+          item.category.toLowerCase().includes(keyword.toLowerCase()) ||
+          item.desc.toLowerCase().includes(keyword.toLowerCase());
+
+        return matchesMaster && matchesKeyword && item.status !== 'expired' && item.status !== 'deleted' && item.status !== 'blocked';
+      });
+  
+      if (filtered.length === 0) {
+        list.innerHTML = `
+          <div style="background:var(--card-container-bg); border:1px solid var(--gold-border); padding:24px; border-radius:12px; text-align:center; color:#CBD5E1; margin-top:20px;">
+            <i class="fa-solid fa-triangle-exclamation" style="font-size:32px; color:var(--yellow); margin-bottom:10px;"></i>
+            <p>இந்தப் பிரிவில் சேவைகள் தற்போது இல்லை.</p>
+          </div>
+        `;
+      } else {
+        filtered.forEach(item => {
+          let badgeHtml = item.status === 'active' ? 
+            `<span class="status-badge active-green"><i class="fa-solid fa-check"></i> சரிபார்க்கப்பட்டது</span>` : 
+            `<span class="status-badge pending-yellow"><i class="fa-solid fa-clock"></i> சரிபார்ப்பில்</span>`;
+  
+          list.innerHTML += `
+            <div class="item-card">
+              <h4>${item.name} ${badgeHtml}</h4>
+              <div class="item-meta"><i class="fa-solid fa-location-dot"></i> ${item.area} • ${item.category}</div>
+              <div class="item-desc">${item.desc}</div>
+              <div class="item-actions">
+                <a href="tel:${item.phone}" class="btn-call"><i class="fa-solid fa-phone"></i> அழைப்பு / Call</a>
+                <a href="https://wa.me/91${item.wa}" class="btn-wa"><i class="fa-brands fa-whatsapp"></i> வாட்ஸ்அப் / WhatsApp</a>
+              </div>
+            </div>
+          `;
+        });
+      }
+      view.classList.add("active");
+    }
+
     function openDedicatedCategory(categoryName) {
       closeAllPages();
       const view = document.getElementById("fullpageView");
