@@ -196,15 +196,8 @@
       white-space: nowrap;
     }
   
-    /* Category Grids */
+    /* 3x3 Category Grid (Exact 9 Icons) */
     .category-grid-container {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-bottom: 12px;
-    }
-    
-    .extra-category-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 12px;
@@ -251,10 +244,6 @@
     .icon-pros1 { background: #CCFBF1; color: #0F766E; }
     .icon-pros2 { background: #FEF3C7; color: #D97706; }
     .icon-pros3 { background: #FCE7F3; color: #DB2777; }
-  
-    .icon-extra1 { background: #E0E7FF; color: #3730A3; }
-    .icon-extra2 { background: #FEE2E2; color: #991B1B; }
-    .icon-extra3 { background: #F3E8FF; color: #6B21A8; }
   
     .cat-btn .main-text {
       font-size: 12px;
@@ -741,7 +730,7 @@
       <img src="https://lh3.googleusercontent.com/d/1VreUYprfYVoSxJZxHn6_LnEdfKcCVL8H" alt="நம்ம கன்னியாகுமரி பேனர்">
     </div>
   
-    <!-- Home Filter Tabs: உள்ளூர் சேவைகள் • உள்ளூர் வணிகங்கள் • உள்ளூர் வேலை வாய்ப்புகள் -->
+    <!-- Home Filter Tabs -->
     <div class="home-filter-tabs">
       <button class="home-tab-btn active" id="homeTabVehicle" onclick="switchHomeTab('வாகனம்')">
         <i class="fa-solid fa-car"></i> உள்ளூர் சேவைகள்<br><span style="font-size:8.5px; opacity:0.85;">Local Services</span>
@@ -780,105 +769,78 @@
       </div>
     </div>
   
-    <!-- 3x3 Category Grid (First 9 Icons) -->
+    <!-- 3x3 Category Grid (Strictly 9 Master Icons) -->
     <div class="category-grid-container">
-      <div class="cat-btn" onclick="openDedicatedCategory('ஆட்டோ / Auto')">
+      <div class="cat-btn" onclick="openDedicatedCategory('போக்குவரத்து / Transport')">
         <div class="circle-icon icon-auto">
           <i class="fa-solid fa-taxi"></i>
         </div>
-        <span class="main-text">ஆட்டோ</span>
-        <span class="sub-text">Auto Service</span>
+        <span class="main-text">போக்குவரத்து</span>
+        <span class="sub-text">Transport Services</span>
       </div>
   
-      <div class="cat-btn" onclick="openDedicatedCategory('டாக்ஸி / Taxi')">
-        <div class="circle-icon icon-taxi">
-          <i class="fa-solid fa-car-side"></i>
-        </div>
-        <span class="main-text">டாக்ஸி / கார்</span>
-        <span class="sub-text">Taxi & Tours</span>
-      </div>
-  
-      <div class="cat-btn" onclick="openDedicatedCategory('லோடு வாகனம் / Load Vehicle')">
-        <div class="circle-icon icon-load">
-          <i class="fa-solid fa-truck-pickup"></i>
-        </div>
-        <span class="main-text">லோடு வாகனம்</span>
-        <span class="sub-text">Tata Ace / Pickup</span>
-      </div>
-  
-      <div class="cat-btn" onclick="openDedicatedCategory('வீட்டு சேவைகள் / Home Services')">
+      <div class="cat-btn" onclick="openDedicatedCategory('வீடு & சொத்து / Real Estate')">
         <div class="circle-icon icon-home">
-          <i class="fa-solid fa-screwdriver-wrench"></i>
+          <i class="fa-solid fa-house"></i>
         </div>
-        <span class="main-text">வீட்டு சேவைகள்</span>
-        <span class="sub-text">Home Services</span>
+        <span class="main-text">வீடு & சொத்து</span>
+        <span class="sub-text">Real Estate</span>
       </div>
   
-      <div class="cat-btn" onclick="openDedicatedCategory('ஹோம்மேட் & ஆரோக்கியப் பொருட்கள்')">
+      <div class="cat-btn" onclick="openDedicatedCategory('கல்வி & பயிற்சி / Education')">
+        <div class="circle-icon icon-taxi">
+          <i class="fa-solid fa-graduation-cap"></i>
+        </div>
+        <span class="main-text">கல்வி & பயிற்சி</span>
+        <span class="sub-text">Education & Training</span>
+      </div>
+  
+      <div class="cat-btn" onclick="openDedicatedCategory('மருத்துவம் / Health Care')">
+        <div class="circle-icon icon-pros3">
+          <i class="fa-solid fa-heart-pulse"></i>
+        </div>
+        <span class="main-text">மருத்துவம்</span>
+        <span class="sub-text">Health Care</span>
+      </div>
+  
+      <div class="cat-btn" onclick="openDedicatedCategory('வணிகம் & விற்பனை / Business')">
         <div class="circle-icon icon-shop">
-          <i class="fa-solid fa-jar"></i>
+          <i class="fa-solid fa-store"></i>
         </div>
-        <span class="main-text">ஹோம்மேட் பொருட்கள்</span>
-        <span class="sub-text">Homemade & Organic</span>
+        <span class="main-text">வணிகம் & விற்பனை</span>
+        <span class="sub-text">Business & Shopping</span>
       </div>
   
-      <div class="cat-btn" onclick="openDedicatedCategory('வேலை வாய்ப்பு / Jobs')">
+      <div class="cat-btn" onclick="openDedicatedCategory('பணியாளர் சேவைகள் / Job')">
         <div class="circle-icon icon-jobs">
-          <i class="fa-solid fa-bullhorn"></i>
+          <i class="fa-solid fa-briefcase"></i>
         </div>
-        <span class="main-text">வேலை வாய்ப்பு</span>
-        <span class="sub-text">Jobs & Works</span>
+        <span class="main-text">பணியாளர் சேவைகள்</span>
+        <span class="sub-text">Job & Recruitment</span>
       </div>
   
-      <div class="cat-btn" onclick="openDedicatedCategory('மின் & குழாய் வல்லுநர்')">
+      <div class="cat-btn" onclick="openDedicatedCategory('மின் & நீர் சேவைகள் / Utility')">
         <div class="circle-icon icon-pros1">
           <i class="fa-solid fa-bolt"></i>
         </div>
-        <span class="main-text">மின் & குழாய்</span>
-        <span class="sub-text">Electrician & Plumber</span>
+        <span class="main-text">மின் & நீர் சேவைகள்</span>
+        <span class="sub-text">Utility Services</span>
       </div>
   
-      <div class="cat-btn" onclick="openDedicatedCategory('கட்டுமானம் & தச்சு')">
+      <div class="cat-btn" onclick="openDedicatedCategory('சேவைகள் & பொழுதுபோக்கு / Events')">
+        <div class="circle-icon icon-load">
+          <i class="fa-solid fa-calendar-days"></i>
+        </div>
+        <span class="main-text">சேவைகள் & பொழுதுபோக்கு</span>
+        <span class="sub-text">Events & Entertainment</span>
+      </div>
+  
+      <div class="cat-btn" onclick="openDedicatedCategory('மற்ற சேவைகள் / Other Services')">
         <div class="circle-icon icon-pros2">
-          <i class="fa-solid fa-hammer"></i>
+          <i class="fa-solid fa-shapes"></i>
         </div>
-        <span class="main-text">கட்டுமானம் & தச்சு</span>
-        <span class="sub-text">Mason & Carpentry</span>
-      </div>
-  
-      <div class="cat-btn" onclick="openDedicatedCategory('உபகரண மெக்கானிக்')">
-        <div class="circle-icon icon-pros3">
-          <i class="fa-solid fa-screwdriver"></i>
-        </div>
-        <span class="main-text">உபகரண மெக்கானிக்</span>
-        <span class="sub-text">AC & Appliance Repair</span>
-      </div>
-    </div>
-  
-    <!-- Extra Row of 3 Icons (Total 12 Icons) -->
-    <div class="extra-category-grid">
-      <div class="cat-btn" onclick="openDedicatedCategory('ஸ்போர்ட்ஸ் & ஜிம்')">
-        <div class="circle-icon icon-extra1">
-          <i class="fa-solid fa-dumbbell"></i>
-        </div>
-        <span class="main-text">ஸ்போர்ட்ஸ் & ஜிம்</span>
-        <span class="sub-text">Sports, Gym & Turf</span>
-      </div>
-  
-      <div class="cat-btn" onclick="openDedicatedCategory('செகண்ட் ஹேண்ட் கார் & பைக்')">
-        <div class="circle-icon icon-extra2">
-          <i class="fa-solid fa-car-rear"></i>
-        </div>
-        <span class="main-text">செகண்ட் ஹேண்ட் கார்</span>
-        <span class="sub-text">Used Cars & Bikes</span>
-      </div>
-  
-      <div class="cat-btn" onclick="openDedicatedCategory('ஹோம் பார்லர் & விழா உபகரணங்கள்')">
-        <div class="circle-icon icon-extra3">
-          <i class="fa-solid fa-wand-magic-sparkles"></i>
-        </div>
-        <span class="main-text">ஹோம் பார்லர் & விழா</span>
-        <span class="sub-text">Parlour & Events</span>
+        <span class="main-text">மற்ற சேவைகள்</span>
+        <span class="sub-text">Other Services</span>
       </div>
     </div>
   
@@ -1096,7 +1058,7 @@
     </div>
     <div class="fullpage-content">
       
-      <!-- Vendor Form Tabs: உள்ளூர் சேவைகள் • உள்ளூர் வணிகங்கள் • உள்ளூர் வேலை வாய்ப்புகள் -->
+      <!-- Vendor Form Tabs -->
       <div class="vendor-nav-tabs">
         <button class="vendor-tab-btn active" id="tabBtnVehicle" onclick="switchVendorSection('vehicle')">
           <i class="fa-solid fa-car"></i> உள்ளூர் சேவைகள்<br><span style="font-size:8px; opacity:0.85;">Local Services</span>
@@ -1516,18 +1478,15 @@
 
     const all120MasterVendors = [];
     const masterCats = [
-      { name: "ஆட்டோ / Auto", type: "Vehicle" },
-      { name: "டாக்ஸி / Taxi", type: "Vehicle" },
-      { name: "லோடு வாகனம் / Load Vehicle", type: "Vehicle" },
-      { name: "வீட்டு சேவைகள் / Home Services", type: "Service" },
-      { name: "ஹோம்மேட் & ஆரோக்கியப் பொருட்கள்", type: "Shop" },
-      { name: "வேலை வாய்ப்பு / Jobs", type: "Job" },
-      { name: "மின் & குழாய் வல்லுநர்", type: "Service" },
-      { name: "கட்டுமானம் & தச்சு", type: "Service" },
-      { name: "உபகரண மெக்கானிக்", type: "Service" },
-      { name: "ஸ்போர்ட்ஸ் & ஜிம்", type: "Shop" },
-      { name: "செகண்ட் ஹேண்ட் கார் & பைக்", type: "Shop" },
-      { name: "ஹோம் பார்லர் & விழா உபகரணங்கள்", type: "Service" }
+      { name: "போக்குவரத்து / Transport", type: "Vehicle" },
+      { name: "வீடு & சொத்து / Real Estate", type: "Service" },
+      { name: "கல்வி & பயிற்சி / Education", type: "Service" },
+      { name: "மருத்துவம் / Health Care", type: "Shop" },
+      { name: "வணிகம் & விற்பனை / Business", type: "Shop" },
+      { name: "பணியாளர் சேவைகள் / Job", type: "Job" },
+      { name: "மின் & நீர் சேவைகள் / Utility", type: "Service" },
+      { name: "சேவைகள் & பொழுதுபோக்கு / Events", type: "Service" },
+      { name: "மற்ற சேவைகள் / Other Services", type: "Service" }
     ];
     const masterTowns = ["அழகப்பபுரம்", "மயிலாடி", "அஞ்சுகிராமம்", "நாகர்கோவில்", "திங்கள்நகர்"];
 
@@ -1865,7 +1824,6 @@
         
         const matchesCategory = 
           query.includes("அனைத்து") || query.includes("all") ||
-          (query.includes("போக்குவரத்து") || query.includes("transport")) && (cat.includes("ஆட்டோ") || cat.includes("டாக்ஸி")) ||
           cat.includes(query) || query.includes(cat) ||
           nm.includes(query) ||
           ds.includes(query);
