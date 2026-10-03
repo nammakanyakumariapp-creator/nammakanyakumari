@@ -1494,7 +1494,7 @@
     masterCats.forEach(catObj => {
       for (let i = 1; i <= 15; i++) {
         const pNum = String(vCounter).padStart(3, '0');
-        const phone = "94431000" + pNum; // 11 இலக்கப் போலியான பாதுகாப்பான டெமோ எண்
+        const phone = "94431000" + pNum;
         const town = masterTowns[(i - 1) % 5];
         const vTitle = `${catObj.name.split('/')[0].trim()} - Provider ${i}`;
         const vDesc = `நம்பகமான சேவை • பகுதி: ${town}`;
@@ -1815,18 +1815,14 @@
       townLabel.innerText = "📍 கன்னியாகுமரி";
       list.innerHTML = "";
   
-      const query = categoryName.toLowerCase();
       const displayData = liveVendors.length > 0 ? liveVendors : serviceList;
       const filtered = displayData.filter(item => {
         const cat = (item.category || "").toLowerCase();
-        const nm = (item.name || "").toLowerCase();
-        const ds = (item.desc || "").toLowerCase();
+        const target = categoryName.toLowerCase().split('/')[0].trim();
         
         const matchesCategory = 
-          query.includes("அனைத்து") || query.includes("all") ||
-          cat.includes(query) || query.includes(cat) ||
-          nm.includes(query) ||
-          ds.includes(query);
+          target.includes("அனைத்து") || target.includes("all") ||
+          cat.includes(target) || target.includes(cat);
         return matchesCategory && item.status !== 'expired' && item.status !== 'deleted' && item.status !== 'blocked';
       });
   
