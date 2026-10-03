@@ -403,41 +403,37 @@
       font-size: 14px;
     }
 
-    /* Interactive Sub-Category Search & Scroll Results Header Bar */
-    .subcat-search-sticky-bar {
+    /* Single Unified Search Bar for Sub-Category Results Page */
+    .single-search-sticky-bar {
       background: var(--card-container-bg);
       border: 1px solid var(--gold-border);
       border-radius: 12px;
       padding: 10px;
       margin-bottom: 14px;
       display: flex;
-      flex-direction: column;
+      align-items: center;
       gap: 8px;
     }
-    .subcat-filter-inputs {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-    }
-    .subcat-filter-input-box {
+    .single-search-input-box {
       background: #071E3D;
       border: 1px solid #475569;
       border-radius: 8px;
-      padding: 8px 10px;
+      padding: 9px 12px;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
+      width: 100%;
       position: relative;
     }
-    .subcat-filter-input-box input {
+    .single-search-input-box input {
       width: 100%;
       background: transparent;
       border: none;
       color: #fff;
-      font-size: 12px;
+      font-size: 13px;
       outline: none;
     }
-    .subcat-filter-input-box input::placeholder {
+    .single-search-input-box input::placeholder {
       color: var(--text-muted);
     }
 
@@ -2073,7 +2069,7 @@
       }
     }
 
-    // Opens Sub-Category Results Page with Interactive Search Bar & Flexible Keyword Matching
+    // Opens Sub-Category Results Page with Single Unified Search Bar (Town & Service / ஊர் & சேவை)
     function openSubCategoryResults(masterCategory, defaultKeyword, subName) {
       currentNavigationState = "results";
       activeSubCategoryKeyword = defaultKeyword;
@@ -2088,37 +2084,33 @@
       townLabel.innerText = "📍 தேடல் & பட்டியல்";
       list.innerHTML = "";
 
+      // Prefill town from home search bar if available (GPS / Manual Entry)
       const initialTown = document.getElementById("homeTownInput") ? document.getElementById("homeTownInput").value.trim() : "";
 
       let containerHtml = `
-        <div class="subcat-search-sticky-bar">
-          <div class="subcat-filter-inputs">
-            <div class="subcat-filter-input-box">
-              <i class="fa-solid fa-location-dot" style="color:var(--yellow); font-size:11px;"></i>
-              <input type="text" id="filterTownInput" value="${initialTown}" placeholder="ஊர் / Town..." oninput="triggerDynamicSubFilter('${masterCategory}', '${defaultKeyword}')" onkeypress="handleSearchEnterKey(event, '${masterCategory}', '${defaultKeyword}')">
-            </div>
-            <div class="subcat-filter-input-box" style="position:relative;">
-              <i class="fa-solid fa-magnifying-glass" style="color:var(--text-muted); font-size:11px;"></i>
-              <input type="text" id="filterKeywordInput" value="${defaultKeyword}" placeholder="தேடல்..." oninput="triggerDynamicSubFilter('${masterCategory}', '${defaultKeyword}')" onkeypress="handleSearchEnterKey(event, '${masterCategory}', '${defaultKeyword}')" style="padding-right:24px;">
-              <button type="button" onclick="triggerSubVoiceSearch()" style="position:absolute; right:4px; top:50%; transform:translateY(-50%); background:none; border:none; color:var(--yellow); cursor:pointer; font-size:12px;">
-                <i class="fa-solid fa-microphone"></i>
-              </button>
-            </div>
+        <div class="single-search-sticky-bar">
+          <div class="single-search-input-box">
+            <i class="fa-solid fa-magnifying-glass" style="color:var(--text-muted); font-size:13px;"></i>
+            <input type="text" id="singleSearchInput" value="${initialTown}" placeholder="ஊர் & சேவை (எ.கா: அழகப்பபுரம், ஆட்டோ / Town & Service)" oninput="triggerSingleSearchFilter('${masterCategory}', '${defaultKeyword}')" onkeypress="handleSingleSearchEnter(event, '${masterCategory}', '${defaultKeyword}')">
+            <button type="button" onclick="triggerSingleVoiceSearch()" style="background:none; border:none; color:var(--yellow); cursor:pointer; font-size:13px;">
+              <i class="fa-solid fa-microphone"></i>
+            </button>
           </div>
         </div>
         <div id="dynamicVendorScrollContainer"></div>
       `;
 
       list.innerHTML = containerHtml;
-      renderFilteredVendorList(masterCategory, defaultKeyword, initialTown, defaultKeyword);
+      // Immediately render default list based on prefilled town and sub-category keyword
+      renderSingleFilteredList(masterCategory, defaultKeyword, initialTown);
       view.classList.add("active");
       history.pushState({page: "results"}, "", "");
     }
 
-    function handleSearchEnterKey(e, masterCategory, defaultKeyword) {
+    function handleSingleSearchEnter(e, masterCategory, defaultKeyword) {
       if (e.key === 'Enter') {
         e.preventDefault();
-        triggerDynamicSubFilter(masterCategory, defaultKeyword);
+        triggerSingleSearchFilter(masterCategory, defaultKeyword);
         document.activeElement.blur();
       }
     }
@@ -2135,22 +2127,20 @@
       }
     }
 
-    function triggerDynamicSubFilter(masterCategory, defaultKeyword) {
-      const townVal = document.getElementById("filterTownInput").value.trim();
-      const keywordVal = document.getElementById("filterKeywordInput").value.trim();
-      renderFilteredVendorList(masterCategory, defaultKeyword, townVal, keywordVal);
+    function triggerSingleSearchFilter(masterCategory, defaultKeyword) {
+      const queryVal = document.getElementById("singleSearchInput").value.trim();
+      renderSingleFilteredList(masterCategory, defaultKeyword, queryVal);
     }
 
-    function triggerSubVoiceSearch() {
-      const keywordInput = document.getElementById("filterKeywordInput");
+    function triggerSingleVoiceSearch() {
+      const searchInput = document.getElementById("singleSearchInput");
       const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
       if (SpeechRecognition) {
         const recognition = new SpeechRecognition();
         recognition.lang = 'ta-IN';
         recognition.onresult = function(event) {
-          keywordInput.value = event.results[0][0].transcript;
-          const townVal = document.getElementById("filterTownInput").value.trim();
-          renderFilteredVendorList('', keywordInput.value, townVal, keywordInput.value);
+          searchInput.value = event.results[0][0].transcript;
+          triggerSingleSearchFilter(lastMasterCategory, activeSubCategoryKeyword);
         };
         recognition.start();
       } else {
@@ -2158,13 +2148,12 @@
       }
     }
 
-    function renderFilteredVendorList(masterCategory, defaultKeyword, searchTown, searchKeyword) {
+    function renderSingleFilteredList(masterCategory, defaultKeyword, searchQuery) {
       const container = document.getElementById("dynamicVendorScrollContainer");
       if (!container) return;
 
       const displayData = liveVendors.length > 0 ? liveVendors : serviceList;
-      const kw = searchKeyword !== undefined ? searchKeyword : defaultKeyword;
-      const town = searchTown !== undefined ? searchTown : "";
+      const q = searchQuery ? searchQuery.toLowerCase() : "";
 
       const filtered = displayData.filter(item => {
         const cat = (item.category || "").toLowerCase();
@@ -2175,20 +2164,24 @@
         const targetMaster = masterCategory ? masterCategory.toLowerCase().split('/')[0].trim() : "";
         const matchesMaster = !targetMaster || cat.includes(targetMaster) || targetMaster.includes(cat) || itemName.includes(targetMaster);
         
-        const matchesTown = !town || itemArea.includes(town.toLowerCase()) || town.toLowerCase().includes(itemArea);
-        
-        // Flexible keyword matching for Tamil & English terms (Auto, Taxi, etc.)
-        const targetKw = kw.toLowerCase();
-        const matchesKeyword = !targetKw || 
-          itemName.includes(targetKw) ||
-          itemDesc.includes(targetKw) ||
-          cat.includes(targetKw) ||
-          (targetKw.includes("டாக்ஸி") && (itemName.includes("டாக்ஸி") || itemDesc.includes("டாக்ஸி") || itemName.includes("taxi") || itemDesc.includes("taxi"))) ||
-          (targetKw.includes("taxi") && (itemName.includes("டாக்ஸி") || itemDesc.includes("டாக்ஸி") || itemName.includes("taxi") || itemDesc.includes("taxi"))) ||
-          (targetKw.includes("ஆட்டோ") && (itemName.includes("ஆட்டோ") || itemDesc.includes("ஆட்டோ") || itemName.includes("auto") || itemDesc.includes("auto"))) ||
-          (targetKw.includes("மருத்துவமனை") && (itemName.includes("மருத்துவமனை") || itemDesc.includes("மருத்துவமனை") || itemName.includes("hospital") || itemDesc.includes("clinic")));
+        // Check if item matches default keyword (e.g. ஆட்டோ / டாக்ஸி)
+        const kw = defaultKeyword.toLowerCase();
+        const matchesSubKeyword = 
+          itemName.includes(kw) ||
+          itemDesc.includes(kw) ||
+          cat.includes(kw) ||
+          (kw.includes("டாக்ஸி") && (itemName.includes("டாக்ஸி") || itemDesc.includes("டாக்ஸி") || itemName.includes("taxi"))) ||
+          (kw.includes("taxi") && (itemName.includes("டாக்ஸி") || itemDesc.includes("டாக்ஸி") || itemName.includes("taxi"))) ||
+          (kw.includes("ஆட்டோ") && (itemName.includes("ஆட்டோ") || itemDesc.includes("ஆட்டோ") || itemName.includes("auto"))) ||
+          (kw.includes("மருத்துவமனை") && (itemName.includes("மருத்துவமனை") || itemDesc.includes("மருத்துவமனை") || itemName.includes("hospital")));
 
-        return matchesMaster && matchesTown && matchesKeyword && item.status !== 'expired' && item.status !== 'deleted' && item.status !== 'blocked';
+        // If user typed anything in single search bar, match either town or custom keyword
+        const matchesQuery = !q || 
+          itemArea.includes(q) || 
+          itemName.includes(q) || 
+          itemDesc.includes(q);
+
+        return matchesMaster && matchesSubKeyword && matchesQuery && item.status !== 'expired' && item.status !== 'deleted' && item.status !== 'blocked';
       });
 
       if (filtered.length === 0) {
