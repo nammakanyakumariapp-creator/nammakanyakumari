@@ -196,7 +196,7 @@
       white-space: nowrap;
     }
   
-    /* 3x3 Category Grid (Exact 9 Icons) */
+    /* 3x3 Category Grid (Strictly 9 Master Icons) */
     .category-grid-container {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -1492,7 +1492,7 @@
 
     let vCounter = 1;
     masterCats.forEach(catObj => {
-      for (let i = 1; i <= 10; i++) {
+      for (let i = 1; i <= 15; i++) {
         const pNum = String(vCounter).padStart(3, '0');
         const phone = "94431000" + pNum;
         const town = masterTowns[(i - 1) % 5];
