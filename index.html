@@ -1709,6 +1709,19 @@
 
     const serviceList = all120MasterVendors;
 
+    // Browser History Integration for Back Button Protection
+    window.addEventListener('popstate', function(event) {
+      if (currentNavigationState === "results") {
+        currentNavigationState = "subcats";
+        openSubCategoryView(lastMasterCategory, true);
+      } else if (currentNavigationState === "subcats") {
+        currentNavigationState = "home";
+        closeAllPages(true);
+      } else {
+        closeAllPages(true);
+      }
+    });
+
     // Startup GPS Permission Functions
     function requestDeviceGPSPermission() {
       if (navigator.geolocation) {
@@ -1910,18 +1923,21 @@
       }
   
       view.classList.add("active");
+      history.pushState({page: "results"}, "", "");
     }
   
     function openAdvancedSearchPage() {
       closeAllPages();
       currentNavigationState = "results";
       document.getElementById("pageAdvancedSearch").classList.add("active");
+      history.pushState({page: "advancedSearch"}, "", "");
     }
   
     function openEmergencyPage() {
       closeAllPages();
       currentNavigationState = "results";
       document.getElementById("pageEmergency").classList.add("active");
+      history.pushState({page: "emergency"}, "", "");
     }
   
     function switchSearchCategory(cat) {
@@ -1987,6 +2003,7 @@
       }
   
       view.classList.add("active");
+      history.pushState({page: "results"}, "", "");
     }
   
     function triggerAdvancedVoiceInput() {
@@ -2011,9 +2028,11 @@
       }
     }
   
-    // Sub-Category View Layer with Proper State Management
-    function openSubCategoryView(categoryName) {
-      closeAllPages();
+    // Sub-Category View Layer with Proper State Management & History Push
+    function openSubCategoryView(categoryName, skipHistoryPush = false) {
+      if (!skipHistoryPush) {
+        closeAllPages();
+      }
       currentNavigationState = "subcats";
       lastMasterCategory = categoryName;
 
@@ -2048,9 +2067,13 @@
       htmlContainer += `</div>`;
       list.innerHTML = htmlContainer;
       view.classList.add("active");
+
+      if (!skipHistoryPush) {
+        history.pushState({page: "subcats", category: categoryName}, "", "");
+      }
     }
 
-    // Opens Sub-Category Results Page with Interactive Search Bar & Voice Input for Nearby Towns
+    // Opens Sub-Category Results Page with Interactive Search Bar & Flexible Keyword Matching
     function openSubCategoryResults(masterCategory, defaultKeyword, subName) {
       currentNavigationState = "results";
       activeSubCategoryKeyword = defaultKeyword;
@@ -2065,7 +2088,6 @@
       townLabel.innerText = "📍 தேடல் & பட்டியல்";
       list.innerHTML = "";
 
-      // Prefill town from home search bar if available
       const initialTown = document.getElementById("homeTownInput") ? document.getElementById("homeTownInput").value.trim() : "";
 
       let containerHtml = `
@@ -2090,6 +2112,7 @@
       list.innerHTML = containerHtml;
       renderFilteredVendorList(masterCategory, defaultKeyword, initialTown, defaultKeyword);
       view.classList.add("active");
+      history.pushState({page: "results"}, "", "");
     }
 
     function handleSearchEnterKey(e, masterCategory, defaultKeyword) {
@@ -2100,15 +2123,15 @@
       }
     }
 
-    // Corrected Back Navigation Logic (Results -> Subcats -> Home)
+    // Corrected Back Navigation Logic for UI Button
     function handleNavigationBack() {
       if (currentNavigationState === "results") {
         currentNavigationState = "subcats";
-        openSubCategoryView(lastMasterCategory);
+        openSubCategoryView(lastMasterCategory, true);
       } else if (currentNavigationState === "subcats") {
-        closeAllPages();
+        closeAllPages(true);
       } else {
-        closeAllPages();
+        closeAllPages(true);
       }
     }
 
@@ -2154,7 +2177,7 @@
         
         const matchesTown = !town || itemArea.includes(town.toLowerCase()) || town.toLowerCase().includes(itemArea);
         
-        // Flexible keyword matching for Tamil & English terms
+        // Flexible keyword matching for Tamil & English terms (Auto, Taxi, etc.)
         const targetKw = kw.toLowerCase();
         const matchesKeyword = !targetKw || 
           itemName.includes(targetKw) ||
@@ -2249,6 +2272,7 @@
       }
   
       view.classList.add("active");
+      history.pushState({page: "results"}, "", "");
     }
   
     function openDedicatedPage(pageId) {
@@ -2258,9 +2282,10 @@
       if (target) {
         target.classList.add("active");
       }
+      history.pushState({page: pageId}, "", "");
     }
   
-    function closeAllPages() {
+    function closeAllPages(skipHistoryState = false) {
       currentNavigationState = "home";
       document.querySelectorAll(".fullpage-view").forEach(p => p.classList.remove("active"));
     }
@@ -2648,6 +2673,7 @@
 
       renderAdminVendorsList(role);
       panel.classList.add("active");
+      history.pushState({page: "admin"}, "", "");
     }
 
     function updateAdminSubButtonUI() {
@@ -2691,7 +2717,7 @@
             <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 6px;">📍 ${v.area} • 📞 ${v.phone}</p>
             <div style="display: flex; gap: 6px;">
               <button onclick="changeVendorStatusLocally('${v.id || v.name}', 'active')" style="flex:1; padding: 5px; background: var(--green); color: #fff; font-size: 11px; border: none; border-radius: 6px; font-weight: 700; cursor: pointer;">Approve</button>
-              <button onclick="changeValidatorStatusLocally('${v.id || v.name}', 'blocked')" style="flex:1; padding: 5px; background: var(--red); color: #fff; font-size: 11px; border: none; border-radius: 6px; font-weight: 700; cursor: pointer;">Block</button>
+              <button onclick="changeVendorStatusLocally('${v.id || v.name}', 'blocked')" style="flex:1; padding: 5px; background: var(--red); color: #fff; font-size: 11px; border: none; border-radius: 6px; font-weight: 700; cursor: pointer;">Block</button>
             </div>
           </div>
         `;
