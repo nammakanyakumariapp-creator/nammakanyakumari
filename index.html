@@ -97,13 +97,14 @@
       color: var(--en-text-bright);
       padding: 8px 4px;
       border-radius: 8px;
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 700;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 3px;
+      text-align: center;
       transition: all 0.2s ease;
     }
     .home-tab-btn.active {
@@ -393,13 +394,14 @@
       color: var(--en-text-bright);
       padding: 8px 4px;
       border-radius: 8px;
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 700;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 3px;
+      text-align: center;
     }
     .vendor-tab-btn.active, .search-tab-btn.active {
       background: var(--primary-blue);
@@ -742,13 +744,13 @@
     <!-- Home Filter Tabs: உள்ளூர் சேவைகள் • உள்ளூர் வணிகங்கள் • உள்ளூர் வேலை வாய்ப்புகள் -->
     <div class="home-filter-tabs">
       <button class="home-tab-btn active" id="homeTabVehicle" onclick="switchHomeTab('வாகனம்')">
-        <i class="fa-solid fa-car"></i> உள்ளூர் சேவைகள்
+        <i class="fa-solid fa-car"></i> உள்ளூர் சேவைகள்<br><span style="font-size:8.5px; opacity:0.85;">Local Services</span>
       </button>
       <button class="home-tab-btn" id="homeTabShop" onclick="switchHomeTab('வியாபாரம்')">
-        <i class="fa-solid fa-shop"></i> உள்ளூர் வணிகங்கள்
+        <i class="fa-solid fa-shop"></i> உள்ளூர் வணிகங்கள்<br><span style="font-size:8.5px; opacity:0.85;">Local Businesses</span>
       </button>
       <button class="home-tab-btn" id="homeTabJob" onclick="switchHomeTab('வேலைவாய்ப்பு')">
-        <i class="fa-solid fa-briefcase"></i> உள்ளூர் வேலை வாய்ப்புகள்
+        <i class="fa-solid fa-briefcase"></i> உள்ளூர் வேலை வாய்ப்புகள்<br><span style="font-size:8.5px; opacity:0.85;">Local Jobs</span>
       </button>
     </div>
   
@@ -929,16 +931,16 @@
     <div class="fullpage-content">
       <div class="form-box">
         
-        <!-- Search Nav Tabs: உள்ளூர் சேவைகள் • உள்ளூர் வணிகங்கள் • உள்ளூர் வேலை வாய்ப்புகள் -->
+        <!-- Search Nav Tabs -->
         <div class="search-nav-tabs">
           <button class="search-tab-btn active" id="searchTabVehicle" onclick="switchSearchCategory('வாகனம்')">
-            <i class="fa-solid fa-car"></i> உள்ளூர் சேவைகள்
+            <i class="fa-solid fa-car"></i> உள்ளூர் சேவைகள்<br><span style="font-size:8px; opacity:0.85;">Local Services</span>
           </button>
           <button class="search-tab-btn" id="searchTabShop" onclick="switchSearchCategory('வியாபாரம்')">
-            <i class="fa-solid fa-shop"></i> உள்ளூர் வணிகங்கள்
+            <i class="fa-solid fa-shop"></i> உள்ளூர் வணிகங்கள்<br><span style="font-size:8px; opacity:0.85;">Local Businesses</span>
           </button>
           <button class="search-tab-btn" id="searchTabJob" onclick="switchSearchCategory('வேலைவாய்ப்பு')">
-            <i class="fa-solid fa-briefcase"></i> உள்ளூர் வேலை வாய்ப்புகள்
+            <i class="fa-solid fa-briefcase"></i> உள்ளூர் வேலை வாய்ப்புகள்<br><span style="font-size:8px; opacity:0.85;">Local Jobs</span>
           </button>
         </div>
   
@@ -1097,13 +1099,13 @@
       <!-- Vendor Form Tabs: உள்ளூர் சேவைகள் • உள்ளூர் வணிகங்கள் • உள்ளூர் வேலை வாய்ப்புகள் -->
       <div class="vendor-nav-tabs">
         <button class="vendor-tab-btn active" id="tabBtnVehicle" onclick="switchVendorSection('vehicle')">
-          <i class="fa-solid fa-car"></i> உள்ளூர் சேவைகள்
+          <i class="fa-solid fa-car"></i> உள்ளூர் சேவைகள்<br><span style="font-size:8px; opacity:0.85;">Local Services</span>
         </button>
         <button class="vendor-tab-btn" id="tabBtnShop" onclick="switchVendorSection('shop')">
-          <i class="fa-solid fa-shop"></i> உள்ளூர் வணிகங்கள்
+          <i class="fa-solid fa-shop"></i> உள்ளூர் வணிகங்கள்<br><span style="font-size:8px; opacity:0.85;">Local Businesses</span>
         </button>
         <button class="vendor-tab-btn" id="tabBtnJob" onclick="switchVendorSection('job')">
-          <i class="fa-solid fa-briefcase"></i> உள்ளூர் வேலை வாய்ப்புகள்
+          <i class="fa-solid fa-briefcase"></i> உள்ளூர் வேலை வாய்ப்புகள்<br><span style="font-size:8px; opacity:0.85;">Local Jobs</span>
         </button>
       </div>
   
@@ -2325,7 +2327,7 @@
             <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 6px;">📍 ${v.area} • 📞 ${v.phone}</p>
             <div style="display: flex; gap: 6px;">
               <button onclick="changeVendorStatusLocally('${v.id || v.name}', 'active')" style="flex:1; padding: 5px; background: var(--green); color: #fff; font-size: 11px; border: none; border-radius: 6px; font-weight: 700; cursor: pointer;">Approve</button>
-              <button onclick="changeVendorStatusLocally('${v.id || v.name}', 'blocked')" style="flex:1; padding: 5px; background: var(--red); color: #fff; font-size: 11px; border: none; border-radius: 6px; font-weight: 700; cursor: pointer;">Block</button>
+              <button onclick="changeVersionStatusLocally('${v.id || v.name}', 'blocked')" style="flex:1; padding: 5px; background: var(--red); color: #fff; font-size: 11px; border: none; border-radius: 6px; font-weight: 700; cursor: pointer;">Block</button>
             </div>
           </div>
         `;
