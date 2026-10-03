@@ -1722,7 +1722,7 @@
       }
     });
 
-    // Startup GPS Permission Functions
+    // Startup GPS Permission Functions (Automatic Option)
     function requestDeviceGPSPermission() {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
@@ -1741,14 +1741,25 @@
       }
     }
 
+    // Startup Manual Town Submission Function (Manual Option)
     function submitManualTownEntry() {
-      const townVal = document.getElementById("manualTownInputBox").value.trim();
+      const townInput = document.getElementById("manualTownInputBox");
+      const townVal = townInput ? townInput.value.trim() : "";
+      
       if (!townVal) {
         alert("தயவுசெய்து ஊரின் பெயரை உள்ளிடவும்.");
         return;
       }
-      document.getElementById("homeTownInput").value = townVal;
-      document.getElementById("locationPermissionModal").style.display = "none";
+      
+      const homeTown = document.getElementById("homeTownInput");
+      if (homeTown) {
+        homeTown.value = townVal;
+      }
+      
+      const modal = document.getElementById("locationPermissionModal");
+      if (modal) {
+        modal.style.display = "none";
+      }
     }
 
     window.addEventListener('DOMContentLoaded', () => {
@@ -2568,7 +2579,7 @@
       const details = document.getElementById("spDetails").value;
   
       const adminWa = "919443100000";
-      const text = `*📢 நம்ம கன்னியாகுமரி - விளம்பர முன்பதிவு / Ad Booking*%0A%0A*Shop:* ${shop}%0A*Contact:* ${name}\%0A*Mobile:*${phone}%0A*Duration:* ${duration}\%0A*Details:*${details}`;
+      const text = `*📢 நம்ம கன்னியாகுமரி - விளம்பர முன்பதிவு / Ad Booking*%0A%0A*Shop:* ${shop}%0A*Contact:* ${name}%0A*Mobile:* ${phone}%0A*Duration:* ${duration}%0A*Details:* ${details}`;
       window.open(`https://wa.me/${adminWa}?text=${text}`, '_blank');
       closeAllPages();
     }
@@ -2687,7 +2698,7 @@
         btn.style.background = "var(--green)";
         btn.style.color = "#fff";
       } else {
-        btn.innerText, btn.innerText = "ஆஃப் / OFF (Hidden)";
+        btn.innerText = "ஆஃப் / OFF (Hidden)";
         btn.style.background = "var(--red)";
         btn.style.color = "#fff";
       }
@@ -2702,7 +2713,7 @@
 
     function renderAdminVendorsList(role) {
       const container = document.getElementById("adminVendorCardsContainer");
-      TheListToRender = liveVendors.length > 0 ? liveVendors : serviceList;
+      const TheListToRender = liveVendors.length > 0 ? liveVendors : serviceList;
 
       if (TheListToRender.length === 0) {
         container.innerHTML = `<p style="font-size: 12px; color: var(--text-muted); text-align: center;">சரிபார்ப்புக்கு வெண்டர்கள் எவரும் இல்லை.</p>`;
@@ -2728,4 +2739,8 @@
     }
 
     function changeVendorStatusLocally(idOrName, newStatus) {
-      alert(`${idOrName} நிலை ${newStatus.toUpperCase()} என மாற்றப்பட்டது! (கூகுள் சீட்டிலும் பிரதிபலிக்கும்)
+      alert(`${idOrName} நிலை ${newStatus.toUpperCase()} என மாற்றப்பட்டது! (கூகுள் சீட்டிலும் பிரதிபலிக்கும்)`);
+    }
+  </script>
+</body>
+</html>
