@@ -993,7 +993,7 @@
   <div class="fullpage-view" id="fullpageView">
     <div class="fullpage-header">
       <div class="fullpage-header-left">
-        <button class="back-btn" id="pageBackBtn" onclick="handleNavigationBack()">
+        <button class="back-btn" onclick="handleNavigationBack()">
           <i class="fa-solid fa-arrow-left"></i>
         </button>
         <h3 id="dedicatedTitle">சேவை பட்டியல் / Results</h3>
@@ -1597,7 +1597,7 @@
     let selectedHomeCategory = "வாகனம்";
     let liveSettings = {};
     let liveVendors = [];
-    let currentNavigationState = "home"; // Tracks navigation history ("home", "subcats", "results")
+    let currentNavigationState = "home"; // "home" -> "subcats" -> "results"
     let lastMasterCategory = "";
 
     const GOOGLE_SHEET_API = "https://script.google.com/macros/s/AKfycbxfuaEQt_5g623AQJftNUyRktdPTjaBFXu7dBzS8jcWTjx0f8DMnCl7ZZzxE3g4AJvK/exec";
@@ -1905,11 +1905,13 @@
   
     function openAdvancedSearchPage() {
       closeAllPages();
+      currentNavigationState = "results";
       document.getElementById("pageAdvancedSearch").classList.add("active");
     }
   
     function openEmergencyPage() {
       closeAllPages();
+      currentNavigationState = "results";
       document.getElementById("pageEmergency").classList.add("active");
     }
   
@@ -1928,6 +1930,7 @@
       const town = document.getElementById("advancedTown").value.trim();
       
       closeAllPages();
+      currentNavigationState = "results";
       const view = document.getElementById("fullpageView");
       const list = document.getElementById("dedicatedList");
       const title = document.getElementById("dedicatedTitle");
@@ -2074,14 +2077,14 @@
       view.classList.add("active");
     }
 
-    // Corrected Back Navigation Logic
+    // Corrected Back Navigation Logic (Results -> Subcats -> Home)
     function handleNavigationBack() {
       if (currentNavigationState === "results") {
-        // If we are on the results/search page, go back to sub-categories page instead of home
         currentNavigationState = "subcats";
         openSubCategoryView(lastMasterCategory);
+      } else if (currentNavigationState === "subcats") {
+        closeAllPages();
       } else {
-        // Otherwise, close all pages and return to home
         closeAllPages();
       }
     }
@@ -2216,7 +2219,7 @@
   
     function openDedicatedPage(pageId) {
       closeAllPages();
-      currentNavigationState = "home";
+      currentNavigationState = "results";
       const target = document.getElementById(pageId);
       if (target) {
         target.classList.add("active");
@@ -2591,6 +2594,7 @@
 
     function openAdminPanelUI(role) {
       closeAllPages();
+      currentNavigationState = "results";
       const panel = document.getElementById("pageAdminPanel");
       const title = document.getElementById("adminPanelHeaderTitle");
       const badge = document.getElementById("adminRoleBadge");
