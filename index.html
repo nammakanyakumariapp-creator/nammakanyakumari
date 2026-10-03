@@ -1333,7 +1333,7 @@
     <div class="fullpage-content" id="termsContentBody"></div>
   </div>
   
-  <!-- DEDICATED FULL SCREEN PAGE: விளம்பர முன்பதிவு -->
+  <!-- DEDICATED FULL SCREEN PAGE: விளம்பர முன்பதிவு (படத்துடன் கூடியது) -->
   <div class="fullpage-view" id="pageSponsor">
     <div class="fullpage-header">
       <div class="fullpage-header-left">
@@ -1369,13 +1369,17 @@
             </select>
           </div>
           <div class="form-group">
+            <label>விளம்பரப் படம் / Ad Banner Image <span class="opt-tag">(Max 2MB) *</span></label>
+            <input type="file" id="spPhoto" accept="image/*" required style="padding: 7px; font-size: 12px;">
+          </div>
+          <div class="form-group">
             <label>விளம்பர வாசகம் / Details</label>
             <textarea id="spDetails" rows="2" placeholder="ஆஃபர் அல்லது சேவைகள்"></textarea>
           </div>
   
           <div class="terms-check-container">
             <div class="terms-row">
-              <input type="checkbox" id="chkTermsSponsor" required>
+              <input type="checkbox" id="chkTermsSponsor" onchange="toggleSponsorSubmitState()" required>
               <label for="chkTermsSponsor" class="terms-text-label">
                 <strong>Agree All / அனைத்தையும் ஏற்கிறேன்</strong><br>
                 சட்டவிரோத அல்லது தவறான விளம்பரங்கள் நிராகரிக்கப்படும் என்பதை அறிவேன்.
@@ -1383,8 +1387,8 @@
             </div>
           </div>
   
-          <button type="submit" class="form-submit-btn active-btn">
-            <i class="fa-brands fa-whatsapp"></i> முன்பதிவு செய்க / Submit Ad
+          <button type="submit" id="btnSubmitSponsor" class="form-submit-btn disabled-btn" disabled>
+            🔒 விதிமுறைகளை ஏற்று டிக் செய்யவும்
           </button>
         </form>
       </div>
@@ -1942,6 +1946,23 @@
         btn.classList.add("active-btn");
         btn.innerHTML = `<i class="fa-solid fa-paper-plane"></i> சமர்ப்பிக்க / Submit Need`;
       } else {
+        btn.disabled = true;
+        btn.classList.remove("active-btn");
+        btn.classList.add("disabled-btn");
+        btn.innerHTML = `🔒 விதிமுறைகளை ஏற்று டிக் செய்யவும்`;
+      }
+    }
+
+    // விளம்பரப் படிவத்திற்கான டிக் மற்றும் சப்மிட் பட்டன் கட்டுப்பாடு
+    function toggleSponsorSubmitState() {
+      const chk = document.getElementById("chkTermsSponsor");
+      const btn = document.getElementById("btnSubmitSponsor");
+      if (chk && chk.checked) {
+        btn.disabled = false;
+        btn.classList.remove("disabled-btn");
+        btn.classList.add("active-btn");
+        btn.innerHTML = `<i class="fa-brands fa-whatsapp"></i> முன்பதிவு செய்க / Submit Ad`;
+      } else if (btn) {
         btn.disabled = true;
         btn.classList.remove("active-btn");
         btn.classList.add("disabled-btn");
