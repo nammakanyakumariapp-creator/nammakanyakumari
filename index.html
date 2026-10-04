@@ -1215,6 +1215,8 @@
               <option value="டாக்ஸி / Taxi">🚕 டாக்ஸி / Taxi (Car / Tourist Vehicle)</option>
               <option value="லோடு வாகனம் / Load Vehicle">🚚 லோடு வாகனம் / Load (Tata Ace / Pickup)</option>
               <option value="செகண்ட் ஹேண்ட் கார் & பைக்">🚗 செகண்ட் ஹேண்ட் கார் & பைக் விற்பனை / Used Vehicles</option>
+              <option value="சுய ஓட்டுநர் & கார் ரெண்டல்">🚗 சுய ஓட்டுநர் & கார் ரெண்டல் / Self-Drive & Rental</option>
+              <option value="கார் பார்க்கிங் சேவை">🅿️ கார் பார்க்கிங் சேவை / Car Parking</option>
             </select>
           </div>
           <div class="form-group">
@@ -1610,14 +1612,15 @@
 
     const GOOGLE_SHEET_API = "https://script.google.com/macros/s/AKfycbxfuaEQt_5g623AQJftNUyRktdPTjaBFXu7dBzS8jcWTjx0f8DMnCl7ZZzxE3g4AJvK/exec";
 
-    // 9 Master Categories and their respective Sub-Categories mapping
+    // 9 Master Categories and their respective Sub-Categories mapping (Included Self-Drive Rental)
     const subCategoriesMap = {
       "போக்குவரத்து / Transport": [
         { name: "ஆட்டோ (Auto)", keyword: "ஆட்டோ" },
         { name: "டாக்ஸி (Taxi / Cab)", keyword: "டாக்ஸி" },
         { name: "லோடு வாகனம் (Load Auto / Pickup)", keyword: "லோடு" },
         { name: "செகண்ட் ஹேண்ட் கார் & பைக் (Used Vehicles)", keyword: "செகண்ட் ஹேண்ட்" },
-        { name: "கார் பார்க்கிங் & ரெண்டல் (Car Parking & Rentals)", keyword: "பார்க்கிங்" }
+        { name: "கார் பார்க்கிங் & ரெண்டல் (Car Parking & Rentals)", keyword: "பார்க்கிங்" },
+        { name: "சுய ஓட்டுநர் & கார் ரெண்டல் (Self-Drive & Rental)", keyword: "ரெண்டல்" }
       ],
       "வீடு & சொத்து / Real Estate": [
         { name: "வீடு வாடகைக்கு (Sale & Rent Homes)", keyword: "வீடு" },
