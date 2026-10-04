@@ -1424,7 +1424,7 @@
                 0% கமிஷன் முறையில் நேரடியாகப் பொதுமக்களுக்குச் சேவை செய்வேன் என்பதை ஏற்கிறேன்.
               </label>
             </div>
-            <a href="javascript:void(0)" onclick="openDedicatedTerms('vehicle')" class="view-terms-link">
+            <a href="javascript:void(0)" onclick="openDedicatedTerms('artisan')" class="view-terms-link">
               📜 சேவை விதிமுறைகளைப் படிக்க / View Terms ↗
             </a>
           </div>
@@ -2515,7 +2515,7 @@
             ← படித்துவிட்டேன் / படிவத்திற்குத் திரும்புக
           </button>
         `;
-      } else if (category === 'vehicle') {
+      } else if (category === 'vehicle' || category === 'artisan') {
         title.innerText = "சேவை விதிமுறைகள் & நிபந்தனைகள் / Service Terms";
         body.innerHTML = `
           <div class="terms-rule-card">
@@ -2534,14 +2534,26 @@
   
           <div class="terms-rule-card">
             <h4>2. சுய அறிவிப்பு & விபரங்களின் உண்மைத்தன்மை / Self-Declaration</h4>
-            <p class="ta-main">வழங்கப்பட்டுள்ள பெயர், திறன், தொடர்பு எண் விபரங்கள் உண்மையானவை. தவறான தகவல் கொடுத்தால் ஏற்படும் எவ்வித விளைவுகளுக்கும் <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது.</strong></p>
-            <p class="en-sub">I declare all credentials are genuine. <strong>Namma Kanyakumari platform is not responsible</strong> for incorrect details.</p>
+            <p class="ta-main">வழங்கப்பட்டுள்ள பெயர், திறன், தொடர்பு எண் விபரங்கள் உண்மையானவை. தவறான தகவல் கொடுத்தால் ஏற்படும் எவ்வித சட்டரீதியான விளைவுகளுக்கும் <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது;</strong> சம்பந்தப்பட்ட நபரே முழுப் பொறுப்பு.</p>
+            <p class="en-sub">I declare all credentials are genuine. <strong>Namma Kanyakumari platform is not responsible</strong> for incorrect details; the provider is solely responsible.</p>
           </div>
   
           <div class="terms-rule-card">
             <h4>3. கட்டணம் & வேலை பேரம் / Fares & Bargaining</h4>
-            <p class="ta-main">பொதுமக்களிடம் பேசப்படும் கட்டணம் மற்றும் பணப் பரிவர்த்தனைகளில் ஏற்படும் தகராறுகளுக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது.</strong></p>
-            <p class="en-sub"><strong>Namma Kanyakumari platform is not responsible</strong> for price disputes or settlements.</p>
+            <p class="ta-main">பொதுமக்களிடம் பேசப்படும் கட்டணம், சேவை பேரம் மற்றும் பணப் பரிவர்த்தனைகளில் ஏற்படும் தகராறுகளுக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது;</strong> இரு தரப்பினருமே பேசித் தீர்க்க முழுப் பொறுப்பு.</p>
+            <p class="en-sub"><strong>Namma Kanyakumari platform is not responsible</strong> for price disputes or settlements; provider and customer are fully responsible.</p>
+          </div>
+  
+          <div class="terms-rule-card">
+            <h4>4. பாதுகாப்பு & இழப்பீட்டுப் பொறுப்பு விலக்கு / Safety Disclaimer</h4>
+            <p class="ta-main">பணி செய்யும் போது நிகழும் விபத்துக்கள், காயங்கள் அல்லது சேதங்களுக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது;</strong> சம்பந்தப்பட்ட தொழிலாளியே முழுப் பொறுப்பு.</p>
+            <p class="en-sub"><strong>Namma Kanyakumari platform is not responsible</strong> for workplace accidents or injuries; the worker bears sole responsibility.</p>
+          </div>
+  
+          <div class="terms-rule-card">
+            <h4>5. நடத்தை நெறிமுறை & கணக்கு நீக்கம் / Code of Conduct</h4>
+            <p class="ta-main">வாடிக்கையாளர்களிடம் கண்ணியமாக நடக்க வேண்டும். தகாத நடத்தை அல்லது புகார்கள் காரணமாகக் கணக்கு நீக்கப்படுவதால் ஏற்படும் இழப்புகளுக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது.</strong></p>
+            <p class="en-sub">Misconduct will lead to listing removal. <strong>Namma Kanyakumari platform is not responsible</strong> for any business losses.</p>
           </div>
   
           <button type="button" class="form-submit-btn active-btn" onclick="closeTermsPage()">
@@ -2553,8 +2565,8 @@
         body.innerHTML = `
           <div class="terms-rule-card">
             <h4>1. 0% கமிஷன் & நேரடி வர்த்தகம் / 0% Commission & Direct Trade</h4>
-            <p class="ta-main">பொருட்கள் விற்பனையில் நம்ம கன்னியாகுமரி தளம் வியாபாரிகளிடம் எவ்வித கமிஷனும் பெறுவதில்லை. வியாபாரப் பரிவர்த்தனைகளில் ஏற்படும் இழப்புகளுக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது.</strong></p>
-            <p class="en-sub">The platform charges 0% sales commission. <strong>Namma Kanyakumari platform is not responsible</strong> for financial transactions.</p>
+            <p class="ta-main">பொருட்கள் விற்பனையில் நம்ம கன்னியாகுமரி தளம் வியாபாரிகளிடம் எவ்வித கமிஷனும் பெறுவதில்லை. வியாபாரப் பரிவர்த்தனைகளில் ஏற்படும் இழப்புகளுக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது;</strong> வணிகரே முழுப் பொறுப்பு.</p>
+            <p class="en-sub">The platform charges 0% sales commission. <strong>Namma Kanyakumari platform is not responsible</strong> for financial transactions; merchant bears responsibility.</p>
             <div class="hidden-subscription-clause" style="${subClauseStyle}">
               <p class="ta-main" style="color: #D4AF37; margin-top: 6px;">
                 ${dynamicNoticeTa}
@@ -2563,6 +2575,30 @@
                 ${dynamicNoticeEn}
               </p>
             </div>
+          </div>
+  
+          <div class="terms-rule-card">
+            <h4>2. உணவுத் தரம் & சுகாதாரம் / Product Quality & Hygiene</h4>
+            <p class="ta-main">விற்பனை செய்யப்படும் பொருட்கள் மற்றும் உணவுகளின் தரம், சுகாதாரம் அல்லது கெட்டுப்போதலுக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது;</strong> தயாரிப்பாளரே முழுப் பொறுப்பு.</p>
+            <p class="en-sub"><strong>Namma Kanyakumari platform is not responsible</strong> for food quality, hygiene or spoilage; producer is legally responsible.</p>
+          </div>
+  
+          <div class="terms-rule-card">
+            <h4>3. அரசு உரிமங்கள் & சான்றிதழ் / Licensing Compliance</h4>
+            <p class="ta-main">உணவு பாதுகாப்பு உரிமம் (FSSAI) மற்றும் வணிக அனுமதிகள் பெறாததால் எழும் அரசு நடவடிக்கைகளுக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது.</strong></p>
+            <p class="en-sub"><strong>Namma Kanyakumari platform is not responsible</strong> for lack of statutory licenses; merchant bears full responsibility.</p>
+          </div>
+  
+          <div class="terms-rule-card">
+            <h4>4. டெலிவரி & பொருள் சேதம் / Delivery & Damage</h4>
+            <p class="ta-main">பொருட்கள் டெலிவரி செய்யும் போதான தாமதம் அல்லது உடைசல் சேதங்களுக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது.</strong></p>
+            <p class="en-sub"><strong>Namma Kanyakumari platform is not responsible</strong> for delivery delays or breakages; store management is solely responsible.</p>
+          </div>
+  
+          <div class="terms-rule-card">
+            <h4>5. போலி விளம்பரம் & கணக்கு முடக்கம் / Fraudulent Listings</h4>
+            <p class="ta-main">போலி தயாரிப்புகள் அல்லது வாடிக்கையாளர் ஏமாற்றுப் புகார்களால் கணக்கு முடக்கப்படும் போது ஏற்படும் இழப்புகளுக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது.</strong></p>
+            <p class="en-sub"><strong>Namma Kanyakumari platform is not responsible</strong> for business losses caused by terminating misleading listings.</p>
           </div>
   
           <button type="button" class="form-submit-btn active-btn" onclick="closeTermsPage()">
@@ -2574,8 +2610,8 @@
         body.innerHTML = `
           <div class="terms-rule-card">
             <h4>1. 0% கமிஷன் நேரடி ஆள்சேர்ப்பு / 0% Commission Direct Hiring</h4>
-            <p class="ta-main">வேலை வாய்ப்புகளுக்கோ அல்லது ஆள்சேர்ப்புக்கோ தளம் எவ்வித கமிஷனும் வசூலிப்பதில்லை. ஒப்பந்த முடிவுகளுக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது.</strong></p>
-            <p class="en-sub">The platform charges 0% hiring commission. <strong>Namma Kanyakumari platform is not responsible</strong> for employment contracts.</p>
+            <p class="ta-main">வேலை வாய்ப்புகளுக்கோ அல்லது ஆள்சேர்ப்புக்கோ தளம் எவ்வித கமிஷனும் வசூலிப்பதில்லை. ஒப்பந்த முடிவுகளுக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது;</strong> இரு தரப்பினருமே முழுப் பொறுப்பு.</p>
+            <p class="en-sub">The platform charges 0% hiring commission. <strong>Namma Kanyakumari platform is not responsible</strong> for employment contracts; both parties are responsible.</p>
             <div class="hidden-subscription-clause" style="${subClauseStyle}">
               <p class="ta-main" style="color: #D4AF37; margin-top: 6px;">
                 ${dynamicNoticeTa}
@@ -2584,6 +2620,30 @@
                 ${dynamicNoticeEn}
               </p>
             </div>
+          </div>
+  
+          <div class="terms-rule-card">
+            <h4>2. முன்பணம் வாங்குவது முற்றிலும் தடை / No Upfront Fees</h4>
+            <p class="ta-main">வேலை தருவதாகக் கூறி விண்ணப்பதாரரிடம் எந்தவித முன்பணமும் கோரக் கூடாது; மோசடி பண இழப்புகளுக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது.</strong></p>
+            <p class="en-sub">Demanding registration fees is illegal. <strong>Namma Kanyakumari platform is not responsible</strong> for financial fraud.</p>
+          </div>
+  
+          <div class="terms-rule-card">
+            <h4>3. சம்பளம் & ஊதிய முரண்பாடுகள் / Salary Disputes</h4>
+            <p class="ta-main">சம்பள பாக்கி அல்லது ஊதிய முரண்பாடுகள் சார்ந்த பிரச்சனைகளுக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது.</strong></p>
+            <p class="en-sub"><strong>Namma Kanyakumari platform is not responsible</strong> for unpaid salaries or wage disputes.</p>
+          </div>
+  
+          <div class="terms-rule-card">
+            <h4>4. பணிச்சூழல் & பாதுகாப்பு / Workplace Safety</h4>
+            <p class="ta-main">வேலை செய்யும் இடத்தில் ஏற்படும் விபத்துக்கள் அல்லது காயங்களுக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது;</strong> சம்பந்தப்பட்ட நிறுவனமே முழுப் பொறுப்பு.</p>
+            <p class="en-sub"><strong>Namma Kanyakumari platform is not responsible</strong> for workplace accidents or injuries; the employer is wholly responsible.</p>
+          </div>
+  
+          <div class="terms-rule-card">
+            <h4>5. ஆவண சரிபார்ப்பு & நடத்தை / Verification & Conduct</h4>
+            <p class="ta-main">வேலை தேடுபவரின் சான்றிதழ்கள் அல்லது உண்மைத்தன்மைக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது.</strong></p>
+            <p class="en-sub"><strong>Namma Kanyakumari platform is not responsible</strong> for verifying applicant credentials; background checks are the employer's responsibility.</p>
           </div>
   
           <button type="button" class="form-submit-btn active-btn" onclick="closeTermsPage()">
