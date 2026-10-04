@@ -794,8 +794,9 @@
       cursor: pointer;
     }
 
-    /* Startup Location Permission Modal Overlay */
+    /* Startup Location Permission Modal Overlay (Non-blocking / Optional on Entry) */
     .location-permission-overlay {
+      display: none; 
       position: fixed;
       top: 0;
       left: 0;
@@ -803,7 +804,6 @@
       bottom: 0;
       background: rgba(7, 30, 61, 0.95);
       z-index: 99999;
-      display: flex;
       align-items: center;
       justify-content: center;
       padding: 16px;
@@ -822,7 +822,7 @@
 </head>
 <body>
 
-  <!-- Startup GPS Location Permission Modal (Mandatory) -->
+  <!-- Startup GPS Location Permission Modal (Hidden on Entrance, available on demand) -->
   <div class="location-permission-overlay" id="locationPermissionModal">
     <div class="location-permission-box">
       <div style="font-size: 40px; color: var(--yellow); margin-bottom: 12px;">
@@ -1612,7 +1612,7 @@
 
     const GOOGLE_SHEET_API = "https://script.google.com/macros/s/AKfycbxfuaEQt_5g623AQJftNUyRktdPTjaBFXu7dBzS8jcWTjx0f8DMnCl7ZZzxE3g4AJvK/exec";
 
-    // 9 Master Categories and their respective Sub-Categories mapping (Included Self-Drive Rental)
+    // 9 Master Categories and their respective Sub-Categories mapping
     const subCategoriesMap = {
       "போக்குவரத்து / Transport": [
         { name: "ஆட்டோ (Auto)", keyword: "ஆட்டோ" },
@@ -1731,7 +1731,7 @@
       }
     });
 
-    // Startup GPS Permission Functions (Automatic Option)
+    // Startup GPS Permission Functions (Optional / On Demand)
     function requestDeviceGPSPermission() {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
@@ -1750,7 +1750,6 @@
       }
     }
 
-    // Startup Manual Town Submission Function (Manual Option)
     function submitManualTownEntry() {
       const townInput = document.getElementById("manualTownInputBox");
       const townVal = townInput ? townInput.value.trim() : "";
