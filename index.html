@@ -794,7 +794,7 @@
       cursor: pointer;
     }
 
-    /* Startup Location Permission Modal Overlay (Non-blocking / Optional on Entry) */
+    /* Startup Location Permission Modal Overlay (Triggered on search or mic) */
     .location-permission-overlay {
       display: none; 
       position: fixed;
@@ -822,7 +822,7 @@
 </head>
 <body>
 
-  <!-- Startup GPS Location Permission Modal (Hidden on Entrance, available on demand) -->
+  <!-- Startup GPS Location Permission Modal (Triggered on search/mic request) -->
   <div class="location-permission-overlay" id="locationPermissionModal">
     <div class="location-permission-box">
       <div style="font-size: 40px; color: var(--yellow); margin-bottom: 12px;">
@@ -871,11 +871,11 @@
     <div class="home-search-row">
       <div class="home-town-input">
         <i class="fa-solid fa-location-dot" style="color: var(--yellow); font-size: 11px;"></i>
-        <input type="text" id="homeTownInput" placeholder="ஊர் / Town...">
+        <input type="text" id="homeTownInput" placeholder="ஊர் / Town..." onfocus="checkAndPromptLocation()">
       </div>
       <div class="home-search-input-box">
         <i class="fa-solid fa-magnifying-glass"></i>
-        <input type="text" id="homeKeywordInput" placeholder="எ.கா: ஆட்டோ, டாக்ஸி, மால்ட்..." onkeypress="handleHomeSearchKey(event)" style="padding-right: 28px;">
+        <input type="text" id="homeKeywordInput" placeholder="எ.கா: ஆட்டோ, டாக்ஸி, மால்ட்..." onfocus="checkAndPromptLocation()" onkeypress="handleHomeSearchKey(event)" style="padding-right: 28px;">
         <button type="button" class="home-mic-btn" id="homeMicBtn" onclick="triggerHomeVoiceInput()" title="Voice Search" style="position: absolute; right: 6px; top: 50%; transform: translateY(-50%);">
           <i class="fa-solid fa-microphone"></i>
         </button>
@@ -1220,16 +1220,25 @@
             </select>
           </div>
           <div class="form-group">
-            <label>இயங்கும் ஸ்டாண்டு <span class="en-label">/ Stand Location *</span></label>
-            <input type="text" id="vStand" required placeholder="எ.கா: அழகப்பபுரம் மெயின் ஸ்டாண்டு">
+            <label>கிராமம் / ஊர் <span class="en-label">/ Village or Area *</span></label>
+            <input type="text" id="vVillage" required placeholder="எ.கா: அழகப்பபுரம்">
           </div>
           <div class="form-group">
-            <label>ஊர் / பகுதி பெயர் <span class="en-label">/ Town or Area *</span></label>
-            <input type="text" id="vTownArea" required placeholder="எ.கா: அழகப்பபுரம் / மயிலாடி">
+            <label>பேரூராட்சி / நகராட்சி <span class="en-label">/ Town Panchayat or Municipality *</span></label>
+            <input type="text" id="vPanchayat" required placeholder="எ.கா: மயிலாடி பேரூராட்சி">
+          </div>
+          <div class="form-group">
+            <label>தாலுக்கா <span class="en-label">/ Taluk *</span></label>
+            <input type="text" id="vTalukText" required placeholder="எ.கா: அகத்தீஸ்வரம் தாலுக்கா">
           </div>
           <div class="form-group">
             <label>மாவட்டம் <span class="en-label">/ District *</span></label>
-            <input type="text" id="vDistrict" required placeholder="எ.கா: கன்னியாகுமரி">
+            <select id="vDistrict" required>
+              <option value="">மாவட்டத்தைத் தேர்வு செய்க ▼</option>
+              <option value="கன்னியாகுமரி">கன்னியாகுமரி / Kanyakumari</option>
+              <option value="திருநெல்வேலி">திருநெல்வேலி / Tirunelveli</option>
+              <option value="தூத்துக்குடி">தூத்துக்குடி / Tuticorin</option>
+            </select>
           </div>
           <div class="form-group">
             <label>நேரடி அழைப்பு எண் <span class="en-label">/ Calling Number *</span></label>
@@ -1731,7 +1740,18 @@
       }
     });
 
-    // Startup GPS Permission Functions (Optional / On Demand)
+    // Conditional location prompt when searching or focusing on search fields
+    function checkAndPromptLocation() {
+      const townInput = document.getElementById("homeTownInput");
+      if (townInput && !townInput.value.trim()) {
+        const modal = document.getElementById("locationPermissionModal");
+        if (modal) {
+          modal.style.display = "flex";
+        }
+      }
+    }
+
+    // Startup GPS Permission Functions
     function requestDeviceGPSPermission() {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
@@ -1856,6 +1876,7 @@
     }
   
     function triggerHomeVoiceInput() {
+      checkAndPromptLocation();
       const keywordInput = document.getElementById("homeKeywordInput");
       const micBtn = document.getElementById("homeMicBtn");
   
