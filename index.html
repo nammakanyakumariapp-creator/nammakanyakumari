@@ -337,13 +337,25 @@
       align-items: center;
       gap: 12px;
     }
-    .back-btn {
+    .back-btn, .end-btn {
       background: none;
       border: none;
       color: #fff;
       font-size: 18px;
       cursor: pointer;
       padding: 4px;
+    }
+    .end-btn {
+      color: var(--red);
+      font-size: 16px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(239, 68, 68, 0.12);
+      padding: 4px 8px;
+      border-radius: 6px;
+      border: 1px solid rgba(239, 68, 68, 0.3);
     }
     .fullpage-header h3 {
       font-size: 15px;
@@ -960,7 +972,12 @@
         </button>
         <h3 id="dedicatedTitle">சேவை பட்டியல் / Results</h3>
       </div>
-      <span id="dedicatedTown" class="tag-right">அழகப்பபுரம்</span>
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <span id="dedicatedTown" class="tag-right">அழகப்பபுரம்</span>
+        <button class="end-btn" onclick="closeAllPages()">
+          <i class="fa-solid fa-xmark"></i> End
+        </button>
+      </div>
     </div>
     <div class="fullpage-content" id="dedicatedList"></div>
   </div>
@@ -974,7 +991,12 @@
         </button>
         <h3>தேடல் / Advanced Search</h3>
       </div>
-      <span class="tag-right">Search</span>
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <span class="tag-right">Search</span>
+        <button class="end-btn" onclick="closeAllPages()">
+          <i class="fa-solid fa-xmark"></i> End
+        </button>
+      </div>
     </div>
     <div class="fullpage-content">
       <div class="form-box">
@@ -1024,7 +1046,12 @@
         </button>
         <h3>அவசர உதவி எண்கள் / Emergency</h3>
       </div>
-      <span class="tag-right" style="color: var(--red);">24x7 Helpline</span>
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <span class="tag-right" style="color: var(--red);">24x7 Helpline</span>
+        <button class="end-btn" onclick="closeAllPages()">
+          <i class="fa-solid fa-xmark"></i> End
+        </button>
+      </div>
     </div>
     <div class="fullpage-content">
       
@@ -1080,7 +1107,12 @@
         </button>
         <h3>வாடிக்கையாளர் தேவைப் பதிவு</h3>
       </div>
-      <span class="tag-right">Customer Need</span>
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <span class="tag-right">Customer Need</span>
+        <button class="end-btn" onclick="closeAllPages()">
+          <i class="fa-solid fa-xmark"></i> End
+        </button>
+      </div>
     </div>
     <div class="fullpage-content">
       <div class="form-box">
@@ -1146,7 +1178,12 @@
         </button>
         <h3>சேவை வழங்குநர் பதிவு</h3>
       </div>
-      <span class="tag-right">Vendor Form</span>
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <span class="tag-right">Vendor Form</span>
+        <button class="end-btn" onclick="closeAllPages()">
+          <i class="fa-solid fa-xmark"></i> End
+        </button>
+      </div>
     </div>
     <div class="fullpage-content">
       
@@ -1407,7 +1444,12 @@
         </button>
         <h3 id="termsHeaderTitle">விதிமுறைகள் & நிபந்தனைகள்</h3>
       </div>
-      <span class="tag-right">Terms</span>
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <span class="tag-right">Terms</span>
+        <button class="end-btn" onclick="closeTermsPage()">
+          <i class="fa-solid fa-xmark"></i> End
+        </button>
+      </div>
     </div>
     <div class="fullpage-content" id="termsContentBody"></div>
   </div>
@@ -1421,7 +1463,12 @@
         </button>
         <h3>விளம்பர முன்பதிவு / Sponsor Ad</h3>
       </div>
-      <span class="tag-right">Sponsor</span>
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <span class="tag-right">Sponsor</span>
+        <button class="end-btn" onclick="closeAllPages()">
+          <i class="fa-solid fa-xmark"></i> End
+        </button>
+      </div>
     </div>
     <div class="fullpage-content">
       <div class="form-box">
@@ -1483,7 +1530,12 @@
         </button>
         <h3 id="adminPanelHeaderTitle">நிர்வாக பேனல் / Admin Panel</h3>
       </div>
-      <span class="tag-right" id="adminRoleBadge" style="color: var(--green);">Master</span>
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <span class="tag-right" id="adminRoleBadge" style="color: var(--green);">Master</span>
+        <button class="end-btn" onclick="closeAllPages()">
+          <i class="fa-solid fa-xmark"></i> End
+        </button>
+      </div>
     </div>
     <div class="fullpage-content">
       
