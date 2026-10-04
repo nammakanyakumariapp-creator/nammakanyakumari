@@ -335,7 +335,9 @@
     .fullpage-header-left {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
+      min-width: 0;
+      flex: 1;
     }
     .back-btn, .end-btn {
       background: none;
@@ -344,22 +346,27 @@
       font-size: 18px;
       cursor: pointer;
       padding: 4px;
+      flex-shrink: 0;
     }
     .end-btn {
       color: var(--red);
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 700;
       display: flex;
       align-items: center;
       gap: 4px;
       background: rgba(239, 68, 68, 0.12);
-      padding: 4px 8px;
+      padding: 5px 10px;
       border-radius: 6px;
       border: 1px solid rgba(239, 68, 68, 0.3);
+      flex-shrink: 0;
     }
     .fullpage-header h3 {
-      font-size: 15px;
+      font-size: 13.5px;
       font-weight: 700;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     .fullpage-header span.tag-right {
       font-size: 12px;
@@ -1176,10 +1183,9 @@
         <button class="back-btn" onclick="closeAllPages()">
           <i class="fa-solid fa-arrow-left"></i>
         </button>
-        <h3>சேவை வழங்குநர் பதிவு</h3>
+        <h3>வழங்குநர் பதிவு <span style="font-size: 11px; color: var(--en-text-bright); font-weight: normal;">/ Vendor</span></h3>
       </div>
-      <div style="display: flex; align-items: center; gap: 8px;">
-        <span class="tag-right">Vendor Form</span>
+      <div style="display: flex; align-items: center; gap: 6px;">
         <button class="end-btn" onclick="closeAllPages()">
           <i class="fa-solid fa-xmark"></i> End
         </button>
@@ -2548,7 +2554,7 @@
   
           <div class="terms-rule-card">
             <h4>3. சம்பளம் & ஊதிய முரண்பாடுகள் / Salary & Wage Disputes</h4>
-            <p class="ta-main">சம்பள பாக்கி, தினக்கூலி குறைப்பு அல்லது ஊதிய முரண்பாடுகள் சார்ந்த பிரச்சனைகளுக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது;</strong> நிறுவனமும் தொழிலாளியுமே முழுப் பொறுப்பு.</p>
+            <p class="ta-main">சம்பளம் பாக்கி, தினக்கூலி குறைப்பு அல்லது ஊதிய முரண்பாடுகள் சார்ந்த பிரச்சனைகளுக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது;</strong> நிறுவனமும் தொழிலாளியுமே முழுப் பொறுப்பு.</p>
             <p class="en-sub"><strong>Namma Kanyakumari platform is not responsible</strong> for unpaid salaries, wage cuts, or pay disputes; the contracting parties are completely responsible.</p>
           </div>
   
