@@ -39,7 +39,7 @@
     body {
       background-color: var(--page-bg);
       color: var(--text-light);
-      padding-bottom: 35px;
+      padding-bottom: 55px;
     }
   
     .container {
@@ -196,7 +196,7 @@
       white-space: nowrap;
     }
   
-    /* 3x3 Category Grid (Strictly 9 Master Icons) */
+    /* 3x3 Category Grid (Strictly 9 Master Icons)[span_5](start_span)[span_5](end_span)[span_6](start_span)[span_6](end_span)[span_7](start_span)[span_7](end_span) */
     .category-grid-container {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -666,7 +666,7 @@
       display: none;
     }
   
-    /* Bottom Navigation Bar Optimization */
+    /* Bottom Navigation Bar Optimization with 360° Fire Offer Button */
     .bottom-bar {
       position: fixed;
       bottom: 0;
@@ -675,9 +675,10 @@
       background: #0B2D5B;
       display: flex;
       justify-content: space-around;
-      padding: 8px 0 6px 0;
-      border-top: 1px solid var(--gold-border);
+      padding: 8px 0 8px 0;
+      border-top: 1.5px solid var(--gold-border);
       z-index: 900;
+      box-shadow: 0 -4px 15px rgba(0,0,0,0.4);
     }
     .bar-link {
       color: var(--en-text-bright);
@@ -685,7 +686,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      font-size: 11px;
+      font-size: 10.5px;
       letter-spacing: -0.2px;
       font-weight: 600;
       gap: 3px;
@@ -694,8 +695,22 @@
     .bar-link.active {
       color: var(--yellow);
     }
+    .bar-link.offer-fire-btn {
+      color: #FF8C42 !important;
+      animation: pulseGlow 1.8s infinite;
+    }
+    .bar-link.offer-fire-btn i {
+      color: var(--yellow);
+      font-size: 18px;
+    }
     .bar-link i {
-      font-size: 16px;
+      font-size: 17px;
+    }
+
+    @keyframes pulseGlow {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.08); filter: brightness(1.2); }
+      100% { transform: scale(1); }
     }
 
     /* Secret Admin Modal */
@@ -874,7 +889,7 @@
       </div>
     </div>
   
-    <!-- 3x3 Category Grid (Strictly 9 Master Icons) -->
+    <!-- 3x3 Category Grid (Strictly 9 Master Icons)[span_8](start_span)[span_8](end_span)[span_9](start_span)[span_9](end_span)[span_10](start_span)[span_10](end_span) -->
     <div class="category-grid-container">
       <div class="cat-btn" onclick="checkAndPromptLocationOnce(); openSubCategoryView('போக்குவரத்து / Transport')">
         <div class="circle-icon icon-auto">
@@ -989,7 +1004,7 @@
     <div class="fullpage-content" id="dedicatedList"></div>
   </div>
   
-  <!-- ADVANCED SEARCH PAGE (Synchronized with Home Search Town & Keyword Inputs) -->
+  <!-- ADVANCED SEARCH PAGE -->
   <div class="fullpage-view" id="pageAdvancedSearch">
     <div class="fullpage-header">
       <div class="fullpage-header-left">
@@ -1007,8 +1022,6 @@
     </div>
     <div class="fullpage-content">
       <div class="form-box">
-        
-        <!-- Search Nav Tabs -->
         <div class="search-nav-tabs">
           <button class="search-tab-btn active" id="searchTabVehicle" onclick="switchSearchCategory('வாகனம்')">
             <i class="fa-solid fa-car"></i> உள்ளூர் சேவைகள்<br><span style="font-size:8px; opacity:0.85;">Local Services</span>
@@ -1039,7 +1052,6 @@
         <button type="button" class="form-submit-btn active-btn" onclick="executeAdvancedSearchFromPage()">
           <i class="fa-solid fa-magnifying-glass"></i> தேடுக / Search Results
         </button>
-  
       </div>
     </div>
   </div>
@@ -1061,7 +1073,6 @@
       </div>
     </div>
     <div class="fullpage-content">
-      
       <div class="emergency-card">
         <div class="emergency-info">
           <h4>🚨 ஆம்புலன்ஸ் / Ambulance</h4>
@@ -1101,7 +1112,6 @@
         </div>
         <a href="tel:181" class="btn-emergency-call"><i class="fa-solid fa-phone"></i> 181</a>
       </div>
-  
     </div>
   </div>
   
@@ -1154,7 +1164,6 @@
             </select>
           </div>
   
-          <!-- Customer Smart Terms Verification -->
           <div class="terms-check-container">
             <div class="terms-row">
               <input type="checkbox" id="chkTermsCustomer" onchange="toggleCustomerSubmitState()">
@@ -1193,7 +1202,6 @@
     </div>
     <div class="fullpage-content">
       
-      <!-- Vendor Form Tabs (Now 4 Tabs including Individual Artisans) -->
       <div class="vendor-nav-tabs">
         <button class="vendor-tab-btn active" id="tabBtnVehicle" onclick="switchVendorSection('vehicle')">
           <i class="fa-solid fa-car"></i> உள்ளூர் சேவைகள்<br><span style="font-size:7.5px; opacity:0.85;">Transport</span>
@@ -1602,7 +1610,7 @@
   <div id="smartOfferPopupModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); z-index:9999; align-items:center; justify-content:center; padding:16px;">
     <div style="background:var(--card-container-bg); border:2px solid var(--yellow); border-radius:16px; padding:20px; max-width:380px; width:100%; text-align:center; box-shadow:0 10px 25px rgba(0,0,0,0.5); position:relative;">
       
-      <!-- Top-Right Close 'X' Mark (Only closes popup, keeps results visible) -->
+      <!-- Top-Right Close 'X' Mark -->
       <button type="button" onclick="dismissSmartOfferPopupOnly()" style="position:absolute; top:12px; right:12px; background:none; border:none; color:var(--red); font-size:20px; font-weight:700; cursor:pointer; padding:4px;" title="Close">
         <i class="fa-solid fa-xmark"></i>
       </button>
@@ -1619,7 +1627,7 @@
         <p>💡 உங்கள் தேடலுடன் அருகில் உள்ள அனைத்து சலுகைகளும் இணைக்கப்பட்டுள்ளன.</p>
       </div>
 
-      <!-- Green View Offers Button (Opens full-page scrollable offers feed) -->
+      <!-- Green View Offers Button -->
       <button type="button" onclick="openFullPageOffersList()" style="width:100%; background:var(--green); color:#fff; border:none; padding:11px; border-radius:8px; font-weight:700; font-size:13px; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:6px; box-shadow:0 4px 12px rgba(22,163,74,0.4);">
         <i class="fa-solid fa-rectangle-ad"></i> ஆஃபர்களைப் பார்க்க / View Offers ➔
       </button>
@@ -1643,7 +1651,7 @@
       </div>
     </div>
     <div class="fullpage-content" id="fullScrollOffersContainer">
-      <!-- Dynamic Scrollable Banner Cards will be populated here -->
+      <!-- Dynamic Scrollable Banner Cards -->
     </div>
   </div>
 
@@ -1729,7 +1737,7 @@
     </div>
   </div>
   
-  <!-- Fixed Bottom Navigation Bar -->
+  <!-- Fixed Bottom Navigation Bar with 360° Fire Offer Button -->
   <nav class="bottom-bar">
     <a href="#" class="bar-link active">
       <i class="fa-solid fa-house"></i>
@@ -1742,6 +1750,10 @@
     <a href="javascript:void(0)" onclick="openEmergencyPage()" class="bar-link">
       <i class="fa-solid fa-truck-medical"></i>
       <span>அவசரம் / Emergency</span>
+    </a>
+    <a href="javascript:void(0)" onclick="openFullPageOffersList()" class="bar-link offer-fire-btn">
+      <i class="fa-solid fa-fire"></i>
+      <span>360° ஆஃபர்ஸ்</span>
     </a>
     <a href="javascript:void(0)" onclick="shareAppDirect()" class="bar-link">
       <i class="fa-solid fa-share-nodes"></i>
@@ -2167,8 +2179,6 @@
   
       view.classList.add("active");
       history.pushState({page: "results"}, "", "");
-      
-      // Trigger Smart Offer Popup ONLY ONCE on first results view
       checkAndTriggerSmartOfferPopup();
     }
   
@@ -2351,8 +2361,6 @@
       renderSubCategoryFilteredList(defaultKeyword, initialTown);
       view.classList.add("active");
       history.pushState({page: "results"}, "", "");
-      
-      // Trigger Smart Offer Popup ONLY ONCE on first results view
       checkAndTriggerSmartOfferPopup();
     }
 
