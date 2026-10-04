@@ -794,7 +794,7 @@
       cursor: pointer;
     }
 
-    /* Startup Location Permission Modal Overlay (Triggered on search or mic) */
+    /* Startup Location Permission Modal Overlay */
     .location-permission-overlay {
       display: none; 
       position: fixed;
@@ -822,7 +822,7 @@
 </head>
 <body>
 
-  <!-- Startup GPS Location Permission Modal (Triggered on search/mic request) -->
+  <!-- Startup GPS Location Permission Modal -->
   <div class="location-permission-overlay" id="locationPermissionModal">
     <div class="location-permission-box">
       <div style="font-size: 40px; color: var(--yellow); margin-bottom: 12px;">
@@ -871,11 +871,11 @@
     <div class="home-search-row">
       <div class="home-town-input">
         <i class="fa-solid fa-location-dot" style="color: var(--yellow); font-size: 11px;"></i>
-        <input type="text" id="homeTownInput" placeholder="ஊர் / Town..." onfocus="checkAndPromptLocation()">
+        <input type="text" id="homeTownInput" placeholder="ஊர் / Town..." onfocus="checkAndPromptLocationOnce()">
       </div>
       <div class="home-search-input-box">
         <i class="fa-solid fa-magnifying-glass"></i>
-        <input type="text" id="homeKeywordInput" placeholder="எ.கா: ஆட்டோ, டாக்ஸி, மால்ட்..." onfocus="checkAndPromptLocation()" onkeypress="handleHomeSearchKey(event)" style="padding-right: 28px;">
+        <input type="text" id="homeKeywordInput" placeholder="எ.கா: ஆட்டோ, டாக்ஸி, மால்ட்..." onfocus="checkAndPromptLocationOnce()" onkeypress="handleHomeSearchKey(event)" style="padding-right: 28px;">
         <button type="button" class="home-mic-btn" id="homeMicBtn" onclick="triggerHomeVoiceInput()" title="Voice Search" style="position: absolute; right: 6px; top: 50%; transform: translateY(-50%);">
           <i class="fa-solid fa-microphone"></i>
         </button>
@@ -1740,10 +1740,12 @@
       }
     });
 
-    // Conditional location prompt when searching or focusing on search fields
-    function checkAndPromptLocation() {
+    // Control location prompt strictly on session entry or first focus if empty (Once per session)
+    let hasPromptedLocationSession = false;
+    function checkAndPromptLocationOnce() {
       const townInput = document.getElementById("homeTownInput");
-      if (townInput && !townInput.value.trim()) {
+      if (townInput && !townInput.value.trim() && !hasPromptedLocationSession) {
+        hasPromptedLocationSession = true;
         const modal = document.getElementById("locationPermissionModal");
         if (modal) {
           modal.style.display = "flex";
@@ -1876,7 +1878,6 @@
     }
   
     function triggerHomeVoiceInput() {
-      checkAndPromptLocation();
       const keywordInput = document.getElementById("homeKeywordInput");
       const micBtn = document.getElementById("homeMicBtn");
   
@@ -2151,7 +2152,7 @@
       `;
 
       list.innerHTML = containerHtml;
-      // Immediately render default list based on home town and sub-category keyword
+      // Immediately render default list based on home town and sub-category keyword with exact area matching
       renderTwoBoxFilteredList(masterCategory, defaultKeyword, initialTown, defaultKeyword);
       view.classList.add("active");
       history.pushState({page: "results"}, "", "");
@@ -2214,7 +2215,7 @@
         const itemDesc = (item.desc || "").toLowerCase();
         const itemArea = (item.area || "").toLowerCase();
 
-        // Bilingual Town Matching
+        // Exact & Granular Town Matching (Ensures Specific Town names like மயிலாடி / அழகப்பபுரம் match accurately)
         const matchesTown = !town || itemArea.includes(town.toLowerCase()) || town.toLowerCase().includes(itemArea);
         
         // Bilingual Keyword Matching for all categories (Tamil & English support)
