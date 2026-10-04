@@ -1598,14 +1598,20 @@
     </div>
   </div>
 
-  <!-- 360-DEGREE RADIUS SMART OFFER POPUP MODAL (Triggers automatically on search) -->
+  <!-- 360-DEGREE RADIUS SMART OFFER POPUP MODAL (With Top-Right X & Green View Offers Button) -->
   <div id="smartOfferPopupModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); z-index:9999; align-items:center; justify-content:center; padding:16px;">
-    <div style="background:var(--card-container-bg); border:2px solid var(--yellow); border-radius:16px; padding:20px; max-width:380px; width:100%; text-align:center; box-shadow:0 10px 25px rgba(0,0,0,0.5);">
-      <div style="font-size:40px; color:var(--yellow); margin-bottom:10px;">
+    <div style="background:var(--card-container-bg); border:2px solid var(--yellow); border-radius:16px; padding:20px; max-width:380px; width:100%; text-align:center; box-shadow:0 10px 25px rgba(0,0,0,0.5); position:relative;">
+      
+      <!-- Top-Right Close 'X' Mark (As requested) -->
+      <button type="button" onclick="dismissSmartOfferPopupOnly()" style="position:absolute; top:12px; right:12px; background:none; border:none; color:var(--red); font-size:20px; font-weight:700; cursor:pointer; padding:4px;" title="Close">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div style="font-size:38px; color:var(--yellow); margin-bottom:8px; margin-top:6px;">
         <i class="fa-solid fa-bullhorn"></i>
       </div>
-      <h3 style="color:#FFF8E7; font-size:16px; margin-bottom:6px;">🌟 360° சுற்றளவு சிறப்பு ஆஃபர்கள்!</h3>
-      <p style="color:var(--yellow); font-size:11.5px; margin-bottom:12px;">(Nearby 20-25km Radius Special Offers)</p>
+      <h3 style="color:#FFF8E7; font-size:15px; margin-bottom:4px;">🌟 360° சுற்றளவு சிறப்பு ஆஃபர்கள்!</h3>
+      <p style="color:var(--yellow); font-size:11px; margin-bottom:12px;">(Nearby 20-25km Radius Special Offers)</p>
       
       <div style="text-align:left; background:#071E3D; padding:12px; border-radius:10px; font-size:12px; line-height:1.5; color:#E2E8F0; margin-bottom:16px; border:1px solid var(--gold-border);">
         <p style="margin-bottom:6px;">🔥 <strong>குமரி இயற்கை அங்காடி:</strong> தூய நாட்டு மருந்து & தேன் வகைகள் 10% தள்ளுபடி!</p>
@@ -1613,9 +1619,31 @@
         <p>💡 உங்கள் தேடலுடன் அருகில் உள்ள அனைத்து சலுகைகளும் இணைக்கப்பட்டுள்ளன.</p>
       </div>
 
-      <button type="button" onclick="closeSmartOfferPopup()" style="width:100%; background:var(--red); color:#fff; border:none; padding:11px; border-radius:8px; font-weight:700; font-size:13px; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:6px;">
-        <i class="fa-solid fa-xmark"></i> மூடுக / End & View Results
+      <!-- Green View Offers Button (Opens Full Page Scrollable Offers) -->
+      <button type="button" onclick="openFullPageOffersList()" style="width:100%; background:var(--green); color:#fff; border:none; padding:11px; border-radius:8px; font-weight:700; font-size:13px; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:6px; box-shadow:0 4px 12px rgba(22,163,74,0.4);">
+        <i class="fa-solid fa-rectangle-ad"></i> ஆஃபர்களைப் பார்க்க / View Offers ➔
       </button>
+    </div>
+  </div>
+
+  <!-- DEDICATED FULL SCREEN PAGE: முழுப் பக்க ஸ்க்ரோல் செய்யக்கூடிய விளம்பர ஆஃபர்கள் பட்டியல் (Full Page Scrollable Offers View) -->
+  <div class="fullpage-view" id="pageFullScrollOffers" style="z-index: 1500;">
+    <div class="fullpage-header">
+      <div class="fullpage-header-left">
+        <button class="back-btn" onclick="closeFullPageOffersList()">
+          <i class="fa-solid fa-arrow-left"></i>
+        </button>
+        <h3>360° சிறப்பு ஆஃபர்கள் பட்டியல் / Offers Feed</h3>
+      </div>
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <span class="tag-right" style="color: var(--yellow);">100+ Offers</span>
+        <button class="end-btn" onclick="closeAllPages()">
+          <i class="fa-solid fa-xmark"></i> End
+        </button>
+      </div>
+    </div>
+    <div class="fullpage-content" id="fullScrollOffersContainer">
+      <!-- Dynamic Scrollable Banner Cards will be populated here -->
     </div>
   </div>
 
@@ -1994,6 +2022,7 @@
       }
     }
 
+    // Universal trigger for smart offer popup on any search or category/subcat click
     function triggerSmartOfferPopupAndSearch(searchCallback) {
       const offerModal = document.getElementById("smartOfferPopupModal");
       if (offerModal) {
@@ -2002,11 +2031,54 @@
       window.pendingSearchCallback = searchCallback;
     }
 
-    function closeSmartOfferPopup() {
+    // Dismisses popup via top-right 'X' without executing search immediately or goes to results
+    function dismissSmartOfferPopupOnly() {
       const offerModal = document.getElementById("smartOfferPopupModal");
       if (offerModal) {
         offerModal.style.display = "none";
       }
+      if (window.pendingSearchCallback && typeof window.pendingSearchCallback === 'function') {
+        window.pendingSearchCallback();
+        window.pendingSearchCallback = null;
+      }
+    }
+
+    // Green button action: opens full-page scrollable offers feed
+    function openFullPageOffersList() {
+      const offerModal = document.getElementById("smartOfferPopupModal");
+      if (offerModal) {
+        offerModal.style.display = "none";
+      }
+      
+      const container = document.getElementById("fullScrollOffersContainer");
+      container.innerHTML = "";
+
+      // Generate 100+ scrollable offer banner cards for demonstration
+      let offersHtml = "";
+      for (let i = 1; i <= 25; i++) {
+        offersHtml += `
+          <div class="item-card" style="border: 1.5px solid var(--yellow); margin-bottom: 14px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+              <h4 style="color:var(--yellow);"><i class="fa-solid fa-rectangle-ad"></i> சிறப்பு ஆஃபர் பேனர் #${i}</h4>
+              <span class="status-badge active-green">360° Radius</span>
+            </div>
+            <div class="item-meta"><i class="fa-solid fa-location-dot"></i> அண்டை ஊர் / 20km சுற்றளவு</div>
+            <div class="item-desc">உள்ளூர் மக்களுக்கான தள்ளுபடி சலுகை மற்றும் சிறப்புப் பொருட்கள் இந்த பேனரில் இடம்பெற்றுள்ளது. உடனடியாகத் தொடர்பு கொள்ளுங்கள்!</div>
+            <div class="item-actions">
+              <a href="tel:9443100000" class="btn-call"><i class="fa-solid fa-phone"></i> அழைப்பு / Call</a>
+              <a href="https://wa.me/919443100000" class="btn-wa"><i class="fa-brands fa-whatsapp"></i> வாட்ஸ்அப் / WhatsApp</a>
+            </div>
+          </div>
+        `;
+      }
+      container.innerHTML = offersHtml;
+
+      document.getElementById("pageFullScrollOffers").classList.add("active");
+      history.pushState({page: "fullOffers"}, "", "");
+    }
+
+    function closeFullPageOffersList() {
+      document.getElementById("pageFullScrollOffers").classList.remove("active");
       if (window.pendingSearchCallback && typeof window.pendingSearchCallback === 'function') {
         window.pendingSearchCallback();
         window.pendingSearchCallback = null;
@@ -2267,26 +2339,28 @@
 
     // Opens Sub-Category Results Page automatically filtered by home town without extra search bars inside
     function openSubCategoryResults(masterCategory, defaultKeyword, subName) {
-      currentNavigationState = "results";
-      activeSubCategoryKeyword = defaultKeyword;
-      activeSubCategoryName = subName;
+      triggerSmartOfferPopupAndSearch(function() {
+        currentNavigationState = "results";
+        activeSubCategoryKeyword = defaultKeyword;
+        activeSubCategoryName = subName;
 
-      const view = document.getElementById("fullpageView");
-      const list = document.getElementById("dedicatedList");
-      const title = document.getElementById("dedicatedTitle");
-      const townLabel = document.getElementById("dedicatedTown");
-  
-      title.innerText = subName;
-      const initialTown = document.getElementById("homeTownInput") ? document.getElementById("homeTownInput").value.trim() : "";
-      townLabel.innerText = initialTown ? "📍 " + initialTown : "📍 கன்னியாகுமரி";
-      list.innerHTML = "";
+        const view = document.getElementById("fullpageView");
+        const list = document.getElementById("dedicatedList");
+        const title = document.getElementById("dedicatedTitle");
+        const townLabel = document.getElementById("dedicatedTown");
+    
+        title.innerText = subName;
+        const initialTown = document.getElementById("homeTownInput") ? document.getElementById("homeTownInput").value.trim() : "";
+        townLabel.innerText = initialTown ? "📍 " + initialTown : "📍 கன்னியாகுமரி";
+        list.innerHTML = "";
 
-      let containerHtml = `<div id="dynamicVendorScrollContainer"></div>`;
-      list.innerHTML = containerHtml;
+        let containerHtml = `<div id="dynamicVendorScrollContainer"></div>`;
+        list.innerHTML = containerHtml;
 
-      renderSubCategoryFilteredList(defaultKeyword, initialTown);
-      view.classList.add("active");
-      history.pushState({page: "results"}, "", "");
+        renderSubCategoryFilteredList(defaultKeyword, initialTown);
+        view.classList.add("active");
+        history.pushState({page: "results"}, "", "");
+      });
     }
 
     function renderSubCategoryFilteredList(defaultKeyword, searchTown) {
@@ -2363,59 +2437,61 @@
     }
 
     function openDedicatedCategory(categoryName) {
-      closeAllPages();
-      currentNavigationState = "results";
-      const view = document.getElementById("fullpageView");
-      const list = document.getElementById("dedicatedList");
-      const title = document.getElementById("dedicatedTitle");
-      const townLabel = document.getElementById("dedicatedTown");
-  
-      title.innerText = categoryName;
-      const initialTown = document.getElementById("homeTownInput") ? document.getElementById("homeTownInput").value.trim() : "";
-      townLabel.innerText = initialTown ? "📍 " + initialTown : "📍 கன்னியாகுமரி";
-      list.innerHTML = "";
-  
-      const displayData = liveVendors.length > 0 ? liveVendors : serviceList;
-      const filtered = displayData.filter(item => {
-        const cat = (item.category || "").toLowerCase();
-        const target = categoryName.toLowerCase().split('/')[0].trim();
-        const matchesTown = !initialTown || item.area.toLowerCase().includes(initialTown.toLowerCase()) || initialTown.toLowerCase().includes(item.area.toLowerCase());
-        
-        const matchesCategory = 
-          target.includes("அனைத்து") || target.includes("all") ||
-          cat.includes(target) || target.includes(cat);
-        return matchesTown && matchesCategory && item.status !== 'expired' && item.status !== 'deleted' && item.status !== 'blocked';
-      });
-  
-      if (filtered.length === 0) {
-        list.innerHTML = `
-          <div style="background:var(--card-container-bg); border:1px solid var(--gold-border); padding:24px; border-radius:12px; text-align:center; color:#CBD5E1; margin-top:20px;">
-            <i class="fa-solid fa-triangle-exclamation" style="font-size:32px; color:var(--yellow); margin-bottom:10px;"></i>
-            <p>இந்தப் பிரிவில் சேவைகள் தற்போது இல்லை.</p>
-          </div>
-        `;
-      } else {
-        filtered.forEach(item => {
-          let badgeHtml = item.status === 'active' ? 
-            `<span class="status-badge active-green"><i class="fa-solid fa-check"></i> சரிபார்க்கப்பட்டது</span>` : 
-            `<span class="status-badge pending-yellow"><i class="fa-solid fa-clock"></i> சரிபார்ப்பில்</span>`;
-  
-          list.innerHTML += `
-            <div class="item-card">
-              <h4>${item.name} ${badgeHtml}</h4>
-              <div class="item-meta"><i class="fa-solid fa-location-dot"></i> ${item.area} • ${item.category}</div>
-              <div class="item-desc">${item.desc}</div>
-              <div class="item-actions">
-                <a href="tel:${item.phone}" class="btn-call"><i class="fa-solid fa-phone"></i> அழைப்பு / Call</a>
-                <a href="https://wa.me/91${item.wa}" class="btn-wa"><i class="fa-brands fa-whatsapp"></i> வாட்ஸ்அப் / WhatsApp</a>
-              </div>
+      triggerSmartOfferPopupAndSearch(function() {
+        closeAllPages();
+        currentNavigationState = "results";
+        const view = document.getElementById("fullpageView");
+        const list = document.getElementById("dedicatedList");
+        const title = document.getElementById("dedicatedTitle");
+        const townLabel = document.getElementById("dedicatedTown");
+    
+        title.innerText = categoryName;
+        const initialTown = document.getElementById("homeTownInput") ? document.getElementById("homeTownInput").value.trim() : "";
+        townLabel.innerText = initialTown ? "📍 " + initialTown : "📍 கன்னியாகுமரி";
+        list.innerHTML = "";
+    
+        const displayData = liveVendors.length > 0 ? liveVendors : serviceList;
+        const filtered = displayData.filter(item => {
+          const cat = (item.category || "").toLowerCase();
+          const target = categoryName.toLowerCase().split('/')[0].trim();
+          const matchesTown = !initialTown || item.area.toLowerCase().includes(initialTown.toLowerCase()) || initialTown.toLowerCase().includes(item.area.toLowerCase());
+          
+          const matchesCategory = 
+            target.includes("அனைத்து") || target.includes("all") ||
+            cat.includes(target) || target.includes(cat);
+          return matchesTown && matchesCategory && item.status !== 'expired' && item.status !== 'deleted' && item.status !== 'blocked';
+        });
+    
+        if (filtered.length === 0) {
+          list.innerHTML = `
+            <div style="background:var(--card-container-bg); border:1px solid var(--gold-border); padding:24px; border-radius:12px; text-align:center; color:#CBD5E1; margin-top:20px;">
+              <i class="fa-solid fa-triangle-exclamation" style="font-size:32px; color:var(--yellow); margin-bottom:10px;"></i>
+              <p>இந்தப் பிரிவில் சேவைகள் தற்போது இல்லை.</p>
             </div>
           `;
-        });
-      }
-  
-      view.classList.add("active");
-      history.pushState({page: "results"}, "", "");
+        } else {
+          filtered.forEach(item => {
+            let badgeHtml = item.status === 'active' ? 
+              `<span class="status-badge active-green"><i class="fa-solid fa-check"></i> சரிபார்க்கப்பட்டது</span>` : 
+              `<span class="status-badge pending-yellow"><i class="fa-solid fa-clock"></i> சரிபார்ப்பில்</span>`;
+    
+            list.innerHTML += `
+              <div class="item-card">
+                <h4>${item.name} ${badgeHtml}</h4>
+                <div class="item-meta"><i class="fa-solid fa-location-dot"></i> ${item.area} • ${item.category}</div>
+                <div class="item-desc">${item.desc}</div>
+                <div class="item-actions">
+                  <a href="tel:${item.phone}" class="btn-call"><i class="fa-solid fa-phone"></i> அழைப்பு / Call</a>
+                  <a href="https://wa.me/91${item.wa}" class="btn-wa"><i class="fa-brands fa-whatsapp"></i> வாட்ஸ்அப் / WhatsApp</a>
+                </div>
+              </div>
+            `;
+          });
+        }
+    
+        view.classList.add("active");
+        history.pushState({page: "results"}, "", "");
+      });
     }
   
     function openDedicatedPage(pageId) {
