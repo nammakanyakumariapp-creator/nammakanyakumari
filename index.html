@@ -1132,19 +1132,25 @@
             <input type="tel" id="cPhone" required placeholder="94431234560">
           </div>
           <div class="form-group">
-            <label>தாலுக்கா <span class="en-label">/ Taluk *</span></label>
-            <select id="cTaluk" required>
-              <option value="">தாலுக்காவைத் தேர்வு செய்க ▼</option>
-              <option value="அகத்தீஸ்வரம்">அகத்தீஸ்வரம் தாலுக்கா / Agastheeswaram</option>
-              <option value="தோவாளை">தோவாளை தாலுக்கா / Thovalai</option>
-              <option value="கல்குளம்">கல்குளம் தாலுக்கா / Kalkulam</option>
-              <option value="விளவங்கோடு">விளவங்கோடு தாலுக்கா / Vilavancode</option>
-              <option value="பத்மநாபபுரம்">பத்மநாபபுரம் தாலுக்கா / Padmanabhapuram</option>
-            </select>
+            <label>கிராமம் / ஊர் <span class="en-label">/ Village or Area *</span></label>
+            <input type="text" id="cVillage" required placeholder="எ.கா: அழகப்பபுரம்">
           </div>
           <div class="form-group">
-            <label>ஊர் / பகுதி <span class="en-label">/ Town or Village *</span></label>
-            <input type="text" id="cArea" required placeholder="எ.கா: அழகப்பபுரம் / மயிலாடி">
+            <label>பேரூராட்சி / நகராட்சி <span class="en-label">/ Town Panchayat or Municipality *</span></label>
+            <input type="text" id="cPanchayat" required placeholder="எ.கா: மயிலாடி பேரூராட்சி">
+          </div>
+          <div class="form-group">
+            <label>தாலுக்கா <span class="en-label">/ Taluk *</span></label>
+            <input type="text" id="cTalukText" required placeholder="எ.கா: அகத்தீஸ்வரம் தாலுக்கா">
+          </div>
+          <div class="form-group">
+            <label>மாவட்டம் <span class="en-label">/ District *</span></label>
+            <select id="cDistrict" required>
+              <option value="">மாவட்டத்தைத் தேர்வு செய்க ▼</option>
+              <option value="கன்னியாகுமரி">கன்னியாகுமரி / Kanyakumari</option>
+              <option value="திருநெல்வேலி">திருநெல்வேலி / Tirunelveli</option>
+              <option value="தூத்துக்குடி">தூத்துக்குடி / Tuticorin</option>
+            </select>
           </div>
   
           <!-- Customer Smart Terms Verification -->
@@ -2586,7 +2592,14 @@
   
     function handleCustomerSubmit(e) {
       e.preventDefault();
-      alert("உங்கள் தேவை வெற்றிகரமாகப் பதிவு செய்யப்பட்டது!");
+      const name = document.getElementById("cName").value.trim();
+      const phone = document.getElementById("cPhone").value.trim();
+      const village = document.getElementById("cVillage").value.trim();
+      const panchayat = document.getElementById("cPanchayat").value.trim();
+      const taluk = document.getElementById("cTalukText").value.trim();
+      const district = document.getElementById("cDistrict").value;
+
+      alert(`வாடிக்கையாளர் தேவை வெற்றிகரமாகப் பதிவு செய்யப்பட்டது!\nபெயர்: ${name}\nஊர்: ${village}, ${panchayat}\nதாலுக்கா/மாவட்டம்: ${taluk}, ${district}`);
       closeAllPages();
     }
   
