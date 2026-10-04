@@ -1689,8 +1689,13 @@
 
     const serviceList = all120MasterVendors;
 
-    // Browser History Integration for Back Button Protection
+    // Browser History Integration with Terms Page Back Fix
     window.addEventListener('popstate', function(event) {
+      const termsView = document.getElementById("pageTermsView");
+      if (termsView && termsView.classList.contains("active")) {
+        closeTermsPage();
+        return;
+      }
       if (currentNavigationState === "results") {
         currentNavigationState = "subcats";
         openSubCategoryView(lastMasterCategory, true);
@@ -2514,6 +2519,7 @@
       }
   
       termsPage.classList.add("active");
+      history.pushState({page: "terms"}, "", "");
       applySubscriptionDisplayState();
     }
   
