@@ -871,11 +871,11 @@
     <div class="home-search-row">
       <div class="home-town-input">
         <i class="fa-solid fa-location-dot" style="color: var(--yellow); font-size: 11px;"></i>
-        <input type="text" id="homeTownInput" placeholder="ஊர் / Town..." onfocus="checkAndPromptLocationOnce()">
+        <input type="text" id="homeTownInput" placeholder="ஊர் / Town...">
       </div>
       <div class="home-search-input-box">
         <i class="fa-solid fa-magnifying-glass"></i>
-        <input type="text" id="homeKeywordInput" placeholder="எ.கா: ஆட்டோ, டாக்ஸி, மால்ட்..." onfocus="checkAndPromptLocationOnce()" onkeypress="handleHomeSearchKey(event)" style="padding-right: 28px;">
+        <input type="text" id="homeKeywordInput" placeholder="எ.கா: ஆட்டோ, டாக்ஸி, மால்ட்..." onkeypress="handleHomeSearchKey(event)" style="padding-right: 28px;">
         <button type="button" class="home-mic-btn" id="homeMicBtn" onclick="triggerHomeVoiceInput()" title="Voice Search" style="position: absolute; right: 6px; top: 50%; transform: translateY(-50%);">
           <i class="fa-solid fa-microphone"></i>
         </button>
@@ -1740,20 +1740,7 @@
       }
     });
 
-    // Control location prompt strictly on session entry or first focus if empty (Once per session)
-    let hasPromptedLocationSession = false;
-    function checkAndPromptLocationOnce() {
-      const townInput = document.getElementById("homeTownInput");
-      if (townInput && !townInput.value.trim() && !hasPromptedLocationSession) {
-        hasPromptedLocationSession = true;
-        const modal = document.getElementById("locationPermissionModal");
-        if (modal) {
-          modal.style.display = "flex";
-        }
-      }
-    }
-
-    // Startup GPS Permission Functions
+    // Startup GPS Permission Functions (On-demand only)
     function requestDeviceGPSPermission() {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
@@ -1928,7 +1915,7 @@
   
       const displayData = liveVendors.length > 0 ? liveVendors : serviceList;
       const filtered = displayData.filter(item => {
-        const matchesTown = !town || item.area.toLowerCase().includes(town.toLowerCase());
+        const matchesTown = !town || item.area.toLowerCase().includes(town.toLowerCase()) || town.toLowerCase().includes(item.area.toLowerCase());
         const matchesKeyword = !keyword || 
           item.name.toLowerCase().includes(keyword.toLowerCase()) ||
           item.category.toLowerCase().includes(keyword.toLowerCase()) ||
@@ -2008,7 +1995,7 @@
   
       const displayData = liveVendors.length > 0 ? liveVendors : serviceList;
       const filtered = displayData.filter(item => {
-        const matchesTown = !town || item.area.toLowerCase().includes(town.toLowerCase());
+        const matchesTown = !town || item.area.toLowerCase().includes(town.toLowerCase()) || town.toLowerCase().includes(item.area.toLowerCase());
         const matchesKeyword = !keyword || 
           item.name.toLowerCase().includes(keyword.toLowerCase()) ||
           item.category.toLowerCase().includes(keyword.toLowerCase()) ||
@@ -2114,7 +2101,7 @@
       }
     }
 
-    // Opens Sub-Category Results Page with Two Separate Input Boxes for Town & Keyword (Fully Functional Default Prefill)
+    // Opens Sub-Category Results Page with Two Separate Input Boxes for Town & Keyword (Fully Functional Default Prefill & Manual Overriding)
     function openSubCategoryResults(masterCategory, defaultKeyword, subName) {
       currentNavigationState = "results";
       activeSubCategoryKeyword = defaultKeyword;
@@ -2152,7 +2139,7 @@
       `;
 
       list.innerHTML = containerHtml;
-      // Immediately render default list based on home town and sub-category keyword with exact area matching
+      // Immediately render default list based on home town and sub-category keyword with flexible area matching
       renderTwoBoxFilteredList(masterCategory, defaultKeyword, initialTown, defaultKeyword);
       view.classList.add("active");
       history.pushState({page: "results"}, "", "");
@@ -2179,8 +2166,12 @@
     }
 
     function triggerTwoBoxSubFilter(masterCategory, defaultKeyword) {
-      const townVal = document.getElementById("filterTownInput").value.trim();
-      const keywordVal = document.getElementById("filterKeywordInput").value.trim();
+      const townInput = document.getElementById("filterTownInput");
+      const keywordInput = document.getElementById("filterKeywordInput");
+      
+      const townVal = townInput ? townInput.value.trim() : "";
+      const keywordVal = keywordInput ? keywordInput.value.trim() : defaultKeyword;
+      
       renderTwoBoxFilteredList(masterCategory, defaultKeyword, townVal, keywordVal);
     }
 
@@ -2215,7 +2206,7 @@
         const itemDesc = (item.desc || "").toLowerCase();
         const itemArea = (item.area || "").toLowerCase();
 
-        // Exact & Granular Town Matching (Ensures Specific Town names like மயிலாடி / அழகப்பபுரம் match accurately)
+        // Flexible and bidirectional town matching (Allows manual searching of nearby towns like மயிலாடி if default town has no results)
         const matchesTown = !town || itemArea.includes(town.toLowerCase()) || town.toLowerCase().includes(itemArea);
         
         // Bilingual Keyword Matching for all categories (Tamil & English support)
@@ -2239,7 +2230,7 @@
         container.innerHTML = `
           <div style="background:var(--card-container-bg); border:1px solid var(--gold-border); padding:24px; border-radius:12px; text-align:center; color:#CBD5E1; margin-top:10px;">
             <i class="fa-solid fa-triangle-exclamation" style="font-size:32px; color:var(--yellow); margin-bottom:10px;"></i>
-            <p>இந்தப் பகுதியில் சேவைகள் தற்போது கிடைக்கவில்லை.</p>
+            <p>இந்தப் பகுதியில் சேவைகள் தற்போது கிடைக்கவில்லை. (Try searching nearby towns like மயிலாடி / Nagercoil)</p>
           </div>
         `;
       } else {
@@ -2447,7 +2438,7 @@
   
           <div class="terms-rule-card">
             <h4>5. முரண்பாடுகள் & புகார்கள் / Civil Disputes</h4>
-            <p class="ta-main">வாடிக்கையாளருக்கும் சேவை வழங்குநருக்கும் இடையே எழும் தனிப்பட்ட தகராறுகள் அல்லது நஷ்டங்களுக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது;</strong> பேசித் தீர்க்கவோ அல்லது சட்டப்படி அணுகவோ சம்பந்தப்பட்ட நபர்களே முழுப் பொறுப்பு.</p>
+            <p class="ta-main">வாடிக்கையருக்கும் சேவை வழங்குநருக்கும் இடையே எழும் தனிப்பட்ட தகராறுகள் அல்லது நஷ்டங்களுக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது;</strong> பேசித் தீர்க்கவோ அல்லது சட்டப்படி அணுகவோ சம்பந்தப்பட்ட நபர்களே முழுப் பொறுப்பு.</p>
             <p class="en-sub"><strong>Namma Kanyakumari platform is not responsible</strong> for personal disputes or damages arising between customers and vendors.</p>
           </div>
   
