@@ -1598,6 +1598,27 @@
     </div>
   </div>
 
+  <!-- 360-DEGREE RADIUS SMART OFFER POPUP MODAL (Triggers automatically on search) -->
+  <div id="smartOfferPopupModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); z-index:9999; align-items:center; justify-content:center; padding:16px;">
+    <div style="background:var(--card-container-bg); border:2px solid var(--yellow); border-radius:16px; padding:20px; max-width:380px; width:100%; text-align:center; box-shadow:0 10px 25px rgba(0,0,0,0.5);">
+      <div style="font-size:40px; color:var(--yellow); margin-bottom:10px;">
+        <i class="fa-solid fa-bullhorn"></i>
+      </div>
+      <h3 style="color:#FFF8E7; font-size:16px; margin-bottom:6px;">🌟 360° சுற்றளவு சிறப்பு ஆஃபர்கள்!</h3>
+      <p style="color:var(--yellow); font-size:11.5px; margin-bottom:12px;">(Nearby 20-25km Radius Special Offers)</p>
+      
+      <div style="text-align:left; background:#071E3D; padding:12px; border-radius:10px; font-size:12px; line-height:1.5; color:#E2E8F0; margin-bottom:16px; border:1px solid var(--gold-border);">
+        <p style="margin-bottom:6px;">🔥 <strong>குமரி இயற்கை அங்காடி:</strong> தூய நாட்டு மருந்து & தேன் வகைகள் 10% தள்ளுபடி!</p>
+        <p style="margin-bottom:6px;">🚗 <strong>உள்ளூர் டாக்ஸி சர்வீஸ்:</strong> அண்டை மாவட்ட எல்லைப் பயணம் வரை சிறப்புப் பலன்கள்.</p>
+        <p>💡 உங்கள் தேடலுடன் அருகில் உள்ள அனைத்து சலுகைகளும் இணைக்கப்பட்டுள்ளன.</p>
+      </div>
+
+      <button type="button" onclick="closeSmartOfferPopup()" style="width:100%; background:var(--red); color:#fff; border:none; padding:11px; border-radius:8px; font-weight:700; font-size:13px; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:6px;">
+        <i class="fa-solid fa-xmark"></i> மூடுக / End & View Results
+      </button>
+    </div>
+  </div>
+
   <!-- DEDICATED FULL SCREEN PAGE: ரகசிய அட்மின் நிர்வாக பேனல் -->
   <div class="fullpage-view" id="pageAdminPanel" style="z-index: 1200;">
     <div class="fullpage-header">
@@ -1969,7 +1990,26 @@
   
     function handleHomeSearchKey(e) {
       if (e.key === 'Enter') {
-        executeHomeSearch();
+        triggerSmartOfferPopupAndSearch(executeHomeSearch);
+      }
+    }
+
+    function triggerSmartOfferPopupAndSearch(searchCallback) {
+      const offerModal = document.getElementById("smartOfferPopupModal");
+      if (offerModal) {
+        offerModal.style.display = "flex";
+      }
+      window.pendingSearchCallback = searchCallback;
+    }
+
+    function closeSmartOfferPopup() {
+      const offerModal = document.getElementById("smartOfferPopupModal");
+      if (offerModal) {
+        offerModal.style.display = "none";
+      }
+      if (window.pendingSearchCallback && typeof window.pendingSearchCallback === 'function') {
+        window.pendingSearchCallback();
+        window.pendingSearchCallback = null;
       }
     }
   
@@ -1991,7 +2031,7 @@
           keywordInput.value = event.results[0][0].transcript;
           keywordInput.placeholder = "எ.கா: ஆட்டோ, டாக்ஸி, மால்ட்...";
           micBtn.classList.remove("listening");
-          executeHomeSearch();
+          triggerSmartOfferPopupAndSearch(executeHomeSearch);
         };
   
         recognition.onerror = function() {
@@ -2094,64 +2134,66 @@
     }
   
     function executeAdvancedSearchFromPage() {
-      const town = document.getElementById("advancedTown").value.trim();
-      const keyword = document.getElementById("advancedKeyword").value.trim();
-      
-      // Synchronize back to home town input so both inputs share state seamlessly
-      if (town) {
-        document.getElementById("homeTownInput").value = town;
-      }
+      triggerSmartOfferPopupAndSearch(function() {
+        const town = document.getElementById("advancedTown").value.trim();
+        const keyword = document.getElementById("advancedKeyword").value.trim();
+        
+        // Synchronize back to home town input so both inputs share state seamlessly
+        if (town) {
+          document.getElementById("homeTownInput").value = town;
+        }
 
-      closeAllPages();
-      currentNavigationState = "results";
-      const view = document.getElementById("fullpageView");
-      const list = document.getElementById("dedicatedList");
-      const title = document.getElementById("dedicatedTitle");
-      const townLabel = document.getElementById("dedicatedTown");
-  
-      title.innerText = keyword ? keyword : "தேடல் முடிவு / Search Results";
-      townLabel.innerText = town ? "📍 " + town : "📍 கன்னியாகுமரி";
-      list.innerHTML = "";
-  
-      const displayData = liveVendors.length > 0 ? liveVendors : serviceList;
-      const filtered = displayData.filter(item => {
-        const matchesTown = !town || item.area.toLowerCase().includes(town.toLowerCase()) || town.toLowerCase().includes(item.area.toLowerCase());
-        const matchesKeyword = !keyword || 
-          item.name.toLowerCase().includes(keyword.toLowerCase()) ||
-          item.category.toLowerCase().includes(keyword.toLowerCase()) ||
-          item.desc.toLowerCase().includes(keyword.toLowerCase());
-        return matchesTown && matchesKeyword && item.status !== 'expired' && item.status !== 'deleted' && item.status !== 'blocked';
-      });
-  
-      if (filtered.length === 0) {
-        list.innerHTML = `
-          <div style="background:var(--card-container-bg); border:1px solid var(--gold-border); padding:24px; border-radius:12px; text-align:center; color:#CBD5E1; margin-top:20px;">
-            <i class="fa-solid fa-triangle-exclamation" style="font-size:32px; color:var(--yellow); margin-bottom:10px;"></i>
-            <p>இந்தத் தேடலுக்கான சேவை தற்போது கிடைக்கவில்லை.</p>
-          </div>
-        `;
-      } else {
-        filtered.forEach(item => {
-          let badgeHtml = item.status === 'active' ? 
-            `<span class="status-badge active-green"><i class="fa-solid fa-check"></i> சரிபார்க்கப்பட்டது</span>` : 
-            `<span class="status-badge pending-yellow"><i class="fa-solid fa-clock"></i> சரிபார்ப்பில்</span>`;
-  
-          list.innerHTML += `
-            <div class="item-card">
-              <h4>${item.name} ${badgeHtml}</h4>
-              <div class="item-meta"><i class="fa-solid fa-location-dot"></i> ${item.area} • ${item.category}</div>
-              <div class="item-desc">${item.desc}</div>
-              <div class="item-actions">
-                <a href="tel:${item.phone}" class="btn-call"><i class="fa-solid fa-phone"></i> அழைப்பு / Call</a>
-                <a href="https://wa.me/91${item.wa}" class="btn-wa"><i class="fa-brands fa-whatsapp"></i> வாட்ஸ்அப் / WhatsApp</a>
-              </div>
+        closeAllPages();
+        currentNavigationState = "results";
+        const view = document.getElementById("fullpageView");
+        const list = document.getElementById("dedicatedList");
+        const title = document.getElementById("dedicatedTitle");
+        const townLabel = document.getElementById("dedicatedTown");
+    
+        title.innerText = keyword ? keyword : "தேடல் முடிவு / Search Results";
+        townLabel.innerText = town ? "📍 " + town : "📍 கன்னியாகுமரி";
+        list.innerHTML = "";
+    
+        const displayData = liveVendors.length > 0 ? liveVendors : serviceList;
+        const filtered = displayData.filter(item => {
+          const matchesTown = !town || item.area.toLowerCase().includes(town.toLowerCase()) || town.toLowerCase().includes(item.area.toLowerCase());
+          const matchesKeyword = !keyword || 
+            item.name.toLowerCase().includes(keyword.toLowerCase()) ||
+            item.category.toLowerCase().includes(keyword.toLowerCase()) ||
+            item.desc.toLowerCase().includes(keyword.toLowerCase());
+          return matchesTown && matchesKeyword && item.status !== 'expired' && item.status !== 'deleted' && item.status !== 'blocked';
+        });
+    
+        if (filtered.length === 0) {
+          list.innerHTML = `
+            <div style="background:var(--card-container-bg); border:1px solid var(--gold-border); padding:24px; border-radius:12px; text-align:center; color:#CBD5E1; margin-top:20px;">
+              <i class="fa-solid fa-triangle-exclamation" style="font-size:32px; color:var(--yellow); margin-bottom:10px;"></i>
+              <p>இந்தத் தேடலுக்கான சேவை தற்போது கிடைக்கவில்லை.</p>
             </div>
           `;
-        });
-      }
-  
-      view.classList.add("active");
-      history.pushState({page: "results"}, "", "");
+        } else {
+          filtered.forEach(item => {
+            let badgeHtml = item.status === 'active' ? 
+              `<span class="status-badge active-green"><i class="fa-solid fa-check"></i> சரிபார்க்கப்பட்டது</span>` : 
+              `<span class="status-badge pending-yellow"><i class="fa-solid fa-clock"></i> சரிபார்ப்பில்</span>`;
+    
+            list.innerHTML += `
+              <div class="item-card">
+                <h4>${item.name} ${badgeHtml}</h4>
+                <div class="item-meta"><i class="fa-solid fa-location-dot"></i> ${item.area} • ${item.category}</div>
+                <div class="item-desc">${item.desc}</div>
+                <div class="item-actions">
+                  <a href="tel:${item.phone}" class="btn-call"><i class="fa-solid fa-phone"></i> அழைப்பு / Call</a>
+                  <a href="https://wa.me/91${item.wa}" class="btn-wa"><i class="fa-brands fa-whatsapp"></i> வாட்ஸ்அப் / WhatsApp</a>
+                </div>
+              </div>
+            `;
+          });
+        }
+    
+        view.classList.add("active");
+        history.pushState({page: "results"}, "", "");
+      });
     }
   
     function triggerAdvancedVoiceInput() {
@@ -2178,47 +2220,49 @@
   
     // Sub-Category View Layer (Removed redundant search input boxes as requested)
     function openSubCategoryView(categoryName, skipHistoryPush = false) {
-      if (!skipHistoryPush) {
-        closeAllPages();
-      }
-      currentNavigationState = "subcats";
-      lastMasterCategory = categoryName;
+      triggerSmartOfferPopupAndSearch(function() {
+        if (!skipHistoryPush) {
+          closeAllPages();
+        }
+        currentNavigationState = "subcats";
+        lastMasterCategory = categoryName;
 
-      const view = document.getElementById("fullpageView");
-      const list = document.getElementById("dedicatedList");
-      const title = document.getElementById("dedicatedTitle");
-      const townLabel = document.getElementById("dedicatedTown");
-  
-      title.innerText = categoryName.split('/')[0].trim() + " - உட்பிரிவுகள்";
-      townLabel.innerText = "📍 உள் பிரிவு தேர்வு";
-      list.innerHTML = "";
+        const view = document.getElementById("fullpageView");
+        const list = document.getElementById("dedicatedList");
+        const title = document.getElementById("dedicatedTitle");
+        const townLabel = document.getElementById("dedicatedTown");
+    
+        title.innerText = categoryName.split('/')[0].trim() + " - உட்பிரிவுகள்";
+        townLabel.innerText = "📍 உள் பிரிவு தேர்வு";
+        list.innerHTML = "";
 
-      const subCategories = subCategoriesMap[categoryName] || [];
+        const subCategories = subCategoriesMap[categoryName] || [];
 
-      if (subCategories.length === 0) {
-        openDedicatedCategory(categoryName);
-        return;
-      }
+        if (subCategories.length === 0) {
+          openDedicatedCategory(categoryName);
+          return;
+        }
 
-      let htmlContainer = `<div class="subcat-grid">`;
-      subCategories.forEach(sub => {
-        htmlContainer += `
-          <div class="subcat-card" onclick="openSubCategoryResults('${categoryName}', '${sub.keyword}', '${sub.name}')">
-            <div class="subcat-card-info">
-              <h4>${sub.name}</h4>
-              <span>${categoryName.split('/')[0].trim()} சேவைகள்</span>
+        let htmlContainer = `<div class="subcat-grid">`;
+        subCategories.forEach(sub => {
+          htmlContainer += `
+            <div class="subcat-card" onclick="openSubCategoryResults('${categoryName}', '${sub.keyword}', '${sub.name}')">
+              <div class="subcat-card-info">
+                <h4>${sub.name}</h4>
+                <span>${categoryName.split('/')[0].trim()} சேவைகள்</span>
+              </div>
+              <i class="fa-solid fa-chevron-right"></i>
             </div>
-            <i class="fa-solid fa-chevron-right"></i>
-          </div>
-        `;
-      });
-      htmlContainer += `</div>`;
-      list.innerHTML = htmlContainer;
-      view.classList.add("active");
+          `;
+        });
+        htmlContainer += `</div>`;
+        list.innerHTML = htmlContainer;
+        view.classList.add("active");
 
-      if (!skipHistoryPush) {
-        history.pushState({page: "subcats", category: categoryName}, "", "");
-      }
+        if (!skipHistoryPush) {
+          history.pushState({page: "subcats", category: categoryName}, "", "");
+        }
+      });
     }
 
     // Opens Sub-Category Results Page automatically filtered by home town without extra search bars inside
