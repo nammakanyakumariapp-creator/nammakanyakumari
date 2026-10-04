@@ -20,9 +20,9 @@
       --teal: #14B8A6;
       --light-blue: #3B82F6;
       
-      --page-bg: #0B2D5B;         /* ராயல் நேவி ப்ளூ பிரதான பின்னணி */
-      --card-container-bg: #102A4E; /* டார்க் ப்ளூ கார்டு பின்னணி */
-      --text-light: #FFF8E7;      /* கிரீம் ஐவரி எழுத்துக்கள் */
+      --page-bg: #0B2D5B;         /* முதல் படத்தின் ராயல் நேவி ப்ளூ பிரதான பின்னணி */
+      --card-container-bg: #102A4E; /* முதல் படத்தின் டார்க் ப்ளூ கார்டு பின்னணி */
+      --text-light: #FFF8E7;      /* முதல் படத்தின் கிரீம் ஐவரி எழுத்துக்கள் */
       --text-muted: #94A3B8;
       --en-text-bright: #CBD5E1;
       --gold-border: rgba(212, 175, 55, 0.35); /* மெல்லிய கோல்டன் பார்டர் */
@@ -401,44 +401,6 @@
     .subcat-card i.fa-chevron-right {
       color: var(--yellow);
       font-size: 14px;
-    }
-
-    /* Sub-Category Search & Filter Bar (Two Separate Input Boxes for Town & Keyword) */
-    .subcat-search-sticky-bar {
-      background: var(--card-container-bg);
-      border: 1px solid var(--gold-border);
-      border-radius: 12px;
-      padding: 10px;
-      margin-bottom: 14px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .subcat-filter-inputs {
-      display: grid;
-      grid-template-columns: 110px 1fr;
-      gap: 8px;
-    }
-    .subcat-filter-input-box {
-      background: #071E3D;
-      border: 1px solid #475569;
-      border-radius: 8px;
-      padding: 8px 10px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      position: relative;
-    }
-    .subcat-filter-input-box input {
-      width: 100%;
-      background: transparent;
-      border: none;
-      color: #fff;
-      font-size: 12px;
-      outline: none;
-    }
-    .subcat-filter-input-box input::placeholder {
-      color: var(--text-muted);
     }
 
     /* Tabs Inside Modals */
@@ -875,8 +837,8 @@
       </div>
       <div class="home-search-input-box">
         <i class="fa-solid fa-magnifying-glass"></i>
-        <input type="text" id="homeKeywordInput" placeholder="எ.கா: ஆட்டோ, டாக்ஸி, மால்ட்..." onkeypress="handleHomeSearchKey(event)" style="padding-right: 28px;">
-        <button type="button" class="home-mic-btn" id="homeMicBtn" onclick="triggerHomeVoiceInput()" title="Voice Search" style="position: absolute; right: 6px; top: 50%; transform: translateY(-50%);">
+        <input type="text" id="homeKeywordInput" placeholder="எ.கா: ஆட்டோ, டாக்ஸி, மால்ட்..." onfocus="checkAndPromptLocationOnce()" onkeypress="handleHomeSearchKey(event)" style="padding-right: 28px;">
+        <button type="button" class="home-mic-btn" id="homeMicBtn" onclick="checkAndPromptLocationOnce(); triggerHomeVoiceInput()" title="Voice Search" style="position: absolute; right: 6px; top: 50%; transform: translateY(-50%);">
           <i class="fa-solid fa-microphone"></i>
         </button>
       </div>
@@ -895,7 +857,7 @@
   
     <!-- 3x3 Category Grid (Strictly 9 Master Icons) -->
     <div class="category-grid-container">
-      <div class="cat-btn" onclick="openSubCategoryView('போக்குவரத்து / Transport')">
+      <div class="cat-btn" onclick="checkAndPromptLocationOnce(); openSubCategoryView('போக்குவரத்து / Transport')">
         <div class="circle-icon icon-auto">
           <i class="fa-solid fa-taxi"></i>
         </div>
@@ -903,7 +865,7 @@
         <span class="sub-text">Transport Services</span>
       </div>
   
-      <div class="cat-btn" onclick="openSubCategoryView('வீடு & சொத்து / Real Estate')">
+      <div class="cat-btn" onclick="checkAndPromptLocationOnce(); openSubCategoryView('வீடு & சொத்து / Real Estate')">
         <div class="circle-icon icon-home">
           <i class="fa-solid fa-house"></i>
         </div>
@@ -911,7 +873,7 @@
         <span class="sub-text">Real Estate</span>
       </div>
   
-      <div class="cat-btn" onclick="openSubCategoryView('கல்வி & பயிற்சி / Education')">
+      <div class="cat-btn" onclick="checkAndPromptLocationOnce(); openSubCategoryView('கல்வி & பயிற்சி / Education')">
         <div class="circle-icon icon-taxi">
           <i class="fa-solid fa-graduation-cap"></i>
         </div>
@@ -919,7 +881,7 @@
         <span class="sub-text">Education & Training</span>
       </div>
   
-      <div class="cat-btn" onclick="openSubCategoryView('மருத்துவம் / Health Care')">
+      <div class="cat-btn" onclick="checkAndPromptLocationOnce(); openSubCategoryView('மருத்துவம் / Health Care')">
         <div class="circle-icon icon-pros3">
           <i class="fa-solid fa-heart-pulse"></i>
         </div>
@@ -927,7 +889,7 @@
         <span class="sub-text">Health Care</span>
       </div>
   
-      <div class="cat-btn" onclick="openSubCategoryView('வணிகம் & விற்பனை / Business')">
+      <div class="cat-btn" onclick="checkAndPromptLocationOnce(); openSubCategoryView('வணிகம் & விற்பனை / Business')">
         <div class="circle-icon icon-shop">
           <i class="fa-solid fa-store"></i>
         </div>
@@ -935,7 +897,7 @@
         <span class="sub-text">Business & Shopping</span>
       </div>
   
-      <div class="cat-btn" onclick="openSubCategoryView('பணியாளர் சேவைகள் / Job')">
+      <div class="cat-btn" onclick="checkAndPromptLocationOnce(); openSubCategoryView('பணியாளர் சேவைகள் / Job')">
         <div class="circle-icon icon-jobs">
           <i class="fa-solid fa-briefcase"></i>
         </div>
@@ -943,7 +905,7 @@
         <span class="sub-text">Job & Recruitment</span>
       </div>
   
-      <div class="cat-btn" onclick="openSubCategoryView('மின் & நீர் சேவைகள் / Utility')">
+      <div class="cat-btn" onclick="checkAndPromptLocationOnce(); openSubCategoryView('மின் & நீர் சேவைகள் / Utility')">
         <div class="circle-icon icon-pros1">
           <i class="fa-solid fa-bolt"></i>
         </div>
@@ -951,7 +913,7 @@
         <span class="sub-text">Utility Services</span>
       </div>
   
-      <div class="cat-btn" onclick="openSubCategoryView('சேவைகள் & பொழுதுபோக்கு / Events')">
+      <div class="cat-btn" onclick="checkAndPromptLocationOnce(); openSubCategoryView('சேவைகள் & பொழுதுபோக்கு / Events')">
         <div class="circle-icon icon-load">
           <i class="fa-solid fa-calendar-days"></i>
         </div>
@@ -959,7 +921,7 @@
         <span class="sub-text">Events & Entertainment</span>
       </div>
   
-      <div class="cat-btn" onclick="openSubCategoryView('மற்ற சேவைகள் / Other Services')">
+      <div class="cat-btn" onclick="checkAndPromptLocationOnce(); openSubCategoryView('மற்ற சேவைகள் / Other Services')">
         <div class="circle-icon icon-pros2">
           <i class="fa-solid fa-shapes"></i>
         </div>
@@ -1740,7 +1702,7 @@
       }
     });
 
-    // Session-based Location Prompt Control: Triggers only once when app launches or reopens if town box is empty and not yet prompted in session
+    // Session-based Universal Location Prompt Logic (Triggers only once per session upon first interaction with search or master category icons)
     let hasPromptedLocationThisSession = false;
     function checkAndPromptLocationOnce() {
       const townInput = document.getElementById("homeTownInput");
@@ -2069,7 +2031,7 @@
       }
     }
   
-    // Sub-Category View Layer with Proper State Management & History Push
+    // Sub-Category View Layer (Removed redundant search input boxes as requested by user)
     function openSubCategoryView(categoryName, skipHistoryPush = false) {
       if (!skipHistoryPush) {
         closeAllPages();
@@ -2114,7 +2076,7 @@
       }
     }
 
-    // Opens Sub-Category Results Page with Two Separate Input Boxes for Town & Keyword (Fully Functional & Flexible Manual Overriding)
+    // Opens Sub-Category Results Page automatically filtered by home town without extra search bars inside
     function openSubCategoryResults(masterCategory, defaultKeyword, subName) {
       currentNavigationState = "results";
       activeSubCategoryKeyword = defaultKeyword;
@@ -2126,93 +2088,25 @@
       const townLabel = document.getElementById("dedicatedTown");
   
       title.innerText = subName;
-      townLabel.innerText = "📍 தேடல் & பட்டியல்";
+      const initialTown = document.getElementById("homeTownInput") ? document.getElementById("homeTownInput").value.trim() : "";
+      townLabel.innerText = initialTown ? "📍 " + initialTown : "📍 கன்னியாகுமரி";
       list.innerHTML = "";
 
-      // Prefill town from home search bar if available
-      const initialTown = document.getElementById("homeTownInput") ? document.getElementById("homeTownInput").value.trim() : "";
-
-      let containerHtml = `
-        <div class="subcat-search-sticky-bar">
-          <div class="subcat-filter-inputs">
-            <div class="subcat-filter-input-box">
-              <i class="fa-solid fa-location-dot" style="color:var(--yellow); font-size:11px;"></i>
-              <input type="text" id="filterTownInput" value="${initialTown}" placeholder="ஊர் / Town..." oninput="triggerTwoBoxSubFilter('${masterCategory}', '${defaultKeyword}')" onkeypress="handleSearchEnterKey(event, '${masterCategory}', '${defaultKeyword}')">
-            </div>
-            <div class="subcat-filter-input-box" style="position:relative;">
-              <i class="fa-solid fa-magnifying-glass" style="color:var(--text-muted); font-size:11px;"></i>
-              <input type="text" id="filterKeywordInput" value="${defaultKeyword}" placeholder="தேடல் / Search..." oninput="triggerTwoBoxSubFilter('${masterCategory}', '${defaultKeyword}')" onkeypress="handleSearchEnterKey(event, '${masterCategory}', '${defaultKeyword}')" style="padding-right:24px;">
-              <button type="button" onclick="triggerSubVoiceSearch()" style="position:absolute; right:4px; top:50%; transform:translateY(-50%); background:none; border:none; color:var(--yellow); cursor:pointer; font-size:12px;">
-                <i class="fa-solid fa-microphone"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-        <div id="dynamicVendorScrollContainer"></div>
-      `;
-
+      let containerHtml = `<div id="dynamicVendorScrollContainer"></div>`;
       list.innerHTML = containerHtml;
-      // Immediately render default list based on home town and sub-category keyword with flexible matching
-      renderTwoBoxFilteredList(masterCategory, defaultKeyword, initialTown, defaultKeyword);
+
+      renderSubCategoryFilteredList(defaultKeyword, initialTown);
       view.classList.add("active");
       history.pushState({page: "results"}, "", "");
     }
 
-    function handleSearchEnterKey(e, masterCategory, defaultKeyword) {
-      if (e.key === 'Enter') {
-        e.preventDefault();
-        triggerTwoBoxSubFilter(masterCategory, defaultKeyword);
-        document.activeElement.blur();
-      }
-    }
-
-    // Corrected Back Navigation Logic for UI Button
-    function handleNavigationBack() {
-      if (currentNavigationState === "results") {
-        currentNavigationState = "subcats";
-        openSubCategoryView(lastMasterCategory, true);
-      } else if (currentNavigationState === "subcats") {
-        closeAllPages(true);
-      } else {
-        closeAllPages(true);
-      }
-    }
-
-    function triggerTwoBoxSubFilter(masterCategory, defaultKeyword) {
-      const townInput = document.getElementById("filterTownInput");
-      const keywordInput = document.getElementById("filterKeywordInput");
-      
-      const townVal = townInput ? townInput.value.trim() : "";
-      const keywordVal = keywordInput ? keywordInput.value.trim() : defaultKeyword;
-      
-      // Enables live manual overriding of town name to search nearby areas instantly
-      renderTwoBoxFilteredList(masterCategory, defaultKeyword, townVal, keywordVal);
-    }
-
-    function triggerSubVoiceSearch() {
-      const keywordInput = document.getElementById("filterKeywordInput");
-      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-      if (SpeechRecognition) {
-        const recognition = new SpeechRecognition();
-        recognition.lang = 'ta-IN';
-        recognition.onresult = function(event) {
-          keywordInput.value = event.results[0][0].transcript;
-          const townVal = document.getElementById("filterTownInput").value.trim();
-          renderTwoBoxFilteredList('', keywordInput.value, townVal, keywordInput.value);
-        };
-        recognition.start();
-      } else {
-        alert("குரல் தேடல் ஆதரிக்கப்படவில்லை.");
-      }
-    }
-
-    function renderTwoBoxFilteredList(masterCategory, defaultKeyword, searchTown, searchKeyword) {
+    function renderSubCategoryFilteredList(defaultKeyword, searchTown) {
       const container = document.getElementById("dynamicVendorScrollContainer");
       if (!container) return;
 
       const displayData = liveVendors.length > 0 ? liveVendors : serviceList;
-      const kw = (searchKeyword !== undefined && searchKeyword !== "") ? searchKeyword : defaultKeyword;
       const town = searchTown !== undefined ? searchTown : "";
+      const kw = defaultKeyword.toLowerCase();
 
       const filtered = displayData.filter(item => {
         const cat = (item.category || "").toLowerCase();
@@ -2220,22 +2114,19 @@
         const itemDesc = (item.desc || "").toLowerCase();
         const itemArea = (item.area || "").toLowerCase();
 
-        // Flexible and bidirectional town matching (Allows manual typing of nearby towns like மயிலாடி)
         const matchesTown = !town || itemArea.includes(town.toLowerCase()) || town.toLowerCase().includes(itemArea);
         
-        // Bilingual Keyword Matching for all categories (Tamil & English support)
-        const targetKw = kw.toLowerCase();
-        const matchesKeyword = !targetKw || 
-          itemName.includes(targetKw) ||
-          itemDesc.includes(targetKw) ||
-          cat.includes(targetKw) ||
-          (targetKw.includes("ஆட்டோ") && (itemName.includes("ஆட்டோ") || itemDesc.includes("ஆட்டோ") || itemName.includes("auto"))) ||
-          (targetKw.includes("auto") && (itemName.includes("ஆட்டோ") || itemDesc.includes("ஆட்டோ") || itemName.includes("auto"))) ||
-          (targetKw.includes("டாக்ஸி") && (itemName.includes("டாக்ஸி") || itemDesc.includes("டாக்ஸி") || itemName.includes("taxi"))) ||
-          (targetKw.includes("taxi") && (itemName.includes("டாக்ஸி") || itemDesc.includes("டாக்ஸி") || itemName.includes("taxi"))) ||
-          (targetKw.includes("லோடு") && (itemName.includes("லோடு") || itemDesc.includes("லோடு") || itemName.includes("load"))) ||
-          (targetKw.includes("டியூஷன்") && (itemName.includes("டியூஷன்") || itemDesc.includes("டியூஷன்") || itemName.includes("tuition"))) ||
-          (targetKw.includes("மருத்துவமனை") && (itemName.includes("மருத்துவமனை") || itemDesc.includes("மருத்துவமனை") || itemName.includes("hospital")));
+        const matchesKeyword = !kw || 
+          itemName.includes(kw) ||
+          itemDesc.includes(kw) ||
+          cat.includes(kw) ||
+          (kw.includes("ஆட்டோ") && (itemName.includes("ஆட்டோ") || itemDesc.includes("ஆட்டோ") || itemName.includes("auto"))) ||
+          (kw.includes("auto") && (itemName.includes("ஆட்டோ") || itemDesc.includes("ஆட்டோ") || itemName.includes("auto"))) ||
+          (kw.includes("டாக்ஸி") && (itemName.includes("டாக்ஸி") || itemDesc.includes("டாக்ஸி") || itemName.includes("taxi"))) ||
+          (kw.includes("taxi") && (itemName.includes("டாக்ஸி") || itemDesc.includes("டாக்ஸி") || itemName.includes("taxi"))) ||
+          (kw.includes("லோடு") && (itemName.includes("லோடு") || itemDesc.includes("லோடு") || itemName.includes("load"))) ||
+          (kw.includes("டியூஷன்") && (itemName.includes("டியூஷன்") || itemDesc.includes("டியூஷன்") || itemName.includes("tuition"))) ||
+          (kw.includes("மருத்துவமனை") && (itemName.includes("மருத்துவமனை") || itemDesc.includes("மருத்துவமனை") || itemName.includes("hospital")));
 
         return matchesTown && matchesKeyword && item.status !== 'expired' && item.status !== 'deleted' && item.status !== 'blocked';
       });
@@ -2244,7 +2135,7 @@
         container.innerHTML = `
           <div style="background:var(--card-container-bg); border:1px solid var(--gold-border); padding:24px; border-radius:12px; text-align:center; color:#CBD5E1; margin-top:10px;">
             <i class="fa-solid fa-triangle-exclamation" style="font-size:32px; color:var(--yellow); margin-bottom:10px;"></i>
-            <p>இந்தப் பகுதியில் சேவைகள் தற்போது கிடைக்கவில்லை. (Try searching nearby towns like மயிலாடி / Nagercoil)</p>
+            <p>இந்தப் பகுதியில் சேவைகள் தற்போது கிடைக்கவில்லை.</p>
           </div>
         `;
       } else {
@@ -2270,6 +2161,18 @@
       }
     }
 
+    // Corrected Back Navigation Logic for UI Button
+    function handleNavigationBack() {
+      if (currentNavigationState === "results") {
+        currentNavigationState = "subcats";
+        openSubCategoryView(lastMasterCategory, true);
+      } else if (currentNavigationState === "subcats") {
+        closeAllPages(true);
+      } else {
+        closeAllPages(true);
+      }
+    }
+
     function openDedicatedCategory(categoryName) {
       closeAllPages();
       currentNavigationState = "results";
@@ -2279,18 +2182,20 @@
       const townLabel = document.getElementById("dedicatedTown");
   
       title.innerText = categoryName;
-      townLabel.innerText = "📍 கன்னியாகுமரி";
+      const initialTown = document.getElementById("homeTownInput") ? document.getElementById("homeTownInput").value.trim() : "";
+      townLabel.innerText = initialTown ? "📍 " + initialTown : "📍 கன்னியாகுமரி";
       list.innerHTML = "";
   
       const displayData = liveVendors.length > 0 ? liveVendors : serviceList;
       const filtered = displayData.filter(item => {
         const cat = (item.category || "").toLowerCase();
         const target = categoryName.toLowerCase().split('/')[0].trim();
+        const matchesTown = !initialTown || item.area.toLowerCase().includes(initialTown.toLowerCase()) || initialTown.toLowerCase().includes(item.area.toLowerCase());
         
         const matchesCategory = 
           target.includes("அனைத்து") || target.includes("all") ||
           cat.includes(target) || target.includes(cat);
-        return matchesCategory && item.status !== 'expired' && item.status !== 'deleted' && item.status !== 'blocked';
+        return matchesTown && matchesCategory && item.status !== 'expired' && item.status !== 'deleted' && item.status !== 'blocked';
       });
   
       if (filtered.length === 0) {
@@ -2772,7 +2677,7 @@
             </div>
             <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 6px;">📍 ${v.area} • 📞 ${v.phone}</p>
             <div style="display: flex; gap: 6px;">
-              <button onclick="changeVendorStatusLocally('${v.id || v.name}', 'active')" style="flex:1; padding: 5px; background: var(--green); color: #fff; font-size: 11px; border: none; border-radius: 6px; font-weight: 700; cursor: pointer;">Approve</button>
+              <button onclick="changeVendorStatusLocally('${v.id || v.name}', 'active')" style="flex:1; padding: 5px; background: var(--green); color: #fff; font-size: 11px; border: none; border-radius: 6px; font-weight: 700; pointer;">Approve</button>
               <button onclick="changeVendorStatusLocally('${v.id || v.name}', 'blocked')" style="flex:1; padding: 5px; background: var(--red); color: #fff; font-size: 11px; border: none; border-radius: 6px; font-weight: 700; cursor: pointer;">Block</button>
             </div>
           </div>
