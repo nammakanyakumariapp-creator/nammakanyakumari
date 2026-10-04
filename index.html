@@ -965,7 +965,7 @@
     <div class="fullpage-content" id="dedicatedList"></div>
   </div>
   
-  <!-- ADVANCED SEARCH PAGE -->
+  <!-- ADVANCED SEARCH PAGE (Synchronized with Home Search Town & Keyword Inputs) -->
   <div class="fullpage-view" id="pageAdvancedSearch">
     <div class="fullpage-header">
       <div class="fullpage-header-left">
@@ -993,6 +993,11 @@
         </div>
   
         <div class="form-group">
+          <label>ஊர் / பகுதி பெயர் <span class="en-label">/ Town or Area *</span></label>
+          <input type="text" id="advancedTown" placeholder="எ.கா: அழகப்பபுரம், மயிலாடி...">
+        </div>
+
+        <div class="form-group">
           <label>என்ன சேவை வேண்டும்? <span class="en-label">/ Required Service *</span></label>
           <div style="position: relative; display: flex; align-items: center;">
             <input type="text" id="advancedKeyword" placeholder="எ.கா: ஆட்டோ, ஹோம்மேட்..." style="padding-right: 42px;">
@@ -1000,11 +1005,6 @@
               <i class="fa-solid fa-microphone"></i>
             </button>
           </div>
-        </div>
-  
-        <div class="form-group">
-          <label>ஊர் / பகுதி பெயர் <span class="en-label">/ Town or Area *</span></label>
-          <input type="text" id="advancedTown" placeholder="எ.கா: அழகப்பபுரம், மயிலாடி...">
         </div>
   
         <button type="button" class="form-submit-btn active-btn" onclick="executeAdvancedSearchFromPage()">
@@ -1557,7 +1557,7 @@
       <i class="fa-solid fa-house"></i>
       <span>முகப்பு / Home</span>
     </a>
-    <a href="javascript:void(0)" onclick="openAdvancedSearchPage()" class="bar-link">
+    <a href="javascript:void(0)" onclick="checkAndPromptLocationOnce(); openAdvancedSearchPage()" class="bar-link">
       <i class="fa-solid fa-magnifying-glass"></i>
       <span>தேடல் / Search</span>
     </a>
@@ -1932,6 +1932,12 @@
     function openAdvancedSearchPage() {
       closeAllPages();
       currentNavigationState = "results";
+      // Synchronize Advanced Search town input with home page town input automatically
+      const homeTownVal = document.getElementById("homeTownInput") ? document.getElementById("homeTownInput").value.trim() : "";
+      const advTownInput = document.getElementById("advancedTown");
+      if (advTownInput && homeTownVal) {
+        advTownInput.value = homeTownVal;
+      }
       document.getElementById("pageAdvancedSearch").classList.add("active");
       history.pushState({page: "advancedSearch"}, "", "");
     }
@@ -1954,9 +1960,14 @@
     }
   
     function executeAdvancedSearchFromPage() {
-      const keyword = document.getElementById("advancedKeyword").value.trim();
       const town = document.getElementById("advancedTown").value.trim();
+      const keyword = document.getElementById("advancedKeyword").value.trim();
       
+      // Synchronize back to home town input so both inputs share state seamlessly
+      if (town) {
+        document.getElementById("homeTownInput").value = town;
+      }
+
       closeAllPages();
       currentNavigationState = "results";
       const view = document.getElementById("fullpageView");
@@ -2031,7 +2042,7 @@
       }
     }
   
-    // Sub-Category View Layer (Removed redundant search input boxes as requested by user)
+    // Sub-Category View Layer (Removed redundant search input boxes as requested)
     function openSubCategoryView(categoryName, skipHistoryPush = false) {
       if (!skipHistoryPush) {
         closeAllPages();
