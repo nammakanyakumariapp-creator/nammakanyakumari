@@ -196,7 +196,7 @@
       white-space: nowrap;
     }
   
-    /* 3x3 Category Grid (Strictly 9 Master Icons)[span_5](start_span)[span_5](end_span)[span_6](start_span)[span_6](end_span)[span_7](start_span)[span_7](end_span) */
+    /* 3x3 Category Grid (Strictly 9 Master Icons) */
     .category-grid-container {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -661,7 +661,6 @@
       line-height: 1.4;
     }
   
-    /* எதிர்கால சந்தா வாசகத்தை கட்டுப்படுத்தும் கிளாஸ் */
     .hidden-subscription-clause {
       display: none;
     }
@@ -889,7 +888,7 @@
       </div>
     </div>
   
-    <!-- 3x3 Category Grid (Strictly 9 Master Icons)[span_8](start_span)[span_8](end_span)[span_9](start_span)[span_9](end_span)[span_10](start_span)[span_10](end_span) -->
+    <!-- 3x3 Category Grid (Strictly 9 Master Icons) -->
     <div class="category-grid-container">
       <div class="cat-btn" onclick="checkAndPromptLocationOnce(); openSubCategoryView('போக்குவரத்து / Transport')">
         <div class="circle-icon icon-auto">
@@ -1610,7 +1609,6 @@
   <div id="smartOfferPopupModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); z-index:9999; align-items:center; justify-content:center; padding:16px;">
     <div style="background:var(--card-container-bg); border:2px solid var(--yellow); border-radius:16px; padding:20px; max-width:380px; width:100%; text-align:center; box-shadow:0 10px 25px rgba(0,0,0,0.5); position:relative;">
       
-      <!-- Top-Right Close 'X' Mark -->
       <button type="button" onclick="dismissSmartOfferPopupOnly()" style="position:absolute; top:12px; right:12px; background:none; border:none; color:var(--red); font-size:20px; font-weight:700; cursor:pointer; padding:4px;" title="Close">
         <i class="fa-solid fa-xmark"></i>
       </button>
@@ -1627,21 +1625,20 @@
         <p>💡 உங்கள் தேடலுடன் அருகில் உள்ள அனைத்து சலுகைகளும் இணைக்கப்பட்டுள்ளன.</p>
       </div>
 
-      <!-- Green View Offers Button -->
       <button type="button" onclick="openFullPageOffersList()" style="width:100%; background:var(--green); color:#fff; border:none; padding:11px; border-radius:8px; font-weight:700; font-size:13px; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:6px; box-shadow:0 4px 12px rgba(22,163,74,0.4);">
         <i class="fa-solid fa-rectangle-ad"></i> ஆஃபர்களைப் பார்க்க / View Offers ➔
       </button>
     </div>
   </div>
 
-  <!-- DEDICATED FULL SCREEN PAGE: முழுப் பக்க ஸ்க்ரோல் செய்யக்கூடிய விளம்பர ஆஃபர்கள் பட்டியல் (Full Page Scrollable Offers View) -->
+  <!-- DEDICATED FULL SCREEN PAGE: முழுப் பக்க ஸ்க்ரோல் செய்யக்கூடிய விளம்பர ஆஃபர்கள் பட்டியல் (With Hub Filter Bar) -->
   <div class="fullpage-view" id="pageFullScrollOffers" style="z-index: 1500;">
     <div class="fullpage-header">
       <div class="fullpage-header-left">
         <button class="back-btn" onclick="closeFullPageOffersList()">
           <i class="fa-solid fa-arrow-left"></i>
         </button>
-        <h3>360° சிறப்பு ஆஃபர்கள் பட்டியல் / Offers Feed</h3>
+        <h3>360° சிறப்பு ஆஃபர்கள் / Hub Offers Feed</h3>
       </div>
       <div style="display: flex; align-items: center; gap: 8px;">
         <span class="tag-right" style="color: var(--yellow);">100+ Offers</span>
@@ -1650,6 +1647,19 @@
         </button>
       </div>
     </div>
+
+    <!-- City Hub Selector Bar -->
+    <div style="background: #071E3D; padding: 10px; border-bottom: 1px solid var(--gold-border); display: flex; gap: 6px; overflow-x: auto; flex-shrink: 0;" id="cityHubSelectorBar">
+      <button onclick="filterOffersByHub('All')" class="hub-filter-btn active-hub" style="background:var(--primary-blue); color:#fff; border:none; padding:6px 12px; border-radius:6px; font-size:11px; font-weight:700; white-space:nowrap; cursor:pointer;">🌐 அனைத்துப் பகுதிகளும் (All)</button>
+      <button onclick="filterOffersByHub('நாகர்கோவில்')" class="hub-filter-btn" style="background:#102A4E; color:#FFF8E7; border:1px solid var(--gold-border); padding:6px 12px; border-radius:6px; font-size:11px; font-weight:600; white-space:nowrap; cursor:pointer;">📍 நாகர்கோவில்</button>
+      <button onclick="filterOffersByHub('மார்த்தாண்டம்')" class="hub-filter-btn" style="background:#102A4E; color:#FFF8E7; border:1px solid var(--gold-border); padding:6px 12px; border-radius:6px; font-size:11px; font-weight:600; white-space:nowrap; cursor:pointer;">📍 மார்த்தாண்டம் & குழித்துறை</button>
+      <button onclick="filterOffersByHub('தக்கலை')" class="hub-filter-btn" style="background:#102A4E; color:#FFF8E7; border:1px solid var(--gold-border); padding:6px 12px; border-radius:6px; font-size:11px; font-weight:600; white-space:nowrap; cursor:pointer;">📍 தக்கலை</button>
+      <button onclick="filterOffersByHub('அஞ்சுகிராமம்')" class="hub-filter-btn" style="background:#102A4E; color:#FFF8E7; border:1px solid var(--gold-border); padding:6px 12px; border-radius:6px; font-size:11px; font-weight:600; white-space:nowrap; cursor:pointer;">📍 அஞ்சுகிராமம் & கன்னியாகுமரி</button>
+      <button onclick="filterOffersByHub('திருநெல்வேலி')" class="hub-filter-btn" style="background:#102A4E; color:#FFF8E7; border:1px solid var(--gold-border); padding:6px 12px; border-radius:6px; font-size:11px; font-weight:600; white-space:nowrap; cursor:pointer;">📍 நெல்லை டவுன் & பாளையங்கோட்டை</button>
+      <button onclick="filterOffersByHub('வள்ளியூர்')" class="hub-filter-btn" style="background:#102A4E; color:#FFF8E7; border:1px solid var(--gold-border); padding:6px 12px; border-radius:6px; font-size:11px; font-weight:600; white-space:nowrap; cursor:pointer;">📍 வள்ளியூர் & களக்காடு</button>
+      <button onclick="filterOffersByHub('தூத்துக்குடி')" class="hub-filter-btn" style="background:#102A4E; color:#FFF8E7; border:1px solid var(--gold-border); padding:6px 12px; border-radius:6px; font-size:11px; font-weight:600; white-space:nowrap; cursor:pointer;">📍 தூத்துக்குடி & கோவில்பட்டி</button>
+    </div>
+
     <div class="fullpage-content" id="fullScrollOffersContainer">
       <!-- Dynamic Scrollable Banner Cards -->
     </div>
@@ -1766,15 +1776,14 @@
     let selectedHomeCategory = "வாகனம்";
     let liveSettings = {};
     let liveVendors = [];
-    let currentNavigationState = "home"; // "home" -> "subcats" -> "results"
+    let currentNavigationState = "home";
     let lastMasterCategory = "";
     let activeSubCategoryKeyword = "";
     let activeSubCategoryName = "";
-    let hasShownSmartOfferThisSession = false; // Ensures popup shows ONLY ONCE per session on first results view
+    let hasShownSmartOfferThisSession = false;
 
     const GOOGLE_SHEET_API = "https://script.google.com/macros/s/AKfycbxfuaEQt_5g623AQJftNUyRktdPTjaBFXu7dBzS8jcWTjx0f8DMnCl7ZZzxE3g4AJvK/exec";
 
-    // 9 Master Categories and their respective Sub-Categories mapping
     const subCategoriesMap = {
       "போக்குவரத்து / Transport": [
         { name: "ஆட்டோ (Auto)", keyword: "ஆட்டோ" },
@@ -1846,14 +1855,14 @@
       { name: "சேவைகள் & பொழுதுபோக்கு / Events", type: "Service" },
       { name: "மற்ற சேவைகள் / Other Services", type: "Service" }
     ];
-    const masterTowns = ["அழகப்பபுரம்", "மயிலாடி", "அஞ்சுகிராமம்", "நாகர்கோவில்", "திங்கள்நகர்"];
+    const masterTowns = ["நாகர்கோவில்", "மார்த்தாண்டம்", "தக்கலை", "அஞ்சுகிராமம்", "திருநெல்வேலி", "வள்ளியூர்", "தூத்துக்குடி"];
 
     let vCounter = 1;
     masterCats.forEach(catObj => {
       for (let i = 1; i <= 15; i++) {
         const pNum = String(vCounter).padStart(3, '0');
-        const phone = "94431000" + pNum; // 11-digit testing phone protection
-        const town = masterTowns[(i - 1) % 5];
+        const phone = "94431000" + pNum;
+        const town = masterTowns[(i - 1) % masterTowns.length];
         const baseName = catObj.name.split('/')[0].trim();
         let specificKeyword = "சேவை";
         if (baseName.includes("போக்குவரத்து")) specificKeyword = (i % 2 === 0) ? "ஆட்டோ" : "டாக்ஸி";
@@ -1880,7 +1889,6 @@
 
     const serviceList = all120MasterVendors;
 
-    // Browser History Integration with Terms Page Back Fix
     window.addEventListener('popstate', function(event) {
       const termsView = document.getElementById("pageTermsView");
       if (termsView && termsView.classList.contains("active")) {
@@ -1898,7 +1906,6 @@
       }
     });
 
-    // Session-based Universal Location Prompt Logic (Triggers only once per session upon first interaction with search or master category icons)
     let hasPromptedLocationThisSession = false;
     function checkAndPromptLocationOnce() {
       const townInput = document.getElementById("homeTownInput");
@@ -1911,13 +1918,11 @@
       }
     }
 
-    // Startup GPS Permission Functions
     function requestDeviceGPSPermission() {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
           (position) => {
-            console.log("GPS Location granted:", position.coords.latitude, position.coords.longitude);
-            document.getElementById("homeTownInput").value = "அழகப்பபுரம்";
+            document.getElementById("homeTownInput").value = "நாகர்கோவில்";
             document.getElementById("locationPermissionModal").style.display = "none";
           },
           (error) => {
@@ -2035,7 +2040,6 @@
       }
     }
 
-    // Smart offer popup check: Shows ONLY ONCE per session when viewing results
     function checkAndTriggerSmartOfferPopup() {
       if (!hasShownSmartOfferThisSession) {
         hasShownSmartOfferThisSession = true;
@@ -2046,7 +2050,6 @@
       }
     }
 
-    // Dismisses popup via top-right 'X' without closing results page
     function dismissSmartOfferPopupOnly() {
       const offerModal = document.getElementById("smartOfferPopupModal");
       if (offerModal) {
@@ -2054,25 +2057,51 @@
       }
     }
 
-    // Green button action: opens full-page scrollable offers feed
-    function openFullPageOffersList() {
+    // Opens full page scrollable offers feed with Hub Filtering support
+    function openFullPageOffersList(selectedHub = 'All') {
       const offerModal = document.getElementById("smartOfferPopupModal");
       if (offerModal) {
         offerModal.style.display = "none";
       }
       
+      renderOffersFeed(selectedHub);
+      document.getElementById("pageFullScrollOffers").classList.add("active");
+      history.pushState({page: "fullOffers"}, "", "");
+    }
+
+    function filterOffersByHub(hubName) {
+      const buttons = document.querySelectorAll("#cityHubSelectorBar button");
+      buttons.forEach(btn => {
+        btn.style.background = "#102A4E";
+        btn.style.color = "#FFF8E7";
+        btn.style.fontWeight = "600";
+      });
+      event.target.style.background = "var(--primary-blue)";
+      event.target.style.color = "#fff";
+      event.target.style.fontWeight = "700";
+
+      renderOffersFeed(hubName);
+    }
+
+    function renderOffersFeed(hubName) {
       const container = document.getElementById("fullScrollOffersContainer");
       container.innerHTML = "";
 
       let offersHtml = "";
-      for (let i = 1; i <= 25; i++) {
+      for (let i = 1; i <= 20; i++) {
+        let currentHubArea = masterTowns[(i - 1) % masterTowns.length];
+        
+        if (hubName !== 'All' && !currentHubArea.includes(hubName)) {
+          continue;
+        }
+
         offersHtml += `
           <div class="item-card" style="border: 1.5px solid var(--yellow); margin-bottom: 14px;">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
               <h4 style="color:var(--yellow);"><i class="fa-solid fa-rectangle-ad"></i> சிறப்பு ஆஃபர் பேனர் #${i}</h4>
-              <span class="status-badge active-green">360° Radius</span>
+              <span class="status-badge active-green">${currentHubArea} Hub</span>
             </div>
-            <div class="item-meta"><i class="fa-solid fa-location-dot"></i> அண்டை ஊர் / 20km சுற்றளவு</div>
+            <div class="item-meta"><i class="fa-solid fa-location-dot"></i> ${currentHubArea} • 360° சுற்றளவு</div>
             <div class="item-desc">உள்ளூர் மக்களுக்கான தள்ளுபடி சலுகை மற்றும் சிறப்புப் பொருட்கள் இந்த பேனரில் இடம்பெற்றுள்ளது. உடனடியாகத் தொடர்பு கொள்ளுங்கள்!</div>
             <div class="item-actions">
               <a href="tel:9443100000" class="btn-call"><i class="fa-solid fa-phone"></i> அழைப்பு / Call</a>
@@ -2081,10 +2110,17 @@
           </div>
         `;
       }
-      container.innerHTML = offersHtml;
 
-      document.getElementById("pageFullScrollOffers").classList.add("active");
-      history.pushState({page: "fullOffers"}, "", "");
+      if (!offersHtml) {
+        offersHtml = `
+          <div style="background:var(--card-container-bg); border:1px solid var(--gold-border); padding:24px; border-radius:12px; text-align:center; color:#CBD5E1; margin-top:20px;">
+            <i class="fa-solid fa-triangle-exclamation" style="font-size:32px; color:var(--yellow); margin-bottom:10px;"></i>
+            <p>இந்த ஹப் பகுதியில் தற்போது விளம்பரங்கள் இல்லை.</p>
+          </div>
+        `;
+      }
+
+      container.innerHTML = offersHtml;
     }
 
     function closeFullPageOffersList() {
@@ -2137,7 +2173,7 @@
       const townLabel = document.getElementById("dedicatedTown");
   
       title.innerText = keyword ? keyword : selectedHomeCategory;
-      townLabel.innerText = town ? "📍 " + town : "📍 கன்னியாகுமரி";
+      townLabel.innerText = town ? "📍 " + town : "📍 நாகர்கோவில்";
       list.innerHTML = "";
   
       const displayData = liveVendors.length > 0 ? liveVendors : serviceList;
@@ -2227,7 +2263,7 @@
       const townLabel = document.getElementById("dedicatedTown");
   
       title.innerText = keyword ? keyword : "தேடல் முடிவு / Search Results";
-      townLabel.innerText = town ? "📍 " + town : "📍 கன்னியாகுமரி";
+      townLabel.innerText = town ? "📍 " + town : "📍 நாகர்கோவில்";
       list.innerHTML = "";
   
       const displayData = liveVendors.length > 0 ? liveVendors : serviceList;
@@ -2294,7 +2330,6 @@
       }
     }
   
-    // Sub-Category View Layer
     function openSubCategoryView(categoryName, skipHistoryPush = false) {
       if (!skipHistoryPush) {
         closeAllPages();
@@ -2339,7 +2374,6 @@
       }
     }
 
-    // Opens Sub-Category Results Page automatically filtered by home town
     function openSubCategoryResults(masterCategory, defaultKeyword, subName) {
       currentNavigationState = "results";
       activeSubCategoryKeyword = defaultKeyword;
@@ -2352,7 +2386,7 @@
   
       title.innerText = subName;
       const initialTown = document.getElementById("homeTownInput") ? document.getElementById("homeTownInput").value.trim() : "";
-      townLabel.innerText = initialTown ? "📍 " + initialTown : "📍 கன்னியாகுமரி";
+      townLabel.innerText = initialTown ? "📍 " + initialTown : "📍 நாகர்கோவில்";
       list.innerHTML = "";
 
       let containerHtml = `<div id="dynamicVendorScrollContainer"></div>`;
@@ -2425,7 +2459,6 @@
       }
     }
 
-    // Corrected Back Navigation Logic for UI Button
     function handleNavigationBack() {
       if (currentNavigationState === "results") {
         currentNavigationState = "subcats";
@@ -2447,7 +2480,7 @@
   
       title.innerText = categoryName;
       const initialTown = document.getElementById("homeTownInput") ? document.getElementById("homeTownInput").value.trim() : "";
-      townLabel.innerText = initialTown ? "📍 " + initialTown : "📍 கன்னியாகுமரி";
+      townLabel.innerText = initialTown ? "📍 " + initialTown : "📍 நாகர்கோவில்";
       list.innerHTML = "";
   
       const displayData = liveVendors.length > 0 ? liveVendors : serviceList;
@@ -2643,12 +2676,8 @@
             <p class="ta-main">தொழிலாளர்கள் மற்றும் ஓட்டுநர்கள் பெறும் முழுத் தொகையில் இருந்து நம்ம கன்னியாகுமரி தளம் எவ்வித கமிஷனும் (0% Commission) வசூலிப்பதில்லை. பணப் பரிவர்த்தனைகளுக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது;</strong> சம்பந்தப்பட்ட நபரே முழுப் பொறுப்பு.</p>
             <p class="en-sub">The platform charges 0% commission. <strong>Namma Kanyakumari platform is not responsible</strong> for direct payments; the service provider bears full responsibility.</p>
             <div class="hidden-subscription-clause" style="${subClauseStyle}">
-              <p class="ta-main" style="color: #D4AF37; margin-top: 6px;">
-                ${dynamicNoticeTa}
-              </p>
-              <p class="en-sub">
-                ${dynamicNoticeEn}
-              </p>
+              <p class="ta-main" style="color: #D4AF37; margin-top: 6px;">${dynamicNoticeTa}</p>
+              <p class="en-sub">${dynamicNoticeEn}</p>
             </div>
           </div>
   
@@ -2688,12 +2717,8 @@
             <p class="ta-main">பொருட்கள் விற்பனையில் நம்ம கன்னியாகுமரி தளம் வியாபாரிகளிடம் எவ்வித கமிஷனும் பெறுவதில்லை. வியாபாரப் பரிவர்த்தனைகளில் ஏற்படும் இழப்புகளுக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது;</strong> வணிகரே முழுப் பொறுப்பு.</p>
             <p class="en-sub">The platform charges 0% sales commission. <strong>Namma Kanyakumari platform is not responsible</strong> for financial transactions; merchant bears responsibility.</p>
             <div class="hidden-subscription-clause" style="${subClauseStyle}">
-              <p class="ta-main" style="color: #D4AF37; margin-top: 6px;">
-                ${dynamicNoticeTa}
-              </p>
-              <p class="en-sub">
-                ${dynamicNoticeEn}
-              </p>
+              <p class="ta-main" style="color: #D4AF37; margin-top: 6px;">${dynamicNoticeTa}</p>
+              <p class="en-sub">${dynamicNoticeEn}</p>
             </div>
           </div>
   
@@ -2733,12 +2758,8 @@
             <p class="ta-main">வேலை வாய்ப்புகளுக்கோ அல்லது ஆள்சேர்ப்புக்கோ தளம் எவ்வித கமிஷனும் வசூலிப்பதில்லை. ஒப்பந்த முடிவுகளுக்கு <strong>நம்ம கன்னியாகுமரி தளம் பொறுப்பாகாது;</strong> இரு தரப்பினருமே முழுப் பொறுப்பு.</p>
             <p class="en-sub">The platform charges 0% hiring commission. <strong>Namma Kanyakumari platform is not responsible</strong> for employment contracts; both parties are responsible.</p>
             <div class="hidden-subscription-clause" style="${subClauseStyle}">
-              <p class="ta-main" style="color: #D4AF37; margin-top: 6px;">
-                ${dynamicNoticeTa}
-              </p>
-              <p class="en-sub">
-                ${dynamicNoticeEn}
-              </p>
+              <p class="ta-main" style="color: #D4AF37; margin-top: 6px;">${dynamicNoticeTa}</p>
+              <p class="en-sub">${dynamicNoticeEn}</p>
             </div>
           </div>
   
