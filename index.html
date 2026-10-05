@@ -853,7 +853,7 @@
   
   <div class="container">
   
-    <!-- Top Main Promo Banner (Updated with Festival Banner Link) -->
+    <!-- Top Main Promo Banner (Updated with new Festival Banner Link) -->
     <div class="top-promo-banner">
       <div class="secret-logo-touch-area" onclick="handleSecretLogoTap(event)"></div>
       <img src="https://lh3.googleusercontent.com/d/1Hbs9nTDU5sftIzNdkX4bdlwQ-3rBGzHJ" alt="நம்ம ஊர் A to Z பிரதான பேனர்">
@@ -1918,7 +1918,7 @@
         { name: "அலுவலகப் பணிகள் (Office & Data Entry Jobs)", keyword: "அலுவலகம்" }
       ],
       "மின் & நீர் சேவைகள் / Utility": [
-        { name: "எலக்ட்ரீஷியன் & வயரிங் (Electrician & Wiring)", keyword: "எலக்ட்ரீஷியன்" },
+        { name: "எலக்ட்ரிஷியன் & வயரிங் (Electrician & Wiring)", keyword: "எலக்ட்ரிஷியன்" },
         { name: "பிளம்பிங் & குழாய் வேலைகள் (Plumbing & Water)", keyword: "பிளம்பிங்" },
         { name: "போர்வெல் & மோட்டார் பழுதுபார்ப்பு (Borewell & Motor)", keyword: "போர்வெல்" },
         { name: "ஏசி & குளிர்சாதனப் பழுதுபார்ப்பு (AC Repair)", keyword: "ஏசி" }
@@ -2018,20 +2018,23 @@
       }
     }
 
+    // FIXED: Non-blocking GPS permission handler (prevents harsh alert errors)
     function requestDeviceGPSPermission() {
+      const modal = document.getElementById("locationPermissionModal");
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
           (position) => {
             document.getElementById("homeTownInput").value = "நாகர்கோவில்";
-            document.getElementById("locationPermissionModal").style.display = "none";
+            if (modal) modal.style.display = "none";
           },
           (error) => {
-            alert("இருப்பிட அனுமதி வழங்கப்படவில்லை. தயவுசெய்து ஊரைத் தட்டச்சு செய்யவும்.");
+            // Silently fallback without disturbing the user with harsh alerts
+            if (modal) modal.style.display = "none";
           },
-          { timeout: 10000, enableHighAccuracy: true }
+          { timeout: 7000, enableHighAccuracy: false }
         );
       } else {
-        alert("உங்கள் பிரவுசர் ஜிபிஎஸ்-ஐ ஆதரிக்கவில்லை.");
+        if (modal) modal.style.display = "none";
       }
     }
 
@@ -2039,14 +2042,11 @@
       const townInput = document.getElementById("manualTownInputBox");
       const townVal = townInput ? townInput.value.trim() : "";
       
-      if (!townVal) {
-        alert("தயவுசெய்து ஊரின் பெயரை உள்ளிடவும்.");
-        return;
-      }
-      
       const homeTown = document.getElementById("homeTownInput");
-      if (homeTown) {
+      if (homeTown && townVal) {
         homeTown.value = townVal;
+      } else if (homeTown && !homeTown.value.trim()) {
+        homeTown.value = "நாகர்கோவில்";
       }
       
       const modal = document.getElementById("locationPermissionModal");
@@ -3081,8 +3081,8 @@
             </div>
             <p style="font-size: 11px; color: var(--yellow); margin-bottom: 6px;">📍 ${v.area} • 📞 ${v.phone}</p>
             <div style="display: flex; gap: 6px;">
-              <button onclick="changeVendorStatusLocally('${v.id || v.name}', 'active')" style="flex:1; padding: 5px; background: #22C55E; color: #fff; font-size: 11px; border: none; border-radius: 6px; font-weight: 700; pointer;">Approve</button>
-              <button onclick="changeVendorStatusLocally('${v.id || v.name}', 'blocked')" style="flex:1; padding: 5px; background: #EF4444; color: #fff; font-size: 11px; border: none; border-radius: 6px; font-weight: 700; pointer;">Block</button>
+              <button onclick="changeVendorStatusLocally('${v.id || v.name}', 'active')" style="flex:1; padding: 5px; background: #22C55E; color: #fff; font-size: 11px; border: none; border-radius: 6px; font-weight: 700; cursor: pointer;">Approve</button>
+              <button onclick="changeVendorStatusLocally('${v.id || v.name}', 'blocked')" style="flex:1; padding: 5px; background: #EF4444; color: #fff; font-size: 11px; border: none; border-radius: 6px; font-weight: 700; cursor: pointer;">Block</button>
             </div>
           </div>
         `;
