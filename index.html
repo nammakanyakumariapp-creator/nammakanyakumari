@@ -47,10 +47,9 @@
       margin: 0 auto;
     }
   
-    /* Top Main Promo Banner - Height Reduced slightly as requested */
+    /* Top Main Promo Banner - Fixed natural aspect ratio to prevent cropping */
     .top-promo-banner {
       width: 100%;
-      max-height: 145px;
       margin: 0 auto 6px auto;
       border-radius: 12px;
       overflow: hidden;
@@ -62,8 +61,7 @@
     }
     .top-promo-banner img {
       width: 100%;
-      height: 145px;
-      object-fit: cover;
+      height: auto;
       display: block;
       pointer-events: none;
       user-select: none;
@@ -837,7 +835,7 @@
   
   <div class="container">
   
-    <!-- Top Main Promo Banner (Height Reduced Properly) -->
+    <!-- Top Main Promo Banner (Natural Aspect Ratio - No Cropping) -->
     <div class="top-promo-banner">
       <div class="secret-logo-touch-area" onclick="handleSecretLogoTap(event)"></div>
       <img src="https://lh3.googleusercontent.com/d/1fkKtPqMGdZWPFBRdUezBGTjsT7THt87a" alt="நம்ம ஊர் A to Z பிரதான பேனர்">
@@ -1902,7 +1900,7 @@
         { name: "அலுவலகப் பணிகள் (Office & Data Entry Jobs)", keyword: "அலுவலகம்" }
       ],
       "மின் & நீர் சேவைகள் / Utility": [
-        { name: "எலக்ட்ரீஷியன் & வயரிங் (Electrician & Wiring)", keyword: "எலக்ட்ரீஷியன்" },
+        { name: "எலக்ட்ரிஷியன் & வயரிங் (Electrician & Wiring)", keyword: "எலக்ட்ரிஷியன்" },
         { name: "பிளம்பிங் & குழாய் வேலைகள் (Plumbing & Water)", keyword: "பிளம்பிங்" },
         { name: "போர்வெல் & மோட்டார் பழுதுபார்ப்பு (Borewell & Motor)", keyword: "போர்வெல்" },
         { name: "ஏசி & குளிர்சாதனப் பழுதுபார்ப்பு (AC Repair)", keyword: "ஏசி" }
@@ -2866,7 +2864,7 @@
         body.innerHTML = `
           <div class="terms-rule-card">
             <h4>1. 0% கமிஷன் நேரடி ஆள்சேர்ப்பு / 0% Commission Direct Hiring</h4>
-            <p class="ta-main">வேலை வாய்ப்புகளுக்கோ அல்லது ஆள்சேர்ப்புக்கோ தளம் எவ்வித கமிஷனும் வசூலிப்பதில்லை. ஒப்பந்த முடிவுகளுக்கு <strong>நம்ம ஊர் A to Z தளம் பொறுப்பாகாது;</strong> இரு தரப்பினருமே பேசித் தீர்க்க முழுப் பொறுப்பு.</p>
+            <p class="ta-main">வேலை வாய்ப்புகளுக்கோ அல்லது ஆள்சேர்ப்புக்கோ தளம் எவ்வித கமிஷனும் வசூலிப்பதில்லை. ஒப்பந்த முடிவுகளுக்கு <strong>நம்ம ஊர் A to Z தளம் பொறுப்பாகாது;</strong> இரு தரப்பினருமே முழுப் பொறுப்பு.</p>
             <p class="en-sub">The platform charges 0% hiring commission. <strong>Namma Oor A to Z platform is not responsible</strong> for employment contracts; both parties are responsible.</p>
             <div class="hidden-subscription-clause" style="${subClauseStyle}">
               <p class="ta-main" style="color: #D4AF37; margin-top: 6px;">${dynamicNoticeTa}</p>
