@@ -38,19 +38,19 @@
     body {
       background-color: var(--page-bg);
       color: var(--text-light);
-      padding-bottom: 45px;
+      padding-bottom: 50px;
     }
   
     .container {
-      padding: 6px 10px;
+      padding: 8px 10px;
       max-width: 480px;
       margin: 0 auto;
     }
   
-    /* Top Main Promo Banner - Fixed natural aspect ratio to prevent cropping */
+    /* Top Main Promo Banner */
     .top-promo-banner {
       width: 100%;
-      margin: 0 auto 6px auto;
+      margin: 0 auto 10px auto; /* Adjusted bottom margin for perfect spacing */
       border-radius: 12px;
       overflow: hidden;
       box-shadow: 0 3px 12px rgba(0,0,0,0.4);
@@ -84,19 +84,19 @@
       display: flex;
       background: var(--card-container-bg);
       border-radius: 10px;
-      padding: 3px;
-      margin-bottom: 6px;
+      padding: 4px;
+      margin-bottom: 8px;
       border: 1.5px solid var(--gold-border);
-      gap: 3px;
+      gap: 4px;
     }
     .home-tab-btn {
       flex: 1;
       border: none;
       background: transparent;
       color: var(--en-text-bright);
-      padding: 5px 4px;
+      padding: 6px 4px;
       border-radius: 7px;
-      font-size: 9px;
+      font-size: 9.5px;
       font-weight: 700;
       cursor: pointer;
       display: flex;
@@ -116,14 +116,14 @@
     .home-search-row {
       display: grid;
       grid-template-columns: 95px 1fr;
-      gap: 6px;
-      margin-bottom: 6px;
+      gap: 8px;
+      margin-bottom: 8px;
     }
     .home-town-input, .home-search-input-box {
       background: var(--card-container-bg);
       border: 1.5px solid var(--gold-border);
       border-radius: 10px;
-      padding: 6px 8px;
+      padding: 7px 8px;
       display: flex;
       align-items: center;
       gap: 5px;
@@ -133,7 +133,7 @@
       background: transparent;
       border: none;
       color: #fff;
-      font-size: 11.5px;
+      font-size: 12px;
       outline: none;
     }
     .home-town-input input::placeholder, .home-search-input-box input::placeholder {
@@ -144,7 +144,7 @@
     }
     .home-search-input-box i.fa-magnifying-glass {
       color: var(--yellow);
-      font-size: 11.5px;
+      font-size: 12px;
     }
     .home-mic-btn {
       background: none;
@@ -166,8 +166,8 @@
       background: linear-gradient(135deg, #102B58, #163B75);
       border: 1.5px solid var(--yellow);
       border-radius: 10px;
-      padding: 5px 10px;
-      margin-bottom: 6px;
+      padding: 7px 10px;
+      margin-bottom: 8px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -175,13 +175,13 @@
       box-shadow: 0 2px 8px rgba(255, 215, 0, 0.15);
     }
     .sponsor-ad-card h4 {
-      font-size: 11px;
+      font-size: 11.5px;
       color: #FFFFFF;
       font-weight: 700;
       line-height: 1.2;
     }
     .sponsor-ad-card p {
-      font-size: 9.5px;
+      font-size: 10px;
       color: var(--yellow);
       font-weight: 500;
       margin-top: 1px;
@@ -189,33 +189,33 @@
     .sponsor-tag {
       background: #22C55E;
       color: #fff;
-      font-size: 9px;
+      font-size: 9.5px;
       font-weight: 700;
       padding: 2px 6px;
       border-radius: 5px;
       white-space: nowrap;
     }
   
-    /* 3x3 Compact Category Grid (Premium Royal Gold Theme) */
+    /* 3x3 Compact Category Grid with Perfect Spacing */
     .category-grid-container {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 6px;
-      margin-bottom: 8px;
+      gap: 8px; /* Balanced spacing as marked */
+      margin-bottom: 10px;
     }
   
     .cat-btn {
       background: #102B58 !important;
       border: 1.5px solid var(--gold-border) !important;
       border-radius: 12px;
-      padding: 6px 4px;
-      min-height: 82px;
+      padding: 8px 4px;
+      min-height: 88px;
       text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 3px;
+      gap: 4px;
       cursor: pointer;
       box-shadow: 0 3px 8px rgba(0,0,0,0.3);
       transition: transform 0.15s ease;
@@ -225,13 +225,13 @@
     }
     
     .cat-btn .circle-icon {
-      width: 34px;
-      height: 34px;
-      border-radius: 9px;
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 15px;
+      font-size: 16px;
       color: var(--yellow);
       box-shadow: 0 2px 6px rgba(0,0,0,0.3);
       border: 1.2px solid var(--yellow);
@@ -239,13 +239,13 @@
     }
   
     .cat-btn .main-text {
-      font-size: 10.5px;
+      font-size: 11px;
       font-weight: 700;
       color: #FFFFFF;
       line-height: 1.1;
     }
     .cat-btn .sub-text {
-      font-size: 8.5px;
+      font-size: 9px;
       font-weight: 600;
       color: var(--yellow);
       line-height: 1;
@@ -256,13 +256,13 @@
     .dual-register-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 6px;
-      margin-bottom: 8px;
+      gap: 8px;
+      margin-bottom: 10px;
     }
     .reg-block {
       background: var(--card-container-bg);
       border-radius: 10px;
-      padding: 7px 8px;
+      padding: 8px 10px;
       border: 1.5px solid var(--gold-border);
       display: flex;
       align-items: center;
@@ -270,16 +270,16 @@
       cursor: pointer;
       box-shadow: 0 2px 8px rgba(0,0,0,0.25);
     }
-    .reg-block.customer i { color: var(--yellow); font-size: 16px; }
-    .reg-block.vendor i { color: var(--yellow); font-size: 16px; }
+    .reg-block.customer i { color: var(--yellow); font-size: 18px; }
+    .reg-block.vendor i { color: var(--yellow); font-size: 18px; }
     .reg-block-info h5 {
-      font-size: 10.5px;
+      font-size: 11px;
       font-weight: 700;
       color: #FFFFFF;
       line-height: 1.2;
     }
     .reg-block-info p {
-      font-size: 9px;
+      font-size: 9.5px;
       font-weight: 600;
       color: var(--yellow);
     }
@@ -835,7 +835,7 @@
   
   <div class="container">
   
-    <!-- Top Main Promo Banner (Natural Aspect Ratio - No Cropping) -->
+    <!-- Top Main Promo Banner -->
     <div class="top-promo-banner">
       <div class="secret-logo-touch-area" onclick="handleSecretLogoTap(event)"></div>
       <img src="https://lh3.googleusercontent.com/d/1fkKtPqMGdZWPFBRdUezBGTjsT7THt87a" alt="நம்ம ஊர் A to Z பிரதான பேனர்">
@@ -880,7 +880,7 @@
       </div>
     </div>
   
-    <!-- 3x3 Compact Category Grid (Premium Royal Gold Theme) -->
+    <!-- 3x3 Compact Category Grid with Perfect Spacing -->
     <div class="category-grid-container">
       <div class="cat-btn" onclick="checkAndPromptLocationOnce(); openSubCategoryView('போக்குவரத்து / Transport')">
         <div class="circle-icon">
@@ -975,8 +975,8 @@
     </div>
 
     <!-- About Us Quick Access Trigger Button on Home -->
-    <div style="margin-bottom: 10px; text-align: center;">
-      <button type="button" onclick="openAboutUsMasterPage()" style="width: 100%; background: linear-gradient(135deg, #102B58, #163B75); color: var(--yellow); border: 1.5px solid var(--gold-border); padding: 9px; border-radius: 9px; font-weight: 700; font-size: 12px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 3px 10px rgba(255,215,0,0.15);">
+    <div style="margin-bottom: 8px; text-align: center;">
+      <button type="button" onclick="openAboutUsMasterPage()" style="width: 100%; background: linear-gradient(135deg, #102B58, #163B75); color: var(--yellow); border: 1.5px solid var(--gold-border); padding: 8px; border-radius: 9px; font-weight: 700; font-size: 12px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 3px 10px rgba(255,215,0,0.15);">
         <i class="fa-solid fa-circle-info"></i> நம்மைப் பற்றி & விதிமுறைகள் / About Us & Terms ↗
       </button>
     </div>
@@ -1900,7 +1900,7 @@
         { name: "அலுவலகப் பணிகள் (Office & Data Entry Jobs)", keyword: "அலுவலகம்" }
       ],
       "மின் & நீர் சேவைகள் / Utility": [
-        { name: "எலக்ட்ரிஷியன் & வயரிங் (Electrician & Wiring)", keyword: "எலக்ட்ரிஷியன்" },
+        { name: "எலக்ட்ரீஷியன் & வயரிங் (Electrician & Wiring)", keyword: "எலக்ட்ரீஷியன்" },
         { name: "பிளம்பிங் & குழாய் வேலைகள் (Plumbing & Water)", keyword: "பிளம்பிங்" },
         { name: "போர்வெல் & மோட்டார் பழுதுபார்ப்பு (Borewell & Motor)", keyword: "போர்வெல்" },
         { name: "ஏசி & குளிர்சாதனப் பழுதுபார்ப்பு (AC Repair)", keyword: "ஏசி" }
@@ -2864,7 +2864,7 @@
         body.innerHTML = `
           <div class="terms-rule-card">
             <h4>1. 0% கமிஷன் நேரடி ஆள்சேர்ப்பு / 0% Commission Direct Hiring</h4>
-            <p class="ta-main">வேலை வாய்ப்புகளுக்கோ அல்லது ஆள்சேர்ப்புக்கோ தளம் எவ்வித கமிஷனும் வசூலிப்பதில்லை. ஒப்பந்த முடிவுகளுக்கு <strong>நம்ம ஊர் A to Z தளம் பொறுப்பாகாது;</strong> இரு தரப்பினருமே முழுப் பொறுப்பு.</p>
+            <p class="ta-main">வேலை வாய்ப்புகளுக்கோ அல்லது ஆள்சேர்ப்புக்கோ தளம் எவ்வித கமிஷனும் வசூலிப்பதில்லை. ஒப்பந்த முடிவுகளுக்கு <strong>நம்ம ஊர் A to Z தளம் பொறுப்பாகாது;</strong> இரு தரப்பினருமே பேசித் தீர்க்க முழுப் பொறுப்பு.</p>
             <p class="en-sub">The platform charges 0% hiring commission. <strong>Namma Oor A to Z platform is not responsible</strong> for employment contracts; both parties are responsible.</p>
             <div class="hidden-subscription-clause" style="${subClauseStyle}">
               <p class="ta-main" style="color: #D4AF37; margin-top: 6px;">${dynamicNoticeTa}</p>
