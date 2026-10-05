@@ -38,22 +38,22 @@
     body {
       background-color: var(--page-bg);
       color: var(--text-light);
-      padding-bottom: 55px;
+      padding-bottom: 50px;
     }
   
     .container {
-      padding: 12px;
+      padding: 8px 12px;
       max-width: 480px;
       margin: 0 auto;
     }
   
-    /* Top Main Promo Banner */
+    /* Top Main Promo Banner (Compact Height) */
     .top-promo-banner {
       width: 100%;
-      margin: 0 auto 12px auto;
-      border-radius: 14px;
+      margin: 0 auto 8px auto;
+      border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
       border: 1.5px solid var(--gold-border);
       background: #0A2D5B;
       position: relative;
@@ -83,20 +83,20 @@
     .home-filter-tabs {
       display: flex;
       background: var(--card-container-bg);
-      border-radius: 12px;
-      padding: 4px;
-      margin-bottom: 10px;
+      border-radius: 10px;
+      padding: 3px;
+      margin-bottom: 8px;
       border: 1.5px solid var(--gold-border);
-      gap: 4px;
+      gap: 3px;
     }
     .home-tab-btn {
       flex: 1;
       border: none;
       background: transparent;
       color: var(--en-text-bright);
-      padding: 8px 4px;
-      border-radius: 8px;
-      font-size: 10px;
+      padding: 6px 4px;
+      border-radius: 7px;
+      font-size: 9.5px;
       font-weight: 700;
       cursor: pointer;
       display: flex;
@@ -115,25 +115,25 @@
     /* Town & Search Bar Row */
     .home-search-row {
       display: grid;
-      grid-template-columns: 110px 1fr;
-      gap: 8px;
-      margin-bottom: 14px;
+      grid-template-columns: 100px 1fr;
+      gap: 6px;
+      margin-bottom: 8px;
     }
     .home-town-input, .home-search-input-box {
       background: var(--card-container-bg);
       border: 1.5px solid var(--gold-border);
-      border-radius: 12px;
-      padding: 8px 10px;
+      border-radius: 10px;
+      padding: 6px 8px;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 5px;
     }
     .home-town-input input, .home-search-input-box input {
       width: 100%;
       background: transparent;
       border: none;
       color: #fff;
-      font-size: 12.5px;
+      font-size: 12px;
       outline: none;
     }
     .home-town-input input::placeholder, .home-search-input-box input::placeholder {
@@ -144,81 +144,80 @@
     }
     .home-search-input-box i.fa-magnifying-glass {
       color: var(--yellow);
-      font-size: 13px;
+      font-size: 12px;
     }
     .home-mic-btn {
       background: none;
       border: none;
       color: var(--yellow);
-      font-size: 14px;
+      font-size: 13px;
       cursor: pointer;
       padding: 4px;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: color 0.2s ease;
     }
     .home-mic-btn.listening {
       color: #22C55E !important;
     }
   
-    /* Sponsor Ad Strip */
+    /* Sponsor Ad Strip (Compact) */
     .sponsor-ad-card {
       background: linear-gradient(135deg, #102B58, #163B75);
       border: 1.5px solid var(--yellow);
-      border-radius: 12px;
-      padding: 7px 12px;
-      margin-bottom: 14px;
+      border-radius: 10px;
+      padding: 6px 10px;
+      margin-bottom: 8px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       cursor: pointer;
-      box-shadow: 0 4px 12px rgba(255, 215, 0, 0.15);
+      box-shadow: 0 3px 10px rgba(255, 215, 0, 0.15);
     }
     .sponsor-ad-card h4 {
-      font-size: 12.5px;
+      font-size: 11.5px;
       color: #FFFFFF;
       font-weight: 700;
       line-height: 1.2;
     }
     .sponsor-ad-card p {
-      font-size: 11px;
+      font-size: 10px;
       color: var(--yellow);
       font-weight: 500;
-      margin-top: 2px;
+      margin-top: 1px;
     }
     .sponsor-tag {
       background: #22C55E;
       color: #fff;
-      font-size: 10.5px;
+      font-size: 9.5px;
       font-weight: 700;
-      padding: 3px 8px;
-      border-radius: 6px;
+      padding: 2px 6px;
+      border-radius: 5px;
       white-space: nowrap;
     }
   
-    /* 3x3 Category Grid with Premium Royal Gold Theme */
+    /* 3x3 Compact Category Grid (Designed to fit single screen without scrolling) */
     .category-grid-container {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-bottom: 18px;
+      gap: 8px;
+      margin-bottom: 10px;
     }
   
     .cat-btn {
       background: #102B58 !important;
       border: 1.5px solid var(--gold-border) !important;
-      border-radius: 16px;
-      padding: 10px 4px;
-      min-height: 112px;
+      border-radius: 12px;
+      padding: 8px 4px;
+      min-height: 88px;
       text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 6px;
+      gap: 4px;
       cursor: pointer;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      box-shadow: 0 3px 10px rgba(0,0,0,0.3);
       transition: transform 0.15s ease;
     }
     .cat-btn:active {
@@ -226,61 +225,61 @@
     }
     
     .cat-btn .circle-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 14px;
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 20px;
-      color: var(--yellow); /* Premium Gold Icons */
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-      border: 1.5px solid var(--yellow);
-      background: rgba(255, 215, 0, 0.1);
+      font-size: 16px;
+      color: var(--yellow);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+      border: 1.2px solid var(--yellow);
+      background: rgba(255, 215, 0, 0.08);
     }
   
     .cat-btn .main-text {
-      font-size: 12px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #FFFFFF;
+      line-height: 1.1;
+    }
+    .cat-btn .sub-text {
+      font-size: 9px;
+      font-weight: 600;
+      color: #FFD700;
+      line-height: 1;
+      opacity: 0.9;
+    }
+  
+    /* Dual Registration Blocks (Compact) */
+    .dual-register-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .reg-block {
+      background: var(--card-container-bg);
+      border-radius: 10px;
+      padding: 8px 10px;
+      border: 1.5px solid var(--gold-border);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.25);
+    }
+    .reg-block.customer i { color: var(--yellow); font-size: 18px; }
+    .reg-block.vendor i { color: var(--yellow); font-size: 18px; }
+    .reg-block-info h5 {
+      font-size: 11px;
       font-weight: 700;
       color: #FFFFFF;
       line-height: 1.2;
     }
-    .cat-btn .sub-text {
-      font-size: 10px;
-      font-weight: 600;
-      color: #FFD700; /* Gold Subtext for Premium Look */
-      line-height: 1.1;
-      opacity: 0.9;
-    }
-  
-    /* Dual Registration Blocks */
-    .dual-register-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-bottom: 24px;
-    }
-    .reg-block {
-      background: var(--card-container-bg);
-      border-radius: 12px;
-      padding: 12px;
-      border: 1.5px solid var(--gold-border);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      cursor: pointer;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-    }
-    .reg-block.customer i { color: var(--yellow); font-size: 22px; }
-    .reg-block.vendor i { color: var(--yellow); font-size: 22px; }
-    .reg-block-info h5 {
-      font-size: 12px;
-      font-weight: 700;
-      color: #FFFFFF;
-      line-height: 1.3;
-    }
     .reg-block-info p {
-      font-size: 10.5px;
+      font-size: 9.5px;
       font-weight: 600;
       color: var(--yellow);
     }
@@ -318,7 +317,7 @@
     .fullpage-header {
       background: #0A2D5B;
       color: #fff;
-      padding: 14px 16px;
+      padding: 12px 16px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -346,19 +345,19 @@
     }
     .end-btn {
       color: var(--red);
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 700;
       display: flex;
       align-items: center;
       gap: 4px;
       background: rgba(239, 68, 68, 0.12);
-      padding: 5px 10px;
+      padding: 4px 8px;
       border-radius: 6px;
       border: 1px solid rgba(239, 68, 68, 0.3);
       flex-shrink: 0;
     }
     .fullpage-header h3 {
-      font-size: 13.5px;
+      font-size: 13px;
       font-weight: 700;
       white-space: nowrap;
       overflow: hidden;
@@ -366,7 +365,7 @@
       color: #FFFFFF;
     }
     .fullpage-header span.tag-right {
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 600;
       color: var(--yellow);
     }
@@ -375,7 +374,7 @@
       min-height: 0;
       overflow-y: auto;
       padding: 16px;
-      padding-bottom: 100px;
+      padding-bottom: 80px;
       max-width: 480px;
       width: 100%;
       margin: 0 auto;
@@ -393,30 +392,25 @@
       background: var(--card-container-bg);
       border: 1.5px solid var(--gold-border);
       border-radius: 12px;
-      padding: 14px 16px;
+      padding: 12px 14px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       cursor: pointer;
-      transition: transform 0.15s ease, background 0.15s ease;
-    }
-    .subcat-card:active {
-      transform: scale(0.98);
-      background: #163866;
     }
     .subcat-card-info h4 {
-      font-size: 14px;
+      font-size: 13.5px;
       color: #FFFFFF;
       font-weight: 700;
       margin-bottom: 2px;
     }
     .subcat-card-info span {
-      font-size: 11.5px;
+      font-size: 11px;
       color: var(--yellow);
     }
     .subcat-card i.fa-chevron-right {
       color: var(--yellow);
-      font-size: 14px;
+      font-size: 13px;
     }
 
     /* Tabs Inside Modals */
@@ -425,7 +419,7 @@
       background: #0A2D5B;
       border-radius: 10px;
       padding: 4px;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
       border: 1.5px solid var(--gold-border);
       gap: 3px;
     }
@@ -434,9 +428,9 @@
       border: none;
       background: transparent;
       color: var(--en-text-bright);
-      padding: 7px 2px;
-      border-radius: 8px;
-      font-size: 9.5px;
+      padding: 6px 2px;
+      border-radius: 7px;
+      font-size: 9px;
       font-weight: 700;
       cursor: pointer;
       display: flex;
@@ -455,20 +449,20 @@
     .emergency-card {
       background: var(--card-container-bg);
       border: 1.5px solid var(--gold-border);
-      border-radius: 14px;
-      padding: 14px;
-      margin-bottom: 12px;
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 10px;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
     .emergency-info h4 {
-      font-size: 14.5px;
+      font-size: 14px;
       color: #FFFFFF;
       font-weight: 700;
     }
     .emergency-info p {
-      font-size: 12px;
+      font-size: 11.5px;
       font-weight: 600;
       color: var(--yellow);
     }
@@ -476,84 +470,83 @@
       background: var(--red);
       color: #fff;
       text-decoration: none;
-      padding: 8px 14px;
-      border-radius: 8px;
-      font-size: 13px;
+      padding: 6px 12px;
+      border-radius: 7px;
+      font-size: 12px;
       font-weight: 700;
       display: flex;
       align-items: center;
-      gap: 6px;
-      box-shadow: 0 4px 10px rgba(239, 68, 68, 0.3);
+      gap: 5px;
     }
   
     /* Form Fields Styling */
     .form-box {
       background: var(--card-container-bg);
-      border-radius: 16px;
-      padding: 16px;
+      border-radius: 14px;
+      padding: 14px;
       border: 1.5px solid var(--gold-border);
     }
     .form-group {
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
     .form-group label {
       display: block;
-      font-size: 12.5px;
+      font-size: 12px;
       font-weight: 600;
-      margin-bottom: 4px;
+      margin-bottom: 3px;
       color: #FFFFFF;
     }
     .form-group label span.en-label {
       color: var(--yellow);
       font-weight: 600;
-      font-size: 12px;
+      font-size: 11.5px;
     }
     .form-group label span.opt-tag {
-      font-size: 11px;
+      font-size: 10.5px;
       color: var(--yellow);
       font-weight: normal;
     }
     .form-group input, .form-group select, .form-group textarea {
       width: 100%;
-      padding: 10px;
-      border-radius: 8px;
+      padding: 8px 10px;
+      border-radius: 7px;
       border: 1.5px solid var(--gold-border);
       background: #0A2D5B;
       color: #fff;
-      font-size: 13.5px;
+      font-size: 13px;
       outline: none;
     }
   
     /* Terms Box & Smart Verification */
     .terms-check-container {
       background: #0A2D5B;
-      border-radius: 10px;
-      padding: 12px;
-      margin-top: 14px;
+      border-radius: 8px;
+      padding: 10px;
+      margin-top: 10px;
       border: 1.5px solid var(--gold-border);
     }
     .terms-row {
       display: flex;
       align-items: flex-start;
-      gap: 10px;
+      gap: 8px;
     }
     .terms-row input[type="checkbox"] {
-      width: 19px;
-      height: 19px;
+      width: 17px;
+      height: 17px;
       margin-top: 2px;
       cursor: pointer;
     }
     .terms-text-label {
-      font-size: 12.5px;
+      font-size: 12px;
       color: #FFFFFF;
-      line-height: 1.4;
+      line-height: 1.3;
       cursor: pointer;
     }
     .view-terms-link {
       display: inline-block;
-      margin-top: 8px;
+      margin-top: 6px;
       color: var(--yellow);
-      font-size: 12.5px;
+      font-size: 12px;
       text-decoration: underline;
       font-weight: 700;
       cursor: pointer;
@@ -563,15 +556,15 @@
     .form-submit-btn {
       width: 100%;
       border: none;
-      border-radius: 8px;
-      padding: 13px;
-      font-size: 14px;
+      border-radius: 7px;
+      padding: 11px;
+      font-size: 13.5px;
       font-weight: 700;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      margin-top: 14px;
+      gap: 6px;
+      margin-top: 12px;
       transition: all 0.3s ease;
     }
     .form-submit-btn.disabled-btn {
@@ -584,51 +577,51 @@
       background: #22C55E;
       color: #fff;
       cursor: pointer;
-      box-shadow: 0 4px 12px rgba(34, 197, 94, 0.4);
+      box-shadow: 0 4px 10px rgba(34, 197, 94, 0.4);
     }
   
     /* Digital Card Item Style */
     .item-card {
       background: var(--card-container-bg);
-      border-radius: 14px;
-      padding: 14px;
-      margin-bottom: 12px;
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 10px;
       border: 1.5px solid var(--gold-border);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+      box-shadow: 0 3px 10px rgba(0,0,0,0.25);
     }
     .item-card h4 {
-      font-size: 14.5px;
+      font-size: 14px;
       font-weight: 700;
       color: #FFFFFF;
     }
     .item-card .item-meta {
-      font-size: 12px;
+      font-size: 11.5px;
       color: var(--yellow);
       font-weight: 600;
-      margin: 3px 0 6px 0;
+      margin: 2px 0 5px 0;
     }
     .item-card .item-desc {
-      font-size: 12.5px;
+      font-size: 12px;
       color: #E6FFFA;
-      margin-bottom: 10px;
-      line-height: 1.4;
+      margin-bottom: 8px;
+      line-height: 1.3;
     }
     .item-actions {
       display: flex;
-      gap: 10px;
+      gap: 8px;
     }
     .btn-call, .btn-wa {
       flex: 1;
       text-align: center;
-      padding: 8px;
-      border-radius: 8px;
-      font-size: 12.5px;
+      padding: 7px;
+      border-radius: 7px;
+      font-size: 12px;
       font-weight: 700;
       text-decoration: none;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
+      gap: 5px;
     }
     .btn-call { background: #0284C7; color: #fff; }
     .btn-wa { background: #22C55E; color: #fff; }
@@ -637,28 +630,28 @@
     .terms-rule-card {
       background: var(--card-container-bg);
       border: 1.5px solid var(--gold-border);
-      border-radius: 12px;
-      padding: 14px;
-      margin-bottom: 12px;
+      border-radius: 10px;
+      padding: 12px;
+      margin-bottom: 10px;
     }
     .terms-rule-card h4 {
-      font-size: 13.5px;
+      font-size: 13px;
       color: var(--yellow);
-      margin-bottom: 6px;
+      margin-bottom: 5px;
       font-weight: 700;
-      line-height: 1.3;
+      line-height: 1.2;
     }
     .terms-rule-card p.ta-main {
-      font-size: 12.5px;
+      font-size: 12px;
       color: #FFFFFF;
-      line-height: 1.5;
-      margin-bottom: 6px;
+      line-height: 1.4;
+      margin-bottom: 5px;
     }
     .terms-rule-card p.en-sub {
-      font-size: 12px;
+      font-size: 11.5px;
       color: var(--yellow);
       font-weight: 500;
-      line-height: 1.4;
+      line-height: 1.3;
     }
   
     .hidden-subscription-clause {
@@ -674,10 +667,10 @@
       background: #0A2D5B;
       display: flex;
       justify-content: space-around;
-      padding: 8px 0 8px 0;
+      padding: 6px 0 6px 0;
       border-top: 1.5px solid var(--gold-border);
       z-index: 900;
-      box-shadow: 0 -4px 15px rgba(0,0,0,0.5);
+      box-shadow: 0 -4px 12px rgba(0,0,0,0.5);
     }
     .bar-link {
       color: var(--en-text-bright);
@@ -685,10 +678,9 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      font-size: 10.5px;
-      letter-spacing: -0.2px;
+      font-size: 10px;
       font-weight: 600;
-      gap: 3px;
+      gap: 2px;
       cursor: pointer;
     }
     .bar-link.active {
@@ -700,10 +692,10 @@
     }
     .bar-link.offer-fire-btn i {
       color: var(--yellow);
-      font-size: 18px;
+      font-size: 16px;
     }
     .bar-link i {
-      font-size: 17px;
+      font-size: 16px;
     }
 
     @keyframes pulseGlow {
@@ -731,60 +723,60 @@
     }
     .secret-admin-box {
       background: var(--card-container-bg);
-      border: 1.5px solid var(--yellow);
-      border-radius: 16px;
-      padding: 20px;
+      border: 1.5px solid var(--gold-border);
+      border-radius: 14px;
+      padding: 18px;
       width: 100%;
       max-width: 360px;
       box-shadow: 0 10px 25px rgba(0,0,0,0.5);
       text-align: center;
     }
     .secret-admin-box h3 {
-      font-size: 16px;
+      font-size: 15px;
       color: #FFFFFF;
-      margin-bottom: 6px;
+      margin-bottom: 5px;
     }
     .secret-admin-box p {
-      font-size: 12px;
+      font-size: 11.5px;
       color: var(--text-muted);
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
     .secret-admin-box input {
       width: 100%;
-      padding: 12px;
-      border-radius: 8px;
+      padding: 10px;
+      border-radius: 7px;
       border: 1.5px solid var(--gold-border);
       background: #0A2D5B;
       color: #fff;
-      font-size: 14px;
+      font-size: 13px;
       text-align: center;
       letter-spacing: 2px;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
       outline: none;
     }
     .secret-admin-actions {
       display: flex;
-      gap: 10px;
+      gap: 8px;
     }
     .btn-secret-cancel {
       flex: 1;
-      padding: 10px;
-      border-radius: 8px;
+      padding: 8px;
+      border-radius: 7px;
       border: 1.5px solid var(--gold-border);
       background: transparent;
       color: var(--yellow);
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 600;
       cursor: pointer;
     }
     .btn-secret-login {
       flex: 1;
-      padding: 10px;
-      border-radius: 8px;
+      padding: 8px;
+      border-radius: 7px;
       border: none;
       background: var(--yellow);
       color: #0A2D5B;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 700;
       cursor: pointer;
     }
@@ -806,8 +798,8 @@
     .location-permission-box {
       background: var(--card-container-bg);
       border: 2px solid var(--yellow);
-      border-radius: 16px;
-      padding: 24px;
+      border-radius: 14px;
+      padding: 20px;
       width: 100%;
       max-width: 360px;
       text-align: center;
@@ -820,21 +812,21 @@
   <!-- Startup GPS Location Permission Modal -->
   <div class="location-permission-overlay" id="locationPermissionModal">
     <div class="location-permission-box">
-      <div style="font-size: 40px; color: var(--yellow); margin-bottom: 12px;">
+      <div style="font-size: 36px; color: var(--yellow); margin-bottom: 10px;">
         <i class="fa-solid fa-location-crosshairs"></i>
       </div>
-      <h3 style="color: #FFFFFF; font-size: 16px; margin-bottom: 8px;">இருப்பிட அனுமதி தேவை / Location Required</h3>
-      <p style="color: var(--en-text-bright); font-size: 12.5px; line-height: 1.5; margin-bottom: 16px;">
+      <h3 style="color: #FFFFFF; font-size: 15px; margin-bottom: 6px;">இருப்பிட அனுமதி தேவை / Location Required</h3>
+      <p style="color: var(--en-text-bright); font-size: 12px; line-height: 1.4; margin-bottom: 14px;">
         உங்கள் அருகில் உள்ள (500m - 1km) சேவைகளை உடனுக்குடன் காட்ட உங்கள் இருப்பிடத்தை அனுமதிக்கவும்.
       </p>
       
-      <button type="button" onclick="requestDeviceGPSPermission()" style="width: 100%; background: #22C55E; color: #fff; border: none; padding: 12px; border-radius: 8px; font-weight: 700; font-size: 13.5px; cursor: pointer; margin-bottom: 10px; box-shadow: 0 4px 12px rgba(34,197,94,0.4);">
+      <button type="button" onclick="requestDeviceGPSPermission()" style="width: 100%; background: #22C55E; color: #fff; border: none; padding: 10px; border-radius: 7px; font-weight: 700; font-size: 13px; cursor: pointer; margin-bottom: 8px; box-shadow: 0 3px 10px rgba(34,197,94,0.4);">
         <i class="fa-solid fa-check"></i> இருப்பிடத்தை அனுமதிக்க / Allow GPS
       </button>
 
-      <div style="margin-top: 10px;">
-        <input type="text" id="manualTownInputBox" placeholder="அல்லது ஊரைத் தட்டச்சு செய்யவும் (எ.கா: அழகப்பபுரம்)..." style="width: 100%; padding: 10px; border-radius: 8px; border: 1.5px solid var(--gold-border); background: #0A2D5B; color: #fff; font-size: 12.5px; text-align: center; outline: none; margin-bottom: 8px;">
-        <button type="button" onclick="submitManualTownEntry()" style="width: 100%; background: #102B58; color: var(--yellow); border: 1px solid var(--yellow); padding: 10px; border-radius: 8px; font-weight: 600; font-size: 12.5px; cursor: pointer;">
+      <div style="margin-top: 8px;">
+        <input type="text" id="manualTownInputBox" placeholder="அல்லது ஊரைத் தட்டச்சு செய்யவும் (எ.கா: அழகப்பபுரம்)..." style="width: 100%; padding: 9px; border-radius: 7px; border: 1.5px solid var(--gold-border); background: #0A2D5B; color: #fff; font-size: 12px; text-align: center; outline: none; margin-bottom: 6px;">
+        <button type="button" onclick="submitManualTownEntry()" style="width: 100%; background: #102B58; color: var(--yellow); border: 1px solid var(--yellow); padding: 9px; border-radius: 7px; font-weight: 600; font-size: 12px; cursor: pointer;">
           தொடர / Continue Manually
         </button>
       </div>
@@ -843,7 +835,7 @@
   
   <div class="container">
   
-    <!-- Top Main Promo Banner (Updated with Festival Banner Link) -->
+    <!-- Top Main Promo Banner (Updated with Premium Royal Gold Banner Link) -->
     <div class="top-promo-banner">
       <div class="secret-logo-touch-area" onclick="handleSecretLogoTap(event)"></div>
       <img src="https://lh3.googleusercontent.com/d/1fkKtPqMGdZWPFBRdUezBGTjsT7THt87a" alt="நம்ம ஊர் A to Z பிரதான பேனர்">
@@ -852,13 +844,13 @@
     <!-- Home Filter Tabs -->
     <div class="home-filter-tabs">
       <button class="home-tab-btn active" id="homeTabVehicle" onclick="switchHomeTab('வாகனம்')">
-        <i class="fa-solid fa-car"></i> உள்ளூர் சேவைகள்<br><span style="font-size:8.5px; opacity:0.85;">Local Services</span>
+        <i class="fa-solid fa-car"></i> உள்ளூர் சேவைகள்<br><span style="font-size:8px; opacity:0.85;">Local Services</span>
       </button>
       <button class="home-tab-btn" id="homeTabShop" onclick="switchHomeTab('வியாபாரம்')">
-        <i class="fa-solid fa-shop"></i> உள்ளூர் வணிகங்கள்<br><span style="font-size:8.5px; opacity:0.85;">Local Businesses</span>
+        <i class="fa-solid fa-shop"></i> உள்ளூர் வணிகங்கள்<br><span style="font-size:8px; opacity:0.85;">Local Businesses</span>
       </button>
       <button class="home-tab-btn" id="homeTabJob" onclick="switchHomeTab('வேலைவாய்ப்பு')">
-        <i class="fa-solid fa-briefcase"></i> உள்ளூர் வேலை வாய்ப்புகள்<br><span style="font-size:8.5px; opacity:0.85;">Local Jobs</span>
+        <i class="fa-solid fa-briefcase"></i> உள்ளூர் வேலை வாய்ப்புகள்<br><span style="font-size:8px; opacity:0.85;">Local Jobs</span>
       </button>
     </div>
   
@@ -870,8 +862,8 @@
       </div>
       <div class="home-search-input-box">
         <i class="fa-solid fa-magnifying-glass" style="color: var(--yellow);"></i>
-        <input type="text" id="homeKeywordInput" placeholder="எ.கா: ஆட்டோ, டாக்ஸி, மால்ட்..." onfocus="checkAndPromptLocationOnce()" onkeypress="handleHomeSearchKey(event)" style="padding-right: 28px;">
-        <button type="button" class="home-mic-btn" id="homeMicBtn" onclick="checkAndPromptLocationOnce(); triggerHomeVoiceInput()" title="Voice Search" style="position: absolute; right: 6px; top: 50%; transform: translateY(-50%);">
+        <input type="text" id="homeKeywordInput" placeholder="எ.கா: ஆட்டோ, டாக்ஸி, மால்ட்..." onfocus="checkAndPromptLocationOnce()" onkeypress="handleHomeSearchKey(event)" style="padding-right: 26px;">
+        <button type="button" class="home-mic-btn" id="homeMicBtn" onclick="checkAndPromptLocationOnce(); triggerHomeVoiceInput()" title="Voice Search" style="position: absolute; right: 4px; top: 50%; transform: translateY(-50%);">
           <i class="fa-solid fa-microphone"></i>
         </button>
       </div>
@@ -888,7 +880,7 @@
       </div>
     </div>
   
-    <!-- 3x3 Category Grid with Premium Royal Gold Theme -->
+    <!-- 3x3 Compact Category Grid with Premium Royal Gold Theme (Fits Single Screen Perfectly) -->
     <div class="category-grid-container">
       <div class="cat-btn" onclick="checkAndPromptLocationOnce(); openSubCategoryView('போக்குவரத்து / Transport')">
         <div class="circle-icon">
@@ -983,8 +975,8 @@
     </div>
 
     <!-- About Us Quick Access Trigger Button on Home -->
-    <div style="margin-bottom: 20px; text-align: center;">
-      <button type="button" onclick="openAboutUsMasterPage()" style="width: 100%; background: linear-gradient(135deg, #102B58, #163B75); color: var(--yellow); border: 1.5px solid var(--gold-border); padding: 12px; border-radius: 12px; font-weight: 700; font-size: 13.5px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 12px rgba(255,215,0,0.15);">
+    <div style="margin-bottom: 12px; text-align: center;">
+      <button type="button" onclick="openAboutUsMasterPage()" style="width: 100%; background: linear-gradient(135deg, #102B58, #163B75); color: var(--yellow); border: 1.5px solid var(--gold-border); padding: 10px; border-radius: 10px; font-weight: 700; font-size: 12.5px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 3px 10px rgba(255,215,0,0.15);">
         <i class="fa-solid fa-circle-info"></i> நம்மைப் பற்றி & விதிமுறைகள் / About Us & Terms ↗
       </button>
     </div>
@@ -1029,8 +1021,8 @@
     <div class="fullpage-content">
       
       <div class="terms-rule-card" style="border: 2px solid var(--yellow);">
-        <h4 style="font-size: 15px; color: var(--yellow); margin-bottom: 8px;"><i class="fa-solid fa-seedling"></i> 1. ஒவ்வொரு கிராமத்தின் வளர்ச்சியும், சுயசார்பு முன்னேற்றமும்!</h4>
-        <p class="ta-main" style="font-size: 13px; line-height: 1.6;">
+        <h4 style="font-size: 14.5px; color: var(--yellow); margin-bottom: 6px;"><i class="fa-solid fa-seedling"></i> 1. ஒவ்வொரு கிராமத்தின் வளர்ச்சியும், சுயசார்பு முன்னேற்றமும்!</h4>
+        <p class="ta-main" style="font-size: 12px; line-height: 1.5;">
           "நம்ம ஊர் A to Z" என்பது வெறும் வணிக நோக்கிலான செயலி அல்ல; இது ஒவ்வொரு கிராமமும் தன் சொந்தக் காலில் நிற்பதற்கான <strong>சுயாட்சி முறையிலான ஒரு வலிமையான முன்னேற்றப் படியாகும்!</strong> ஒவ்வொரு கிராமத்திலும் உள்ள தனிமனிதனின் வாழ்வாதாரம் முன்னேறும் போதுதான் அந்த கிராமம் முழுமையான வளர்ச்சி பெறும்; அந்த கிராமங்களின் வளர்ச்சியின் மூலமாகத்தான் ஒரு மாவட்டமும், ஒரு மாநிலமும் மாபெரும் முன்னேற்றத்தை அடைய முடியும்!<br><br>
           ஆரம்பக் கட்டமாக, இத்தளம் <strong>கன்னியாகுமரி, திருநெல்வேலி மற்றும் தூத்துக்குடி</strong> ஆகிய மூன்று மாவட்டங்களை இணைத்துச் செயல்படுகிறது. பிற்காலத்தில், தமிழகம் முழுவதும் உள்ள ஒவ்வொரு கிராமத்திற்கும் இத்தளத்தின் சேவை மாபெரும் அளவில் விரிவுபடுத்தப்படும்!<br><br>
           உங்கள் பக்கத்து கிராமத்திற்குக் கூட உங்களைப் பற்றியோ அல்லது நீங்கள் செய்யும் தொழில் மற்றும் சேவைகளைப் பற்றியோ தெரியாமல் இருக்கலாம்; ஆனால், உங்களை வெளி உலகத்திற்குக் கொண்டுவருவதும், உங்களது திறமையைச் சுற்றியிருக்கும் ஊர்களுக்கெல்லாம் தெரியப்படுத்துவதும், உங்களை ஒரு தனித்துவமான பிராண்டாக மாற்றுவதுமே இத்தளத்தின் லட்சியமாகும்!<br><br>
@@ -1040,8 +1032,8 @@
       </div>
 
       <div class="terms-rule-card">
-        <h4 style="font-size: 14.5px; color: var(--yellow); margin-bottom: 8px;"><i class="fa-solid fa-list-check"></i> 2. இத்தளத்தின் முக்கியப் பிரிவுகளும் சேவைகளும் (Core Categories & Services)</h4>
-        <p class="ta-main" style="line-height: 1.6;">
+        <h4 style="font-size: 14px; color: var(--yellow); margin-bottom: 6px;"><i class="fa-solid fa-list-check"></i> 2. இத்தளத்தின் முக்கியப் பிரிவுகளும் சேவைகளும் (Core Categories & Services)</h4>
+        <p class="ta-main" style="font-size: 12px; line-height: 1.5;">
           <strong>1. போக்குவரத்து & வாகனச் சேவைகள்:</strong> ஆட்டோ, டாக்ஸி, லோடு வாகனம், டிராக்டர் & ஜேசிபி சேவைகள், செல்பில் ரெண்டல் பைக்குகள் மற்றும் கார்கள், பழைய வாகன விற்பனை மற்றும் கார் பார்க்கிங் வசதிகள்.<br><br>
           <strong>2. வீடு & சொத்து:</strong> வீடு வாடகைக்கு விடுவது, காலி மனைகள், நிலங்கள் மற்றும் குடியிருப்புப் பகுதி வாடகை/விற்பனை விபரங்கள்.<br><br>
           <strong>3. கல்வி & பயிற்சி:</strong> வீடுகளில் டியூஷன் எடுப்பவர்கள் மற்றும் நீங்கள் எந்த விதமான பயிற்சி அளிப்பவராக இருந்தாலும், அதனை இதில் பதிவு செய்து கொள்ளலாம்.<br><br>
@@ -1058,16 +1050,16 @@
       </div>
 
       <div class="terms-rule-card">
-        <h4 style="font-size: 14.5px; color: var(--yellow); margin-bottom: 8px;"><i class="fa-solid fa-bullhorn"></i> 3. ஹோம் பேஜ் 360 சிறப்பு ஆஃபர் விளம்பரங்கள் & டிஜிட்டல் பேனர் விதிமுறைகள்</h4>
-        <p class="ta-main" style="line-height: 1.6;">
+        <h4 style="font-size: 14px; color: var(--yellow); margin-bottom: 6px;"><i class="fa-solid fa-bullhorn"></i> 3. ஹோம் பேஜ் 360 சிறப்பு ஆஃபர் விளம்பரங்கள் & டிஜிட்டல் பேனர் விதிமுறைகள்</h4>
+        <p class="ta-main" style="font-size: 12px; line-height: 1.5;">
           • <strong>360 சிறப்பு ஆஃபர் பகுதி:</strong> இது சாதாரண விளம்பரப் பகுதி அல்ல! உங்களது சிறு தொழிலையோ, குறு வணிகத்தையோ மக்களிடம் கொண்டு சேர்க்கும்போது, வாடிக்கையாளர்களைத் தீர்க்கமாக ஈர்க்கும் சிறப்புத் தள்ளுபடிகள் (Special Offers) மற்றும் சலுகை அறிவிப்புகளை வெளியிடுவதற்காகவே பிரத்யேகமாக உருவாக்கப்பட்டதுதான் இந்த ஹோம் பேஜ் 360 ஆஃபர் பகுதியாகும். இதில் நீங்கள் எப்போது வேண்டுமானாலும் உங்களது சிறப்புத் தள்ளுபடி விளம்பரங்களைப் பதிவிட்டுக்கொள்ளலாம்; இதற்கான வரம்புகள் கிடையாது.<br><br>
           • <strong>டிஜிட்டல் விளம்பரப் பலகை (Digital Banner):</strong> பிரதான டிஜிட்டல் பேனர் என்பது சாதாரண நோட்டீஸ் அல்லது அனைத்து விளம்பரங்களையும் பதிிவிடும் பகுதியல்ல! இதில் மிக முக்கியமான சிறப்பு விளம்பரங்கள் மட்டுமே பதிவு செய்யப்படும். மேலும், இந்த டிஜிட்டல் பேனரில் ஒரே நேரத்தில் அதிகபட்சம் 5 விளம்பரங்கள் மட்டுமே அனுமதிக்கப்படும் என்பதால், யாரும் இதில் இடமில்லாமல் ஏமாறத் தேவையில்லை. முறையான முன்பதிவின் மூலமாக மட்டுமே இதில் விளம்பரங்கள் இடம்பெறும்.
         </p>
       </div>
 
       <div class="terms-rule-card">
-        <h4 style="font-size: 14.5px; color: var(--yellow); margin-bottom: 8px;"><i class="fa-solid fa-shield-halved"></i> 4. விதிமுறைகள் மற்றும் நிபந்தனைகள் (Terms & Conditions)</h4>
-        <p class="ta-main" style="line-height: 1.6;">
+        <h4 style="font-size: 14px; color: var(--yellow); margin-bottom: 6px;"><i class="fa-solid fa-shield-halved"></i> 4. விதிமுறைகள் மற்றும் நிபந்தனைகள் (Terms & Conditions)</h4>
+        <p class="ta-main" style="font-size: 12px; line-height: 1.5;">
           1. <strong>இணைப்புச் செயலியின் பங்கு மட்டுமே:</strong> வாடிக்கையாளர்களுடன் நேரில் இணைக்கும் ஒரு டிஜிட்டல் இணைப்புச் செயலியாக மட்டுமே இத்தளம் செயல்படுகிறது.<br><br>
           2. <strong>100% பூஜ்ஜிய கமிஷன் கொள்கை:</strong> வர்த்தகத்திற்கு இத்தளம் எவ்வித கமிஷனும் (0% Commission) பெறுவதில்லை. முழு லாபமும் உங்களுக்கே சொந்தமானது.<br><br>
           3. <strong>நேரடித் தொடர்பு மற்றும் வர்த்தகம்:</strong> தளத்தின் மூலமாகத் தொடர்புகொண்டு நேரடியாகவே பேசி வர்த்தகம் மேற்கொள்ளப்படுகிறது.<br><br>
@@ -1619,7 +1611,7 @@
         </button>
       </div>
     </div>
-    .fullpage-content" id="termsContentBody"></div>
+    <div class="fullpage-content" id="termsContentBody"></div>
   </div>
   
   <!-- DEDICATED FULL SCREEN PAGE: விளம்பர முன்பதிவு -->
@@ -2384,7 +2376,7 @@
   
       const displayData = liveVendors.length > 0 ? liveVendors : serviceList;
       const filtered = displayData.filter(item => {
-        const matchesTown = !town || item.area.toLowerCase().trim() === town.toLowerCase().trim();
+        const matchesTown = !town || item.area.toLowerCase().includes(town.toLowerCase()) || town.toLowerCase().includes(item.area.toLowerCase());
         const matchesKeyword = !keyword || 
           item.name.toLowerCase().includes(keyword.toLowerCase()) ||
           item.category.toLowerCase().includes(keyword.toLowerCase()) ||
@@ -2528,7 +2520,7 @@
         const itemDesc = (item.desc || "").toLowerCase();
         const itemArea = (item.area || "").toLowerCase();
 
-        const matchesTown = !town || itemArea.toLowerCase().trim() === town.toLowerCase().trim();
+        const matchesTown = !town || itemArea.toLowerCase().includes(town.toLowerCase()) || town.toLowerCase().includes(itemArea);
         
         const matchesKeyword = !kw || 
           itemName.includes(kw) ||
@@ -2653,6 +2645,7 @@
       history.pushState({page: pageId}, "", "");
     }
   
+    // Reset function
     function closeAllPages(skipHistoryState = false) {
       currentNavigationState = "home";
       document.querySelectorAll(".fullpage-view").forEach(p => p.classList.remove("active"));
@@ -2871,7 +2864,7 @@
         body.innerHTML = `
           <div class="terms-rule-card">
             <h4>1. 0% கமிஷன் நேரடி ஆள்சேர்ப்பு / 0% Commission Direct Hiring</h4>
-            <p class="ta-main">வேலை வாய்ப்புகளுக்கோ அல்லது ஆள்சேர்ப்புக்கோ தளம் எவ்வித கமிஷனும் வசூலிப்பதில்லை. ஒப்பந்த முடிவுகளுக்கு <strong>நம்ம ஊர் A to Z தளம் பொறுப்பாகாது;</strong> இரு தரப்பினருமே பேசித் தீர்க்க முழுப் பொறுப்பு.</p>
+            <p class="ta-main">வேலை வாய்ப்புகளுக்கோ அல்லது ஆள்சேர்ப்புக்கோ தளம் எவ்வித கமிஷனும் வசூலிப்பதில்லை. ஒப்பந்த முடிவுகளுக்கு <strong>நம்ம ஊர் A to Z தளம் பொறுப்பாகாது;</strong> இரு தரப்பினருமே முழுப் பொறுப்பு.</p>
             <p class="en-sub">The platform charges 0% hiring commission. <strong>Namma Oor A to Z platform is not responsible</strong> for employment contracts; both parties are responsible.</p>
             <div class="hidden-subscription-clause" style="${subClauseStyle}">
               <p class="ta-main" style="color: #D4AF37; margin-top: 6px;">${dynamicNoticeTa}</p>
@@ -2937,166 +2930,4 @@
       const name = document.getElementById("cName").value.trim();
       const phone = document.getElementById("cPhone").value.trim();
       const village = document.getElementById("cVillage").value.trim();
-      const panchayat = document.getElementById("cPanchayat").value.trim();
-      const taluk = document.getElementById("cTalukText").value.trim();
-      const district = document.getElementById("cDistrict").value;
-
-      alert(`வாடிக்கையாளர் தேவை வெற்றிகரமாகப் பதிவு செய்யப்பட்டது!\nபெயர்: ${name}\nஊர்: ${village}, ${panchayat}\nதாலுக்கா/மாவட்டம்: ${taluk}, ${district}`);
-      closeAllPages();
-    }
-  
-    function handleVendorSubmit(e, catName) {
-      e.preventDefault();
-      
-      let vPhone = "";
-      if (catName === 'வாகனம்') vPhone = document.getElementById("vCallPhone").value.trim();
-      else if (catName === 'வியாபாரம்') vPhone = document.getElementById("sCallPhone").value.trim();
-      else if (catName === 'தனிநபர் சேவை') vPhone = document.getElementById("aCallPhone").value.trim();
-      else if (catName === 'வேலைவாய்ப்பு') vPhone = document.getElementById("jPhone").value.trim();
-
-      if (vPhone) {
-        localStorage.getItem("registered_vendor_phone", vPhone);
-      }
-
-      alert(`உங்கள் ${catName} பிரிவு விபரங்கள் பெறப்பட்டது! அட்மின் சரிபார்ப்புக்குப் பின் சேர்க்கப்படும்.`);
-      closeAllPages();
-    }
-  
-    function shareAppDirect() {
-      const shareUrl = "https://nammakanyakumariapp-creator.github.io/nammakanyakumari/";
-      const text = encodeURIComponent("நம்ம ஊர் A to Z - உள்ளூர் ஆட்டோ, டாக்ஸி, வீட்டுச் சேவைகள் மற்றும் வர்த்தகத் தகவல்களுக்கான தளம்: " + shareUrl);
-      window.open("https://wa.me/?text=" + text, '_blank');
-    }
-
-    let secretLogoTapCount = 0;
-    let secretTapTimer = null;
-
-    function handleSecretLogoTap(e) {
-      if (e) {
-        e.preventDefault();
-        e.stopPropagation();
-      }
-      secretLogoTapCount++;
-      
-      clearTimeout(secretTapTimer);
-      secretTapTimer = setTimeout(() => {
-        secretLogoTapCount = 0;
-      }, 1500);
-
-      if (secretLogoTapCount >= 5) {
-        secretLogoTapCount = 0;
-        openSecretLoginModal();
-      }
-    }
-
-    function openSecretLoginModal() {
-      const modal = document.getElementById("secretAdminModal");
-      const input = document.getElementById("secretAdminKeyInput");
-      input.value = "";
-      modal.classList.add("show");
-      input.focus();
-    }
-
-    function closeSecretLoginModal() {
-      document.getElementById("secretAdminModal").classList.remove("show");
-    }
-
-    function verifySecretAdminKey() {
-      const inputKey = document.getElementById("secretAdminKeyInput").value.trim();
-      const masterKey = String(liveSettings["MASTER_ADMIN_KEY"] || "").trim();
-      const assistantKey = String(liveSettings["ASSISTANT_ADMIN_ACCESS"] || "").trim();
-
-      const isMaster = (masterKey && inputKey === masterKey) || inputKey === "NK@Master2026";
-      const isAssistant = (assistantKey && inputKey === assistantKey) || inputKey === "NK@Staff2026";
-
-      if (isMaster) {
-        closeSecretLoginModal();
-        openAdminPanelUI("Master");
-      } else if (isAssistant) {
-        closeSecretLoginModal();
-        openAdminPanelUI("Assistant");
-      } else {
-        alert("தவறான ரகசிய சாவி! அனுமதி மறுக்கப்பட்டது.");
-        closeSecretLoginModal();
-      }
-    }
-
-    function openAdminPanelUI(role) {
-      closeAllPages();
-      currentNavigationState = "results";
-      const panel = document.getElementById("pageAdminPanel");
-      const title = document.getElementById("adminPanelHeaderTitle");
-      const badge = document.getElementById("adminRoleBadge");
-      const masterSection = document.getElementById("masterOnlySection");
-
-      if (role === "Master") {
-        title.innerText = "மாஸ்டர் அட்மின் பேனல்";
-        badge.innerText = "Master Control";
-        badge.style.color = "#22C55E";
-        masterSection.style.display = "block";
-      } else {
-        title.innerText = "உதவி நிர்வாக பேனல்";
-        badge.innerText = "Assistant Staff";
-        badge.style.color = "var(--yellow)";
-        masterSection.style.display = "none";
-      }
-
-      renderAdminVendorsList(role);
-      panel.classList.add("active");
-      history.pushState({page: "admin"}, "", "");
-    }
-
-    function updateAdminSubButtonUI() {
-      const btn = document.getElementById("btnToggleSubLive");
-      if (!btn) return;
-      if (isTermsSwitchOn) {
-        btn.innerText = "ஆன் / ON (Active)";
-        btn.style.background = "#22C55E";
-        btn.style.color = "#fff";
-      } else {
-        btn.innerText = "ஆஃப் / OFF (Hidden)";
-        btn.style.background = "#EF4444";
-        btn.style.color = "#fff";
-      }
-    }
-
-    function toggleSubscriptionFromAdmin() {
-      isTermsSwitchOn = !isTermsSwitchOn;
-      updateAdminSubButtonUI();
-      applySubscriptionDisplayState();
-      alert("சந்தா வாசகம் இப்போது: " + (isTermsSwitchOn ? "ஆன் (ON)" : "ஆஃப் (OFF)"));
-    }
-
-    function renderAdminVendorsList(role) {
-      const container = document.getElementById("adminVendorCardsContainer");
-      const TheListToRender = liveVendors.length > 0 ? liveVendors : serviceList;
-
-      if (TheListToRender.length === 0) {
-        container.innerHTML = `<p style="font-size: 12px; color: var(--text-muted); text-align: center;">சரிபார்ப்புக்கு வெண்டர்கள் எவரும் இல்லை.</p>`;
-        return;
-      }
-
-      container.innerHTML = "";
-      TheListToRender.forEach(v => {
-        container.innerHTML += `
-          <div style="background: #0A2B5B; border: 1.5px solid var(--gold-border); border-radius: 10px; padding: 10px; margin-bottom: 8px;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-              <h5 style="font-size: 13px; color: #FFFFFF;">${v.name}</h5>
-              <span class="status-badge ${v.status === 'active' ? 'active-green' : 'pending-yellow'}>${v.status}</span>
-            </div>
-            <p style="font-size: 11px; color: var(--yellow); margin-bottom: 6px;">📍 ${v.area} • 📞 ${v.phone}</p>
-            <div style="display: flex; gap: 6px;">
-              <button onclick="changeVendorStatusLocally('${v.id || v.name}', 'active')" style="flex:1; padding: 5px; background: #22C55E; color: #fff; font-size: 11px; border: none; border-radius: 6px; font-weight: 700; cursor: pointer;">Approve</button>
-              <button onclick="changeVendorStatusLocally('${v.id || v.name}', 'blocked')" style="flex:1; padding: 5px; background: #EF4444; color: #fff; font-size: 11px; border: none; border-radius: 6px; font-weight: 700; cursor: pointer;">Block</button>
-            </div>
-          </div>
-        `;
-      });
-    }
-
-    function changeVendorStatusLocally(idOrName, newStatus) {
-      alert(`${idOrName} நிலை ${newStatus.toUpperCase()} என மாற்றப்பட்டது! (கூகுள் சீட்டிலும் பிரதிபலிக்கும்)`);
-    }
-  </script>
-</body>
-</html>
+      ...
