@@ -981,6 +981,13 @@
         </div>
       </div>
     </div>
+
+    <!-- About Us Quick Access Trigger Button on Home -->
+    <div style="margin-bottom: 20px; text-align: center;">
+      <button type="button" onclick="openAboutUsMasterPage()" style="width: 100%; background: linear-gradient(135deg, #071E3D, #163866); color: var(--yellow); border: 1.5px solid var(--yellow); padding: 12px; border-radius: 12px; font-weight: 700; font-size: 13.5px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
+        <i class="fa-solid fa-circle-info"></i> நம்மைப் பற்றி & விதிமுறைகள் / About Us & Terms ↗
+      </button>
+    </div>
   
   </div>
   
@@ -1001,6 +1008,82 @@
       </div>
     </div>
     <div class="fullpage-content" id="dedicatedList"></div>
+  </div>
+
+  <!-- DEDICATED FULL SCREEN PAGE: "நம்மைப் பற்றி & விதிமுறைகள்" (About Us Master Scroll View) -->
+  <div class="fullpage-view" id="pageAboutUsMaster" style="z-index: 1300;">
+    <div class="fullpage-header">
+      <div class="fullpage-header-left">
+        <button class="back-btn" onclick="closeAboutUsMasterPage()">
+          <i class="fa-solid fa-arrow-left"></i>
+        </button>
+        <h3>நம்மைப் பற்றி & விதிமுறைகள் / About Us</h3>
+      </div>
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <span class="tag-right">Master Vision</span>
+        <button class="end-btn" onclick="closeAboutUsMasterPage()">
+          <i class="fa-solid fa-xmark"></i> End
+        </button>
+      </div>
+    </div>
+    <div class="fullpage-content">
+      
+      <div class="terms-rule-card" style="border: 2px solid var(--yellow);">
+        <h4 style="font-size: 15px; color: var(--yellow); margin-bottom: 8px;"><i class="fa-solid fa-seedling"></i> 1. ஒவ்வொரு கிராமத்தின் வளர்ச்சியும், சுயசார்பு முன்னேற்றமும்!</h4>
+        <p class="ta-main" style="font-size: 13px; line-height: 1.6;">
+          "நம்ம ஊர் A to Z" என்பது வெறும் வணிக நோக்கிலான செயலி அல்ல; இது ஒவ்வொரு கிராமமும் தன் சொந்தக் காலில் நிற்பதற்கான <strong>சுயாட்சி முறையிலான ஒரு வலிமையான முன்னேற்றப் படியாகும்!</strong> ஒவ்வொரு கிராமத்திலும் உள்ள தனிமனிதனின் வாழ்வாதாரம் முன்னேறும் போதுதான் அந்த கிராமம் முழுமையான வளர்ச்சி பெறும்; அந்த கிராமங்களின் வளர்ச்சியின் மூலமாகத்தான் ஒரு மாவட்டமும், ஒரு மாநிலமும் மாபெரும் முன்னேற்றத்தை அடைய முடியும்!<br><br>
+          ஆரம்பக் கட்டமாக, இத்தளம் <strong>கன்னியாகுமரி, திருநெல்வேலி மற்றும் தூத்துக்குடி</strong> ஆகிய மூன்று மாவட்டங்களை இணைத்துச் செயல்படுகிறது. பிற்காலத்தில், தமிழகம் முழுவதும் உள்ள ஒவ்வொரு கிராமத்திற்கும் இத்தளத்தின் சேவை மாபெரும் அளவில் விரிவுபடுத்தப்படும்!<br><br>
+          உங்கள் பக்கத்து கிராமத்திற்குக் கூட உங்களைப் பற்றியோ அல்லது நீங்கள் செய்யும் தொழில் மற்றும் சேவைகளைப் பற்றியோ தெரியாமல் இருக்கலாம்; ஆனால், உங்களை வெளி உலகத்திற்குக் கொண்டுவருவதும், உங்களது திறமையைச் சுற்றியிருக்கும் ஊர்களுக்கெல்லாம் தெரியப்படுத்துவதும், உங்களை ஒரு தனித்துவமான பிராண்டாக மாற்றுவதுமே இத்தளத்தின் லட்சியமாகும்!<br><br>
+          💡 <strong>நான்கு சிறப்புப் படிவங்களும், உள்ளூர் வேலைவாய்ப்புகளும்!</strong><br>
+          தனிநபர் சார்ந்த தேவைகளையும், ஒவ்வொருவரின் தனித்திறமைகளையும் வளர்த்துக்கொண்டு உள்ளூர் அளவிலேயே வேலைவாய்ப்புகளைப் பெறுவதற்கும், அதனை மேலும் பெருக்குவதற்கும் இத்தளத்தில் <strong>நான்கு விதமான எளிய பதிவுப் படிவங்கள்</strong> உருவாக்கப்பட்டுள்ளன. இதில் உங்களது நிறுவனத்தையோ அல்லது தனிநபர் சார்ந்த சேவைகளையோ நீங்கள் தாராளமாகப் பதிவு செய்துகொள்ளலாம். சாதாரண வாடிக்கையாளர்களும், வேலை தேடுபவர்களும் தங்களது சொந்த ஊரிலேயே உள்ளூர் வேலைவாய்ப்புகளை எளிதாகப் பயன்படுத்திக் கொள்ளவும், இதன் மூலம் தங்களது வாழ்வாதாரத்தை உயர்த்திக் கொள்ளவும் இத்தளம் ஒரு உறுதுணையாக இருக்கும். <strong>இந்த அரிய சேவையைப் பயன்படுத்தி, உங்களது வணிகத்தை விரிவுபடுத்தி, புதிய வாடிக்கையாளர்களைச் சென்றடைந்து, உங்கள் வளர்ச்சிப் பயணத்தை மேலும் வலுப்படுத்துங்கள்!</strong>
+        </p>
+      </div>
+
+      <div class="terms-rule-card">
+        <h4 style="font-size: 14.5px; color: var(--yellow); margin-bottom: 8px;"><i class="fa-solid fa-list-check"></i> 2. இத்தளத்தின் முக்கியப் பிரிவுகளும் சேவைகளும் (Core Categories & Services)</h4>
+        <p class="ta-main" style="line-height: 1.6;">
+          <strong>1. போக்குவரத்து & வாகனச் சேவைகள்:</strong> ஆட்டோ, டாக்ஸி, லோடு வாகனம், டிராக்டர் & ஜேசிபி சேவைகள், செல்பில் ரெண்டல் பைக்குகள் மற்றும் கார்கள், பழைய வாகன விற்பனை மற்றும் கார் பார்க்கிங் வசதிகள்.<br><br>
+          <strong>2. வீடு & சொத்து:</strong> வீடு வாடகைக்கு விடுவது, காலி மனைகள், நிலங்கள் மற்றும் குடியிருப்புப் பகுதி வாடகை/விற்பனை விபரங்கள்.<br><br>
+          <strong>3. கல்வி & பயிற்சி:</strong> வீடுகளில் டியூஷன் எடுப்பவர்கள் மற்றும் நீங்கள் எந்த விதமான பயிற்சி அளிப்பவராக இருந்தாலும், அதனை இதில் பதிவு செய்து கொள்ளலாம்.<br><br>
+          <strong>4. மருத்துத்துவம்:</strong> வீடுகள் தேடி வந்து செய்யக்கூடிய எளிய அடிப்படை மருத்துவச் சேவைகள் (BP & Sugar Checkup).<br>
+          ⚠️ <em>பாதுகாப்பு எச்சரிக்கை: இத்தளத்தில் பதிவு செய்யப்படும் மருத்துவச் சேவைகள் அனைத்தும் தகுதி மற்றும் சட்ட அனுமதி பெற்றவர்களால் மட்டுமே வழங்கப்பட வேண்டும். மருத்துவ அவசரநிலைகள் அனுமதிக்கப்படாது.</em><br><br>
+          <strong>5. வணிகம் & விற்பனை:</strong> ஹோம்மேட் உணவுகள், ஏபிசி மார்க்கெட் & ஏபிசி மால்ட், மீன் ஊறுகாய், கருவாட்டு ஊறுகாய், நார்த்தங்காய், எலுமிச்சை மற்றும் பிரண்டை ஊறுகாய், சிப்ஸ் வகைகள் மற்றும் பழைய வாகன விற்பனை.<br><br>
+          <strong>6. பணியாளர் சேவைகள்:</strong> சிறிய கடைகளுக்கும் நிறுவனங்களுக்கும் தேவையான வேலையாட்கள் தேவை குறித்த பதிவுகள்.<br><br>
+          <strong>7. மின் & நீர் சேவைகள்:</strong> எலக்ட்ரீஷியன், பிளம்பர், தச்சர், கொத்தனார், ஏசி பழுதுபார்ப்பு மற்றும் சோலார் சர்வீஸ் செய்பவர்கள்.<br>
+          ⚠️ <em>பாதுகாப்பு எச்சரிக்கை: வீடுகளுக்கு நேரில் சென்று சேவை வழங்கும் எலக்ட்ரீஷியன்கள் மற்றும் பிளம்பர்கள் தகுதியானவர்களாக இருக்க வேண்டும்.</em><br><br>
+          <strong>8. சேவைகள் & பொழுதுபோக்கு:</strong> கேட்டரிங், டென்ட் சேவைகள், பாப்கார்ன் & காட்டன் கேண்டி இயந்திர வாடகை, பிறந்தநாள் டெக்கரேஷன் மற்றும் டர்ஃப் (Turf), விளையாட்டு அரங்குகள், உடற்பயிற்சிக் கூடங்கள் (Gyms).<br><br>
+          <strong>9. மற்ற சேவைகள்:</strong> தையல் கலைஞர்கள், ஆரி வொர்க், கம்ப்யூட்டர் எம்ப்ராய்டரி, டிஜிட்டல் பிரிண்டிங் மற்றும் ஃபோட்டோ & வீடியோ ஸ்டுடியோக்கள்.
+        </p>
+      </div>
+
+      <div class="terms-rule-card">
+        <h4 style="font-size: 14.5px; color: var(--yellow); margin-bottom: 8px;"><i class="fa-solid fa-bullhorn"></i> 3. ஹோம் பேஜ் 360 சிறப்பு ஆஃபர் விளம்பரங்கள் & டிஜிட்டல் பேனர் விதிமுறைகள்</h4>
+        <p class="ta-main" style="line-height: 1.6;">
+          • <strong>360 சிறப்பு ஆஃபர் பகுதி:</strong> இது சாதாரண விளம்பரப் பகுதி அல்ல! உங்களது சிறு தொழிலையோ, குறு வணிகத்தையோ மக்களிடம் கொண்டு சேர்க்கும்போது, வாடிக்கையாளர்களைத் தீர்க்கமாக ஈர்க்கும் சிறப்புத் தள்ளுபடிகள் (Special Offers) மற்றும் சலுகை அறிவிப்புகளை வெளியிடுவதற்காகவே பிரத்யேகமாக உருவாக்கப்பட்டதுதான் இந்த ஹோம் பேஜ் 360 ஆஃபர் பகுதியாகும். இதில் நீங்கள் எப்போது வேண்டுமானாலும் உங்களது சிறப்புத் தள்ளுபடி விளம்பரங்களைப் பதிவிட்டுக்கொள்ளலாம்; இதற்கான வரம்புகள் கிடையாது.<br><br>
+          • <strong>டிஜிட்டல் விளம்பரப் பலகை (Digital Banner):</strong> பிரதான டிஜிட்டல் பேனர் என்பது சாதாரண நோட்டீஸ் அல்லது அனைத்து விளம்பரங்களையும் பதிிவிடும் பகுதியல்ல! இதில் மிக முக்கியமான சிறப்பு விளம்பரங்கள் மட்டுமே பதிவு செய்யப்படும். மேலும், இந்த டிஜிட்டல் பேனரில் ஒரே நேரத்தில் அதிகபட்சம் 5 விளம்பரங்கள் மட்டுமே அனுமதிக்கப்படும் என்பதால், யாரும் இதில் இடமில்லாமல் ஏமாறத் தேவையில்லை. முறையான முன்பதிவின் மூலமாக மட்டுமே இதில் விளம்பரங்கள் இடம்பெறும்.
+        </p>
+      </div>
+
+      <div class="terms-rule-card">
+        <h4 style="font-size: 14.5px; color: var(--yellow); margin-bottom: 8px;"><i class="fa-solid fa-shield-halved"></i> 4. விதிமுறைகள் மற்றும் நிபந்தனைகள் (Terms & Conditions)</h4>
+        <p class="ta-main" style="line-height: 1.6;">
+          1. <strong>இணைப்புச் செயலியின் பங்கு மட்டுமே:</strong> வாடிக்கையாளர்களை விற்பனையாளர்களுடன் நேரில் இணைக்கும் ஒரு டிஜிட்டல் இணைப்புச் செயலியாக மட்டுமே இத்தளம் செயல்படுகிறது.<br><br>
+          2. <strong>100% பூஜ்ஜிய கமிஷன் கொள்கை:</strong> வர்த்தகத்திற்கு இத்தளம் எவ்வித கமிஷனும் (0% Commission) பெறுவதில்லை. முழு லாபமும் உங்களுக்கே சொந்தமானது.<br><br>
+          3. <strong>நேரடித் தொடர்பு மற்றும் வர்த்தகம்:</strong> தளத்தின் மூலமாகத் தொடர்புகொண்டு நேரடியாகவே பேசி வர்த்தகம் மேற்கொள்ளப்படுகிறது.<br><br>
+          4. <strong>உறுப்பினர் தகவல் சரிபார்ப்பு:</strong> உண்மையான தகவல்களை வழங்க வேண்டும். போலியான தகவல் கண்டறியப்பட்டால் கணக்கு நீக்கப்படும்.<br><br>
+          5. <strong>போலி & தவறான விளம்பரங்கள் தடை:</strong> பொதுமக்களை ஏமாற்றும் விளம்பரங்கள் நிரந்தரமாக நீக்கப்படும்.<br><br>
+          6. <strong>கணக்கு இடைநீக்கம் மற்றும் நீக்கும் உரிமை:</strong> விதிமுறைகளை மீறும், போலியான தகவல்களை வழங்கும் எந்தவொரு பயனரின் கணக்கையும் முன் அறிவிப்பின்றி தற்காலிகமாக இடைநிறுத்தவோ அல்லது நிரந்தரமாக நீக்கவோ நிர்வாகத்திற்கு முழு உரிமை உண்டு.<br><br>
+          7. <strong>எதிர்காலச் சந்தா முறை:</strong> தற்பொழுது இலவசம். பிற்காலத்தில் பராமரிப்புக்காக ₹99 குறைந்த மாதக் கட்டணம் நடைமுறைப்படுத்தப்படலாம்.<br><br>
+          8. <strong>அரசாங்கத் தடை செய்யப்பட்ட பொருட்கள் தடை:</strong> சட்டப்பூர்வமாகத் தடை செய்யப்பட்ட பொருட்கள் எதையும் பதிவிடக் கூடாது.<br><br>
+          9. <strong>முழுமையான பொறுப்பற்ற தன்மை:</strong> பணப் பரிவர்த்தனைகள், பொருட்களின் தரம் அல்லது வணிக ஒப்பந்தங்களுக்கு இத்தளம் எந்தச் சூழ்நிலையிலும் பொறுப்பாகாது.
+        </p>
+      </div>
+
+      <button type="button" class="form-submit-btn active-btn" onclick="closeAboutUsMasterPage()">
+        ← முகப்புப் பக்கத்திற்குத் திரும்புக / Back to Home
+      </button>
+
+    </div>
   </div>
   
   <!-- ADVANCED SEARCH PAGE -->
@@ -1520,7 +1603,7 @@
   </div>
   
   <!-- DEDICATED FULL SCREEN PAGE: விதிமுறைகள் & நிபந்தனைகள் -->
-  <div class="fullpage-view" id="pageTermsView" style="z-index: 1100;">
+  <div class="fullpage-view" id="pageTermsView" style="z-index: 1400;">
     <div class="fullpage-header">
       <div class="fullpage-header-left">
         <button class="back-btn" onclick="closeTermsPage()">
@@ -1891,8 +1974,14 @@
 
     window.addEventListener('popstate', function(event) {
       const termsView = document.getElementById("pageTermsView");
+      const aboutMaster = document.getElementById("pageAboutUsMaster");
+      
       if (termsView && termsView.classList.contains("active")) {
         closeTermsPage();
+        return;
+      }
+      if (aboutMaster && aboutMaster.classList.contains("active")) {
+        closeAboutUsMasterPage();
         return;
       }
       if (currentNavigationState === "results") {
@@ -2235,6 +2324,17 @@
       currentNavigationState = "results";
       document.getElementById("pageEmergency").classList.add("active");
       history.pushState({page: "emergency"}, "", "");
+    }
+
+    function openAboutUsMasterPage() {
+      closeAllPages();
+      currentNavigationState = "results";
+      document.getElementById("pageAboutUsMaster").classList.add("active");
+      history.pushState({page: "aboutMaster"}, "", "");
+    }
+
+    function closeAboutUsMasterPage() {
+      document.getElementById("pageAboutUsMaster").classList.remove("active");
     }
   
     function switchSearchCategory(cat) {
