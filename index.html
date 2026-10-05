@@ -10,22 +10,21 @@
   
   <style>
     :root {
-      --primary-blue: #0D6EFD;
-      --yellow: #D4AF37;          /* ராயல் கோல்ட் */
-      --green: #16A34A;           /* எமரால்டு கிரீன் */
-      --orange: #FF8C42;          /* சன்செட் ஆரஞ்சு */
+      --primary-blue: #0A2D5B;
+      --yellow: #FFD700;          /* பிரீமியம் ராயல் கோல்டு #FFD700 */
+      --green: #22C55E;           
+      --orange: #FF8C42;          
       --purple: #8B5CF6;
       --pink: #EC4899;
       --red: #EF4444;
       --teal: #14B8A6;
-      --light-blue: #3B82F6;
       
-      --page-bg: #0A2D5B;         /* முக்கிய பின்னணி #0A2D5B */
-      --card-container-bg: #112F5F; /* கார்டு பின்னணி #112F5F */
-      --text-light: #E8F0FE;      /* டெக்ஸ்ட் #E8F0FE */
+      --page-bg: #0A2D5B;         /* முழு தளத்தின் பிரதான ராயல் கலர் #0A2D5B */
+      --card-container-bg: #102B58; /* கார்டுகள் / பட்டன்கள் பின்னணி #102B58 */
+      --text-light: #FFFFFF;      /* முதன்மை எழுத்து வெள்ளை #FFFFFF */
       --text-muted: #94A3B8;
-      --en-text-bright: #CBD5E1;
-      --gold-border: rgba(212, 175, 55, 0.35);
+      --en-text-bright: #E6FFFA;
+      --gold-border: #FFD700;     /* கோல்டன் பார்டர் #FFD700 */
     }
   
     * {
@@ -54,9 +53,9 @@
       margin: 0 auto 12px auto;
       border-radius: 14px;
       overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-      border: 1px solid var(--gold-border);
-      background: var(--page-bg);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+      border: 1.5px solid var(--gold-border);
+      background: #0A2D5B;
       position: relative;
       cursor: default;
     }
@@ -87,7 +86,7 @@
       border-radius: 12px;
       padding: 4px;
       margin-bottom: 10px;
-      border: 1px solid var(--gold-border);
+      border: 1.5px solid var(--gold-border);
       gap: 4px;
     }
     .home-tab-btn {
@@ -108,8 +107,9 @@
       transition: all 0.2s ease;
     }
     .home-tab-btn.active {
-      background: #3B82F6; /* Active Tab #3B82F6 */
-      color: #fff;
+      background: #102B58;
+      color: var(--yellow);
+      border: 1px solid var(--yellow);
     }
   
     /* Town & Search Bar Row */
@@ -121,7 +121,7 @@
     }
     .home-town-input, .home-search-input-box {
       background: var(--card-container-bg);
-      border: 1px solid var(--gold-border);
+      border: 1.5px solid var(--gold-border);
       border-radius: 12px;
       padding: 8px 10px;
       display: flex;
@@ -143,13 +143,13 @@
       position: relative;
     }
     .home-search-input-box i.fa-magnifying-glass {
-      color: var(--text-muted);
+      color: var(--yellow);
       font-size: 13px;
     }
     .home-mic-btn {
       background: none;
       border: none;
-      color: #FFD54F; /* Accent #FFD54F */
+      color: var(--yellow);
       font-size: 14px;
       cursor: pointer;
       padding: 4px;
@@ -164,8 +164,8 @@
   
     /* Sponsor Ad Strip */
     .sponsor-ad-card {
-      background: linear-gradient(135deg, #112F5F, #1A3B73);
-      border: 1.5px dashed #FFD54F;
+      background: linear-gradient(135deg, #102B58, #163B75);
+      border: 1.5px solid var(--yellow);
       border-radius: 12px;
       padding: 7px 12px;
       margin-bottom: 14px;
@@ -173,21 +173,22 @@
       align-items: center;
       justify-content: space-between;
       cursor: pointer;
+      box-shadow: 0 4px 12px rgba(255, 215, 0, 0.15);
     }
     .sponsor-ad-card h4 {
       font-size: 12.5px;
-      color: #E8F0FE;
+      color: #FFFFFF;
       font-weight: 700;
       line-height: 1.2;
     }
     .sponsor-ad-card p {
       font-size: 11px;
-      color: #FFD54F;
+      color: var(--yellow);
       font-weight: 500;
       margin-top: 2px;
     }
     .sponsor-tag {
-      background: #22C55E; /* Success #22C55E */
+      background: #22C55E;
       color: #fff;
       font-size: 10.5px;
       font-weight: 700;
@@ -196,7 +197,7 @@
       white-space: nowrap;
     }
   
-    /* 3x3 Category Grid (Strictly 9 Master Icons with New Exact Color Codes) */
+    /* 3x3 Category Grid with Royal Theme & Gold Border */
     .category-grid-container {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -205,11 +206,11 @@
     }
   
     .cat-btn {
-      background: #112F5F !important;
-      border: 1px solid var(--gold-border) !important;
+      background: #102B58 !important;
+      border: 1.5px solid var(--gold-border) !important;
       border-radius: 16px;
       padding: 10px 4px;
-      min-height: 104px;
+      min-height: 112px;
       text-align: center;
       display: flex;
       flex-direction: column;
@@ -217,7 +218,7 @@
       justify-content: center;
       gap: 6px;
       cursor: pointer;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
       transition: transform 0.15s ease;
     }
     .cat-btn:active {
@@ -227,37 +228,39 @@
     .cat-btn .circle-icon {
       width: 48px;
       height: 48px;
-      border-radius: 14px; /* Rounded Shape 14px Radius as per specs */
+      border-radius: 14px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 20px;
-      color: #FFFFFF; /* White icon with solid color bg */
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      color: #FFFFFF;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      border: 1px solid rgba(255, 215, 0, 0.4);
     }
     
-    /* Exact Hex Color Mapping as requested */
-    .icon-auto { background: #F959EB; }    /* போக்குவரத்து (Orange - 500) -> #F959EB or #F59E0B */
-    .icon-home { background: #8B5CF6; }    /* வீடு & சொத்து (Purple - 500) */
-    .icon-taxi { background: #14B8A6; }    /* கல்வி & பயிற்சி (Teal - 500) */
-    .icon-pros3 { background: #EC4899; }   /* மருத்துவம் (Pink - 500) */
-    .icon-shop { background: #22C55E; }    /* வணிகம் & விற்பனை (Green - 500) */
-    .icon-jobs { background: #6366F1; }    /* பணியாளர் சேவைகள் (Indigo - 500) */
-    .icon-pros1 { background: #0EA5E9; }   /* மின் & நீர் சேவைகள் (Sky Blue - 500) */
-    .icon-load { background: #0D9488; }    /* கலாச்சாரம் & பொழுதுபோக்கு (Teal - 600) */
-    .icon-pros2 { background: #F97316; }   /* மற்ற சேவைகள் (Orange - 500) */
+    /* Royal Theme Exact Gradients & Colors as requested in screenshot */
+    .icon-auto { background: linear-gradient(135deg, #FF8C42, #F97316); }    /* போக்குவரத்து (Orange) */
+    .icon-home { background: linear-gradient(135deg, #9333EA, #8B5CF6); }    /* வீடு & சொத்து (Purple) */
+    .icon-taxi { background: linear-gradient(135deg, #0D9488, #14B8A6); }    /* கல்வி & பயிற்சி (Teal) */
+    .icon-pros3 { background: linear-gradient(135deg, #DB2777, #EC4899); }   /* மருத்துவம் (Pink) */
+    .icon-shop { background: linear-gradient(135deg, #16A34A, #22C55E); }    /* வணிகம் & விற்பனை (Green) */
+    .icon-jobs { background: linear-gradient(135deg, #4F46E5, #6366F1); }    /* பணியாளர் சேவைகள் (Indigo) */
+    .icon-pros1 { background: linear-gradient(135deg, #0284C7, #0EA5E9); }   /* மின் & நீர் சேவைகள் (Sky Blue) */
+    .icon-load { background: linear-gradient(135deg, #0F766E, #14B8A6); }    /* கலாச்சாரம் & பொழுதுபோக்கு (Teal) */
+    .icon-pros2 { background: linear-gradient(135deg, #EA580C, #F97316); }   /* மற்ற சேவைகள் (Orange) */
   
     .cat-btn .main-text {
       font-size: 12px;
       font-weight: 700;
-      color: #E8F0FE;
+      color: #FFFFFF;
       line-height: 1.2;
     }
     .cat-btn .sub-text {
-      font-size: 10.5px;
+      font-size: 10px;
       font-weight: 600;
-      color: #B8C7E6; /* Secondary Text */
+      color: #E6FFFA;
       line-height: 1.1;
+      opacity: 0.9;
     }
   
     /* Dual Registration Blocks */
@@ -271,24 +274,25 @@
       background: var(--card-container-bg);
       border-radius: 12px;
       padding: 12px;
-      border: 1px solid var(--gold-border);
+      border: 1.5px solid var(--gold-border);
       display: flex;
       align-items: center;
       gap: 10px;
       cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
     }
-    .reg-block.customer i { color: var(--primary-blue); font-size: 22px; }
-    .reg-block.vendor i { color: var(--orange); font-size: 22px; }
+    .reg-block.customer i { color: var(--yellow); font-size: 22px; }
+    .reg-block.vendor i { color: var(--yellow); font-size: 22px; }
     .reg-block-info h5 {
       font-size: 12px;
       font-weight: 700;
-      color: #E8F0FE;
+      color: #FFFFFF;
       line-height: 1.3;
     }
     .reg-block-info p {
       font-size: 10.5px;
       font-weight: 600;
-      color: var(--en-text-bright);
+      color: var(--yellow);
     }
   
     /* Status Badges */
@@ -322,13 +326,13 @@
       display: flex;
     }
     .fullpage-header {
-      background: #071E3D;
+      background: #0A2D5B;
       color: #fff;
       padding: 14px 16px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-bottom: 1px solid var(--gold-border);
+      border-bottom: 1.5px solid var(--gold-border);
       position: sticky;
       top: 0;
       z-index: 10;
@@ -369,6 +373,7 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      color: #FFFFFF;
     }
     .fullpage-header span.tag-right {
       font-size: 12px;
@@ -396,7 +401,7 @@
     }
     .subcat-card {
       background: var(--card-container-bg);
-      border: 1px solid var(--gold-border);
+      border: 1.5px solid var(--gold-border);
       border-radius: 12px;
       padding: 14px 16px;
       display: flex;
@@ -411,27 +416,27 @@
     }
     .subcat-card-info h4 {
       font-size: 14px;
-      color: #E8F0FE;
+      color: #FFFFFF;
       font-weight: 700;
       margin-bottom: 2px;
     }
     .subcat-card-info span {
       font-size: 11.5px;
-      color: var(--en-text-bright);
+      color: var(--yellow);
     }
     .subcat-card i.fa-chevron-right {
       color: var(--yellow);
       font-size: 14px;
     }
 
-    /* Tabs Inside Modals (4 Vendor Tabs Layout Support) */
+    /* Tabs Inside Modals */
     .vendor-nav-tabs, .search-nav-tabs {
       display: flex;
-      background: #071E3D;
+      background: #0A2D5B;
       border-radius: 10px;
       padding: 4px;
       margin-bottom: 16px;
-      border: 1px solid var(--gold-border);
+      border: 1.5px solid var(--gold-border);
       gap: 3px;
     }
     .vendor-tab-btn, .search-tab-btn {
@@ -451,14 +456,15 @@
       text-align: center;
     }
     .vendor-tab-btn.active, .search-tab-btn.active {
-      background: var(--primary-blue);
-      color: #fff;
+      background: #102B58;
+      color: var(--yellow);
+      border: 1px solid var(--yellow);
     }
   
     /* Emergency Contact Cards */
     .emergency-card {
       background: var(--card-container-bg);
-      border: 1px solid var(--gold-border);
+      border: 1.5px solid var(--gold-border);
       border-radius: 14px;
       padding: 14px;
       margin-bottom: 12px;
@@ -468,7 +474,7 @@
     }
     .emergency-info h4 {
       font-size: 14.5px;
-      color: #E8F0FE;
+      color: #FFFFFF;
       font-weight: 700;
     }
     .emergency-info p {
@@ -495,7 +501,7 @@
       background: var(--card-container-bg);
       border-radius: 16px;
       padding: 16px;
-      border: 1px solid var(--gold-border);
+      border: 1.5px solid var(--gold-border);
     }
     .form-group {
       margin-bottom: 12px;
@@ -505,10 +511,10 @@
       font-size: 12.5px;
       font-weight: 600;
       margin-bottom: 4px;
-      color: #E8F0FE;
+      color: #FFFFFF;
     }
     .form-group label span.en-label {
-      color: var(--en-text-bright);
+      color: var(--yellow);
       font-weight: 600;
       font-size: 12px;
     }
@@ -521,8 +527,8 @@
       width: 100%;
       padding: 10px;
       border-radius: 8px;
-      border: 1px solid #475569;
-      background: #071E3D;
+      border: 1.5px solid var(--gold-border);
+      background: #0A2D5B;
       color: #fff;
       font-size: 13.5px;
       outline: none;
@@ -530,11 +536,11 @@
   
     /* Terms Box & Smart Verification */
     .terms-check-container {
-      background: #071E3D;
+      background: #0A2D5B;
       border-radius: 10px;
       padding: 12px;
       margin-top: 14px;
-      border: 1px solid var(--gold-border);
+      border: 1.5px solid var(--gold-border);
     }
     .terms-row {
       display: flex;
@@ -549,7 +555,7 @@
     }
     .terms-text-label {
       font-size: 12.5px;
-      color: #E2E8F0;
+      color: #FFFFFF;
       line-height: 1.4;
       cursor: pointer;
     }
@@ -563,7 +569,7 @@
       cursor: pointer;
     }
   
-    /* Dynamic Submit Button with Color Transition */
+    /* Dynamic Submit Button */
     .form-submit-btn {
       width: 100%;
       border: none;
@@ -579,9 +585,10 @@
       transition: all 0.3s ease;
     }
     .form-submit-btn.disabled-btn {
-      background: #334155;
-      color: #94A3B8;
+      background: #102B58;
+      color: var(--text-muted);
       cursor: not-allowed;
+      border: 1px solid var(--gold-border);
     }
     .form-submit-btn.active-btn {
       background: #22C55E;
@@ -596,12 +603,13 @@
       border-radius: 14px;
       padding: 14px;
       margin-bottom: 12px;
-      border: 1px solid var(--gold-border);
+      border: 1.5px solid var(--gold-border);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
     }
     .item-card h4 {
       font-size: 14.5px;
       font-weight: 700;
-      color: #E8F0FE;
+      color: #FFFFFF;
     }
     .item-card .item-meta {
       font-size: 12px;
@@ -611,7 +619,7 @@
     }
     .item-card .item-desc {
       font-size: 12.5px;
-      color: var(--en-text-bright);
+      color: #E6FFFA;
       margin-bottom: 10px;
       line-height: 1.4;
     }
@@ -638,7 +646,7 @@
     /* Comprehensive Terms Rule Card Styling */
     .terms-rule-card {
       background: var(--card-container-bg);
-      border: 1px solid var(--gold-border);
+      border: 1.5px solid var(--gold-border);
       border-radius: 12px;
       padding: 14px;
       margin-bottom: 12px;
@@ -652,13 +660,13 @@
     }
     .terms-rule-card p.ta-main {
       font-size: 12.5px;
-      color: #E8F0FE;
+      color: #FFFFFF;
       line-height: 1.5;
       margin-bottom: 6px;
     }
     .terms-rule-card p.en-sub {
       font-size: 12px;
-      color: var(--en-text-bright);
+      color: var(--yellow);
       font-weight: 500;
       line-height: 1.4;
     }
@@ -667,7 +675,7 @@
       display: none;
     }
   
-    /* Bottom Navigation Bar Optimization with 360° Fire Offer Button */
+    /* Bottom Navigation Bar */
     .bottom-bar {
       position: fixed;
       bottom: 0;
@@ -679,7 +687,7 @@
       padding: 8px 0 8px 0;
       border-top: 1.5px solid var(--gold-border);
       z-index: 900;
-      box-shadow: 0 -4px 15px rgba(0,0,0,0.4);
+      box-shadow: 0 -4px 15px rgba(0,0,0,0.5);
     }
     .bar-link {
       color: var(--en-text-bright);
@@ -743,7 +751,7 @@
     }
     .secret-admin-box h3 {
       font-size: 16px;
-      color: #E8F0FE;
+      color: #FFFFFF;
       margin-bottom: 6px;
     }
     .secret-admin-box p {
@@ -755,8 +763,8 @@
       width: 100%;
       padding: 12px;
       border-radius: 8px;
-      border: 1px solid #475569;
-      background: #071E3D;
+      border: 1.5px solid var(--gold-border);
+      background: #0A2D5B;
       color: #fff;
       font-size: 14px;
       text-align: center;
@@ -772,9 +780,9 @@
       flex: 1;
       padding: 10px;
       border-radius: 8px;
-      border: 1px solid #475569;
+      border: 1.5px solid var(--gold-border);
       background: transparent;
-      color: var(--en-text-bright);
+      color: var(--yellow);
       font-size: 13px;
       font-weight: 600;
       cursor: pointer;
@@ -784,8 +792,8 @@
       padding: 10px;
       border-radius: 8px;
       border: none;
-      background: var(--primary-blue);
-      color: #fff;
+      background: var(--yellow);
+      color: #0A2D5B;
       font-size: 13px;
       font-weight: 700;
       cursor: pointer;
@@ -799,7 +807,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: rgba(7, 30, 61, 0.95);
+      background: rgba(10, 45, 91, 0.95);
       z-index: 99999;
       align-items: center;
       justify-content: center;
@@ -825,7 +833,7 @@
       <div style="font-size: 40px; color: var(--yellow); margin-bottom: 12px;">
         <i class="fa-solid fa-location-crosshairs"></i>
       </div>
-      <h3 style="color: #E8F0FE; font-size: 16px; margin-bottom: 8px;">இருப்பிட அனுமதி தேவை / Location Required</h3>
+      <h3 style="color: #FFFFFF; font-size: 16px; margin-bottom: 8px;">இருப்பிட அனுமதி தேவை / Location Required</h3>
       <p style="color: var(--en-text-bright); font-size: 12.5px; line-height: 1.5; margin-bottom: 16px;">
         உங்கள் அருகில் உள்ள (500m - 1km) சேவைகளை உடனுக்குடன் காட்ட உங்கள் இருப்பிடத்தை அனுமதிக்கவும்.
       </p>
@@ -835,8 +843,8 @@
       </button>
 
       <div style="margin-top: 10px;">
-        <input type="text" id="manualTownInputBox" placeholder="அல்லது ஊரைத் தட்டச்சு செய்யவும்..." style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #475569; background: #071E3D; color: #fff; font-size: 12.5px; text-align: center; outline: none; margin-bottom: 8px;">
-        <button type="button" onclick="submitManualTownEntry()" style="width: 100%; background: var(--primary-blue); color: #fff; border: none; padding: 10px; border-radius: 8px; font-weight: 600; font-size: 12.5px; cursor: pointer;">
+        <input type="text" id="manualTownInputBox" placeholder="அல்லது ஊரைத் தட்டச்சு செய்யவும்..." style="width: 100%; padding: 10px; border-radius: 8px; border: 1.5px solid var(--gold-border); background: #0A2D5B; color: #fff; font-size: 12.5px; text-align: center; outline: none; margin-bottom: 8px;">
+        <button type="button" onclick="submitManualTownEntry()" style="width: 100%; background: #102B58; color: var(--yellow); border: 1px solid var(--yellow); padding: 10px; border-radius: 8px; font-weight: 600; font-size: 12.5px; cursor: pointer;">
           தொடர / Continue Manually
         </button>
       </div>
@@ -845,7 +853,7 @@
   
   <div class="container">
   
-    <!-- Top Main Promo Banner -->
+    <!-- Top Main Promo Banner (Clean Image Link) -->
     <div class="top-promo-banner">
       <div class="secret-logo-touch-area" onclick="handleSecretLogoTap(event)"></div>
       <img src="https://lh3.googleusercontent.com/d/1qDkFYE0-C4M67dsp0pQKAamQzSYy12yr" alt="நம்ம ஊர் A to Z பிரதான பேனர்">
@@ -871,7 +879,7 @@
         <input type="text" id="homeTownInput" placeholder="ஊர் / Town..." onfocus="checkAndPromptLocationOnce()">
       </div>
       <div class="home-search-input-box">
-        <i class="fa-solid fa-magnifying-glass"></i>
+        <i class="fa-solid fa-magnifying-glass" style="color: var(--yellow);"></i>
         <input type="text" id="homeKeywordInput" placeholder="எ.கா: ஆட்டோ, டாக்ஸி, மால்ட்..." onfocus="checkAndPromptLocationOnce()" onkeypress="handleHomeSearchKey(event)" style="padding-right: 28px;">
         <button type="button" class="home-mic-btn" id="homeMicBtn" onclick="checkAndPromptLocationOnce(); triggerHomeVoiceInput()" title="Voice Search" style="position: absolute; right: 6px; top: 50%; transform: translateY(-50%);">
           <i class="fa-solid fa-microphone"></i>
@@ -890,7 +898,7 @@
       </div>
     </div>
   
-    <!-- 3x3 Category Grid (Strictly 9 Master Icons with Updated Color Palette) -->
+    <!-- 3x3 Category Grid (Royal Theme with Gold Borders & Gradients) -->
     <div class="category-grid-container">
       <div class="cat-btn" onclick="checkAndPromptLocationOnce(); openSubCategoryView('போக்குவரத்து / Transport')">
         <div class="circle-icon icon-auto">
@@ -986,7 +994,7 @@
 
     <!-- About Us Quick Access Trigger Button on Home -->
     <div style="margin-bottom: 20px; text-align: center;">
-      <button type="button" onclick="openAboutUsMasterPage()" style="width: 100%; background: linear-gradient(135deg, #071E3D, #163866); color: var(--yellow); border: 1.5px solid var(--yellow); padding: 12px; border-radius: 12px; font-weight: 700; font-size: 13.5px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
+      <button type="button" onclick="openAboutUsMasterPage()" style="width: 100%; background: linear-gradient(135deg, #102B58, #163B75); color: var(--yellow); border: 1.5px solid var(--gold-border); padding: 12px; border-radius: 12px; font-weight: 700; font-size: 13.5px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 12px rgba(255,215,0,0.15);">
         <i class="fa-solid fa-circle-info"></i> நம்மைப் பற்றி & விதிமுறைகள் / About Us & Terms ↗
       </button>
     </div>
@@ -1691,7 +1699,7 @@
     </div>
   </div>
 
-  <!-- 360-DEGREE RADIUS SMART OFFER POPUP MODAL (Triggers ONLY ONCE on first search results view) -->
+  <!-- 360-DEGREE RADIUS SMART OFFER POPUP MODAL -->
   <div id="smartOfferPopupModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); z-index:9999; align-items:center; justify-content:center; padding:16px;">
     <div style="background:var(--card-container-bg); border:2px solid var(--yellow); border-radius:16px; padding:20px; max-width:380px; width:100%; text-align:center; box-shadow:0 10px 25px rgba(0,0,0,0.5); position:relative;">
       
@@ -1702,10 +1710,10 @@
       <div style="font-size:38px; color:var(--yellow); margin-bottom:8px; margin-top:6px;">
         <i class="fa-solid fa-bullhorn"></i>
       </div>
-      <h3 style="color:#E8F0FE; font-size:15px; margin-bottom:4px;">🌟 360° சுற்றளவு சிறப்பு ஆஃபர்கள்!</h3>
+      <h3 style="color:#FFFFFF; font-size:15px; margin-bottom:4px;">🌟 360° சுற்றளவு சிறப்பு ஆஃபர்கள்!</h3>
       <p style="color:var(--yellow); font-size:11px; margin-bottom:12px;">(Nearby 20-25km Radius Special Offers)</p>
       
-      <div style="text-align:left; background:#071E3D; padding:12px; border-radius:10px; font-size:12px; line-height:1.5; color:#E2E8F0; margin-bottom:16px; border:1px solid var(--gold-border);">
+      <div style="text-align:left; background:#0A2D5B; padding:12px; border-radius:10px; font-size:12px; line-height:1.5; color:#FFFFFF; margin-bottom:16px; border:1.5px solid var(--gold-border);">
         <p style="margin-bottom:6px;">🔥 <strong>குமரி இயற்கை அங்காடி:</strong> தூய நாட்டு மருந்து & தேன் வகைகள் 10% தள்ளுபடி!</p>
         <p style="margin-bottom:6px;">🚗 <strong>உள்ளூர் டாக்ஸி சர்வீஸ்:</strong> அண்டை மாவட்ட எல்லைப் பயணம் வரை சிறப்புப் பலன்கள்.</p>
         <p>💡 உங்கள் தேடலுடன் அருகில் உள்ள அனைத்து சலுகைகளும் இணைக்கப்பட்டுள்ளன.</p>
@@ -1717,7 +1725,7 @@
     </div>
   </div>
 
-  <!-- DEDICATED FULL SCREEN PAGE: முழுப் பக்க ஸ்க்ரோல் செய்யக்கூடிய விளம்பர ஆஃபர்கள் பட்டியல் (With Hub Filter Bar) -->
+  <!-- DEDICATED FULL SCREEN PAGE: முழுப் பக்க ஸ்க்ரோல் செய்யக்கூடிய விளம்பர ஆஃபர்கள் பட்டியல் -->
   <div class="fullpage-view" id="pageFullScrollOffers" style="z-index: 1500;">
     <div class="fullpage-header">
       <div class="fullpage-header-left">
@@ -1735,15 +1743,15 @@
     </div>
 
     <!-- City Hub Selector Bar -->
-    <div style="background: #071E3D; padding: 10px; border-bottom: 1px solid var(--gold-border); display: flex; gap: 6px; overflow-x: auto; flex-shrink: 0;" id="cityHubSelectorBar">
-      <button onclick="filterOffersByHub('All')" class="hub-filter-btn active-hub" style="background:var(--primary-blue); color:#fff; border:none; padding:6px 12px; border-radius:6px; font-size:11px; font-weight:700; white-space:nowrap; cursor:pointer;">🌐 அனைத்துப் பகுதிகளும் (All)</button>
-      <button onclick="filterOffersByHub('நாகர்கோவில்')" class="hub-filter-btn" style="background:#112F5F; color:#E8F0FE; border:1px solid var(--gold-border); padding:6px 12px; border-radius:6px; font-size:11px; font-weight:600; white-space:nowrap; cursor:pointer;">📍 நாகர்கோவில்</button>
-      <button onclick="filterOffersByHub('மார்த்தாண்டம்')" class="hub-filter-btn" style="background:#112F5F; color:#E8F0FE; border:1px solid var(--gold-border); padding:6px 12px; border-radius:6px; font-size:11px; font-weight:600; white-space:nowrap; cursor:pointer;">📍 மார்த்தாண்டம் & குழித்துறை</button>
-      <button onclick="filterOffersByHub('தக்கலை')" class="hub-filter-btn" style="background:#112F5F; color:#E8F0FE; border:1px solid var(--gold-border); padding:6px 12px; border-radius:6px; font-size:11px; font-weight:600; white-space:nowrap; cursor:pointer;">📍 தக்கலை</button>
-      <button onclick="filterOffersByHub('அஞ்சுகிராமம்')" class="hub-filter-btn" style="background:#112F5F; color:#E8F0FE; border:1px solid var(--gold-border); padding:6px 12px; border-radius:6px; font-size:11px; font-weight:600; white-space:nowrap; cursor:pointer;">📍 அஞ்சுகிராமம் & கன்னியாகுமரி</button>
-      <button onclick="filterOffersByHub('திருநெல்வேலி')" class="hub-filter-btn" style="background:#112F5F; color:#E8F0FE; border:1px solid var(--gold-border); padding:6px 12px; border-radius:6px; font-size:11px; font-weight:600; white-space:nowrap; cursor:pointer;">📍 நெல்லை டவுன் & பாளையங்கோட்டை</button>
-      <button onclick="filterOffersByHub('வள்ளியூர்')" class="hub-filter-btn" style="background:#112F5F; color:#E8F0FE; border:1px solid var(--gold-border); padding:6px 12px; border-radius:6px; font-size:11px; font-weight:600; white-space:nowrap; cursor:pointer;">📍 வள்ளியூர் & களக்காடு</button>
-      <button onclick="filterOffersByHub('தூத்துக்குடி')" class="hub-filter-btn" style="background:#112F5F; color:#E8F0FE; border:1px solid var(--gold-border); padding:6px 12px; border-radius:6px; font-size:11px; font-weight:600; white-space:nowrap; cursor:pointer;">📍 தூத்துக்குடி & கோவில்பட்டி</button>
+    <div style="background: #0A2D5B; padding: 10px; border-bottom: 1.5px solid var(--gold-border); display: flex; gap: 6px; overflow-x: auto; flex-shrink: 0;" id="cityHubSelectorBar">
+      <button onclick="filterOffersByHub('All')" class="hub-filter-btn active-hub" style="background:#102B58; color:var(--yellow); border:1.5px solid var(--yellow); padding:6px 12px; border-radius:6px; font-size:11px; font-weight:700; white-space:nowrap; cursor:pointer;">🌐 அனைத்துப் பகுதிகளும் (All)</button>
+      <button onclick="filterOffersByHub('நாகர்கோவில்')" class="hub-filter-btn" style="background:#102B58; color:#FFFFFF; border:1px solid var(--gold-border); padding:6px 12px; border-radius:6px; font-size:11px; font-weight:600; white-space:nowrap; cursor:pointer;">📍 நாகர்கோவில்</button>
+      <button onclick="filterOffersByHub('மார்த்தாண்டம்')" class="hub-filter-btn" style="background:#102B58; color:#FFFFFF; border:1px solid var(--gold-border); padding:6px 12px; border-radius:6px; font-size:11px; font-weight:600; white-space:nowrap; cursor:pointer;">📍 மார்த்தாண்டம் & குழித்துறை</button>
+      <button onclick="filterOffersByHub('தக்கலை')" class="hub-filter-btn" style="background:#102B58; color:#FFFFFF; border:1px solid var(--gold-border); padding:6px 12px; border-radius:6px; font-size:11px; font-weight:600; white-space:nowrap; cursor:pointer;">📍 தக்கலை</button>
+      <button onclick="filterOffersByHub('அஞ்சுகிராமம்')" class="hub-filter-btn" style="background:#102B58; color:#FFFFFF; border:1px solid var(--gold-border); padding:6px 12px; border-radius:6px; font-size:11px; font-weight:600; white-space:nowrap; cursor:pointer;">📍 அஞ்சுகிராமம் & கன்னியாகுமரி</button>
+      <button onclick="filterOffersByHub('திருநெல்வேலி')" class="hub-filter-btn" style="background:#102B58; color:#FFFFFF; border:1px solid var(--gold-border); padding:6px 12px; border-radius:6px; font-size:11px; font-weight:600; white-space:nowrap; cursor:pointer;">📍 நெல்லை டவுன் & பாளையங்கோட்டை</button>
+      <button onclick="filterOffersByHub('வள்ளியூர்')" class="hub-filter-btn" style="background:#102B58; color:#FFFFFF; border:1px solid var(--gold-border); padding:6px 12px; border-radius:6px; font-size:11px; font-weight:600; white-space:nowrap; cursor:pointer;">📍 வள்ளியூர் & களக்காடு</button>
+      <button onclick="filterOffersByHub('தூத்துக்குடி')" class="hub-filter-btn" style="background:#102B58; color:#FFFFFF; border:1px solid var(--gold-border); padding:6px 12px; border-radius:6px; font-size:11px; font-weight:600; white-space:nowrap; cursor:pointer;">📍 தூத்துக்குடி & கோவில்பட்டி</button>
     </div>
 
     <div class="fullpage-content" id="fullScrollOffersContainer">
@@ -1773,7 +1781,7 @@
         <h4 style="font-size: 14px; color: var(--yellow); margin-bottom: 10px;">
           <i class="fa-solid fa-sliders"></i> பிரதான அமைப்புகள் / Master Switches
         </h4>
-        <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #334155;">
+        <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid rgba(255,215,0,0.2);">
           <div>
             <div style="font-size: 13px; font-weight: 700; color: #fff;">சந்தா விதிமுறை வாசகம்</div>
             <div style="font-size: 11px; color: var(--text-muted);">Subscription Master Switch</div>
@@ -1812,16 +1820,16 @@
     </div>
   </div>
 
-  <!-- வெண்டர் அப்ரூவல் வாழ்த்து பாப்-அப் திரை (Approval Popup) -->
+  <!-- வெண்டர் அப்ரூவல் வாழ்த்து பாப்-அப் திரை -->
   <div id="vendorApprovalModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); z-index:9999; align-items:center; justify-content:center; padding:16px;">
-    <div style="background:var(--card-container-bg); border:2px solid #22C55E; border-radius:16px; padding:20px; max-width:380px; width:100%; text-align:center; box-shadow:0 10px 25px rgba(0,0,0,0.5);">
+    <div style="background:var(--card-container-bg); border:2px solid var(--yellow); border-radius:16px; padding:20px; max-width:380px; width:100%; text-align:center; box-shadow:0 10px 25px rgba(0,0,0,0.5);">
       <div style="font-size:45px; color:#22C55E; margin-bottom:10px;">
         <i class="fa-solid fa-circle-check"></i>
       </div>
-      <h3 style="color:#E8F0FE; font-size:16px; margin-bottom:8px;">🎉 வாழ்த்துகள்! உங்கள் கணக்கு சரிபார்க்கப்பட்டது!</h3>
+      <h3 style="color:#FFFFFF; font-size:16px; margin-bottom:8px;">🎉 வாழ்த்துகள்! உங்கள் கணக்கு சரிபார்க்கப்பட்டது!</h3>
       <p style="color:var(--yellow); font-size:12px; margin-bottom:12px;">(Congratulations! Your Account is Verified & Active!)</p>
       
-      <div style="text-align:left; background:#071E3D; padding:12px; border-radius:10px; font-size:12px; line-height:1.6; color:#E2E8F0; margin-bottom:16px; border:1px solid var(--gold-border);">
+      <div style="text-align:left; background:#0A2D5B; padding:12px; border-radius:10px; font-size:12px; line-height:1.6; color:#FFFFFF; margin-bottom:16px; border:1.5px solid var(--gold-border);">
         <p style="margin-bottom:6px;">✅ <strong>0% கமிஷன்:</strong> உங்கள் முழு வருமானமும் உங்களுக்கே! தளம் எவ்வித கமிஷனும் வசூலிப்பதில்லை.</p>
         <p style="margin-bottom:6px;">✅ <strong>நேரடித் தொடர்பு:</strong> வாடிக்கையாளர்கள் இனி உங்களை நேரடியாக அழைக்கலாம்.</p>
         <p>✅ <strong>நம்பகமான சேவை:</strong> கனிவான சேவையால் நற்பெயரைப் பெற வாழ்த்துகிறோம்.</p>
@@ -1833,7 +1841,7 @@
     </div>
   </div>
   
-  <!-- Fixed Bottom Navigation Bar with 360° Fire Offer Button -->
+  <!-- Fixed Bottom Navigation Bar -->
   <nav class="bottom-bar">
     <a href="#" class="bar-link active">
       <i class="fa-solid fa-house"></i>
@@ -2164,13 +2172,13 @@
     function filterOffersByHub(hubName) {
       const buttons = document.querySelectorAll("#cityHubSelectorBar button");
       buttons.forEach(btn => {
-        btn.style.background = "#112F5F";
-        btn.style.color = "#E8F0FE";
+        btn.style.background = "#102B58";
+        btn.style.color = "#FFFFFF";
         btn.style.fontWeight = "600";
       });
-      event.target.style.background = "var(--primary-blue)";
-      event.target.style.color = "#fff";
-      event.target.style.fontWeight = "700";
+      event.target.style.background = "#102B58";
+      event.target.style.color = "var(--yellow)";
+      event.target.style.border = "1.5px solid var(--yellow)";
 
       renderOffersFeed(hubName);
     }
@@ -2205,7 +2213,7 @@
 
       if (!offersHtml) {
         offersHtml = `
-          <div style="background:var(--card-container-bg); border:1px solid var(--gold-border); padding:24px; border-radius:12px; text-align:center; color:#CBD5E1; margin-top:20px;">
+          <div style="background:var(--card-container-bg); border:1.5px solid var(--gold-border); padding:24px; border-radius:12px; text-align:center; color:#E6FFFA; margin-top:20px;">
             <i class="fa-solid fa-triangle-exclamation" style="font-size:32px; color:var(--yellow); margin-bottom:10px;"></i>
             <p>இந்த ஹப் பகுதியில் தற்போது விளம்பரங்கள் இல்லை.</p>
           </div>
@@ -2280,7 +2288,7 @@
   
       if (filtered.length === 0) {
         list.innerHTML = `
-          <div style="background:var(--card-container-bg); border:1px solid var(--gold-border); padding:24px; border-radius:12px; text-align:center; color:#CBD5E1; margin-top:20px;">
+          <div style="background:var(--card-container-bg); border:1.5px solid var(--gold-border); padding:24px; border-radius:12px; text-align:center; color:#E6FFFA; margin-top:20px;">
             <i class="fa-solid fa-triangle-exclamation" style="font-size:32px; color:var(--yellow); margin-bottom:10px;"></i>
             <p>இந்தத் தேடலுக்கான சேவை தற்போது கிடைக்கவில்லை.</p>
           </div>
@@ -2381,7 +2389,7 @@
   
       if (filtered.length === 0) {
         list.innerHTML = `
-          <div style="background:var(--card-container-bg); border:1px solid var(--gold-border); padding:24px; border-radius:12px; text-align:center; color:#CBD5E1; margin-top:20px;">
+          <div style="background:var(--card-container-bg); border:1.5px solid var(--gold-border); padding:24px; border-radius:12px; text-align:center; color:#E6FFFA; margin-top:20px;">
             <i class="fa-solid fa-triangle-exclamation" style="font-size:32px; color:var(--yellow); margin-bottom:10px;"></i>
             <p>இந்தத் தேடலுக்கான சேவை தற்போது கிடைக்கவில்லை.</p>
           </div>
@@ -2534,7 +2542,7 @@
 
       if (filtered.length === 0) {
         container.innerHTML = `
-          <div style="background:var(--card-container-bg); border:1px solid var(--gold-border); padding:24px; border-radius:12px; text-align:center; color:#CBD5E1; margin-top:10px;">
+          <div style="background:var(--card-container-bg); border:1.5px solid var(--gold-border); padding:24px; border-radius:12px; text-align:center; color:#E6FFFA; margin-top:10px;">
             <i class="fa-solid fa-triangle-exclamation" style="font-size:32px; color:var(--yellow); margin-bottom:10px;"></i>
             <p>இந்தப் பகுதியில் சேவைகள் தற்போது கிடைக்கவில்லை.</p>
           </div>
@@ -2600,7 +2608,7 @@
   
       if (filtered.length === 0) {
         list.innerHTML = `
-          <div style="background:var(--card-container-bg); border:1px solid var(--gold-border); padding:24px; border-radius:12px; text-align:center; color:#CBD5E1; margin-top:20px;">
+          <div style="background:var(--card-container-bg); border:1.5px solid var(--gold-border); padding:24px; border-radius:12px; text-align:center; color:#E6FFFA; margin-top:20px;">
             <i class="fa-solid fa-triangle-exclamation" style="font-size:32px; color:var(--yellow); margin-bottom:10px;"></i>
             <p>இந்தப் பிரிவில் சேவைகள் தற்போது இல்லை.</p>
           </div>
@@ -3066,12 +3074,12 @@
       container.innerHTML = "";
       TheListToRender.forEach(v => {
         container.innerHTML += `
-          <div style="background: #071E3D; border: 1px solid var(--gold-border); border-radius: 10px; padding: 10px; margin-bottom: 8px;">
+          <div style="background: #0A2D5B; border: 1.5px solid var(--gold-border); border-radius: 10px; padding: 10px; margin-bottom: 8px;">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-              <h5 style="font-size: 13px; color: #fff;">${v.name}</h5>
+              <h5 style="font-size: 13px; color: #FFFFFF;">${v.name}</h5>
               <span class="status-badge ${v.status === 'active' ? 'active-green' : 'pending-yellow'}">${v.status}</span>
             </div>
-            <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 6px;">📍 ${v.area} • 📞 ${v.phone}</p>
+            <p style="font-size: 11px; color: var(--yellow); margin-bottom: 6px;">📍 ${v.area} • 📞 ${v.phone}</p>
             <div style="display: flex; gap: 6px;">
               <button onclick="changeVendorStatusLocally('${v.id || v.name}', 'active')" style="flex:1; padding: 5px; background: #22C55E; color: #fff; font-size: 11px; border: none; border-radius: 6px; font-weight: 700; cursor: pointer;">Approve</button>
               <button onclick="changeVendorStatusLocally('${v.id || v.name}', 'blocked')" style="flex:1; padding: 5px; background: #EF4444; color: #fff; font-size: 11px; border: none; border-radius: 6px; font-weight: 700; cursor: pointer;">Block</button>
