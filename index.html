@@ -306,7 +306,7 @@
     }
     .status-badge.active-green { background: #22C55E; color: #fff; }
     .status-badge.pending-yellow { background: #F59E0B; color: #000; }
-    .status-badge.expired-red { background: #DC2626; color: #fff; }
+    .status-badge.expired-red { background: #EF4444; color: #fff; }
   
     /* Fullpage Dedicated View */
     .fullpage-view {
@@ -853,10 +853,10 @@
   
   <div class="container">
   
-    <!-- Top Main Promo Banner (Updated with Festival Banner Link) -->
+    <!-- Top Main Promo Banner (Updated with new Festival Banner Link) -->
     <div class="top-promo-banner">
       <div class="secret-logo-touch-area" onclick="handleSecretLogoTap(event)"></div>
-      <img src="https://lh3.googleusercontent.com/d/1Hbs9nTDU5sftIzNdkX4bdlwQ-3rBGzHJ" alt="நம்ம ஊர் A to Z பிரதான பேனர்">
+      <img src="https://lh3.googleusercontent.com/d/1fkKtPqMGdZWPFBRdUezBGTjsT7THt87a" alt="நம்ம ஊர் A to Z பிரதான பேனர்">
     </div>
   
     <!-- Home Filter Tabs -->
@@ -2018,13 +2018,12 @@
       }
     }
 
-    // ULTRA-FAST INSTANT GPS DETECTOR (Under 1-2 seconds with smart Kanyakumari District coordinate mapping)
+    // FIXED: Non-blocking GPS detector without forced default overriding
     function requestDeviceGPSPermission() {
       const modal = document.getElementById("locationPermissionModal");
       const townInput = document.getElementById("homeTownInput");
 
       if (navigator.geolocation) {
-        // Fast timeout (2 seconds max) to avoid any hanging
         navigator.geolocation.getCurrentPosition(
           (position) => {
             const lat = position.coords.latitude;
@@ -2033,7 +2032,7 @@
             // Smart coordinate mapping for Kanyakumari district hubs & local areas
             let detectedTown = "நாகர்கோவில்";
             if (lat >= 8.1 && lat <= 8.25 && lon >= 77.4 && lon <= 77.6) {
-              detectedTown = "அழகப்பபுரம்"; // Azhagappapuram / South KK region
+              detectedTown = "அழகப்பபுரம்";
             } else if (lat > 8.25 && lat <= 8.38) {
               detectedTown = "நாகர்கோவில்";
             } else if (lat > 8.32 && lon < 77.3) {
@@ -2044,22 +2043,17 @@
               detectedTown = "கன்னியாகுமரி";
             }
 
-            if (townInput) townInput.value = detectedTown;
+            if (townInput && !townInput.value.trim()) {
+              townInput.value = detectedTown;
+            }
             if (modal) modal.style.display = "none";
           },
           (error) => {
-            // Instant fallback to default local town if GPS is denied or delayed
-            if (townInput && !townInput.value.trim()) {
-              townInput.value = "அழகப்பபுரம்";
-            }
             if (modal) modal.style.display = "none";
           },
           { timeout: 3000, maximumAge: 60000, enableHighAccuracy: false }
         );
       } else {
-        if (townInput && !townInput.value.trim()) {
-          townInput.value = "அழகப்பபுரம்";
-        }
         if (modal) modal.style.display = "none";
       }
     }
@@ -2071,8 +2065,6 @@
       const homeTown = document.getElementById("homeTownInput");
       if (homeTown && townVal) {
         homeTown.value = townVal;
-      } else if (homeTown && !homeTown.value.trim()) {
-        homeTown.value = "அழகப்பபுரம்";
       }
       
       const modal = document.getElementById("locationPermissionModal");
@@ -2299,12 +2291,12 @@
       const townLabel = document.getElementById("dedicatedTown");
   
       title.innerText = keyword ? keyword : selectedHomeCategory;
-      townLabel.innerText = town ? "📍 " + town : "📍 அழகப்பபுரம்";
+      townLabel.innerText = town ? "📍 " + town : "📍 நாகர்கோவில்";
       list.innerHTML = "";
   
       const displayData = liveVendors.length > 0 ? liveVendors : serviceList;
       const filtered = displayData.filter(item => {
-        const matchesTown = !town || item.area.toLowerCase().trim() === town.toLowerCase().trim();
+        const matchesTown = !town || item.area.toLowerCase().includes(town.toLowerCase()) || town.toLowerCase().includes(item.area.toLowerCase());
         const matchesKeyword = !keyword || 
           item.name.toLowerCase().includes(keyword.toLowerCase()) ||
           item.category.toLowerCase().includes(keyword.toLowerCase()) ||
@@ -2400,12 +2392,12 @@
       const townLabel = document.getElementById("dedicatedTown");
   
       title.innerText = keyword ? keyword : "தேடல் முடிவு / Search Results";
-      townLabel.innerText = town ? "📍 " + town : "📍 அழகப்பபுரம்";
+      townLabel.innerText = town ? "📍 " + town : "📍 நாகர்கோவில்";
       list.innerHTML = "";
   
       const displayData = liveVendors.length > 0 ? liveVendors : serviceList;
       const filtered = displayData.filter(item => {
-        const matchesTown = !town || item.area.toLowerCase().trim() === town.toLowerCase().trim();
+        const matchesTown = !town || item.area.toLowerCase().includes(town.toLowerCase()) || town.toLowerCase().includes(item.area.toLowerCase());
         const matchesKeyword = !keyword || 
           item.name.toLowerCase().includes(keyword.toLowerCase()) ||
           item.category.toLowerCase().includes(keyword.toLowerCase()) ||
@@ -2523,7 +2515,7 @@
   
       title.innerText = subName;
       const initialTown = document.getElementById("homeTownInput") ? document.getElementById("homeTownInput").value.trim() : "";
-      townLabel.innerText = initialTown ? "📍 " + initialTown : "📍 அழகப்பபுரம்";
+      townLabel.innerText = initialTown ? "📍 " + initialTown : "📍 நாகர்கோவில்";
       list.innerHTML = "";
 
       let containerHtml = `<div id="dynamicVendorScrollContainer"></div>`;
@@ -2549,7 +2541,7 @@
         const itemDesc = (item.desc || "").toLowerCase();
         const itemArea = (item.area || "").toLowerCase();
 
-        const matchesTown = !town || itemArea.trim() === town.toLowerCase().trim();
+        const matchesTown = !town || itemArea.includes(town.toLowerCase()) || town.toLowerCase().includes(itemArea);
         
         const matchesKeyword = !kw || 
           itemName.includes(kw) ||
@@ -2617,14 +2609,14 @@
   
       title.innerText = categoryName;
       const initialTown = document.getElementById("homeTownInput") ? document.getElementById("homeTownInput").value.trim() : "";
-      townLabel.innerText = initialTown ? "📍 " + initialTown : "📍 அழகப்பபுரம்";
+      townLabel.innerText = initialTown ? "📍 " + initialTown : "📍 நாகர்கோவில்";
       list.innerHTML = "";
   
       const displayData = liveVendors.length > 0 ? liveVendors : serviceList;
       const filtered = displayData.filter(item => {
         const cat = (item.category || "").toLowerCase();
         const target = categoryName.toLowerCase().split('/')[0].trim();
-        const matchesTown = !initialTown || item.area.toLowerCase().trim() === initialTown.toLowerCase().trim();
+        const matchesTown = !initialTown || item.area.toLowerCase().includes(initialTown.toLowerCase()) || initialTown.toLowerCase().includes(item.area.toLowerCase());
         
         const matchesCategory = 
           target.includes("அனைத்து") || target.includes("all") ||
