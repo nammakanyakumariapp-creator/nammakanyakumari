@@ -20,12 +20,12 @@
       --teal: #14B8A6;
       --light-blue: #3B82F6;
       
-      --page-bg: #0B2D5B;         /* ராயல் நேவி ப்ளூ பிரதான பின்னணி */
-      --card-container-bg: #102A4E; /* டார்க் ப்ளூ கார்டு பின்னணி */
-      --text-light: #FFF8E7;      /* கிரீம் ஐவரி எழுத்துக்கள் */
+      --page-bg: #0A2D5B;         /* முக்கிய பின்னணி #0A2D5B */
+      --card-container-bg: #112F5F; /* கார்டு பின்னணி #112F5F */
+      --text-light: #E8F0FE;      /* டெக்ஸ்ட் #E8F0FE */
       --text-muted: #94A3B8;
       --en-text-bright: #CBD5E1;
-      --gold-border: rgba(212, 175, 55, 0.35); /* மெல்லிய கோல்டன் பார்டர் */
+      --gold-border: rgba(212, 175, 55, 0.35);
     }
   
     * {
@@ -56,7 +56,7 @@
       overflow: hidden;
       box-shadow: 0 4px 15px rgba(0,0,0,0.3);
       border: 1px solid var(--gold-border);
-      background: #0B2D5B;
+      background: var(--page-bg);
       position: relative;
       cursor: default;
     }
@@ -108,7 +108,7 @@
       transition: all 0.2s ease;
     }
     .home-tab-btn.active {
-      background: var(--primary-blue);
+      background: #3B82F6; /* Active Tab #3B82F6 */
       color: #fff;
     }
   
@@ -149,7 +149,7 @@
     .home-mic-btn {
       background: none;
       border: none;
-      color: var(--yellow);
+      color: #FFD54F; /* Accent #FFD54F */
       font-size: 14px;
       cursor: pointer;
       padding: 4px;
@@ -159,13 +159,13 @@
       transition: color 0.2s ease;
     }
     .home-mic-btn.listening {
-      color: var(--green) !important;
+      color: #22C55E !important;
     }
   
     /* Sponsor Ad Strip */
     .sponsor-ad-card {
-      background: linear-gradient(135deg, #102A4E, #163866);
-      border: 1.5px dashed var(--yellow);
+      background: linear-gradient(135deg, #112F5F, #1A3B73);
+      border: 1.5px dashed #FFD54F;
       border-radius: 12px;
       padding: 7px 12px;
       margin-bottom: 14px;
@@ -176,18 +176,18 @@
     }
     .sponsor-ad-card h4 {
       font-size: 12.5px;
-      color: #FFF8E7;
+      color: #E8F0FE;
       font-weight: 700;
       line-height: 1.2;
     }
     .sponsor-ad-card p {
       font-size: 11px;
-      color: var(--yellow);
+      color: #FFD54F;
       font-weight: 500;
       margin-top: 2px;
     }
     .sponsor-tag {
-      background: var(--green);
+      background: #22C55E; /* Success #22C55E */
       color: #fff;
       font-size: 10.5px;
       font-weight: 700;
@@ -196,7 +196,7 @@
       white-space: nowrap;
     }
   
-    /* 3x3 Category Grid (Strictly 9 Master Icons) */
+    /* 3x3 Category Grid (Strictly 9 Master Icons with New Exact Color Codes) */
     .category-grid-container {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -205,7 +205,7 @@
     }
   
     .cat-btn {
-      background: #102A4E !important;
+      background: #112F5F !important;
       border: 1px solid var(--gold-border) !important;
       border-radius: 16px;
       padding: 10px 4px;
@@ -225,36 +225,38 @@
     }
     
     .cat-btn .circle-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      border-radius: 14px; /* Rounded Shape 14px Radius as per specs */
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 19px;
+      font-size: 20px;
+      color: #FFFFFF; /* White icon with solid color bg */
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
     
-    .icon-auto { background: #FFEDD5; color: #C2410C; }
-    .icon-taxi { background: #DBEAFE; color: #1D4ED8; }
-    .icon-load { background: #DCFCE7; color: #15803D; }
-    .icon-home { background: #EDE9FE; color: #6D28D9; }
-    .icon-shop { background: #FEF9C3; color: #A16207; }
-    .icon-jobs { background: #FCE7F3; color: #BE185D; }
-    .icon-pros1 { background: #CCFBF1; color: #0F766E; }
-    .icon-pros2 { background: #FEF3C7; color: #D97706; }
-    .icon-pros3 { background: #FCE7F3; color: #DB2777; }
+    /* Exact Hex Color Mapping as requested */
+    .icon-auto { background: #F959EB; }    /* போக்குவரத்து (Orange - 500) -> #F959EB or #F59E0B */
+    .icon-home { background: #8B5CF6; }    /* வீடு & சொத்து (Purple - 500) */
+    .icon-taxi { background: #14B8A6; }    /* கல்வி & பயிற்சி (Teal - 500) */
+    .icon-pros3 { background: #EC4899; }   /* மருத்துவம் (Pink - 500) */
+    .icon-shop { background: #22C55E; }    /* வணிகம் & விற்பனை (Green - 500) */
+    .icon-jobs { background: #6366F1; }    /* பணியாளர் சேவைகள் (Indigo - 500) */
+    .icon-pros1 { background: #0EA5E9; }   /* மின் & நீர் சேவைகள் (Sky Blue - 500) */
+    .icon-load { background: #0D9488; }    /* கலாச்சாரம் & பொழுதுபோக்கு (Teal - 600) */
+    .icon-pros2 { background: #F97316; }   /* மற்ற சேவைகள் (Orange - 500) */
   
     .cat-btn .main-text {
       font-size: 12px;
       font-weight: 700;
-      color: #FFF8E7;
+      color: #E8F0FE;
       line-height: 1.2;
     }
     .cat-btn .sub-text {
       font-size: 10.5px;
       font-weight: 600;
-      color: var(--en-text-bright);
+      color: #B8C7E6; /* Secondary Text */
       line-height: 1.1;
     }
   
@@ -280,7 +282,7 @@
     .reg-block-info h5 {
       font-size: 12px;
       font-weight: 700;
-      color: #FFF8E7;
+      color: #E8F0FE;
       line-height: 1.3;
     }
     .reg-block-info p {
@@ -298,9 +300,9 @@
       font-weight: 700;
       margin-left: 6px;
     }
-    .status-badge.active-green { background: #16A34A; color: #fff; }
+    .status-badge.active-green { background: #22C55E; color: #fff; }
     .status-badge.pending-yellow { background: #F59E0B; color: #000; }
-    .status-badge.expired-red { background: #DC2626; color: #fff; }
+    .status-badge.expired-red { background: #EF4444; color: #fff; }
   
     /* Fullpage Dedicated View */
     .fullpage-view {
@@ -409,7 +411,7 @@
     }
     .subcat-card-info h4 {
       font-size: 14px;
-      color: #FFF8E7;
+      color: #E8F0FE;
       font-weight: 700;
       margin-bottom: 2px;
     }
@@ -466,7 +468,7 @@
     }
     .emergency-info h4 {
       font-size: 14.5px;
-      color: #FFF8E7;
+      color: #E8F0FE;
       font-weight: 700;
     }
     .emergency-info p {
@@ -503,7 +505,7 @@
       font-size: 12.5px;
       font-weight: 600;
       margin-bottom: 4px;
-      color: #FFF8E7;
+      color: #E8F0FE;
     }
     .form-group label span.en-label {
       color: var(--en-text-bright);
@@ -582,10 +584,10 @@
       cursor: not-allowed;
     }
     .form-submit-btn.active-btn {
-      background: var(--green);
+      background: #22C55E;
       color: #fff;
       cursor: pointer;
-      box-shadow: 0 4px 12px rgba(22, 163, 74, 0.4);
+      box-shadow: 0 4px 12px rgba(34, 197, 94, 0.4);
     }
   
     /* Digital Card Item Style */
@@ -599,7 +601,7 @@
     .item-card h4 {
       font-size: 14.5px;
       font-weight: 700;
-      color: #FFF8E7;
+      color: #E8F0FE;
     }
     .item-card .item-meta {
       font-size: 12px;
@@ -631,7 +633,7 @@
       gap: 6px;
     }
     .btn-call { background: #0284C7; color: #fff; }
-    .btn-wa { background: #16A34A; color: #fff; }
+    .btn-wa { background: #22C55E; color: #fff; }
   
     /* Comprehensive Terms Rule Card Styling */
     .terms-rule-card {
@@ -650,7 +652,7 @@
     }
     .terms-rule-card p.ta-main {
       font-size: 12.5px;
-      color: #FFF8E7;
+      color: #E8F0FE;
       line-height: 1.5;
       margin-bottom: 6px;
     }
@@ -671,7 +673,7 @@
       bottom: 0;
       left: 0;
       right: 0;
-      background: #0B2D5B;
+      background: #0A2D5B;
       display: flex;
       justify-content: space-around;
       padding: 8px 0 8px 0;
@@ -741,7 +743,7 @@
     }
     .secret-admin-box h3 {
       font-size: 16px;
-      color: #FFF8E7;
+      color: #E8F0FE;
       margin-bottom: 6px;
     }
     .secret-admin-box p {
@@ -823,12 +825,12 @@
       <div style="font-size: 40px; color: var(--yellow); margin-bottom: 12px;">
         <i class="fa-solid fa-location-crosshairs"></i>
       </div>
-      <h3 style="color: #FFF8E7; font-size: 16px; margin-bottom: 8px;">இருப்பிட அனுமதி தேவை / Location Required</h3>
+      <h3 style="color: #E8F0FE; font-size: 16px; margin-bottom: 8px;">இருப்பிட அனுமதி தேவை / Location Required</h3>
       <p style="color: var(--en-text-bright); font-size: 12.5px; line-height: 1.5; margin-bottom: 16px;">
         உங்கள் அருகில் உள்ள (500m - 1km) சேவைகளை உடனுக்குடன் காட்ட உங்கள் இருப்பிடத்தை அனுமதிக்கவும்.
       </p>
       
-      <button type="button" onclick="requestDeviceGPSPermission()" style="width: 100%; background: var(--green); color: #fff; border: none; padding: 12px; border-radius: 8px; font-weight: 700; font-size: 13.5px; cursor: pointer; margin-bottom: 10px; box-shadow: 0 4px 12px rgba(22,163,74,0.4);">
+      <button type="button" onclick="requestDeviceGPSPermission()" style="width: 100%; background: #22C55E; color: #fff; border: none; padding: 12px; border-radius: 8px; font-weight: 700; font-size: 13.5px; cursor: pointer; margin-bottom: 10px; box-shadow: 0 4px 12px rgba(34,197,94,0.4);">
         <i class="fa-solid fa-check"></i> இருப்பிடத்தை அனுமதிக்க / Allow GPS
       </button>
 
@@ -843,7 +845,7 @@
   
   <div class="container">
   
-    <!-- Top Main Promo Banner (Fixed Clean Link) -->
+    <!-- Top Main Promo Banner -->
     <div class="top-promo-banner">
       <div class="secret-logo-touch-area" onclick="handleSecretLogoTap(event)"></div>
       <img src="https://lh3.googleusercontent.com/d/1qDkFYE0-C4M67dsp0pQKAamQzSYy12yr" alt="நம்ம ஊர் A to Z பிரதான பேனர்">
@@ -888,7 +890,7 @@
       </div>
     </div>
   
-    <!-- 3x3 Category Grid (Strictly 9 Master Icons) -->
+    <!-- 3x3 Category Grid (Strictly 9 Master Icons with Updated Color Palette) -->
     <div class="category-grid-container">
       <div class="cat-btn" onclick="checkAndPromptLocationOnce(); openSubCategoryView('போக்குவரத்து / Transport')">
         <div class="circle-icon icon-auto">
@@ -1700,7 +1702,7 @@
       <div style="font-size:38px; color:var(--yellow); margin-bottom:8px; margin-top:6px;">
         <i class="fa-solid fa-bullhorn"></i>
       </div>
-      <h3 style="color:#FFF8E7; font-size:15px; margin-bottom:4px;">🌟 360° சுற்றளவு சிறப்பு ஆஃபர்கள்!</h3>
+      <h3 style="color:#E8F0FE; font-size:15px; margin-bottom:4px;">🌟 360° சுற்றளவு சிறப்பு ஆஃபர்கள்!</h3>
       <p style="color:var(--yellow); font-size:11px; margin-bottom:12px;">(Nearby 20-25km Radius Special Offers)</p>
       
       <div style="text-align:left; background:#071E3D; padding:12px; border-radius:10px; font-size:12px; line-height:1.5; color:#E2E8F0; margin-bottom:16px; border:1px solid var(--gold-border);">
@@ -1709,7 +1711,7 @@
         <p>💡 உங்கள் தேடலுடன் அருகில் உள்ள அனைத்து சலுகைகளும் இணைக்கப்பட்டுள்ளன.</p>
       </div>
 
-      <button type="button" onclick="openFullPageOffersList()" style="width:100%; background:var(--green); color:#fff; border:none; padding:11px; border-radius:8px; font-weight:700; font-size:13px; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:6px; box-shadow:0 4px 12px rgba(22,163,74,0.4);">
+      <button type="button" onclick="openFullPageOffersList()" style="width:100%; background:#22C55E; color:#fff; border:none; padding:11px; border-radius:8px; font-weight:700; font-size:13px; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:6px; box-shadow:0 4px 12px rgba(34,197,94,0.4);">
         <i class="fa-solid fa-rectangle-ad"></i> ஆஃபர்களைப் பார்க்க / View Offers ➔
       </button>
     </div>
@@ -1735,13 +1737,13 @@
     <!-- City Hub Selector Bar -->
     <div style="background: #071E3D; padding: 10px; border-bottom: 1px solid var(--gold-border); display: flex; gap: 6px; overflow-x: auto; flex-shrink: 0;" id="cityHubSelectorBar">
       <button onclick="filterOffersByHub('All')" class="hub-filter-btn active-hub" style="background:var(--primary-blue); color:#fff; border:none; padding:6px 12px; border-radius:6px; font-size:11px; font-weight:700; white-space:nowrap; cursor:pointer;">🌐 அனைத்துப் பகுதிகளும் (All)</button>
-      <button onclick="filterOffersByHub('நாகர்கோவில்')" class="hub-filter-btn" style="background:#102A4E; color:#FFF8E7; border:1px solid var(--gold-border); padding:6px 12px; border-radius:6px; font-size:11px; font-weight:600; white-space:nowrap; cursor:pointer;">📍 நாகர்கோவில்</button>
-      <button onclick="filterOffersByHub('மார்த்தாண்டம்')" class="hub-filter-btn" style="background:#102A4E; color:#FFF8E7; border:1px solid var(--gold-border); padding:6px 12px; border-radius:6px; font-size:11px; font-weight:600; white-space:nowrap; cursor:pointer;">📍 மார்த்தாண்டம் & குழித்துறை</button>
-      <button onclick="filterOffersByHub('தக்கலை')" class="hub-filter-btn" style="background:#102A4E; color:#FFF8E7; border:1px solid var(--gold-border); padding:6px 12px; border-radius:6px; font-size:11px; font-weight:600; white-space:nowrap; cursor:pointer;">📍 தக்கலை</button>
-      <button onclick="filterOffersByHub('அஞ்சுகிராமம்')" class="hub-filter-btn" style="background:#102A4E; color:#FFF8E7; border:1px solid var(--gold-border); padding:6px 12px; border-radius:6px; font-size:11px; font-weight:600; white-space:nowrap; cursor:pointer;">📍 அஞ்சுகிராமம் & கன்னியாகுமரி</button>
-      <button onclick="filterOffersByHub('திருநெல்வேலி')" class="hub-filter-btn" style="background:#102A4E; color:#FFF8E7; border:1px solid var(--gold-border); padding:6px 12px; border-radius:6px; font-size:11px; font-weight:600; white-space:nowrap; cursor:pointer;">📍 நெல்லை டவுன் & பாளையங்கோட்டை</button>
-      <button onclick="filterOffersByHub('வள்ளியூர்')" class="hub-filter-btn" style="background:#102A4E; color:#FFF8E7; border:1px solid var(--gold-border); padding:6px 12px; border-radius:6px; font-size:11px; font-weight:600; white-space:nowrap; cursor:pointer;">📍 வள்ளியூர் & களக்காடு</button>
-      <button onclick="filterOffersByHub('தூத்துக்குடி')" class="hub-filter-btn" style="background:#102A4E; color:#FFF8E7; border:1px solid var(--gold-border); padding:6px 12px; border-radius:6px; font-size:11px; font-weight:600; white-space:nowrap; cursor:pointer;">📍 தூத்துக்குடி & கோவில்பட்டி</button>
+      <button onclick="filterOffersByHub('நாகர்கோவில்')" class="hub-filter-btn" style="background:#112F5F; color:#E8F0FE; border:1px solid var(--gold-border); padding:6px 12px; border-radius:6px; font-size:11px; font-weight:600; white-space:nowrap; cursor:pointer;">📍 நாகர்கோவில்</button>
+      <button onclick="filterOffersByHub('மார்த்தாண்டம்')" class="hub-filter-btn" style="background:#112F5F; color:#E8F0FE; border:1px solid var(--gold-border); padding:6px 12px; border-radius:6px; font-size:11px; font-weight:600; white-space:nowrap; cursor:pointer;">📍 மார்த்தாண்டம் & குழித்துறை</button>
+      <button onclick="filterOffersByHub('தக்கலை')" class="hub-filter-btn" style="background:#112F5F; color:#E8F0FE; border:1px solid var(--gold-border); padding:6px 12px; border-radius:6px; font-size:11px; font-weight:600; white-space:nowrap; cursor:pointer;">📍 தக்கலை</button>
+      <button onclick="filterOffersByHub('அஞ்சுகிராமம்')" class="hub-filter-btn" style="background:#112F5F; color:#E8F0FE; border:1px solid var(--gold-border); padding:6px 12px; border-radius:6px; font-size:11px; font-weight:600; white-space:nowrap; cursor:pointer;">📍 அஞ்சுகிராமம் & கன்னியாகுமரி</button>
+      <button onclick="filterOffersByHub('திருநெல்வேலி')" class="hub-filter-btn" style="background:#112F5F; color:#E8F0FE; border:1px solid var(--gold-border); padding:6px 12px; border-radius:6px; font-size:11px; font-weight:600; white-space:nowrap; cursor:pointer;">📍 நெல்லை டவுன் & பாளையங்கோட்டை</button>
+      <button onclick="filterOffersByHub('வள்ளியூர்')" class="hub-filter-btn" style="background:#112F5F; color:#E8F0FE; border:1px solid var(--gold-border); padding:6px 12px; border-radius:6px; font-size:11px; font-weight:600; white-space:nowrap; cursor:pointer;">📍 வள்ளியூர் & களக்காடு</button>
+      <button onclick="filterOffersByHub('தூத்துக்குடி')" class="hub-filter-btn" style="background:#112F5F; color:#E8F0FE; border:1px solid var(--gold-border); padding:6px 12px; border-radius:6px; font-size:11px; font-weight:600; white-space:nowrap; cursor:pointer;">📍 தூத்துக்குடி & கோவில்பட்டி</button>
     </div>
 
     <div class="fullpage-content" id="fullScrollOffersContainer">
@@ -1759,7 +1761,7 @@
         <h3 id="adminPanelHeaderTitle">நிர்வாக பேனல் / Admin Panel</h3>
       </div>
       <div style="display: flex; align-items: center; gap: 8px;">
-        <span class="tag-right" id="adminRoleBadge" style="color: var(--green);">Master</span>
+        <span class="tag-right" id="adminRoleBadge" style="color: #22C55E;">Master</span>
         <button class="end-btn" onclick="closeAllPages()">
           <i class="fa-solid fa-xmark"></i> End
         </button>
@@ -1812,11 +1814,11 @@
 
   <!-- வெண்டர் அப்ரூவல் வாழ்த்து பாப்-அப் திரை (Approval Popup) -->
   <div id="vendorApprovalModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); z-index:9999; align-items:center; justify-content:center; padding:16px;">
-    <div style="background:var(--card-container-bg); border:2px solid var(--green); border-radius:16px; padding:20px; max-width:380px; width:100%; text-align:center; box-shadow:0 10px 25px rgba(0,0,0,0.5);">
-      <div style="font-size:45px; color:var(--green); margin-bottom:10px;">
+    <div style="background:var(--card-container-bg); border:2px solid #22C55E; border-radius:16px; padding:20px; max-width:380px; width:100%; text-align:center; box-shadow:0 10px 25px rgba(0,0,0,0.5);">
+      <div style="font-size:45px; color:#22C55E; margin-bottom:10px;">
         <i class="fa-solid fa-circle-check"></i>
       </div>
-      <h3 style="color:#FFF8E7; font-size:16px; margin-bottom:8px;">🎉 வாழ்த்துகள்! உங்கள் கணக்கு சரிபார்க்கப்பட்டது!</h3>
+      <h3 style="color:#E8F0FE; font-size:16px; margin-bottom:8px;">🎉 வாழ்த்துகள்! உங்கள் கணக்கு சரிபார்க்கப்பட்டது!</h3>
       <p style="color:var(--yellow); font-size:12px; margin-bottom:12px;">(Congratulations! Your Account is Verified & Active!)</p>
       
       <div style="text-align:left; background:#071E3D; padding:12px; border-radius:10px; font-size:12px; line-height:1.6; color:#E2E8F0; margin-bottom:16px; border:1px solid var(--gold-border);">
@@ -1825,7 +1827,7 @@
         <p>✅ <strong>நம்பகமான சேவை:</strong> கனிவான சேவையால் நற்பெயரைப் பெற வாழ்த்துகிறோம்.</p>
       </div>
 
-      <button type="button" onclick="closeVendorApprovalModal()" style="width:100%; background:var(--green); color:#fff; border:none; padding:12px; border-radius:8px; font-weight:700; font-size:13px; cursor:pointer;">
+      <button type="button" onclick="closeVendorApprovalModal()" style="width:100%; background:#22C55E; color:#fff; border:none; padding:12px; border-radius:8px; font-weight:700; font-size:13px; cursor:pointer;">
         வணிகத்தைத் தொடங்குக / Continue to App ➔
       </button>
     </div>
@@ -2162,8 +2164,8 @@
     function filterOffersByHub(hubName) {
       const buttons = document.querySelectorAll("#cityHubSelectorBar button");
       buttons.forEach(btn => {
-        btn.style.background = "#102A4E";
-        btn.style.color = "#FFF8E7";
+        btn.style.background = "#112F5F";
+        btn.style.color = "#E8F0FE";
         btn.style.fontWeight = "600";
       });
       event.target.style.background = "var(--primary-blue)";
@@ -3017,7 +3019,7 @@
       if (role === "Master") {
         title.innerText = "மாஸ்டர் அட்மின் பேனல்";
         badge.innerText = "Master Control";
-        badge.style.color = "var(--green)";
+        badge.style.color = "#22C55E";
         masterSection.style.display = "block";
       } else {
         title.innerText = "உதவி நிர்வாக பேனல்";
@@ -3036,11 +3038,11 @@
       if (!btn) return;
       if (isTermsSwitchOn) {
         btn.innerText = "ஆன் / ON (Active)";
-        btn.style.background = "var(--green)";
+        btn.style.background = "#22C55E";
         btn.style.color = "#fff";
       } else {
         btn.innerText = "ஆஃப் / OFF (Hidden)";
-        btn.style.background = "var(--red)";
+        btn.style.background = "#EF4444";
         btn.style.color = "#fff";
       }
     }
@@ -3071,8 +3073,8 @@
             </div>
             <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 6px;">📍 ${v.area} • 📞 ${v.phone}</p>
             <div style="display: flex; gap: 6px;">
-              <button onclick="changeVendorStatusLocally('${v.id || v.name}', 'active')" style="flex:1; padding: 5px; background: var(--green); color: #fff; font-size: 11px; border: none; border-radius: 6px; font-weight: 700; cursor: pointer;">Approve</button>
-              <button onclick="changeVendorStatusLocally('${v.id || v.name}', 'blocked')" style="flex:1; padding: 5px; background: var(--red); color: #fff; font-size: 11px; border: none; border-radius: 6px; font-weight: 700; cursor: pointer;">Block</button>
+              <button onclick="changeVendorStatusLocally('${v.id || v.name}', 'active')" style="flex:1; padding: 5px; background: #22C55E; color: #fff; font-size: 11px; border: none; border-radius: 6px; font-weight: 700; cursor: pointer;">Approve</button>
+              <button onclick="changeVendorStatusLocally('${v.id || v.name}', 'blocked')" style="flex:1; padding: 5px; background: #EF4444; color: #fff; font-size: 11px; border: none; border-radius: 6px; font-weight: 700; cursor: pointer;">Block</button>
             </div>
           </div>
         `;
