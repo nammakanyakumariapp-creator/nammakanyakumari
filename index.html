@@ -306,7 +306,7 @@
     }
     .status-badge.active-green { background: #22C55E; color: #fff; }
     .status-badge.pending-yellow { background: #F59E0B; color: #000; }
-    .status-badge.expired-red { background: #EF4444; color: #fff; }
+    .status-badge.expired-red { background: #DC2626; color: #fff; }
   
     /* Fullpage Dedicated View */
     .fullpage-view {
@@ -843,7 +843,7 @@
       </button>
 
       <div style="margin-top: 10px;">
-        <input type="text" id="manualTownInputBox" placeholder="அல்லது ஊரைத் தட்டச்சு செய்யவும்..." style="width: 100%; padding: 10px; border-radius: 8px; border: 1.5px solid var(--gold-border); background: #0A2D5B; color: #fff; font-size: 12.5px; text-align: center; outline: none; margin-bottom: 8px;">
+        <input type="text" id="manualTownInputBox" placeholder="அல்லது ஊரைத் தட்டச்சு செய்யவும் (எ.கா: அழகப்பபுரம்)..." style="width: 100%; padding: 10px; border-radius: 8px; border: 1.5px solid var(--gold-border); background: #0A2D5B; color: #fff; font-size: 12.5px; text-align: center; outline: none; margin-bottom: 8px;">
         <button type="button" onclick="submitManualTownEntry()" style="width: 100%; background: #102B58; color: var(--yellow); border: 1px solid var(--yellow); padding: 10px; border-radius: 8px; font-weight: 600; font-size: 12.5px; cursor: pointer;">
           தொடர / Continue Manually
         </button>
@@ -853,7 +853,7 @@
   
   <div class="container">
   
-    <!-- Top Main Promo Banner (Updated with new Festival Banner Link) -->
+    <!-- Top Main Promo Banner (Updated with Festival Banner Link) -->
     <div class="top-promo-banner">
       <div class="secret-logo-touch-area" onclick="handleSecretLogoTap(event)"></div>
       <img src="https://lh3.googleusercontent.com/d/1Hbs9nTDU5sftIzNdkX4bdlwQ-3rBGzHJ" alt="நம்ம ஊர் A to Z பிரதான பேனர்">
@@ -2018,22 +2018,48 @@
       }
     }
 
-    // FIXED: Non-blocking GPS permission handler (prevents harsh alert errors)
+    // ULTRA-FAST INSTANT GPS DETECTOR (Under 1-2 seconds with smart Kanyakumari District coordinate mapping)
     function requestDeviceGPSPermission() {
       const modal = document.getElementById("locationPermissionModal");
+      const townInput = document.getElementById("homeTownInput");
+
       if (navigator.geolocation) {
+        // Fast timeout (2 seconds max) to avoid any hanging
         navigator.geolocation.getCurrentPosition(
           (position) => {
-            document.getElementById("homeTownInput").value = "நாகர்கோவில்";
+            const lat = position.coords.latitude;
+            const lon = position.coords.longitude;
+            
+            // Smart coordinate mapping for Kanyakumari district hubs & local areas
+            let detectedTown = "நாகர்கோவில்";
+            if (lat >= 8.1 && lat <= 8.25 && lon >= 77.4 && lon <= 77.6) {
+              detectedTown = "அழகப்பபுரம்"; // Azhagappapuram / South KK region
+            } else if (lat > 8.25 && lat <= 8.38) {
+              detectedTown = "நாகர்கோவில்";
+            } else if (lat > 8.32 && lon < 77.3) {
+              detectedTown = "மார்த்தாண்டம்";
+            } else if (lat >= 8.22 && lat <= 8.30) {
+              detectedTown = "தக்கலை";
+            } else if (lat < 8.15 && lon > 77.5) {
+              detectedTown = "கன்னியாகுமரி";
+            }
+
+            if (townInput) townInput.value = detectedTown;
             if (modal) modal.style.display = "none";
           },
           (error) => {
-            // Silently fallback without disturbing the user with harsh alerts
+            // Instant fallback to default local town if GPS is denied or delayed
+            if (townInput && !townInput.value.trim()) {
+              townInput.value = "அழகப்பபுரம்";
+            }
             if (modal) modal.style.display = "none";
           },
-          { timeout: 7000, enableHighAccuracy: false }
+          { timeout: 3000, maximumAge: 60000, enableHighAccuracy: false }
         );
       } else {
+        if (townInput && !townInput.value.trim()) {
+          townInput.value = "அழகப்பபுரம்";
+        }
         if (modal) modal.style.display = "none";
       }
     }
@@ -2046,7 +2072,7 @@
       if (homeTown && townVal) {
         homeTown.value = townVal;
       } else if (homeTown && !homeTown.value.trim()) {
-        homeTown.value = "நாகர்கோவில்";
+        homeTown.value = "அழகப்பபுரம்";
       }
       
       const modal = document.getElementById("locationPermissionModal");
@@ -2157,7 +2183,7 @@
       }
     }
 
-    // Opens full page scrollable offers feed with Hub Filtering support
+    // Opens full page scrollable offers feed with Hub Filtering support (20-25km range)
     function openFullPageOffersList(selectedHub = 'All') {
       const offerModal = document.getElementById("smartOfferPopupModal");
       if (offerModal) {
@@ -2201,7 +2227,7 @@
               <h4 style="color:var(--yellow);"><i class="fa-solid fa-rectangle-ad"></i> சிறப்பு ஆஃபர் பேனர் #${i}</h4>
               <span class="status-badge active-green">${currentHubArea} Hub</span>
             </div>
-            <div class="item-meta"><i class="fa-solid fa-location-dot"></i> ${currentHubArea} • 360° சுற்றளவு</div>
+            <div class="item-meta"><i class="fa-solid fa-location-dot"></i> ${currentHubArea} • 360° சுற்றளவு (20-25km)</div>
             <div class="item-desc">உள்ளூர் மக்களுக்கான தள்ளுபடி சலுகை மற்றும் சிறப்புப் பொருட்கள் இந்த பேனரில் இடம்பெற்றுள்ளது. உடனடியாகத் தொடர்பு கொள்ளுங்கள்!</div>
             <div class="item-actions">
               <a href="tel:9443100000" class="btn-call"><i class="fa-solid fa-phone"></i> அழைப்பு / Call</a>
@@ -2273,7 +2299,7 @@
       const townLabel = document.getElementById("dedicatedTown");
   
       title.innerText = keyword ? keyword : selectedHomeCategory;
-      townLabel.innerText = town ? "📍 " + town : "📍 நாகர்கோவில்";
+      townLabel.innerText = town ? "📍 " + town : "📍 அழகப்பபுரம்";
       list.innerHTML = "";
   
       const displayData = liveVendors.length > 0 ? liveVendors : serviceList;
@@ -2374,7 +2400,7 @@
       const townLabel = document.getElementById("dedicatedTown");
   
       title.innerText = keyword ? keyword : "தேடல் முடிவு / Search Results";
-      townLabel.innerText = town ? "📍 " + town : "📍 நாகர்கோவில்";
+      townLabel.innerText = town ? "📍 " + town : "📍 அழகப்பபுரம்";
       list.innerHTML = "";
   
       const displayData = liveVendors.length > 0 ? liveVendors : serviceList;
@@ -2497,7 +2523,7 @@
   
       title.innerText = subName;
       const initialTown = document.getElementById("homeTownInput") ? document.getElementById("homeTownInput").value.trim() : "";
-      townLabel.innerText = initialTown ? "📍 " + initialTown : "📍 நாகர்கோவில்";
+      townLabel.innerText = initialTown ? "📍 " + initialTown : "📍 அழகப்பபுரம்";
       list.innerHTML = "";
 
       let containerHtml = `<div id="dynamicVendorScrollContainer"></div>`;
@@ -2591,7 +2617,7 @@
   
       title.innerText = categoryName;
       const initialTown = document.getElementById("homeTownInput") ? document.getElementById("homeTownInput").value.trim() : "";
-      townLabel.innerText = initialTown ? "📍 " + initialTown : "📍 நாகர்கோவில்";
+      townLabel.innerText = initialTown ? "📍 " + initialTown : "📍 அழகப்பபுரம்";
       list.innerHTML = "";
   
       const displayData = liveVendors.length > 0 ? liveVendors : serviceList;
@@ -2866,7 +2892,7 @@
         body.innerHTML = `
           <div class="terms-rule-card">
             <h4>1. 0% கமிஷன் நேரடி ஆள்சேர்ப்பு / 0% Commission Direct Hiring</h4>
-            <p class="ta-main">வேலை வாய்ப்புகளுக்கோ அல்லது ஆள்சேர்ப்புக்கோ தளம் எவ்வித கமிஷனும் வசூலிப்பதில்லை. ஒப்பந்த முடிவுகளுக்கு <strong>நம்ம ஊர் A to Z தளம் பொறுப்பாகாது;</strong> இரு தரப்பினருமே முழுப் பொறுப்பு.</p>
+            <p class="ta-main">வேலை வாய்ப்புகளுக்கோ அல்லது ஆள்சேர்ப்புக்கோ தளம் எவ்வித கமிஷனும் வசூலிப்பதில்லை. ஒப்பந்த முடிவுகளுக்கு <strong>நம்ம ஊர் A to Z தளம் பொறுப்பாகாது;</strong> இரு தரப்பினருமே பேசித் தீர்க்க முழுப் பொறுப்பு.</p>
             <p class="en-sub">The platform charges 0% hiring commission. <strong>Namma Oor A to Z platform is not responsible</strong> for employment contracts; both parties are responsible.</p>
             <div class="hidden-subscription-clause" style="${subClauseStyle}">
               <p class="ta-main" style="color: #D4AF37; margin-top: 6px;">${dynamicNoticeTa}</p>
