@@ -56,7 +56,7 @@
       overflow: hidden;
       box-shadow: 0 4px 15px rgba(0,0,0,0.3);
       border: 1px solid var(--gold-border);
-      background: #000;
+      background: #0B2D5B;
       position: relative;
       cursor: default;
     }
@@ -843,10 +843,10 @@
   
   <div class="container">
   
-    <!-- Top Main Promo Banner (Updated with Direct Google Drive Link) -->
-    <div class="top-promo-banner">
+    <!-- Top Main Promo Banner (Updated with Clean Background Image) -->
+    <div class="top-promo-banner" style="background: transparent !important; border: none !important; box-shadow: none !important;">
       <div class="secret-logo-touch-area" onclick="handleSecretLogoTap(event)"></div>
-      <img src="https://lh3.googleusercontent.com/d/1rcv0chqJe3LEKN5D4FbC_1J4bb5rO4AC" alt="நம்ம ஊர் A to Z பிரதான பேனர்">
+      <img src="data:image/png;base64,..." alt="நம்ம ஊர் A to Z பிரதான பேனர்" style="width: 100%; height: auto; border-radius: 14px;">
     </div>
   
     <!-- Home Filter Tabs -->
@@ -3015,12 +3015,12 @@
       const masterSection = document.getElementById("masterOnlySection");
 
       if (role === "Master") {
-        title.innerText = "மாஸ்டர் அட்மின் பேனல்";
+        title.innerText = "மாஸ்டர் அட்மின் பேனர்";
         badge.innerText = "Master Control";
         badge.style.color = "var(--green)";
         masterSection.style.display = "block";
       } else {
-        title.innerText = "உதவி நிர்வாக பேனல்";
+        title.innerText = "உதவி நிர்வாக பேனர்";
         badge.innerText = "Assistant Staff";
         badge.style.color = "var(--yellow)";
         masterSection.style.display = "none";
@@ -3035,7 +3035,7 @@
       const btn = document.getElementById("btnToggleSubLive");
       if (!btn) return;
       if (isTermsSwitchOn) {
-        btn.innerText = "ஆன் / ON (Active)";
+        btn.innerText = "ஆன் / ON (Active)",
         btn.style.background = "var(--green)";
         btn.style.color = "#fff";
       } else {
@@ -3072,7 +3072,7 @@
             <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 6px;">📍 ${v.area} • 📞 ${v.phone}</p>
             <div style="display: flex; gap: 6px;">
               <button onclick="changeVendorStatusLocally('${v.id || v.name}', 'active')" style="flex:1; padding: 5px; background: var(--green); color: #fff; font-size: 11px; border: none; border-radius: 6px; font-weight: 700; cursor: pointer;">Approve</button>
-              <button onclick="changeVendorStatusLocally('${v.id || v.name}', 'blocked')" style="flex:1; padding: 5px; background: var(--red); color: #fff; font-size: 11px; border: none; border-radius: 6px; font-weight: 700; cursor: pointer;">Block</button>
+              <button onclick="changeVendorStatusLocally('${v.id || v.name}', 'blocked')" style="flex:1; padding: 5px; background: var(--red); color: #fff; font-size: 11px; border: none; border-radius: 6px; font-weight: 700; cursor: pointer;">Block]></button>
             </div>
           </div>
         `;
