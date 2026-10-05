@@ -197,7 +197,7 @@
       white-space: nowrap;
     }
   
-    /* 3x3 Category Grid with Royal Theme & Gold Border */
+    /* 3x3 Category Grid with Premium Royal Gold Theme */
     .category-grid-container {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -233,21 +233,11 @@
       align-items: center;
       justify-content: center;
       font-size: 20px;
-      color: #FFFFFF;
+      color: var(--yellow); /* Premium Gold Icons */
       box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-      border: 1px solid rgba(255, 215, 0, 0.4);
+      border: 1.5px solid var(--yellow);
+      background: rgba(255, 215, 0, 0.1);
     }
-    
-    /* Royal Theme Exact Gradients & Colors */
-    .icon-auto { background: linear-gradient(135deg, #FF8C42, #F97316); }
-    .icon-home { background: linear-gradient(135deg, #9333EA, #8B5CF6); }
-    .icon-taxi { background: linear-gradient(135deg, #0D9488, #14B8A6); }
-    .icon-pros3 { background: linear-gradient(135deg, #DB2777, #EC4899); }
-    .icon-shop { background: linear-gradient(135deg, #16A34A, #22C55E); }
-    .icon-jobs { background: linear-gradient(135deg, #4F46E5, #6366F1); }
-    .icon-pros1 { background: linear-gradient(135deg, #0284C7, #0EA5E9); }
-    .icon-load { background: linear-gradient(135deg, #0F766E, #14B8A6); }
-    .icon-pros2 { background: linear-gradient(135deg, #EA580C, #F97316); }
   
     .cat-btn .main-text {
       font-size: 12px;
@@ -258,7 +248,7 @@
     .cat-btn .sub-text {
       font-size: 10px;
       font-weight: 600;
-      color: #E6FFFA;
+      color: #FFD700; /* Gold Subtext for Premium Look */
       line-height: 1.1;
       opacity: 0.9;
     }
@@ -853,7 +843,7 @@
   
   <div class="container">
   
-    <!-- Top Main Promo Banner (Updated with new Festival Banner Link) -->
+    <!-- Top Main Promo Banner (Updated with Festival Banner Link) -->
     <div class="top-promo-banner">
       <div class="secret-logo-touch-area" onclick="handleSecretLogoTap(event)"></div>
       <img src="https://lh3.googleusercontent.com/d/1fkKtPqMGdZWPFBRdUezBGTjsT7THt87a" alt="நம்ம ஊர் A to Z பிரதான பேனர்">
@@ -898,10 +888,10 @@
       </div>
     </div>
   
-    <!-- 3x3 Category Grid (Strictly 9 Master Icons) -->
+    <!-- 3x3 Category Grid with Premium Royal Gold Theme -->
     <div class="category-grid-container">
       <div class="cat-btn" onclick="checkAndPromptLocationOnce(); openSubCategoryView('போக்குவரத்து / Transport')">
-        <div class="circle-icon icon-auto">
+        <div class="circle-icon">
           <i class="fa-solid fa-taxi"></i>
         </div>
         <span class="main-text">போக்குவரத்து</span>
@@ -909,7 +899,7 @@
       </div>
   
       <div class="cat-btn" onclick="checkAndPromptLocationOnce(); openSubCategoryView('வீடு & சொத்து / Real Estate')">
-        <div class="circle-icon icon-home">
+        <div class="circle-icon">
           <i class="fa-solid fa-house"></i>
         </div>
         <span class="main-text">வீடு & சொத்து</span>
@@ -917,7 +907,7 @@
       </div>
   
       <div class="cat-btn" onclick="checkAndPromptLocationOnce(); openSubCategoryView('கல்வி & பயிற்சி / Education')">
-        <div class="circle-icon icon-taxi">
+        <div class="circle-icon">
           <i class="fa-solid fa-graduation-cap"></i>
         </div>
         <span class="main-text">கல்வி & பயிற்சி</span>
@@ -925,7 +915,7 @@
       </div>
   
       <div class="cat-btn" onclick="checkAndPromptLocationOnce(); openSubCategoryView('மருத்துவம் / Health Care')">
-        <div class="circle-icon icon-pros3">
+        <div class="circle-icon">
           <i class="fa-solid fa-heart-pulse"></i>
         </div>
         <span class="main-text">மருத்துவம்</span>
@@ -933,7 +923,7 @@
       </div>
   
       <div class="cat-btn" onclick="checkAndPromptLocationOnce(); openSubCategoryView('வணிகம் & விற்பனை / Business')">
-        <div class="circle-icon icon-shop">
+        <div class="circle-icon">
           <i class="fa-solid fa-store"></i>
         </div>
         <span class="main-text">வணிகம் & விற்பனை</span>
@@ -941,7 +931,7 @@
       </div>
   
       <div class="cat-btn" onclick="checkAndPromptLocationOnce(); openSubCategoryView('பணியாளர் சேவைகள் / Job')">
-        <div class="circle-icon icon-jobs">
+        <div class="circle-icon">
           <i class="fa-solid fa-briefcase"></i>
         </div>
         <span class="main-text">பணியாளர் சேவைகள்</span>
@@ -949,7 +939,7 @@
       </div>
   
       <div class="cat-btn" onclick="checkAndPromptLocationOnce(); openSubCategoryView('மின் & நீர் சேவைகள் / Utility')">
-        <div class="circle-icon icon-pros1">
+        <div class="circle-icon">
           <i class="fa-solid fa-bolt"></i>
         </div>
         <span class="main-text">மின் & நீர் சேவைகள்</span>
@@ -957,7 +947,7 @@
       </div>
   
       <div class="cat-btn" onclick="checkAndPromptLocationOnce(); openSubCategoryView('சேவைகள் & பொழுதுபோக்கு / Events')">
-        <div class="circle-icon icon-load">
+        <div class="circle-icon">
           <i class="fa-solid fa-calendar-days"></i>
         </div>
         <span class="main-text">சேவைகள் & பொழுதுபோக்கு</span>
@@ -965,7 +955,7 @@
       </div>
   
       <div class="cat-btn" onclick="checkAndPromptLocationOnce(); openSubCategoryView('மற்ற சேவைகள் / Other Services')">
-        <div class="circle-icon icon-pros2">
+        <div class="circle-icon">
           <i class="fa-solid fa-shapes"></i>
         </div>
         <span class="main-text">மற்ற சேவைகள்</span>
@@ -1629,7 +1619,7 @@
         </button>
       </div>
     </div>
-    <div class="fullpage-content" id="termsContentBody"></div>
+    .fullpage-content" id="termsContentBody"></div>
   </div>
   
   <!-- DEDICATED FULL SCREEN PAGE: விளம்பர முன்பதிவு -->
@@ -2018,7 +2008,6 @@
       }
     }
 
-    // FIXED: Non-blocking GPS detector without forced default overriding
     function requestDeviceGPSPermission() {
       const modal = document.getElementById("locationPermissionModal");
       const townInput = document.getElementById("homeTownInput");
@@ -2029,7 +2018,6 @@
             const lat = position.coords.latitude;
             const lon = position.coords.longitude;
             
-            // Smart coordinate mapping for Kanyakumari district hubs & local areas
             let detectedTown = "நாகர்கோவில்";
             if (lat >= 8.1 && lat <= 8.25 && lon >= 77.4 && lon <= 77.6) {
               detectedTown = "அழகப்பபுரம்";
@@ -2175,7 +2163,6 @@
       }
     }
 
-    // Opens full page scrollable offers feed with Hub Filtering support (20-25km range)
     function openFullPageOffersList(selectedHub = 'All') {
       const offerModal = document.getElementById("smartOfferPopupModal");
       if (offerModal) {
@@ -2296,7 +2283,7 @@
   
       const displayData = liveVendors.length > 0 ? liveVendors : serviceList;
       const filtered = displayData.filter(item => {
-        const matchesTown = !town || item.area.toLowerCase().includes(town.toLowerCase()) || town.toLowerCase().includes(item.area.toLowerCase());
+        const matchesTown = !town || item.area.toLowerCase().trim() === town.toLowerCase().trim();
         const matchesKeyword = !keyword || 
           item.name.toLowerCase().includes(keyword.toLowerCase()) ||
           item.category.toLowerCase().includes(keyword.toLowerCase()) ||
@@ -2397,7 +2384,7 @@
   
       const displayData = liveVendors.length > 0 ? liveVendors : serviceList;
       const filtered = displayData.filter(item => {
-        const matchesTown = !town || item.area.toLowerCase().includes(town.toLowerCase()) || town.toLowerCase().includes(item.area.toLowerCase());
+        const matchesTown = !town || item.area.toLowerCase().trim() === town.toLowerCase().trim();
         const matchesKeyword = !keyword || 
           item.name.toLowerCase().includes(keyword.toLowerCase()) ||
           item.category.toLowerCase().includes(keyword.toLowerCase()) ||
@@ -2541,7 +2528,7 @@
         const itemDesc = (item.desc || "").toLowerCase();
         const itemArea = (item.area || "").toLowerCase();
 
-        const matchesTown = !town || itemArea.includes(town.toLowerCase()) || town.toLowerCase().includes(itemArea);
+        const matchesTown = !town || itemArea.toLowerCase().trim() === town.toLowerCase().trim();
         
         const matchesKeyword = !kw || 
           itemName.includes(kw) ||
@@ -2968,7 +2955,7 @@
       else if (catName === 'வேலைவாய்ப்பு') vPhone = document.getElementById("jPhone").value.trim();
 
       if (vPhone) {
-        localStorage.setItem("registered_vendor_phone", vPhone);
+        localStorage.getItem("registered_vendor_phone", vPhone);
       }
 
       alert(`உங்கள் ${catName} பிரிவு விபரங்கள் பெறப்பட்டது! அட்மின் சரிபார்ப்புக்குப் பின் சேர்க்கப்படும்.`);
@@ -3092,10 +3079,10 @@
       container.innerHTML = "";
       TheListToRender.forEach(v => {
         container.innerHTML += `
-          <div style="background: #0A2D5B; border: 1.5px solid var(--gold-border); border-radius: 10px; padding: 10px; margin-bottom: 8px;">
+          <div style="background: #0A2B5B; border: 1.5px solid var(--gold-border); border-radius: 10px; padding: 10px; margin-bottom: 8px;">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
               <h5 style="font-size: 13px; color: #FFFFFF;">${v.name}</h5>
-              <span class="status-badge ${v.status === 'active' ? 'active-green' : 'pending-yellow'}">${v.status}</span>
+              <span class="status-badge ${v.status === 'active' ? 'active-green' : 'pending-yellow'}>${v.status}</span>
             </div>
             <p style="font-size: 11px; color: var(--yellow); margin-bottom: 6px;">📍 ${v.area} • 📞 ${v.phone}</p>
             <div style="display: flex; gap: 6px;">
