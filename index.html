@@ -853,10 +853,10 @@
   
   <div class="container">
   
-    <!-- Top Main Promo Banner (Updated with new Festival Banner Link) -->
+    <!-- Top Main Promo Banner (Updated with Festival Banner Link) -->
     <div class="top-promo-banner">
       <div class="secret-logo-touch-area" onclick="handleSecretLogoTap(event)"></div>
-      <img src="https://lh3.googleusercontent.com/d/1sr06Hdd7zdni5rMmmvE1qrZ23f0tEfhw" alt="நம்ம ஊர் A to Z பிரதான பேனர்">
+      <img src="https://lh3.googleusercontent.com/d/1Hbs9nTDU5sftIzNdkX4bdlwQ-3rBGzHJ" alt="நம்ம ஊர் A to Z பிரதான பேனர்">
     </div>
   
     <!-- Home Filter Tabs -->
@@ -898,7 +898,7 @@
       </div>
     </div>
   
-    <!-- 3x3 Category Grid (Royal Theme with Gold Borders & Gradients) -->
+    <!-- 3x3 Category Grid (Strictly 9 Master Icons) -->
     <div class="category-grid-container">
       <div class="cat-btn" onclick="checkAndPromptLocationOnce(); openSubCategoryView('போக்குவரத்து / Transport')">
         <div class="circle-icon icon-auto">
@@ -1918,7 +1918,7 @@
         { name: "அலுவலகப் பணிகள் (Office & Data Entry Jobs)", keyword: "அலுவலகம்" }
       ],
       "மின் & நீர் சேவைகள் / Utility": [
-        { name: "எலக்ட்ரிஷியன் & வயரிங் (Electrician & Wiring)", keyword: "எலக்ட்ரிஷியன்" },
+        { name: "எலக்ட்ரீஷியன் & வயரிங் (Electrician & Wiring)", keyword: "எலக்ட்ரீஷியன்" },
         { name: "பிளம்பிங் & குழாய் வேலைகள் (Plumbing & Water)", keyword: "பிளம்பிங்" },
         { name: "போர்வெல் & மோட்டார் பழுதுபார்ப்பு (Borewell & Motor)", keyword: "போர்வெல்" },
         { name: "ஏசி & குளிர்சாதனப் பழுதுபார்ப்பு (AC Repair)", keyword: "ஏசி" }
@@ -2278,7 +2278,7 @@
   
       const displayData = liveVendors.length > 0 ? liveVendors : serviceList;
       const filtered = displayData.filter(item => {
-        const matchesTown = !town || item.area.toLowerCase().includes(town.toLowerCase()) || town.toLowerCase().includes(item.area.toLowerCase());
+        const matchesTown = !town || item.area.toLowerCase().trim() === town.toLowerCase().trim();
         const matchesKeyword = !keyword || 
           item.name.toLowerCase().includes(keyword.toLowerCase()) ||
           item.category.toLowerCase().includes(keyword.toLowerCase()) ||
@@ -2379,7 +2379,7 @@
   
       const displayData = liveVendors.length > 0 ? liveVendors : serviceList;
       const filtered = displayData.filter(item => {
-        const matchesTown = !town || item.area.toLowerCase().includes(town.toLowerCase()) || town.toLowerCase().includes(item.area.toLowerCase());
+        const matchesTown = !town || item.area.toLowerCase().trim() === town.toLowerCase().trim();
         const matchesKeyword = !keyword || 
           item.name.toLowerCase().includes(keyword.toLowerCase()) ||
           item.category.toLowerCase().includes(keyword.toLowerCase()) ||
@@ -2391,7 +2391,7 @@
         list.innerHTML = `
           <div style="background:var(--card-container-bg); border:1.5px solid var(--gold-border); padding:24px; border-radius:12px; text-align:center; color:#E6FFFA; margin-top:20px;">
             <i class="fa-solid fa-triangle-exclamation" style="font-size:32px; color:var(--yellow); margin-bottom:10px;"></i>
-            <p>இந்தப் பகுதியில் சேவைகள் தற்போது கிடைக்கவில்லை.</p>
+            <p>இந்தத் தேடலுக்கான சேவை தற்போது கிடைக்கவில்லை.</p>
           </div>
         `;
       } else {
@@ -2523,7 +2523,7 @@
         const itemDesc = (item.desc || "").toLowerCase();
         const itemArea = (item.area || "").toLowerCase();
 
-        const matchesTown = !town || itemArea.includes(town.toLowerCase()) || town.toLowerCase().includes(itemArea);
+        const matchesTown = !town || itemArea.trim() === town.toLowerCase().trim();
         
         const matchesKeyword = !kw || 
           itemName.includes(kw) ||
@@ -2598,7 +2598,7 @@
       const filtered = displayData.filter(item => {
         const cat = (item.category || "").toLowerCase();
         const target = categoryName.toLowerCase().split('/')[0].trim();
-        const matchesTown = !initialTown || item.area.toLowerCase().includes(initialTown.toLowerCase()) || initialTown.toLowerCase().includes(item.area.toLowerCase());
+        const matchesTown = !initialTown || item.area.toLowerCase().trim() === initialTown.toLowerCase().trim();
         
         const matchesCategory = 
           target.includes("அனைத்து") || target.includes("all") ||
@@ -3081,8 +3081,8 @@
             </div>
             <p style="font-size: 11px; color: var(--yellow); margin-bottom: 6px;">📍 ${v.area} • 📞 ${v.phone}</p>
             <div style="display: flex; gap: 6px;">
-              <button onclick="changeVendorStatusLocally('${v.id || v.name}', 'active')" style="flex:1; padding: 5px; background: #22C55E; color: #fff; font-size: 11px; border: none; border-radius: 6px; font-weight: 700; cursor: pointer;">Approve</button>
-              <button onclick="changeVendorStatusLocally('${v.id || v.name}', 'blocked')" style="flex:1; padding: 5px; background: #EF4444; color: #fff; font-size: 11px; border: none; border-radius: 6px; font-weight: 700; cursor: pointer;">Block</button>
+              <button onclick="changeVendorStatusLocally('${v.id || v.name}', 'active')" style="flex:1; padding: 5px; background: #22C55E; color: #fff; font-size: 11px; border: none; border-radius: 6px; font-weight: 700; pointer;">Approve</button>
+              <button onclick="changeVendorStatusLocally('${v.id || v.name}', 'blocked')" style="flex:1; padding: 5px; background: #EF4444; color: #fff; font-size: 11px; border: none; border-radius: 6px; font-weight: 700; pointer;">Block</button>
             </div>
           </div>
         `;
