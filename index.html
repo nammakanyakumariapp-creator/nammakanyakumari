@@ -1032,7 +1032,7 @@
       </div>
 
       <div class="terms-rule-card">
-        <h4 style="font-size: 14px; color: var(--yellow); margin-bottom: 6px;"><i class="fa-solid fa-list-check"></i> 2. இத்தளത്തിന്റെ முக்கியப் பிரிவுகளும் சேவைகளும் (Core Categories & Services)</h4>
+        <h4 style="font-size: 14px; color: var(--yellow); margin-bottom: 6px;"><i class="fa-solid fa-list-check"></i> 2. இத்தளத்தின் முக்கியப் பிரிவுகளும் சேவைகளும் (Core Categories & Services)</h4>
         <p class="ta-main" style="font-size: 12px; line-height: 1.5;">
           <strong>1. போக்குவரத்து & வாகனச் சேவைகள்:</strong> ஆட்டோ, டாக்ஸி, லோடு வாகனம், டிராக்டர் & ஜேசிபி சேவைகள், செல்பில் ரெண்டல் பைக்குகள் மற்றும் கார்கள், பழைய வாகன விற்பனை மற்றும் கார் பார்க்கிங் வசதிகள்.<br><br>
           <strong>2. வீடு & சொத்து:</strong> வீடு வாடகைக்கு விடுவது, காலி மனைகள், நிலங்கள் மற்றும் குடியிருப்புப் பகுதி வாடகை/விற்பனை விபரங்கள்.<br><br>
@@ -1726,14 +1726,14 @@
 
     <!-- City Hub Selector Bar -->
     <div style="background: #0A2D5B; padding: 10px; border-bottom: 1.5px solid var(--gold-border); display: flex; gap: 6px; overflow-x: auto; flex-shrink: 0;" id="cityHubSelectorBar">
-      <button onclick="filterOffersByHub('All')" class="hub-filter-btn active-hub" style="background:#102B58; color:var(--yellow); border:1.5px solid var(--yellow); padding:6px 12px; border-radius:6px; font-size:11px; font-weight:700; white-space:nowrap; cursor:pointer;">🌐 அனைத்துப் பகுதிகளும் (All)</button>
-      <button onclick="filterOffersByHub('நாகர்கோவில்')" class="hub-filter-btn" style="background:#102B58; color:#FFFFFF; border:1px solid var(--gold-border); padding:6px 12px; border-radius:6px; font-size:11px; font-weight:600; white-space:nowrap; cursor:pointer;">📍 நாகர்கோவில்</button>
-      <button onclick="filterOffersByHub('மார்த்தாண்டம்')" class="hub-filter-btn" style="background:#102B58; color:#FFFFFF; border:1px solid var(--gold-border); padding:6px 12px; border-radius:6px; font-size:11px; font-weight:600; white-space:nowrap; cursor:pointer;">📍 மார்த்தாண்டம் & குழித்துறை</button>
-      <button onclick="filterOffersByHub('தக்கலை')" class="hub-filter-btn" style="background:#102B58; color:#FFFFFF; border:1px solid var(--gold-border); padding:6px 12px; border-radius:6px; font-size:11px; font-weight:600; white-space:nowrap; cursor:pointer;">📍 தக்கலை</button>
-      <button onclick="filterOffersByHub('அஞ்சுகிராமம்')" class="hub-filter-btn" style="background:#102B58; color:#FFFFFF; border:1px solid var(--gold-border); padding:6px 12px; border-radius:6px; font-size:11px; font-weight:600; white-space:nowrap; cursor:pointer;">📍 அஞ்சுகிராமம் & கன்னியாகுமரி</button>
-      <button onclick="filterOffersByHub('திருநெல்வேலி')" class="hub-filter-btn" style="background:#102B58; color:#FFFFFF; border:1px solid var(--gold-border); padding:6px 12px; border-radius:6px; font-size:11px; font-weight:600; white-space:nowrap; cursor:pointer;">📍 நெல்லை டவுன் & பாளையங்கோட்டை</button>
-      <button onclick="filterOffersByHub('வள்ளியூர்')" class="hub-filter-btn" style="background:#102B58; color:#FFFFFF; border:1px solid var(--gold-border); padding:6px 12px; border-radius:6px; font-size:11px; font-weight:600; white-space:nowrap; cursor:pointer;">📍 வள்ளியூர் & களக்காடு</button>
-      <button onclick="filterOffersByHub('தூத்துக்குடி')" class="hub-filter-btn" style="background:#102B58; color:#FFFFFF; border:1px solid var(--gold-border); padding:6px 12px; border-radius:6px; font-size:11px; font-weight:600; white-space:nowrap; cursor:pointer;">📍 தூத்துக்குடி & கோவில்பட்டி</button>
+      <button onclick="filterOffersByHub('All', event)" class="hub-filter-btn active-hub" style="background:#102B58; color:var(--yellow); border:1.5px solid var(--yellow); padding:6px 12px; border-radius:6px; font-size:11px; font-weight:700; white-space:nowrap; cursor:pointer;">🌐 அனைத்துப் பகுதிகளும் (All)</button>
+      <button onclick="filterOffersByHub('நாகர்கோவில்', event)" class="hub-filter-btn" style="background:#102B58; color:#FFFFFF; border:1px solid var(--gold-border); padding:6px 12px; border-radius:6px; font-size:11px; font-weight:600; white-space:nowrap; cursor:pointer;">📍 நாகர்கோவில்</button>
+      <button onclick="filterOffersByHub('மார்த்தாண்டம்', event)" class="hub-filter-btn" style="background:#102B58; color:#FFFFFF; border:1px solid var(--gold-border); padding:6px 12px; border-radius:6px; font-size:11px; font-weight:600; white-space:nowrap; cursor:pointer;">📍 மார்த்தாண்டம் & குழித்துறை</button>
+      <button onclick="filterOffersByHub('தக்கலை', event)" class="hub-filter-btn" style="background:#102B58; color:#FFFFFF; border:1px solid var(--gold-border); padding:6px 12px; border-radius:6px; font-size:11px; font-weight:600; white-space:nowrap; cursor:pointer;">📍 தக்கலை</button>
+      <button onclick="filterOffersByHub('அஞ்சுகிராமம்', event)" class="hub-filter-btn" style="background:#102B58; color:#FFFFFF; border:1px solid var(--gold-border); padding:6px 12px; border-radius:6px; font-size:11px; font-weight:600; white-space:nowrap; cursor:pointer;">📍 அஞ்சுகிராமம் & கன்னியாகுமரி</button>
+      <button onclick="filterOffersByHub('திருநெல்வேலி', event)" class="hub-filter-btn" style="background:#102B58; color:#FFFFFF; border:1px solid var(--gold-border); padding:6px 12px; border-radius:6px; font-size:11px; font-weight:600; white-space:nowrap; cursor:pointer;">📍 நெல்லை டவுன் & பாளையங்கோட்டை</button>
+      <button onclick="filterOffersByHub('வள்ளியூர்', event)" class="hub-filter-btn" style="background:#102B58; color:#FFFFFF; border:1px solid var(--gold-border); padding:6px 12px; border-radius:6px; font-size:11px; font-weight:600; white-space:nowrap; cursor:pointer;">📍 வள்ளியூர் & களக்காடு</button>
+      <button onclick="filterOffersByHub('தூத்துக்குடி', event)" class="hub-filter-btn" style="background:#102B58; color:#FFFFFF; border:1px solid var(--gold-border); padding:6px 12px; border-radius:6px; font-size:11px; font-weight:600; white-space:nowrap; cursor:pointer;">📍 தூத்துக்குடி & கோவில்பட்டி</button>
     </div>
 
     <div class="fullpage-content" id="fullScrollOffersContainer">
@@ -2166,16 +2166,18 @@
       history.pushState({page: "fullOffers"}, "", "");
     }
 
-    function filterOffersByHub(hubName) {
+    function filterOffersByHub(hubName, eventObj) {
       const buttons = document.querySelectorAll("#cityHubSelectorBar button");
       buttons.forEach(btn => {
         btn.style.background = "#102B58";
         btn.style.color = "#FFFFFF";
         btn.style.fontWeight = "600";
       });
-      event.target.style.background = "#102B58";
-      event.target.style.color = "var(--yellow)";
-      event.target.style.border = "1.5px solid var(--yellow)";
+      if (eventObj && eventObj.target) {
+        eventObj.target.style.background = "#102B58";
+        eventObj.target.style.color = "var(--yellow)";
+        eventObj.target.style.border = "1.5px solid var(--yellow)";
+      }
 
       renderOffersFeed(hubName);
     }
