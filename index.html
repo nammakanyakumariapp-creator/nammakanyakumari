@@ -47,7 +47,7 @@
       margin: 0 auto;
     }
   
-    /* PERFECT CONTINUOUS CINEMATIC HERO BANNER */
+    /* REALISTIC SKY BLUE & AIRPLANE HERO BANNER */
     .next-gen-hero-banner {
       width: 100%;
       margin: 0 auto 10px auto;
@@ -55,63 +55,59 @@
       overflow: hidden;
       box-shadow: 0 4px 18px rgba(0,0,0,0.5);
       border: 1.5px solid var(--gold-border);
-      background: linear-gradient(135deg, #071E3D, #0A2D5B, #163B75);
-      background-size: 200% 200%;
-      animation: bannerMotionBg 10s ease infinite;
+      background: linear-gradient(135deg, #185a9d, #43cea2); /* லைட் நீல வானம் மற்றும் மேகக் கூட்ட நிறம் */
       padding: 14px 12px;
       position: relative;
       text-align: center;
     }
-
-    @keyframes bannerMotionBg {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
     
-    /* Realistic Continuous Flying Airplane Area */
-    .flight-sky-lane {
+    /* Realistic Flying Airplane Graphic Lane */
+    .sky-cloud-lane {
       width: 100%;
-      height: 28px;
+      height: 34px;
       position: relative;
       overflow: hidden;
       margin-bottom: 2px;
     }
 
-    .flying-jet {
+    .real-flying-plane {
       position: absolute;
       top: 2px;
-      left: -60px;
+      left: -90px;
       display: flex;
       align-items: center;
-      gap: 6px;
-      animation: realFlyAcross 7s linear infinite;
-      background: rgba(255, 215, 0, 0.15);
-      border: 1px solid rgba(255, 215, 0, 0.4);
-      padding: 2px 10px;
+      gap: 8px;
+      animation: realisticFly 8s linear infinite;
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      padding: 3px 12px;
       border-radius: 20px;
+      backdrop-filter: blur(2px);
     }
 
-    .flying-jet i {
-      color: var(--yellow);
-      font-size: 13px;
+    .real-flying-plane svg {
+      width: 22px;
+      height: 22px;
+      fill: #FFD700;
+      filter: drop-shadow(0 1px 2px rgba(0,0,0,0.3));
     }
 
-    .flying-jet span {
-      font-size: 10.5px;
+    .real-flying-plane span {
+      font-size: 11px;
       color: #FFFFFF;
       font-weight: 700;
       white-space: nowrap;
-      letter-spacing: 0.5px;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.4);
     }
 
-    @keyframes realFlyAcross {
-      0% { transform: translateX(-80px); }
-      100% { transform: translateX(520px); }
+    @keyframes realisticFly {
+      0% { transform: translateX(-100px) translateY(0px); }
+      50% { transform: translateX(220px) translateY(-3px); }
+      100% { transform: translateX(520px) translateY(0px); }
     }
 
     .next-gen-hero-banner h2 {
-      font-size: 14.5px;
+      font-size: 15px;
       color: #FFFFFF;
       font-weight: 700;
       letter-spacing: 0.5px;
@@ -124,13 +120,7 @@
       color: var(--yellow);
       font-weight: 700;
       margin-bottom: 6px;
-      animation: textGlowPulse 2s infinite;
-    }
-
-    @keyframes textGlowPulse {
-      0% { opacity: 0.85; text-shadow: 0 0 2px rgba(255,215,0,0.3); }
-      50% { opacity: 1; text-shadow: 0 0 8px rgba(255,215,0,0.8); }
-      100% { opacity: 0.85; text-shadow: 0 0 2px rgba(255,215,0,0.3); }
+      text-shadow: 0 1px 3px rgba(0,0,0,0.4);
     }
 
     /* Seamless Continuous Ticker Animation Container */
@@ -139,7 +129,7 @@
       overflow: hidden;
       white-space: nowrap;
       box-sizing: border-box;
-      background: rgba(10, 43, 91, 0.8);
+      background: rgba(10, 43, 91, 0.85);
       border-radius: 6px;
       padding: 4px 0;
       margin-top: 2px;
@@ -928,13 +918,14 @@
   
   <div class="container">
   
-    <!-- PERFECT CONTINUOUS CINEMATIC HERO BANNER -->
+    <!-- REALISTIC SKY BLUE & AIRPLANE HERO BANNER -->
     <div class="next-gen-hero-banner">
       <div class="secret-logo-touch-area" onclick="handleSecretLogoTap(event)"></div>
       
-      <div class="flight-sky-lane">
-        <div class="flying-jet">
-          <i class="fa-solid fa-plane-departure"></i>
+      <div class="sky-cloud-lane">
+        <div class="real-flying-plane">
+          <!-- Real SVG Airplane Graphic -->
+          <svg viewBox="0 0 24 24"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>
           <span>நம்ம ஊர் A to Z • நேரடித் தொடர்பு</span>
         </div>
       </div>
@@ -1232,7 +1223,7 @@
           </div>
         </div>
   
-        <button type="button" class="form-submit-btn active-btn" onclick="executeAdvancedSearchFromPage()">
+        <button type="submit" class="form-submit-btn active-btn" onclick="executeAdvancedSearchFromPage()">
           <i class="fa-solid fa-magnifying-glass"></i> தேடுக / Search Results
         </button>
       </div>
@@ -1567,7 +1558,7 @@
           </div>
           <div class="form-group">
             <label>உங்கள் தொழில் / திறன் என்ன? <span class="en-label">/ Skill or Service Type (Self-typed) *</span></label>
-            <input type="text" id="aSkill" required placeholder="எ.கா: எலக்ட்ரிசியன், பிளம்பர், கொத்தனார், தச்சர்...">
+            <input type="text" id="aSkill" required placeholder="எ.கா: எலக்ட்ரீஷியன், பிளம்பர், கொத்தனார், தச்சர்...">
           </div>
           <div class="form-group">
             <label>கிராமம் / ஊர் <span class="en-label">/ Village or Area *</span></label>
