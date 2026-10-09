@@ -47,7 +47,7 @@
       margin: 0 auto;
     }
   
-    /* CINEMATIC FULL MOTION HERO BANNER (Option 1 Updated) */
+    /* PERFECT CONTINUOUS CINEMATIC HERO BANNER */
     .next-gen-hero-banner {
       width: 100%;
       margin: 0 auto 10px auto;
@@ -58,7 +58,7 @@
       background: linear-gradient(135deg, #071E3D, #0A2D5B, #163B75);
       background-size: 200% 200%;
       animation: bannerMotionBg 10s ease infinite;
-      padding: 16px 14px;
+      padding: 14px 12px;
       position: relative;
       text-align: center;
     }
@@ -69,41 +69,61 @@
       100% { background-position: 0% 50%; }
     }
     
-    /* Flying Flight Header Simulation */
-    .flight-motion-box {
+    /* Realistic Continuous Flying Airplane Area */
+    .flight-sky-lane {
+      width: 100%;
+      height: 28px;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 2px;
+    }
+
+    .flying-jet {
+      position: absolute;
+      top: 2px;
+      left: -60px;
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 8px;
-      margin-bottom: 6px;
+      gap: 6px;
+      animation: realFlyAcross 7s linear infinite;
+      background: rgba(255, 215, 0, 0.15);
+      border: 1px solid rgba(255, 215, 0, 0.4);
+      padding: 2px 10px;
+      border-radius: 20px;
     }
 
-    .flight-motion-box i.fa-plane {
+    .flying-jet i {
       color: var(--yellow);
-      font-size: 14px;
-      animation: flyAcross 4s linear infinite;
+      font-size: 13px;
     }
 
-    @keyframes flyAcross {
-      0% { transform: translateX(-15px) translateY(2px) rotate(-5deg); opacity: 0.7; }
-      50% { transform: translateX(15px) translateY(-2px) rotate(2deg); opacity: 1; }
-      100% { transform: translateX(-15px) translateY(2px) rotate(-5deg); opacity: 0.7; }
+    .flying-jet span {
+      font-size: 10.5px;
+      color: #FFFFFF;
+      font-weight: 700;
+      white-space: nowrap;
+      letter-spacing: 0.5px;
+    }
+
+    @keyframes realFlyAcross {
+      0% { transform: translateX(-80px); }
+      100% { transform: translateX(520px); }
     }
 
     .next-gen-hero-banner h2 {
-      font-size: 15px;
+      font-size: 14.5px;
       color: #FFFFFF;
       font-weight: 700;
       letter-spacing: 0.5px;
-      margin-bottom: 4px;
+      margin-bottom: 3px;
       text-shadow: 0 2px 4px rgba(0,0,0,0.3);
     }
 
     .next-gen-hero-banner .tagline-gold {
-      font-size: 12px;
+      font-size: 11.5px;
       color: var(--yellow);
       font-weight: 700;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       animation: textGlowPulse 2s infinite;
     }
 
@@ -113,29 +133,29 @@
       100% { opacity: 0.85; text-shadow: 0 0 2px rgba(255,215,0,0.3); }
     }
 
-    /* Moving Ticker Animation Container */
+    /* Seamless Continuous Ticker Animation Container */
     .ticker-wrapper {
       width: 100%;
       overflow: hidden;
       white-space: nowrap;
       box-sizing: border-box;
-      background: rgba(10, 43, 91, 0.75);
+      background: rgba(10, 43, 91, 0.8);
       border-radius: 6px;
-      padding: 5px 0;
-      margin-top: 4px;
+      padding: 4px 0;
+      margin-top: 2px;
       border: 1px solid rgba(255, 215, 0, 0.3);
     }
 
     .ticker-text {
       display: inline-block;
       padding-left: 100%;
-      animation: tickerScroll 20s linear infinite;
+      animation: smoothTickerScroll 15s linear infinite;
       font-size: 11px;
       color: var(--en-text-bright);
       font-weight: 600;
     }
 
-    @keyframes tickerScroll {
+    @keyframes smoothTickerScroll {
       0% { transform: translate3d(0, 0, 0); }
       100% { transform: translate3d(-100%, 0, 0); }
     }
@@ -908,22 +928,23 @@
   
   <div class="container">
   
-    <!-- CINEMATIC FULL MOTION HERO BANNER (Option 1 Updated) -->
+    <!-- PERFECT CONTINUOUS CINEMATIC HERO BANNER -->
     <div class="next-gen-hero-banner">
       <div class="secret-logo-touch-area" onclick="handleSecretLogoTap(event)"></div>
       
-      <div class="flight-motion-box">
-        <i class="fa-solid fa-plane"></i>
-        <span style="font-size: 11px; color: #22C55E; font-weight: 700;">நம்ம ஊர் A to Z • நேரடித் தொடர்பு</span>
-        <i class="fa-solid fa-plane" style="transform: scaleX(-1);"></i>
+      <div class="flight-sky-lane">
+        <div class="flying-jet">
+          <i class="fa-solid fa-plane-departure"></i>
+          <span>நம்ம ஊர் A to Z • நேரடித் தொடர்பு</span>
+        </div>
       </div>
 
-      <h2>நம்ம ஊர் திறமை... உலகம் அறியட்டும்!</h2>
+      <h2>நம் ஊர் திறமை... உலகம் அறியட்டும்!</h2>
       <div class="tagline-gold">0% கமிஷன் • உள்ளூர் சேவை, நம்ம ஊர் வளர்ச்சி</div>
       
       <div class="ticker-wrapper">
         <div class="ticker-text">
-          ✨ எலக்ட்ரீஷியன், பிளம்பர் மற்றும் ஹோம்மேட் பொருட்களை உடனே தொடர்பு கொள்ளுங்கள்! • 🚀 0% கமிஷன் • உள்ளூர் மக்களையும் சிறு வியாபாரிகளையும் நேரடியாக இணைக்கும் தளம்!
+          ✨ ஆட்டோ, டாக்ஸி, எலக்ட்ரீஷியன், பிளம்பர் மற்றும் ஹோம்மேட் பொருட்களை உடனுக்குடன் தொடர்பு கொள்ளுங்கள்! &nbsp;&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;&nbsp;&nbsp; 🚀 0% கமிஷன் • உள்ளூர் மக்களையும் சிறு வியாபாரிகளையும் நேரடியாக இணைக்கும் தளம்! &nbsp;&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;&nbsp;&nbsp;
         </div>
       </div>
     </div>
