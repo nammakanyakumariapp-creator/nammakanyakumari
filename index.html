@@ -11,7 +11,7 @@
   <style>
     :root {
       --primary-blue: #0A2D5B;
-      --yellow: #FFD700;
+      --yellow: #FFD700;          /* பிரீமியம் ராயல் கோல்டு #FFD700 */
       --green: #22C55E;           
       --orange: #FF8C42;          
       --purple: #8B5CF6;
@@ -19,12 +19,12 @@
       --red: #EF4444;
       --teal: #14B8A6;
       
-      --page-bg: #0A2D5B;
-      --card-container-bg: #102B58;
-      --text-light: #FFFFFF;
+      --page-bg: #0A2D5B;         /* முழு தளத்தின் பிரதான ராயல் கலர் #0A2D5B */
+      --card-container-bg: #102B58; /* கார்டுகள் / பட்டன்கள் பின்னணி #102B58 */
+      --text-light: #FFFFFF;      /* முதன்மை எழுத்து வெள்ளை #FFFFFF */
       --text-muted: #94A3B8;
       --en-text-bright: #E6FFFA;
-      --gold-border: #FFD700;
+      --gold-border: #FFD700;     /* கோல்டன் பார்டர் #FFD700 */
     }
   
     * {
@@ -41,113 +41,51 @@
       padding-bottom: 50px;
     }
   
+    container {
+      padding: 8px 10px;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
     .container {
       padding: 8px 10px;
       max-width: 480px;
       margin: 0 auto;
     }
   
-    /* ENDLESS REALISTIC SKY AIRPLANE HERO BANNER */
-    .next-gen-hero-banner {
-      width: 100%;
-      margin: 0 auto 10px auto;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 18px rgba(0,0,0,0.5);
-      border: 1.5px solid var(--gold-border);
-      background: linear-gradient(135deg, #185a9d, #43cea2);
-      padding: 14px 12px;
-      position: relative;
-      text-align: center;
+    /* REALISTIC FLYING AIRPLANE HERO BANNER */
+    .sky-strip {
+      position:relative; width:100%; height:110px; overflow:hidden;
+      border-radius:12px; border:1.5px solid #FFD700; margin-bottom:8px;
+      background:linear-gradient(180deg,#1e6fd0 0%,#59a8ee 55%,#bfe3ff 100%);
+      box-shadow:0 3px 12px rgba(0,0,0,.4);
     }
-    
-    /* Endless Flight Cinematic Lane */
-    .sky-cloud-lane {
-      width: 100%;
-      height: 38px;
-      position: relative;
-      overflow: hidden;
-      margin-bottom: 2px;
+    .cloud {
+      position:absolute; background:#fff; border-radius:50px; opacity:.9;
+      filter:blur(1px); animation:cloudMove linear infinite;
     }
+    .cloud::before,.cloud::after { content:""; position:absolute; background:#fff; border-radius:50%; }
+    .cloud::before { width:55%; height:160%; top:-70%; left:15%; }
+    .cloud::after  { width:40%; height:130%; top:-45%; left:50%; }
+    .c1 { width:60px; height:16px; top:18px; animation-duration:38s; animation-delay:-12s; }
+    .c2 { width:44px; height:12px; top:70px; animation-duration:52s; animation-delay:-30s; opacity:.7; }
+    .c3 { width:76px; height:18px; top:46px; animation-duration:30s; animation-delay:-5s;  opacity:.8; }
+    @keyframes cloudMove { from{left:-100px} to{left:105%} }
 
-    .endless-airplane-box {
-      position: absolute;
-      top: 4px;
-      left: -160px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      animation: endlessFlightLoop 7s linear infinite;
+    .plane-wrap {
+      position:absolute; top:22px; left:-180px; width:150px;
+      animation:planeFly 11s linear infinite;
     }
-
-    /* True Photorealistic Airliner Graphic */
-    .real-airplane-graphic {
-      width: 40px;
-      height: 40px;
-      fill: #FFFFFF;
-      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.6));
-      transform: rotate(10deg);
+    .plane-bob { animation:planeBob 2.6s ease-in-out infinite; }
+    .plane-wrap svg { width:150px; height:auto; display:block; filter:drop-shadow(0 4px 3px rgba(0,0,0,.25)); }
+    .contrail {
+      position:absolute; right:120px; top:36px; width:140px; height:5px; border-radius:5px;
+      background:linear-gradient(270deg,rgba(255,255,255,.85),rgba(255,255,255,0));
     }
-
-    .endless-airplane-box span {
-      font-size: 11.5px;
-      color: #FFFFFF;
-      font-weight: 700;
-      white-space: nowrap;
-      text-shadow: 0 1px 3px rgba(0,0,0,0.6);
-      background: rgba(0, 0, 0, 0.35);
-      padding: 3px 12px;
-      border-radius: 14px;
-      border: 1px solid rgba(255, 215, 0, 0.5);
-    }
-
-    @keyframes endlessFlightLoop {
-      0% { transform: translateX(-160px) translateY(2px); }
-      100% { transform: translateX(540px) translateY(-2px); }
-    }
-
-    .next-gen-hero-banner h2 {
-      font-size: 15px;
-      color: #FFFFFF;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      margin-bottom: 3px;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-    }
-
-    .next-gen-hero-banner .tagline-gold {
-      font-size: 11.5px;
-      color: var(--yellow);
-      font-weight: 700;
-      margin-bottom: 6px;
-      text-shadow: 0 1px 3px rgba(0,0,0,0.4);
-    }
-
-    /* Seamless Continuous Ticker Animation Container */
-    .ticker-wrapper {
-      width: 100%;
-      overflow: hidden;
-      white-space: nowrap;
-      box-sizing: border-box;
-      background: rgba(10, 43, 91, 0.85);
-      border-radius: 6px;
-      padding: 4px 0;
-      margin-top: 2px;
-      border: 1px solid rgba(255, 215, 0, 0.3);
-    }
-
-    .ticker-text {
-      display: inline-block;
-      padding-left: 100%;
-      animation: smoothTickerScroll 15s linear infinite;
-      font-size: 11px;
-      color: var(--en-text-bright);
-      font-weight: 600;
-    }
-
-    @keyframes smoothTickerScroll {
-      0% { transform: translate3d(0, 0, 0); }
-      100% { transform: translate3d(-100%, 0, 0); }
+    @keyframes planeFly { from{left:-260px} to{left:105%} }
+    @keyframes planeBob {
+      0%,100%{ transform:translateY(0) rotate(-1deg); }
+      50%    { transform:translateY(-5px) rotate(1deg); }
     }
     
     /* Secret Admin Tap Zone */
@@ -918,26 +856,57 @@
   
   <div class="container">
   
-    <!-- ENDLESS CONTINUOUS REALISTIC AIRPLANE HERO BANNER -->
-    <div class="next-gen-hero-banner">
+    <!-- REALISTIC FLYING AIRPLANE HERO BANNER -->
+    <div class="sky-strip">
       <div class="secret-logo-touch-area" onclick="handleSecretLogoTap(event)"></div>
-      
-      <div class="sky-cloud-lane">
-        <div class="endless-airplane-box">
-          <!-- True Detailed Realistic Jet Silhouette SVG -->
-          <svg class="real-airplane-graphic" viewBox="0 0 512 512">
-            <path d="M448 336v-40L288 192V72c0-22.08-17.92-40-40-40s-40 17.92-40 40v120L48 296v40l160-48v112l-48 32v32l72-24 72 24v-32l-48-32V288l160 48z"/>
-          </svg>
-          <span>நம்ம ஊர் A to Z • நேரடித் தொடர்பு</span>
-        </div>
-      </div>
+      <div class="cloud c1"></div>
+      <div class="cloud c2"></div>
+      <div class="cloud c3"></div>
 
-      <h2>நம் ஊர் திறமை... உலகம் அறியட்டும்!</h2>
-      <div class="tagline-gold">0% கமிஷன் • உள்ளூர் சேவை, நம்ம ஊர் வளர்ச்சி</div>
-      
-      <div class="ticker-wrapper">
-        <div class="ticker-text">
-          ✨ ஆட்டோ, டாக்ஸி, எலக்ட்ரீஷியன், பிளம்பர் மற்றும் ஹோம்மேட் பொருட்களை உடனுக்குடன் தொடர்பு கொள்ளுங்கள்! &nbsp;&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;&nbsp;&nbsp; 🚀 0% கமிஷன் • உள்ளூர் மக்களையும் சிறு வியாபாரிகளையும் நேரடியாக இணைக்கும் தளம்! &nbsp;&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;&nbsp;&nbsp;
+      <div class="plane-wrap">
+        <div class="contrail"></div>
+        <div class="plane-bob">
+          <svg viewBox="0 0 240 72" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="body" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#ffffff"/>
+                <stop offset=".6" stop-color="#e8eef5"/>
+                <stop offset="1" stop-color="#aab8c8"/>
+              </linearGradient>
+              <linearGradient id="wing" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#dfe6ee"/>
+                <stop offset="1" stop-color="#8d9bab"/>
+              </linearGradient>
+            </defs>
+            <!-- far wing -->
+            <path d="M100,36 L74,16 L90,16 L128,36 Z" fill="#9aa8b8"/>
+            <!-- tail stabilizer -->
+            <path d="M22,38 L2,44 L2,48 L34,42 Z" fill="url(#wing)"/>
+            <!-- tail fin -->
+            <path d="M20,32 L6,4 L26,4 L52,30 Z" fill="#0A2D5B"/>
+            <path d="M13,16 L21,16 L26,22 L16,22 Z" fill="#FFD700"/>
+            <!-- fuselage -->
+            <path d="M8,40 Q8,30 30,29 L180,29 Q216,30 227,40 Q216,49 180,50 L30,50 Q8,50 8,40 Z" fill="url(#body)"/>
+            <!-- belly stripe -->
+            <path d="M14,43 L210,43 Q206,48 180,49 L30,49 Q14,48 14,43 Z" fill="#0A2D5B" opacity=".85"/>
+            <rect x="14" y="41" width="196" height="1.8" fill="#FFD700"/>
+            
+            <!-- விமானத்தின் நடுவே பிராண்ட் பெயர் -->
+            <text x="75" y="38" fill="#0A2D5B" font-size="10.5" font-weight="bold" font-family="sans-serif">நம்ம ஊர் A to Z</text>
+
+            <!-- cockpit -->
+            <path d="M196,33 L211,33 Q218,35 221,39 L198,39 Z" fill="#3b8fd6"/>
+            <!-- windows -->
+            <g fill="#4a6a8f">
+              <circle cx="52" cy="36" r="1.8"/><circle cx="62" cy="36" r="1.8"/>
+              <circle cx="132" cy="36" r="1.8"/><circle cx="142" cy="36" r="1.8"/><circle cx="152" cy="36" r="1.8"/>
+            </g>
+            <!-- near wing -->
+            <path d="M92,42 L58,66 L78,66 L132,44 Z" fill="url(#wing)"/>
+            <!-- engine -->
+            <rect x="94" y="52" width="26" height="9" rx="4.5" fill="#cfd8e2"/>
+            <rect x="94" y="52" width="6" height="9" rx="3" fill="#6b7a8c"/>
+          </svg>
         </div>
       </div>
     </div>
@@ -1153,7 +1122,7 @@
       <div class="terms-rule-card">
         <h4 style="font-size: 14px; color: var(--yellow); margin-bottom: 6px;"><i class="fa-solid fa-bullhorn"></i> 3. ஹோம் பேஜ் 360 சிறப்பு ஆஃபர் விளம்பரங்கள் & டிஜிட்டல் பேனர் விதிமுறைகள்</h4>
         <p class="ta-main" style="font-size: 12px; line-height: 1.5;">
-          • <strong>360 சிறப்பு ஆஃபர் பகுதி:</strong> இது சாதாரண விளம்பரப் பகுதி அல்ல! உங்களது சிறு தொழிலையோ, குறு வணிகத்தையோ மக்களிடம் கொண்டு சேர்க்கும்போது, வாடிக்கையாளர்களைத் தீர்க்கமாக ஈர்க்கும் சிறப்புத் தள்ளுபடிகள் (Special Offers) மற்றும் சலுகை அறிவிப்புகளை வெளியிடுவதற்காகவே பிரத்யேகமாக உருவாக்கப்பட்டதுதான் இந்த ஹோம் பேஜ் 360 ஆஃபர் பகுதியாகும். இதில் நீங்கள் எப்போது வேண்டுமானாலும் உங்களது சிறப்புத் தள்ளுபடி விளம்பரங்களைப் பதிவிட்டுக்கொள்ளலாம்; இதற்கான வரம்புகள் கிடையாது.<br><br>
+          • <strong>360 சிறப்பு ஆஃபர் பகுதி:</strong> இது சாதாரண விளம்பரப் பகுதி அல்ல! உங்களது சிறு தொழிலையோ, குறு வணிகத்தையோ மக்களிடம் கொண்டு சேர்க்கும்போது, வாடிக்கையாளர்களிடம் தீர்க்கமாக ஈர்க்கும் சிறப்புத் தள்ளுபடிகள் (Special Offers) மற்றும் சலுகை அறிவிப்புகளை வெளியிடுவதற்காகவே பிரத்யேகமாக உருவாக்கப்பட்டதுதான் இந்த ஹோம் பேஜ் 360 ஆஃபர் பகுதியாகும். இதில் நீங்கள் எப்போது வேண்டுமானாலும் உங்களது சிறப்புத் தள்ளுபடி விளம்பரங்களைப் பதிவிட்டுக்கொள்ளலாம்; இதற்கான வரம்புகள் கிடையாது.<br><br>
           • <strong>டிஜிட்டல் விளம்பரப் பலகை (Digital Banner):</strong> பிரதான டிஜிட்டல் பேனர் என்பது சாதாரண நோட்டீஸ் அல்லது அனைத்து விளம்பரங்களையும் பதிிவிடும் பகுதியல்ல! இதில் மிக முக்கியமான சிறப்பு விளம்பரங்கள் மட்டுமே பதிவு செய்யப்படும். மேலும், இந்த டிஜிட்டல் பேனரில் ஒரே நேரத்தில் அதிகபட்சம் 5 விளம்பரங்கள் மட்டுமே அனுமதிக்கப்படும் என்பதால், யாரும் இதில் இடமில்லாமல் ஏமாறத் தேவையில்லை. முறையான முன்பதிவின் மூலமாக மட்டுமே இதில் விளம்பரங்கள் இடம்பெறும்.
         </p>
       </div>
@@ -3156,43 +3125,9 @@
       }
     }
 
-    function toggleSubscriptionFromAdmin() {
-      isTermsSwitchOn = !isTermsSwitchOn;
-      updateAdminSubButtonUI();
-      applySubscriptionDisplayState();
-      alert("சந்தா வாசகம் இப்போது: " + (isTermsSwitchOn ? "ஆன் (ON)" : "ஆஃப் (OFF)"));
-    }
-
-    function renderAdminVendorsList(role) {
-      const container = document.getElementById("adminVendorCardsContainer");
-      const TheListToRender = liveVendors.length > 0 ? liveVendors : serviceList;
-
-      if (TheListToRender.length === 0) {
-        container.innerHTML = `<p style="font-size: 12px; color: var(--text-muted); text-align: center;">சரிபார்ப்புக்கு வெண்டர்கள் எவரும் இல்லை.</p>`;
-        return;
-      }
-
-      container.innerHTML = "";
-      TheListToRender.forEach(v => {
-        container.innerHTML += `
-          <div style="background: #0A2D5B; border: 1.5px solid var(--gold-border); border-radius: 10px; padding: 10px; margin-bottom: 8px;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-              <h5 style="font-size: 13px; color: #FFFFFF;">${v.name}</h5>
-              <span class="status-badge ${v.status === 'active' ? 'active-green' : 'pending-yellow'}">${v.status}</span>
-            </div>
-            <p style="font-size: 11px; color: var(--yellow); margin-bottom: 6px;">📍 ${v.area} • 📞 ${v.phone}</p>
-            <div style="display: flex; gap: 6px;">
-              <button onclick="changeVendorStatusLocally('${v.id || v.name}', 'active')" style="flex:1; padding: 5px; background: #22C55E; color: #fff; font-size: 11px; border: none; border-radius: 6px; font-weight: 700; cursor: pointer;">Approve</button>
-              <button onclick="changeVendorStatusLocally('${v.id || v.name}', 'blocked')" style="flex:1; padding: 5px; background: #EF4444; color: #fff; font-size: 11px; border: none; border-radius: 6px; font-weight: 700; cursor: pointer;">Block</button>
-            </div>
-          </div>
-        `;
-      });
-    }
-
-    function changeVendorStatusLocally(idOrName, newStatus) {
-      alert(`${idOrName} நிலை ${newStatus.toUpperCase()} என மாற்றப்பட்டது! (கூகுள் சீட்டிலும் பிரதிபலிக்கும்)`);
-    }
+    (function() {
+      // Background animation & initial setup helper
+    })();
   </script>
 </body>
 </html>
