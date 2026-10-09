@@ -41,51 +41,143 @@
       padding-bottom: 50px;
     }
   
-    container {
-      padding: 8px 10px;
-      max-width: 480px;
-      margin: 0 auto;
-    }
-
     .container {
       padding: 8px 10px;
       max-width: 480px;
       margin: 0 auto;
     }
   
-    /* REALISTIC FLYING AIRPLANE HERO BANNER */
+    /* ===== பறக்கும் விமானம் & மேகங்கள் பேனர் CSS ===== */
     .sky-strip {
-      position:relative; width:100%; height:110px; overflow:hidden;
-      border-radius:12px; border:1.5px solid #FFD700; margin-bottom:8px;
-      background:linear-gradient(180deg,#1e6fd0 0%,#59a8ee 55%,#bfe3ff 100%);
-      box-shadow:0 3px 12px rgba(0,0,0,.4);
+      position: relative;
+      width: 100%;
+      height: 110px;
+      overflow: hidden;
+      border-radius: 12px;
+      border: 1.5px solid #FFD700;
+      margin-bottom: 8px;
+      background: linear-gradient(180deg, #1e6fd0 0%, #59a8ee 55%, #bfe3ff 100%);
+      box-shadow: 0 3px 12px rgba(0,0,0,.4);
+      text-align: center;
+      padding: 8px;
     }
+
     .cloud {
-      position:absolute; background:#fff; border-radius:50px; opacity:.9;
-      filter:blur(1px); animation:cloudMove linear infinite;
+      position: absolute;
+      background: #fff;
+      border-radius: 50px;
+      opacity: .9;
+      filter: blur(1px);
+      animation: cloudMove linear infinite;
+      z-index: 1;
     }
-    .cloud::before,.cloud::after { content:""; position:absolute; background:#fff; border-radius:50%; }
-    .cloud::before { width:55%; height:160%; top:-70%; left:15%; }
-    .cloud::after  { width:40%; height:130%; top:-45%; left:50%; }
-    .c1 { width:60px; height:16px; top:18px; animation-duration:38s; animation-delay:-12s; }
-    .c2 { width:44px; height:12px; top:70px; animation-duration:52s; animation-delay:-30s; opacity:.7; }
-    .c3 { width:76px; height:18px; top:46px; animation-duration:30s; animation-delay:-5s;  opacity:.8; }
-    @keyframes cloudMove { from{left:-100px} to{left:105%} }
+
+    .cloud::before, .cloud::after {
+      content: "";
+      position: absolute;
+      background: #fff;
+      border-radius: 50%;
+    }
+
+    .cloud::before { width: 55%; height: 160%; top: -70%; left: 15%; }
+    .cloud::after  { width: 40%; height: 130%; top: -45%; left: 50%; }
+
+    .c1 { width: 60px; height: 16px; top: 12px; animation-duration: 38s; animation-delay: -12s; }
+    .c2 { width: 44px; height: 12px; top: 55px; animation-duration: 52s; animation-delay: -30s; opacity: .7; }
+    .c3 { width: 76px; height: 18px; top: 32px; animation-duration: 30s; animation-delay: -5s; opacity: .8; }
+
+    @keyframes cloudMove {
+      from { left: -100px; }
+      to { left: 105%; }
+    }
 
     .plane-wrap {
-      position:absolute; top:22px; left:-180px; width:150px;
-      animation:planeFly 11s linear infinite;
+      position: absolute;
+      top: 18px;
+      left: -180px;
+      width: 150px;
+      animation: planeFly 11s linear infinite;
+      z-index: 2;
     }
-    .plane-bob { animation:planeBob 2.6s ease-in-out infinite; }
-    .plane-wrap svg { width:150px; height:auto; display:block; filter:drop-shadow(0 4px 3px rgba(0,0,0,.25)); }
+
+    .plane-bob {
+      animation: planeBob 2.6s ease-in-out infinite;
+    }
+
+    .plane-wrap svg {
+      width: 150px;
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 4px 3px rgba(0,0,0,.25));
+    }
+
     .contrail {
-      position:absolute; right:120px; top:36px; width:140px; height:5px; border-radius:5px;
-      background:linear-gradient(270deg,rgba(255,255,255,.85),rgba(255,255,255,0));
+      position: absolute;
+      right: 120px;
+      top: 36px;
+      width: 140px;
+      height: 5px;
+      border-radius: 5px;
+      background: linear-gradient(270deg, rgba(255,255,255,.85), rgba(255,255,255,0));
     }
-    @keyframes planeFly { from{left:-260px} to{left:105%} }
+
+    @keyframes planeFly {
+      from { left: -260px; }
+      to { left: 105%; }
+    }
+
     @keyframes planeBob {
-      0%,100%{ transform:translateY(0) rotate(-1deg); }
-      50%    { transform:translateY(-5px) rotate(1deg); }
+      0%, 100% { transform: translateY(0) rotate(-1deg); }
+      50%      { transform: translateY(-5px) rotate(1deg); }
+    }
+
+    .banner-text-content {
+      position: relative;
+      z-index: 3;
+      margin-top: 48px;
+    }
+
+    .next-gen-hero-banner h2 {
+      font-size: 14.5px;
+      color: #FFFFFF;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      margin-bottom: 2px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+    }
+
+    .next-gen-hero-banner .tagline-gold {
+      font-size: 11px;
+      color: var(--yellow);
+      font-weight: 700;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+    }
+
+    /* Seamless Continuous Ticker Animation Container */
+    .ticker-wrapper {
+      width: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+      box-sizing: border-box;
+      background: rgba(10, 43, 91, 0.85);
+      border-radius: 6px;
+      padding: 4px 0;
+      margin-top: 4px;
+      border: 1px solid rgba(255, 215, 0, 0.3);
+    }
+
+    .ticker-text {
+      display: inline-block;
+      padding-left: 100%;
+      animation: smoothTickerScroll 16s linear infinite;
+      font-size: 11px;
+      color: var(--en-text-bright);
+      font-weight: 600;
+    }
+
+    @keyframes smoothTickerScroll {
+      0% { transform: translate3d(0, 0, 0); }
+      100% { transform: translate3d(-100%, 0, 0); }
     }
     
     /* Secret Admin Tap Zone */
@@ -909,6 +1001,11 @@
           </svg>
         </div>
       </div>
+
+      <div class="banner-text-content">
+        <h2>நம் ஊர் திறமை... உலகம் அறியட்டும்!</h2>
+        <div class="tagline-gold">0% கமிஷன் • உள்ளூர் சேவை, நம்ம ஊர் வளர்ச்சி</div>
+      </div>
     </div>
   
     <!-- Home Filter Tabs -->
@@ -1122,7 +1219,7 @@
       <div class="terms-rule-card">
         <h4 style="font-size: 14px; color: var(--yellow); margin-bottom: 6px;"><i class="fa-solid fa-bullhorn"></i> 3. ஹோம் பேஜ் 360 சிறப்பு ஆஃபர் விளம்பரங்கள் & டிஜிட்டல் பேனர் விதிமுறைகள்</h4>
         <p class="ta-main" style="font-size: 12px; line-height: 1.5;">
-          • <strong>360 சிறப்பு ஆஃபர் பகுதி:</strong> இது சாதாரண விளம்பரப் பகுதி அல்ல! உங்களது சிறு தொழிலையோ, குறு வணிகத்தையோ மக்களிடம் கொண்டு சேர்க்கும்போது, வாடிக்கையாளர்களிடம் தீர்க்கமாக ஈர்க்கும் சிறப்புத் தள்ளுபடிகள் (Special Offers) மற்றும் சலுகை அறிவிப்புகளை வெளியிடுவதற்காகவே பிரத்யேகமாக உருவாக்கப்பட்டதுதான் இந்த ஹோம் பேஜ் 360 ஆஃபர் பகுதியாகும். இதில் நீங்கள் எப்போது வேண்டுமானாலும் உங்களது சிறப்புத் தள்ளுபடி விளம்பரங்களைப் பதிவிட்டுக்கொள்ளலாம்; இதற்கான வரம்புகள் கிடையாது.<br><br>
+          • <strong>360 சிறப்பு ஆஃபர் பகுதி:</strong> இது சாதாரண விளம்பரப் பகுதி அல்ல! உங்களது சிறு தொழிலையோ, குறு வணிகத்தையோ மக்களிடம் கொண்டு சேர்க்கும்போது, வாடிக்கையாளர்களைத் தீர்க்கமாக ஈர்க்கும் சிறப்புத் தள்ளுபடிகள் (Special Offers) மற்றும் சலுகை அறிவிப்புகளை வெளியிடுவதற்காகவே பிரத்யேகமாக உருவாக்கப்பட்டதுதான் இந்த ஹோம் பேஜ் 360 ஆஃபர் பகுதியாகும். இதில் நீங்கள் எப்போது வேண்டுமானாலும் உங்களது சிறப்புத் தள்ளுபடி விளம்பரங்களைப் பதிவிட்டுக்கொள்ளலாம்; இதற்கான வரம்புகள் கிடையாது.<br><br>
           • <strong>டிஜிட்டல் விளம்பரப் பலகை (Digital Banner):</strong> பிரதான டிஜிட்டல் பேனர் என்பது சாதாரண நோட்டீஸ் அல்லது அனைத்து விளம்பரங்களையும் பதிிவிடும் பகுதியல்ல! இதில் மிக முக்கியமான சிறப்பு விளம்பரங்கள் மட்டுமே பதிவு செய்யப்படும். மேலும், இந்த டிஜிட்டல் பேனரில் ஒரே நேரத்தில் அதிகபட்சம் 5 விளம்பரங்கள் மட்டுமே அனுமதிக்கப்படும் என்பதால், யாரும் இதில் இடமில்லாமல் ஏமாறத் தேவையில்லை. முறையான முன்பதிவின் மூலமாக மட்டுமே இதில் விளம்பரங்கள் இடம்பெறும்.
         </p>
       </div>
@@ -3125,9 +3222,43 @@
       }
     }
 
-    (function() {
-      // Background animation & initial setup helper
-    })();
+    function toggleSubscriptionFromAdmin() {
+      isTermsSwitchOn = !isTermsSwitchOn;
+      updateAdminSubButtonUI();
+      applySubscriptionDisplayState();
+      alert("சந்தா வாசகம் இப்போது: " + (isTermsSwitchOn ? "ஆன் (ON)" : "ஆஃப் (OFF)"));
+    }
+
+    function renderAdminVendorsList(role) {
+      const container = document.getElementById("adminVendorCardsContainer");
+      const TheListToRender = liveVendors.length > 0 ? liveVendors : serviceList;
+
+      if (TheListToRender.length === 0) {
+        container.innerHTML = `<p style="font-size: 12px; color: var(--text-muted); text-align: center;">சரிபார்ப்புக்கு வெண்டர்கள் எவரும் இல்லை.</p>`;
+        return;
+      }
+
+      container.innerHTML = "";
+      TheListToRender.forEach(v => {
+        container.innerHTML += `
+          <div style="background: #0A2D5B; border: 1.5px solid var(--gold-border); border-radius: 10px; padding: 10px; margin-bottom: 8px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+              <h5 style="font-size: 13px; color: #FFFFFF;">${v.name}</h5>
+              <span class="status-badge ${v.status === 'active' ? 'active-green' : 'pending-yellow'}">${v.status}</span>
+            </div>
+            <p style="font-size: 11px; color: var(--yellow); margin-bottom: 6px;">📍 ${v.area} • 📞 ${v.phone}</p>
+            <div style="display: flex; gap: 6px;">
+              <button onclick="changeVendorStatusLocally('${v.id || v.name}', 'active')" style="flex:1; padding: 5px; background: #22C55E; color: #fff; font-size: 11px; border: none; border-radius: 6px; font-weight: 700; cursor: pointer;">Approve</button>
+              <button onclick="changeVendorStatusLocally('${v.id || v.name}', 'blocked')" style="flex:1; padding: 5px; background: #EF4444; color: #fff; font-size: 11px; border: none; border-radius: 6px; font-weight: 700; cursor: pointer;">Block</button>
+            </div>
+          </div>
+        `;
+      });
+    }
+
+    function changeVendorStatusLocally(idOrName, newStatus) {
+      alert(`${idOrName} நிலை ${newStatus.toUpperCase()} என மாற்றப்பட்டது! (கூகுள் சீட்டிலும் பிரதிபலிக்கும்)`);
+    }
   </script>
 </body>
 </html>
